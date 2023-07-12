@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useDispatch, useSelector } from "react-redux";
+import { PanelLogin } from "./features/Login";
+import {
+  fetchLoginUserToken,
+  selectTokenExsist,
+  selectTokenSessionUserState,
+} from "./features/Login/sliceLoginUser";
+import { getDataSessionStorage } from "./core/saveSessionStorage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export const App = () => {
+  const dispatch = useDispatch();
+  const tokenUser = useSelector(selectTokenSessionUserState);
+  const tokenSessionStorage = getDataSessionStorage("token_user");
 
-export default App;
+  if (tokenSessionStorage === "") {
+    return <PanelLogin />;
+  }
+
+  if (tokenUser === undefined) {
+    dispatch(fetchLoginUserToken(tokenSessionStorage));
+  }
+
+  return <h1>Tutaj aplikacja</h1>;
+};
