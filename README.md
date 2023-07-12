@@ -15,3 +15,5 @@
 - Redux Saga 1.2.3
 - Redux Toolkit 1.9.5
 - Axios 1.4.0
+
+Aplikacja działa w oparciu o [backend](https://github.com/Maciej86/register-backend)
