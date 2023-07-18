@@ -1,4 +1,7 @@
 import { useLoginUser } from "./useLoginUser";
+import { useSelector } from "react-redux";
+import { selectStatusUser } from "./sliceLoginUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Conteiner,
   ConteinerLeft,
@@ -14,10 +17,10 @@ import {
   FormInput,
   FormButton,
 } from "./styled";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PanelLogin = () => {
   const { onSubmitLoginUser, refLoginUser, refPasswordUser } = useLoginUser();
+  const statusLogin = useSelector(selectStatusUser);
 
   return (
     <Wrapper>
@@ -50,7 +53,7 @@ export const PanelLogin = () => {
                   id="password"
                 />
               </FormBox>
-              <FormButton type="submit">Zaloguj</FormButton>
+              {statusLogin ? "Trwa ładowanie..." : <FormButton type="submit">Zaloguj</FormButton>}
             </form>
           </WrapperForm>
         </ConteinerRight>

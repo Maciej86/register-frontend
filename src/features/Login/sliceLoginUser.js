@@ -20,7 +20,6 @@ const loginUserSlice = createSlice({
       } else {
         state.loading = true;
       }
-      console.log(state.loading);
     },
   },
 });
@@ -30,6 +29,7 @@ export const selectTokenSessionUserState = (state) =>
   selectLoginUser(state).user[0]?.token_login;
 export const selectUserState = (state) =>
   selectLoginUser(state).user;
+export const selectStatusUser = (state) => selectLoginUser(state).loading;
 
 export const { fetchLoginUser, fetchLoginUserToken, setLoginUser } =
   loginUserSlice.actions;
