@@ -1,22 +1,60 @@
 import { useLoginUser } from "./useLoginUser";
+import {
+  Conteiner,
+  ConteinerLeft,
+  SubTitle,
+  LeftTitle,
+  Wrapper,
+  Logo,
+  ConteinerRight,
+  WrapperForm,
+  FormTitle,
+  FormBox,
+  FormLabel,
+  FormInput,
+  FormButton,
+} from "./styled";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PanelLogin = () => {
   const { onSubmitLoginUser, refLoginUser, refPasswordUser } = useLoginUser();
 
   return (
-    <>
-      <form onSubmit={onSubmitLoginUser}>
-        <h2>Panel logowania</h2>
-        <div>
-          <label htmlFor="login">Login</label>
-          <input type="text" ref={refLoginUser} id="login" maxLength={15} />
-        </div>
-        <div>
-          <label htmlFor="password">Hasło</label>
-          <input type="password" ref={refPasswordUser} id="password" />
-        </div>
-        <button type="submit">Zaloguj</button>
-      </form>
-    </>
+    <Wrapper>
+      <Conteiner>
+        <ConteinerLeft>
+          <LeftTitle>REGISTER</LeftTitle>
+          <SubTitle>Panel administracyjny</SubTitle>
+          <Logo>
+            <FontAwesomeIcon icon="fa-solid fa-server" size="2xl" />
+          </Logo>
+        </ConteinerLeft>
+        <ConteinerRight>
+          <WrapperForm>
+            <form onSubmit={onSubmitLoginUser}>
+              <FormTitle>Panel logowania</FormTitle>
+              <FormBox>
+                <FormLabel htmlFor="login">Login</FormLabel>
+                <FormInput
+                  type="text"
+                  ref={refLoginUser}
+                  id="login"
+                  maxLength={15}
+                />
+              </FormBox>
+              <FormBox>
+                <FormLabel htmlFor="password">Hasło</FormLabel>
+                <FormInput
+                  type="password"
+                  ref={refPasswordUser}
+                  id="password"
+                />
+              </FormBox>
+              <FormButton type="submit">Zaloguj</FormButton>
+            </form>
+          </WrapperForm>
+        </ConteinerRight>
+      </Conteiner>
+    </Wrapper>
   );
 };

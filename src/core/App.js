@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { PanelLogin } from "./features/Login";
+import { PanelLogin } from "../features/Login";
 import {
   fetchLoginUserToken,
   selectTokenSessionUserState,
-} from "./features/Login/sliceLoginUser";
-import { getDataSessionStorage } from "./core/saveSessionStorage";
+} from "../features/Login/sliceLoginUser";
+import { getDataSessionStorage } from "./saveSessionStorage";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -25,3 +27,5 @@ export const App = () => {
 
   return <h1>Tutaj aplikacja</h1>;
 };
+
+library.add(fas);
