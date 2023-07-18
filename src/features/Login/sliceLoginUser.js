@@ -23,6 +23,8 @@ const loginUserSlice = createSlice({
 export const selectLoginUser = (state) => state.loginUserStore;
 export const selectTokenSessionUserState = (state) =>
   selectLoginUser(state).user[0]?.token_login;
+export const selectUserState = (state) =>
+  selectLoginUser(state).user;
 
 export const { fetchLoginUser, fetchLoginUserToken, setLoginUser } =
   loginUserSlice.actions;
