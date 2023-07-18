@@ -4,18 +4,23 @@ const loginUserSlice = createSlice({
   name: "loginUser",
   initialState: {
     user: [],
-    loading: "",
+    loading: false,
   },
   reducers: {
     fetchLoginUser: (state) => {
-      state.loading = "loading";
+      state.loading = true;
     },
     fetchLoginUserToken: (state) => {
-      state.loading = "loading";
+      state.loading = true;
     },
     setLoginUser: (state, { payload: user }) => {
       state.user = user;
-      state.loading = "success";
+      if(user.length === 0) {
+        state.loading = false;
+      } else {
+        state.loading = true;
+      }
+      console.log(state.loading);
     },
   },
 });

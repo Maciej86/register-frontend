@@ -16,11 +16,14 @@ function* fechLoginUserHandler({ payload: dataUser }) {
       password: dataUser.password,
     });
     yield put(setLoginUser(user.data));
-    yield call(
-      saveDataInSessionStorage,
-      "token_user",
-      user.data[0].token_login
-    );
+    if(user.data.length !== 0) {
+      yield call(
+        saveDataInSessionStorage,
+        "token_user",
+        user.data[0]?.token_login
+      );
+    }
+    
   } catch (error) {
     yield console.log(error);
   }
