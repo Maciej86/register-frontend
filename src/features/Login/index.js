@@ -17,6 +17,7 @@ import {
   FormInput,
   FormButton,
 } from "./styled";
+import { Loader } from "../../common/Loader";
 
 export const PanelLogin = () => {
   const { onSubmitLoginUser, refLoginUser, refPasswordUser } = useLoginUser();
@@ -53,7 +54,11 @@ export const PanelLogin = () => {
                   id="password"
                 />
               </FormBox>
-              {statusLogin ? "Trwa ładowanie..." : <FormButton type="submit">Zaloguj</FormButton>}
+              {statusLogin ? (
+                <Loader size="36px" border="4px" margin="25px auto 0 auto" />
+              ) : (
+                <FormButton type="submit">Zaloguj</FormButton>
+              )}
             </form>
           </WrapperForm>
         </ConteinerRight>
