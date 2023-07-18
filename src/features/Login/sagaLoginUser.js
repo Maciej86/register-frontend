@@ -1,5 +1,5 @@
 import axios from "axios";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, delay, put, takeEvery } from "redux-saga/effects";
 import {
   fetchLoginUser,
   fetchLoginUserToken,
@@ -15,15 +15,15 @@ function* fechLoginUserHandler({ payload: dataUser }) {
       name: dataUser.login,
       password: dataUser.password,
     });
+    yield delay(1500);
     yield put(setLoginUser(user.data));
-    if(user.data.length !== 0) {
+    if (user.data.length !== 0) {
       yield call(
         saveDataInSessionStorage,
         "token_user",
         user.data[0]?.token_login
       );
     }
-    
   } catch (error) {
     yield console.log(error);
   }
