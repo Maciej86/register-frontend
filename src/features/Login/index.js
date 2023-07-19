@@ -1,7 +1,7 @@
-import { useLoginUser } from "./useLoginUser";
 import { useSelector } from "react-redux";
-import { selectStatusUser } from "./sliceLoginUser";
+import { selectStatusUser, selectUserNotExist } from "./sliceLoginUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLoginUser } from "./useLoginUser";
 import {
   Conteiner,
   ConteinerLeft,
@@ -18,13 +18,17 @@ import {
   FormButton,
 } from "./styled";
 import { Loader } from "../../common/Loader";
+import { ErrorLogin } from "./ErrorLogin";
 
 export const PanelLogin = () => {
-  const { onSubmitLoginUser, refLoginUser, refPasswordUser } = useLoginUser();
+  const { onSubmitLoginUser, refLoginUser, refPasswordUser, emptyInput } = useLoginUser();
   const statusLogin = useSelector(selectStatusUser);
+  const userExist = useSelector(selectUserNotExist);
 
   return (
     <Wrapper>
+      {emptyInput ? <ErrorLogin message="Proszę o wypełnienie wszystkich pól."/> : ""}
+      {userExist ? <ErrorLogin message="Użytkownik o podanym loginie i haśle nie istnieje."/> : ""}
       <Conteiner>
         <ConteinerLeft>
           <LeftTitle>REGISTER</LeftTitle>
