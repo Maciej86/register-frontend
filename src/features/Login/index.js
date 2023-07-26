@@ -19,16 +19,18 @@ import {
 } from "./styled";
 import { Loader } from "../../common/Loader";
 import { ErrorLogin } from "./ErrorLogin";
+import { userText } from "../../core/InfoText";
 
 export const PanelLogin = () => {
-  const { onSubmitLoginUser, refLoginUser, refPasswordUser, emptyInput } = useLoginUser();
+  const { onSubmitLoginUser, refLoginUser, refPasswordUser, emptyInput } =
+    useLoginUser();
   const statusLogin = useSelector(selectStatusUser);
   const userExist = useSelector(selectUserNotExist);
 
   return (
     <Wrapper>
-      {emptyInput ? <ErrorLogin message="Proszę o wypełnienie wszystkich pól."/> : ""}
-      {userExist ? <ErrorLogin message="Użytkownik o podanym loginie i haśle nie istnieje."/> : ""}
+      {emptyInput ? <ErrorLogin message={userText.loginUserEmptyInput} /> : ""}
+      {userExist ? <ErrorLogin message={userText.loginUserErrorData} /> : ""}
       <Conteiner>
         <ConteinerLeft>
           <LeftTitle>REGISTER</LeftTitle>
