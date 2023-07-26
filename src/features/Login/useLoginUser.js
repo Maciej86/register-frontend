@@ -10,6 +10,7 @@ export const useLoginUser = () => {
 
   const onSubmitLoginUser = (event) => {
     event.preventDefault();
+    dispatch(setUserNotExist());
 
     if (refLoginUser.current !== null && refPasswordUser.current !== null) {
       setEmptyInput(false);
@@ -18,7 +19,6 @@ export const useLoginUser = () => {
 
       if (loginTrim === "" || passwordTrim === "") {
         setEmptyInput(true);
-        dispatch(setUserNotExist());
         return;
       }
 
@@ -28,7 +28,6 @@ export const useLoginUser = () => {
           password: passwordTrim,
         })
       );
-
     }
   };
 
