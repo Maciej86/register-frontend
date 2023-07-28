@@ -5,5 +5,5 @@ export const Loader = ({
   border = "4px",
   margin = "25px auto 0 auto",
 }) => {
-  return <Spin size={size} border={border} margin={margin}></Spin>;
+  return <Spin $size={size} $border={border} $margin={margin}></Spin>;
 };
