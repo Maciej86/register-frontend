@@ -9,7 +9,7 @@ export const color = {
   warning: "rgb(238, 187, 81)",
   warning_dark: "rgb(197, 156, 68)",
   danger: "rgb(226, 87, 88)",
-  danger_dark: "rgb(189, 73, 73)",
+  danger_dark: "rgb(141, 56, 56)",
   white: "rgb(255,255,255)",
   light: "rgb(155, 168, 202)",
   dark: "rgb(22, 26, 48)",

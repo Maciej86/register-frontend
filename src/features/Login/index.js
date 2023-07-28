@@ -57,7 +57,9 @@ export const PanelLogin = () => {
                   type="text"
                   ref={refLoginUser}
                   id="login"
-                  maxLength={15}
+                  maxLength={20}
+                  placeholder="you@email.com"
+                  autoComplete="off"
                 />
               </FormBox>
               <FormBox>
@@ -66,6 +68,8 @@ export const PanelLogin = () => {
                   type="password"
                   ref={refPasswordUser}
                   id="password"
+                  maxLength={100}
+                  placeholder="****************"
                 />
               </FormBox>
               {statusLogin ? (
