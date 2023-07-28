@@ -1,13 +1,13 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PanelLogin } from "../features/Login";
+import { getDataSessionStorage } from "./saveSessionStorage";
 import {
   fetchLoginUserToken,
   selectTokenSessionUserState,
 } from "../features/Login/sliceLoginUser";
-import { getDataSessionStorage } from "./saveSessionStorage";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -15,16 +15,16 @@ export const App = () => {
   const tokenSessionStorage = getDataSessionStorage("token_user");
 
   useEffect(() => {
-    if(tokenSessionStorage !== "") {
+    if (tokenSessionStorage !== "") {
       dispatch(fetchLoginUserToken(tokenSessionStorage));
     }
-  },[dispatch, tokenSessionStorage]);
+  }, [dispatch, tokenSessionStorage]);
 
   if (tokenSessionStorage === "") {
     return <PanelLogin />;
   }
 
-  if(tokenUser === undefined) {
+  if (tokenUser === undefined) {
     return <PanelLogin />;
   }
 
