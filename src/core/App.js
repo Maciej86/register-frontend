@@ -6,8 +6,6 @@ import {
   fetchLoginUserToken,
   selectTokenSessionUserState,
 } from "../features/Login/sliceLoginUser";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,5 +28,3 @@ export const App = () => {
 
   return <h1>Tutaj aplikacja</h1>;
 };
-
-library.add(fas);

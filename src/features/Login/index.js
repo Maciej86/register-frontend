@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
 import { selectStatusUser, selectUserNotExist } from "./sliceLoginUser";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLoginUser } from "./useLoginUser";
+import { USER_TEXT } from "../../core/InfoText";
+import { Loader } from "../../common/Loader";
+import { ErrorLogin } from "./ErrorLogin";
 import {
   Conteiner,
   ConteinerLeft,
@@ -17,9 +19,7 @@ import {
   FormInput,
   FormButton,
 } from "./styled";
-import { Loader } from "../../common/Loader";
-import { ErrorLogin } from "./ErrorLogin";
-import { USER_TEXT } from "../../core/InfoText";
+import { AiFillDatabase } from "react-icons/ai";
 
 export const PanelLogin = () => {
   const { onSubmitLoginUser, refLoginUser, refPasswordUser, emptyInput } =
@@ -44,7 +44,7 @@ export const PanelLogin = () => {
           <LeftTitle>REGISTER</LeftTitle>
           <SubTitle>Panel administracyjny</SubTitle>
           <Logo>
-            <FontAwesomeIcon icon="fa-solid fa-server" size="2xl" />
+            <AiFillDatabase />
           </Logo>
         </ConteinerLeft>
         <ConteinerRight>

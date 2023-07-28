@@ -60,7 +60,7 @@ export const SubTitle = styled.p`
 
 export const Logo = styled.span`
   margin-top: 20px;
-  font-size: 24px;
+  font-size: 70px;
 `;
 
 export const ConteinerRight = styled.div`
