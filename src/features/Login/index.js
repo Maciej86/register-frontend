@@ -1,3 +1,6 @@
+import { useSelector } from "react-redux";
+import { selectStatusUser, selectUserNotExist } from "./sliceLoginUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLoginUser } from "./useLoginUser";
 import {
   Conteiner,
@@ -14,13 +17,28 @@ import {
   FormInput,
   FormButton,
 } from "./styled";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Loader } from "../../common/Loader";
+import { ErrorLogin } from "./ErrorLogin";
+import { USER_TEXT } from "../../core/InfoText";
 
 export const PanelLogin = () => {
-  const { onSubmitLoginUser, refLoginUser, refPasswordUser } = useLoginUser();
+  const { onSubmitLoginUser, refLoginUser, refPasswordUser, emptyInput } =
+    useLoginUser();
+  const statusLogin = useSelector(selectStatusUser);
+  const userExist = useSelector(selectUserNotExist);
 
   return (
     <Wrapper>
+      {emptyInput ? (
+        <ErrorLogin message={USER_TEXT.LOGIN_USER_EMPTY_INPUT} />
+      ) : (
+        ""
+      )}
+      {userExist ? (
+        <ErrorLogin message={USER_TEXT.LOGIN_USER_ERROR_DATA} />
+      ) : (
+        ""
+      )}
       <Conteiner>
         <ConteinerLeft>
           <LeftTitle>REGISTER</LeftTitle>
@@ -39,7 +57,9 @@ export const PanelLogin = () => {
                   type="text"
                   ref={refLoginUser}
                   id="login"
-                  maxLength={15}
+                  maxLength={20}
+                  placeholder="you@email.com"
+                  autoComplete="off"
                 />
               </FormBox>
               <FormBox>
@@ -48,9 +68,15 @@ export const PanelLogin = () => {
                   type="password"
                   ref={refPasswordUser}
                   id="password"
+                  maxLength={100}
+                  placeholder="****************"
                 />
               </FormBox>
-              <FormButton type="submit">Zaloguj</FormButton>
+              {statusLogin ? (
+                <Loader size="36px" border="4px" margin="25px auto 0 auto" />
+              ) : (
+                <FormButton type="submit">Zaloguj</FormButton>
+              )}
             </form>
           </WrapperForm>
         </ConteinerRight>

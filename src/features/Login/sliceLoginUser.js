@@ -4,19 +4,28 @@ const loginUserSlice = createSlice({
   name: "loginUser",
   initialState: {
     user: [],
-    loading: "",
+    userNotExist: false,
+    loading: false,
   },
   reducers: {
     fetchLoginUser: (state) => {
-      state.loading = "loading";
+      state.loading = true;
     },
     fetchLoginUserToken: (state) => {
-      state.loading = "loading";
+      state.loading = true;
     },
     setLoginUser: (state, { payload: user }) => {
       state.user = user;
-      state.loading = "success";
+      if(user.length === 0) {
+        state.loading = false;
+        state.userNotExist = true;
+      } else {
+        state.loading = true;
+      }
     },
+    setUserNotExist: (state) => {
+      state.userNotExist = false;
+    }
   },
 });
 
@@ -25,8 +34,10 @@ export const selectTokenSessionUserState = (state) =>
   selectLoginUser(state).user[0]?.token_login;
 export const selectUserState = (state) =>
   selectLoginUser(state).user;
+export const selectStatusUser = (state) => selectLoginUser(state).loading;
+export const selectUserNotExist = (state) => selectLoginUser(state).userNotExist;
 
-export const { fetchLoginUser, fetchLoginUserToken, setLoginUser } =
+export const { fetchLoginUser, fetchLoginUserToken, setLoginUser, setUserNotExist } =
   loginUserSlice.actions;
 
 export default loginUserSlice.reducer;

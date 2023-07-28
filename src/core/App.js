@@ -7,22 +7,25 @@ import {
 import { getDataSessionStorage } from "./saveSessionStorage";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
 export const App = () => {
   const dispatch = useDispatch();
   const tokenUser = useSelector(selectTokenSessionUserState);
   const tokenSessionStorage = getDataSessionStorage("token_user");
-  console.log(tokenUser);
+
+  useEffect(() => {
+    if(tokenSessionStorage !== "") {
+      dispatch(fetchLoginUserToken(tokenSessionStorage));
+    }
+  },[dispatch, tokenSessionStorage]);
 
   if (tokenSessionStorage === "") {
     return <PanelLogin />;
   }
 
-  if(tokenSessionStorage !== "") {
-    dispatch(fetchLoginUserToken(tokenSessionStorage));
-    if(tokenUser === undefined) {
-      return <PanelLogin />;
-    }
+  if(tokenUser === undefined) {
+    return <PanelLogin />;
   }
 
   return <h1>Tutaj aplikacja</h1>;
