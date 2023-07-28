@@ -19,7 +19,7 @@ import {
 } from "./styled";
 import { Loader } from "../../common/Loader";
 import { ErrorLogin } from "./ErrorLogin";
-import { userText } from "../../core/InfoText";
+import { USER_TEXT } from "../../core/InfoText";
 
 export const PanelLogin = () => {
   const { onSubmitLoginUser, refLoginUser, refPasswordUser, emptyInput } =
@@ -29,8 +29,16 @@ export const PanelLogin = () => {
 
   return (
     <Wrapper>
-      {emptyInput ? <ErrorLogin message={userText.loginUserEmptyInput} /> : ""}
-      {userExist ? <ErrorLogin message={userText.loginUserErrorData} /> : ""}
+      {emptyInput ? (
+        <ErrorLogin message={USER_TEXT.LOGIN_USER_EMPTY_INPUT} />
+      ) : (
+        ""
+      )}
+      {userExist ? (
+        <ErrorLogin message={USER_TEXT.LOGIN_USER_ERROR_DATA} />
+      ) : (
+        ""
+      )}
       <Conteiner>
         <ConteinerLeft>
           <LeftTitle>REGISTER</LeftTitle>
