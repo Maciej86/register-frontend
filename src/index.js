@@ -3,18 +3,24 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./core/store";
 import { App } from "./core/App";
-import { GlobalStyle } from "./core/css/GlobalStyle";
+import { GlobalStyle } from "./core/styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
-import { ThemeDefault, ThemeEbonyClay } from "./core/css/theme";
 import reportWebVitals from "./reportWebVitals";
+import { useSwitchTheme } from "./core/useSwitchTheme";
+
+const RootComponent = () => {
+  return (
+    <ThemeProvider theme={useSwitchTheme()}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <ThemeProvider theme={ThemeDefault}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
+    <RootComponent />
   </Provider>
 );
 
