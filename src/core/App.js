@@ -6,6 +6,7 @@ import {
   fetchLoginUserToken,
   selectTokenSessionUserState,
 } from "../features/Login/sliceLoginUser";
+import { Bar } from "../features/Bar";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -26,5 +27,5 @@ export const App = () => {
     return <PanelLogin />;
   }
 
-  return <h1>Tutaj aplikacja</h1>;
+  return <Bar />;
 };
