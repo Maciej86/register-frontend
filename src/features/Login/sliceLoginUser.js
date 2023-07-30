@@ -32,9 +32,7 @@ const loginUserSlice = createSlice({
 export const selectLoginUser = (state) => state.loginUserStore;
 export const selectTokenSessionUserState = (state) =>
   selectLoginUser(state).user[0]?.token_login;
-export const selectThemeUserState = (state) =>
-  selectLoginUser(state).user[0]?.theme;
-export const selectUserState = (state) => selectLoginUser(state).user;
+export const selectUserState = (state) => selectLoginUser(state).user[0];
 export const selectStatusUser = (state) => selectLoginUser(state).loading;
 export const selectUserNotExist = (state) =>
   selectLoginUser(state).userNotExist;
