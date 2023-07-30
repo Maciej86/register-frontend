@@ -6,8 +6,6 @@ export const useSwitchTheme = () => {
   const userThemeState = useSelector(selectUserState);
   let userTheme;
 
-  console.log(userThemeState);
-
   switch (userThemeState?.theme) {
     case "ThemeDefault":
       userTheme = ThemeDefault;
