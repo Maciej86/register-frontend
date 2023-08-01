@@ -34,6 +34,7 @@ function* fetchLoginUserTokenHandler({ payload: token }) {
     const user = yield axios.post(URL_USER.LOGIN_USER_TOKEN, {
       token: token,
     });
+    yield delay(1500);
     yield put(setLoginUser(user.data));
   } catch (error) {
     yield console.log(error);
