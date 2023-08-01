@@ -6,6 +6,9 @@ import {
   BarRight,
   ButtonToggleNav,
   ButtonUser,
+  NameRoleUser,
+  UserName,
+  UserRole,
   Wrapper,
 } from "./styled";
 import { BsArrowBarRight } from "react-icons/bs";
@@ -22,13 +25,16 @@ export const Bar = () => {
     <Wrapper>
       <BarLeft>
         <ButtonToggleNav onClick={() => switchNav()} $toggleNav={toggleNav}>
-          <BsArrowBarRight />
+          <BsArrowBarRight size={"25px"} />
         </ButtonToggleNav>
       </BarLeft>
       <BarRight>
         <ButtonUser>
-          <span>{userName?.name}</span>
-          <PiUserThin />
+          <NameRoleUser>
+            <UserName>{userName?.name}</UserName>
+            <UserRole>Developer</UserRole>
+          </NameRoleUser>
+          <PiUserThin size={"30px"} />
         </ButtonUser>
       </BarRight>
     </Wrapper>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 10px;
 `;
@@ -15,7 +16,6 @@ export const ButtonToggleNav = styled.button`
   height: 30px;
   background: none;
   border: none;
-  font-size: 25px;
   color: ${({ theme }) => theme.color.light};
   cursor: pointer;
   transform: rotate(${({ $toggleNav }) => ($toggleNav ? 0 : 180)}deg);
@@ -27,8 +27,34 @@ export const BarRight = styled.div`
 `;
 
 export const ButtonUser = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 13px;
   background: none;
   border: none;
+  border-radius: ${({ theme }) => theme.size.border_radius_small};
   color: ${({ theme }) => theme.color.light};
   cursor: pointer;
+  transition: background 0.4s;
+
+  &:hover {
+    background: ${({ theme }) => theme.color.primary_light_color};
+  }
+`;
+
+export const NameRoleUser = styled.span`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1;
+`;
+
+export const UserName = styled.span`
+  font-weight: 600;
+  font-size: 18px;
+`;
+
+export const UserRole = styled.span`
+  font-size: 14px;
 `;
