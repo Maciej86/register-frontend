@@ -12,7 +12,7 @@ import { URL_USER } from "../../core/urlBackend";
 function* fechLoginUserHandler({ payload: dataUser }) {
   try {
     const user = yield axios.post(URL_USER.LOGIN_USER, {
-      name: dataUser.login,
+      email: dataUser.login,
       password: dataUser.password,
     });
     yield delay(1500);
