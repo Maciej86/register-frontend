@@ -6,6 +6,8 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   padding: 10px;
+  background: ${({ theme }) => theme.colorElements.bar_bg};
+  border-bottom: 1px solid ${({ theme }) => theme.colorElements.bar_border};
 `;
 
 export const BarLeft = styled.div`

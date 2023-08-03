@@ -16,6 +16,11 @@ export const ThemeDefault = {
     dark: "rgb(22, 26, 48)",
   },
 
+  colorElements: {
+    bar_bg: "rgb(30, 35, 64)",
+    bar_border: "rgb(30, 35, 64)",
+  },
+
   size: {
     border_radius: "6px",
     border_radius_small: "4px",
@@ -38,6 +43,11 @@ export const ThemeEbonyClay = {
     white: "rgb(255,255,255)",
     light: "rgb(144, 144, 240)",
     dark: "rgb(14, 14, 23)",
+  },
+
+  colorElements: {
+    bar_bg: "rgb(35, 35, 59)",
+    bar_border: "rgb(56, 57, 77)",
   },
 
   size: {
