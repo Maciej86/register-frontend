@@ -1,4 +1,5 @@
 import { Loader } from "../../../common/Loader";
+import { USER_TEXT } from "../../../core/InfoText";
 import { Conteiner, Wrapper } from "../styled";
 
 export const LoadingToken = () => {
@@ -6,7 +7,7 @@ export const LoadingToken = () => {
     <Wrapper>
       <Conteiner>
         <div>
-          <p>Ponowne logowanie...</p>
+          <p>{USER_TEXT.LOGIN_USER_TOKEN}</p>
           <Loader size="36px" border="4px" margin="25px auto 0 auto" />
         </div>
       </Conteiner>
