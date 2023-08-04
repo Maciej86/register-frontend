@@ -32,8 +32,8 @@ export const Bar = () => {
   const { userRole } = useRoleUser(user?.role);
 
   const userInitials = () => {
-    const name = user?.name.slice(0, 1).toUpperCase();
-    const lastName = user?.last_name.slice(0, 1).toUpperCase();
+    const name = toString(user?.name).slice(0, 1).toUpperCase();
+    const lastName = toString(user?.last_name).slice(0, 1).toUpperCase();
     const initials = name + lastName;
     return initials;
   };

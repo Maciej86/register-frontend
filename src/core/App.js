@@ -22,7 +22,7 @@ export const App = () => {
     if (tokenSessionStorage !== "" && tokenUser === undefined) {
       dispatch(fetchLoginUserToken(tokenSessionStorage));
     }
-  }, [dispatch, tokenSessionStorage]);
+  }, [dispatch, tokenUser, tokenSessionStorage]);
 
   if (loadingTokenUser) {
     return <LoadingToken />;
