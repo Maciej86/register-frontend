@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { ThemeDefault, ThemeEbonyClay } from "./styles/theme";
-import { selectUserState } from "../features/Login/sliceLoginUser";
+import { ThemeDefault, ThemeEbonyClay } from "../styles/theme";
+import { selectUserState } from "../../features/Login/sliceLoginUser";
 
 export const useSwitchTheme = () => {
   const userThemeState = useSelector(selectUserState);

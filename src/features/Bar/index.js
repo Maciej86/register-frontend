@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useRoleUser } from "../../core/hooks/useRoleUser";
 import { selectUserState } from "../Login/sliceLoginUser";
 import {
   BarLeft,
@@ -28,6 +29,7 @@ export const Bar = () => {
   const user = useSelector(selectUserState);
   const [toggleNav, setToggleNav] = useState(false);
   const [visible, setVisible] = useState(false);
+  const { userRole } = useRoleUser(user?.role);
 
   const userInitials = () => {
     const name = user?.name.slice(0, 1).toUpperCase();
@@ -41,29 +43,6 @@ export const Bar = () => {
     setToggleNav(!toggleNav);
   };
 
-  const roleUser = (role) => {
-    let userRole = "";
-
-    switch (role) {
-      case "0":
-        userRole = "Developer";
-        break;
-      case "1":
-        userRole = "Super Admin";
-        break;
-      case "2":
-        userRole = "Administrator";
-        break;
-      case "3":
-        userRole = "Użytkownik";
-        break;
-      default:
-        userRole = "Użytkownik";
-    }
-
-    return userRole;
-  };
-
   return (
     <Wrapper>
       <BarLeft>
@@ -75,7 +54,7 @@ export const Bar = () => {
         <ButtonUser onClick={() => setVisible((visible) => !visible)}>
           <NameRoleUser>
             <UserName>{user?.name}</UserName>
-            <UserRole>{roleUser(user?.role)}</UserRole>
+            <UserRole>{userRole}</UserRole>
           </NameRoleUser>
           <PiUserThin size={"30px"} />
         </ButtonUser>
