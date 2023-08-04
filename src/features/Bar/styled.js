@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 `;
 
 export const BarLeft = styled.div`
+  width: 30%;
   padding-right: 10px;
 `;
 
@@ -25,6 +26,10 @@ export const ButtonToggleNav = styled.button`
 `;
 
 export const BarRight = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 70%;
+  position: relative;
   padding-left: 10px;
 `;
 
@@ -59,4 +64,79 @@ export const UserName = styled.span`
 
 export const UserRole = styled.span`
   font-size: 14px;
+`;
+
+export const PanelUser = styled.div`
+  position: absolute;
+  top: 53px;
+  right: 0;
+  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+  visibility: ${({ $visible }) => ($visible ? "visible" : "hidden")};
+  box-shadow: 0 0 10px 2px ${({ theme }) => theme.color.dark};
+  transition: opacity 0.4s, visibility 0.4s;
+`;
+
+export const PanelUserHeader = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: ${({ theme }) => theme.color.primary_dark_color};
+  border-top-left-radius: ${({ theme }) => theme.size.border_radius_small};
+  border-top-right-radius: ${({ theme }) => theme.size.border_radius_small};
+  color: ${({ theme }) => theme.color.light};
+`;
+
+export const Name = styled.p`
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+`;
+
+export const Email = styled.p`
+  margin: 0;
+  font-size: 14px;
+`;
+
+export const Initials = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  padding: 15px;
+  background: ${({ theme }) => theme.color.primary_light_color};
+  border-radius: 50%;
+  font-size: 23px;
+  font-weight: 600;
+`;
+
+export const PanelUserList = styled.ul`
+  margin: 0;
+  padding: 0;
+  background: ${({ theme }) => theme.color.primary_light_color};
+  list-style: none;
+`;
+
+export const ListLink = styled.a`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 15px 10px;
+  text-decoration: none;
+  color: ${({ theme }) => theme.color.light};
+  transition: background 0.4s;
+
+  &:hover {
+    background: ${({ theme }) => theme.color.primary_color};
+  }
+`;
+
+export const TextLink = styled.span`
+  margin-left: 10px;
+`;
+
+export const ListButton = styled(ListLink)`
+  border-top: 1px solid ${({ theme }) => theme.color.dark};
+  cursor: pointer;
 `;
