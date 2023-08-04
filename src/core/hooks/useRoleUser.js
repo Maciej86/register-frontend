@@ -18,5 +18,5 @@ export const useRoleUser = (role) => {
       userRole = "Użytkownik";
   }
 
-  return userRole;
+  return { userRole };
 };
