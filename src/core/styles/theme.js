@@ -12,7 +12,7 @@ export const ThemeDefault = {
     danger: "rgb(226, 87, 88)",
     danger_dark: "rgb(141, 56, 56)",
     white: "rgb(255,255,255)",
-    light: "rgb(155, 168, 202)",
+    light: "rgb(182, 193, 222)",
     dark: "rgb(22, 26, 48)",
   },
 
