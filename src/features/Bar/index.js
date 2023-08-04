@@ -32,14 +32,18 @@ export const Bar = () => {
   const { userRole } = useRoleUser(user?.role);
 
   const userInitials = () => {
-    const name = toString(user?.name).slice(0, 1).toUpperCase();
-    const lastName = toString(user?.last_name).slice(0, 1).toUpperCase();
+    const name = user?.name.slice(0, 1).toUpperCase();
+    const lastName = user?.last_name.slice(0, 1).toUpperCase();
     const initials = name + lastName;
     return initials;
   };
 
   const switchNav = () => {
     setToggleNav(!toggleNav);
+  };
+
+  const loginOut = () => {
+    sessionStorage.removeItem("token_user");
   };
 
   return (
@@ -77,7 +81,7 @@ export const Bar = () => {
               </ListLink>
             </li>
             <li>
-              <ListButton>
+              <ListButton onClick={loginOut}>
                 <CiLogout size={"21px"} />
                 <TextLink>Wyloguj się</TextLink>
               </ListButton>
