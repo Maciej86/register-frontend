@@ -6,6 +6,7 @@ import {
   selectUserState,
   selectloadingOut,
 } from "../Login/sliceLoginUser";
+import { Loader } from "../../common/Loader";
 import {
   BarLeft,
   BarRight,
@@ -29,7 +30,6 @@ import {
 import { BsArrowBarRight } from "react-icons/bs";
 import { PiUserThin } from "react-icons/pi";
 import { CiSettings, CiLogout } from "react-icons/ci";
-import { Loader } from "../../common/Loader";
 
 export const Bar = () => {
   const dispatch = useDispatch();
