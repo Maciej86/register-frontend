@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRoleUser } from "../../core/hooks/useRoleUser";
-import { selectUserState } from "../Login/sliceLoginUser";
+import { fetchLoginUserOut, selectUserState } from "../Login/sliceLoginUser";
 import {
   BarLeft,
   BarRight,
@@ -26,6 +26,7 @@ import { PiUserThin } from "react-icons/pi";
 import { CiSettings, CiLogout } from "react-icons/ci";
 
 export const Bar = () => {
+  const dispatch = useDispatch();
   const user = useSelector(selectUserState);
   const [toggleNav, setToggleNav] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -44,6 +45,7 @@ export const Bar = () => {
 
   const loginOut = () => {
     sessionStorage.removeItem("token_user");
+    dispatch(fetchLoginUserOut(user?.id));
   };
 
   return (

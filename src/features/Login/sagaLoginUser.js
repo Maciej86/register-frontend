@@ -2,6 +2,7 @@ import axios from "axios";
 import { call, delay, put, takeEvery } from "redux-saga/effects";
 import {
   fetchLoginUser,
+  fetchLoginUserOut,
   fetchLoginUserToken,
   setLoginUser,
 } from "./sliceLoginUser";
@@ -41,7 +42,20 @@ function* fetchLoginUserTokenHandler({ payload: token }) {
   }
 }
 
+function* fetchLoginUserOutTokenHandler({ payload: id }) {
+  try {
+    const user = yield axios.post(URL_USER.LOGIN_OUT_USER, {
+      id: id,
+    });
+    yield delay(1500);
+    yield put(setLoginUser(user.data));
+  } catch (error) {
+    yield console.log(error);
+  }
+}
+
 export function* loginUserSaga() {
   yield takeEvery(fetchLoginUser.type, fechLoginUserHandler);
   yield takeEvery(fetchLoginUserToken.type, fetchLoginUserTokenHandler);
+  yield takeEvery(fetchLoginUserOut.type, fetchLoginUserOutTokenHandler);
 }
