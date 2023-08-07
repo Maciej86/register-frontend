@@ -25,11 +25,14 @@ const loginUserSlice = createSlice({
         state.userNotExist = false;
       }
       state.loading = false;
-      state.loadingOut = false;
       state.loadingTokenUser = false;
     },
     fetchLoginUserOut: (state) => {
       state.loadingOut = true;
+    },
+    setLoginOutUser: (state) => {
+      state.user = [];
+      state.loadingOut = false;
     },
   },
 });
@@ -50,6 +53,7 @@ export const {
   fetchLoginUserToken,
   fetchLoginUserOut,
   setLoginUser,
+  setLoginOutUser,
 } = loginUserSlice.actions;
 
 export default loginUserSlice.reducer;

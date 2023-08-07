@@ -4,6 +4,7 @@ import {
   fetchLoginUser,
   fetchLoginUserOut,
   fetchLoginUserToken,
+  setLoginOutUser,
   setLoginUser,
 } from "./sliceLoginUser";
 import { saveDataInSessionStorage } from "../../core/saveSessionStorage";
@@ -48,7 +49,7 @@ function* fetchLoginUserOutTokenHandler({ payload: id }) {
       id: id,
     });
     yield delay(1500);
-    yield put(setLoginUser(user.data));
+    yield put(setLoginOutUser());
   } catch (error) {
     yield console.log(error);
   }
