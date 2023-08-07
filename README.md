@@ -2,7 +2,7 @@
 
 ## W przygotowaniu
 
-- nawigacja
+- Utworzenie nawigacji głownej.
 
 ## Ostatnie zmiany
 
