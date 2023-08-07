@@ -1,6 +1,6 @@
 import { Wrapper, Message } from "./styled";
 
-export const ErrorLogin = ({ message }) => {
+export const OutLogin = ({ message }) => {
   return (
     <Wrapper>
       <Message>{message}</Message>

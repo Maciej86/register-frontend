@@ -15,8 +15,10 @@ export const GlobalStyle = createGlobalStyle`
   body {
     height: 100%;
     margin: 0;
+    background: ${({ theme }) => theme.color.primary_color};
     font-family: 'Rajdhani', 'Arial', sans-serif;
     font-size: 16px;
+    color: ${({ theme }) => theme.color.light};
     word-break: break-word;
   }
 

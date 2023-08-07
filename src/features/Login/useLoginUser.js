@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchLoginUser, setUserNotExist } from "./sliceLoginUser";
+import { fetchLoginUser } from "./sliceLoginUser";
 
 export const useLoginUser = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,6 @@ export const useLoginUser = () => {
 
   const onSubmitLoginUser = (event) => {
     event.preventDefault();
-    dispatch(setUserNotExist());
 
     if (refLoginUser.current !== null && refPasswordUser.current !== null) {
       setEmptyInput(false);
