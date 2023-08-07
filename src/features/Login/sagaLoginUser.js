@@ -45,7 +45,7 @@ function* fetchLoginUserTokenHandler({ payload: token }) {
 
 function* fetchLoginUserOutTokenHandler({ payload: id }) {
   try {
-    const user = yield axios.post(URL_USER.LOGIN_OUT_USER, {
+    yield axios.post(URL_USER.LOGIN_OUT_USER, {
       id: id,
     });
     yield delay(1500);

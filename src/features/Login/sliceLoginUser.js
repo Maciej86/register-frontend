@@ -14,6 +14,7 @@ const loginUserSlice = createSlice({
     fetchLoginUser: (state) => {
       state.loading = true;
       state.userOut = false;
+      state.userNotExist = false;
     },
     fetchLoginUserToken: (state) => {
       state.loadingTokenUser = true;
