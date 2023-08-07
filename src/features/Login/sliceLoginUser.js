@@ -7,6 +7,7 @@ const loginUserSlice = createSlice({
     userNotExist: false,
     loading: false,
     loadingTokenUser: false,
+    loadingOut: false,
   },
   reducers: {
     fetchLoginUser: (state) => {
@@ -24,9 +25,12 @@ const loginUserSlice = createSlice({
         state.userNotExist = false;
       }
       state.loading = false;
+      state.loadingOut = false;
       state.loadingTokenUser = false;
     },
-    fetchLoginUserOut: () => {},
+    fetchLoginUserOut: (state) => {
+      state.loadingOut = true;
+    },
   },
 });
 
@@ -35,6 +39,7 @@ export const selectTokenSessionUserState = (state) =>
   selectLoginUser(state).user[0]?.token_login;
 export const selectUserState = (state) => selectLoginUser(state).user[0];
 export const selectStatusUser = (state) => selectLoginUser(state).loading;
+export const selectloadingOut = (state) => selectLoginUser(state).loadingOut;
 export const selectStatusTokenUser = (state) =>
   selectLoginUser(state).loadingTokenUser;
 export const selectUserNotExist = (state) =>

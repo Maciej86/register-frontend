@@ -116,6 +116,7 @@ export const PanelUserList = styled.ul`
   padding: 0;
   background: ${({ theme }) => theme.color.primary_light_color};
   list-style: none;
+  overflow: auto;
 `;
 
 export const ListLink = styled.a`
@@ -136,7 +137,10 @@ export const TextLink = styled.span`
   margin-left: 10px;
 `;
 
-export const ListButton = styled(ListLink)`
+export const LoginOut = styled.div`
   border-top: 1px solid ${({ theme }) => theme.color.dark};
+`;
+
+export const ListButton = styled(ListLink)`
   cursor: pointer;
 `;
