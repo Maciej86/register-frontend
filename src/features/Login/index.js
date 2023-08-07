@@ -1,5 +1,9 @@
 import { useSelector } from "react-redux";
-import { selectStatusUser, selectUserNotExist } from "./sliceLoginUser";
+import {
+  selectStatusUser,
+  selectStatusUserOut,
+  selectUserNotExist,
+} from "./sliceLoginUser";
 import { useLoginUser } from "./useLoginUser";
 import { USER_TEXT } from "../../core/InfoText";
 import { Loader } from "../../common/Loader";
@@ -20,10 +24,12 @@ import {
   FormButton,
 } from "./styled";
 import { AiFillDatabase } from "react-icons/ai";
+import { OutLogin } from "./OutLogin";
 
 export const PanelLogin = () => {
   const { onSubmitLoginUser, refLoginUser, refPasswordUser, emptyInput } =
     useLoginUser();
+  const loginOut = useSelector(selectStatusUserOut);
   const statusLogin = useSelector(selectStatusUser);
   const userExist = useSelector(selectUserNotExist);
 
@@ -39,6 +45,7 @@ export const PanelLogin = () => {
       ) : (
         ""
       )}
+      {loginOut ? <OutLogin message={USER_TEXT.LOGIN_OUT_USER} /> : ""}
       <Conteiner>
         <ConteinerLeft>
           <LeftTitle>REGISTER</LeftTitle>

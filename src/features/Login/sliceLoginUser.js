@@ -4,6 +4,7 @@ const loginUserSlice = createSlice({
   name: "loginUser",
   initialState: {
     user: [],
+    userOut: false,
     userNotExist: false,
     loading: false,
     loadingTokenUser: false,
@@ -12,9 +13,11 @@ const loginUserSlice = createSlice({
   reducers: {
     fetchLoginUser: (state) => {
       state.loading = true;
+      state.userOut = false;
     },
     fetchLoginUserToken: (state) => {
       state.loadingTokenUser = true;
+      state.userOut = false;
     },
     setLoginUser: (state, { payload: user }) => {
       state.user = user;
@@ -32,6 +35,7 @@ const loginUserSlice = createSlice({
     },
     setLoginOutUser: (state) => {
       state.user = [];
+      state.userOut = true;
       state.loadingOut = false;
     },
   },
@@ -41,6 +45,7 @@ export const selectLoginUser = (state) => state.loginUserStore;
 export const selectTokenSessionUserState = (state) =>
   selectLoginUser(state).user[0]?.token_login;
 export const selectUserState = (state) => selectLoginUser(state).user[0];
+export const selectStatusUserOut = (state) => selectLoginUser(state).userOut;
 export const selectStatusUser = (state) => selectLoginUser(state).loading;
 export const selectloadingOut = (state) => selectLoginUser(state).loadingOut;
 export const selectStatusTokenUser = (state) =>
