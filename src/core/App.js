@@ -8,14 +8,18 @@ import {
   selectTokenSessionUserState,
   selectUserNotExist,
 } from "../features/Login/sliceLoginUser";
+import { selectToggleNavState } from "../features/Bar/sliceBar";
 import { Bar } from "../features/Bar";
 import { LoadingToken } from "../features/Login/LoadingToken";
+import { Navigation } from "../features/Navigation";
+import { ContentBar } from "./styles/GlobalStyle";
 
 export const App = () => {
   const dispatch = useDispatch();
   const tokenUser = useSelector(selectTokenSessionUserState);
   const loadingTokenUser = useSelector(selectStatusTokenUser);
   const userExist = useSelector(selectUserNotExist);
+  const toggleNav = useSelector(selectToggleNavState);
   const tokenSessionStorage = getDataSessionStorage("token_user");
 
   useEffect(() => {
@@ -32,5 +36,13 @@ export const App = () => {
     return <PanelLogin />;
   }
 
-  return <Bar />;
+  return (
+    <>
+      <Navigation />
+      <ContentBar $toggleNav={toggleNav}>
+        <Bar />
+        <h1 style={{ padding: "10px 20px" }}>Zawartość aplikacji</h1>
+      </ContentBar>
+    </>
+  );
 };

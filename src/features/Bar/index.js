@@ -6,6 +6,7 @@ import {
   selectUserState,
   selectloadingOut,
 } from "../Login/sliceLoginUser";
+import { selectToggleNavState, setToggleNav } from "./sliceBar";
 import { Loader } from "../../common/Loader";
 import {
   BarLeft,
@@ -35,7 +36,7 @@ export const Bar = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserState);
   const loadingOut = useSelector(selectloadingOut);
-  const [toggleNav, setToggleNav] = useState(false);
+  const toggleNav = useSelector(selectToggleNavState);
   const [visible, setVisible] = useState(false);
   const { userRole } = useRoleUser(user?.role);
 
@@ -46,10 +47,6 @@ export const Bar = () => {
     return initials.toString();
   };
 
-  const switchNav = () => {
-    setToggleNav(!toggleNav);
-  };
-
   const loginOut = () => {
     sessionStorage.removeItem("token_user");
     dispatch(fetchLoginUserOut(user?.id));
@@ -58,7 +55,10 @@ export const Bar = () => {
   return (
     <Wrapper>
       <BarLeft>
-        <ButtonToggleNav onClick={() => switchNav()} $toggleNav={toggleNav}>
+        <ButtonToggleNav
+          onClick={() => dispatch(setToggleNav())}
+          $toggleNav={toggleNav}
+        >
           <BsArrowBarRight size={"25px"} />
         </ButtonToggleNav>
       </BarLeft>
