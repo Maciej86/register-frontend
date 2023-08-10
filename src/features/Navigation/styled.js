@@ -55,9 +55,11 @@ export const LinkNav = styled.a`
   font-weight: 500;
   color: ${({ theme }) => theme.color.light};
   text-decoration: none;
+  transition: background 0.3s;
 
   &:hover {
     background: ${({ theme }) => theme.color.primary_dark_color};
+    transition: background 0.3s;
   }
 `;
 
