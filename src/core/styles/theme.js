@@ -22,12 +22,15 @@ export const ThemeDefault = {
     nav_bg: "rgb(22, 26, 48)",
     nav_border: "rgb(22, 26, 48)",
     nav_shadow: "rgb(10, 12, 23)",
+    nav_logo_bg: "rgb(40, 45, 77)",
+    nav_logo_border: "rgb(22, 26, 48)",
   },
 
   size: {
     border_radius: "6px",
     border_radius_small: "4px",
     width_nav: "250px",
+    heightLogoBar: "80px",
   },
 };
 
@@ -55,11 +58,14 @@ export const ThemeEbonyClay = {
     nav_bg: "rgb(20, 20, 33)",
     nav_border: "rgb(35, 35, 59)",
     nav_shadow: "rgb(21, 21, 36)",
+    nav_logo_bg: "rgb(26, 27, 48)",
+    nav_logo_border: "rgb(56, 57, 77)",
   },
 
   size: {
     border_radius: "6px",
     border_radius_small: "4px",
     width_nav: "250px",
+    heightLogoBar: "80px",
   },
 };

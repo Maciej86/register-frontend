@@ -1,8 +1,16 @@
 import { useSelector } from "react-redux";
 import { selectToggleNavState } from "../Bar/sliceBar";
-import { MainNav } from "./styled";
+import { Logo, LogoName, MainNav } from "./styled";
+import { AiFillDatabase } from "react-icons/ai";
 
 export const Navigation = () => {
   const toggleNav = useSelector(selectToggleNavState);
-  return <MainNav $toggleNav={toggleNav}>Nawigacja</MainNav>;
+  return (
+    <MainNav $toggleNav={toggleNav}>
+      <Logo>
+        <AiFillDatabase />
+        <LogoName>REGISTER</LogoName>
+      </Logo>
+    </MainNav>
+  );
 };

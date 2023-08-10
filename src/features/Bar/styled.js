@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: ${({ theme }) => theme.size.heightLogoBar};
   padding: 10px 20px;
   background: ${({ theme }) => theme.colorElements.bar_bg};
   border-bottom: 1px solid ${({ theme }) => theme.colorElements.bar_border};
