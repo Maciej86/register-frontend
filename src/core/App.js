@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 import { PanelLogin } from "../features/Login";
 import { getDataSessionStorage } from "./saveSessionStorage";
 import {
@@ -8,14 +9,18 @@ import {
   selectTokenSessionUserState,
   selectUserNotExist,
 } from "../features/Login/sliceLoginUser";
+import { selectToggleNavState } from "../features/Bar/sliceBar";
 import { Bar } from "../features/Bar";
 import { LoadingToken } from "../features/Login/LoadingToken";
+import { Navigation } from "../features/Navigation";
+import { Content, Main } from "./styles/GlobalStyle";
 
 export const App = () => {
   const dispatch = useDispatch();
   const tokenUser = useSelector(selectTokenSessionUserState);
   const loadingTokenUser = useSelector(selectStatusTokenUser);
   const userExist = useSelector(selectUserNotExist);
+  const toggleNav = useSelector(selectToggleNavState);
   const tokenSessionStorage = getDataSessionStorage("token_user");
 
   useEffect(() => {
@@ -32,5 +37,15 @@ export const App = () => {
     return <PanelLogin />;
   }
 
-  return <Bar />;
+  return (
+    <>
+      <Navigation />
+      <Main $toggleNav={toggleNav}>
+        <Bar />
+        <Content>
+          <Outlet />
+        </Content>
+      </Main>
+    </>
+  );
 };

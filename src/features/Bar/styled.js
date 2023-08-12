@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 10px;
+  height: ${({ theme }) => theme.size.heightLogoBar};
+  padding: 10px 20px;
   background: ${({ theme }) => theme.colorElements.bar_bg};
   border-bottom: 1px solid ${({ theme }) => theme.colorElements.bar_border};
 `;
@@ -119,7 +121,7 @@ export const PanelUserList = styled.ul`
   overflow: auto;
 `;
 
-export const ListLink = styled.a`
+export const ListLink = styled(Link)`
   display: flex;
   align-items: center;
   width: 100%;

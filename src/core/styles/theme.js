@@ -19,11 +19,18 @@ export const ThemeDefault = {
   colorElements: {
     bar_bg: "rgb(30, 35, 64)",
     bar_border: "rgb(30, 35, 64)",
+    nav_bg: "rgb(22, 26, 48)",
+    nav_border: "rgb(22, 26, 48)",
+    nav_shadow: "rgb(10, 12, 23)",
+    nav_logo_bg: "rgb(40, 45, 77)",
+    nav_logo_border: "rgb(22, 26, 48)",
   },
 
   size: {
     border_radius: "6px",
     border_radius_small: "4px",
+    width_nav: "250px",
+    heightLogoBar: "80px",
   },
 };
 
@@ -42,16 +49,23 @@ export const ThemeEbonyClay = {
     danger_dark: "rgb(145, 67, 60)",
     white: "rgb(255,255,255)",
     light: "rgb(144, 144, 240)",
-    dark: "rgb(14, 14, 23)",
+    dark: "rgb(20, 20, 33)",
   },
 
   colorElements: {
     bar_bg: "rgb(35, 35, 59)",
     bar_border: "rgb(56, 57, 77)",
+    nav_bg: "rgb(20, 20, 33)",
+    nav_border: "rgb(35, 35, 59)",
+    nav_shadow: "rgb(21, 21, 36)",
+    nav_logo_bg: "rgb(26, 27, 48)",
+    nav_logo_border: "rgb(56, 57, 77)",
   },
 
   size: {
     border_radius: "6px",
     border_radius_small: "4px",
+    width_nav: "250px",
+    heightLogoBar: "80px",
   },
 };
