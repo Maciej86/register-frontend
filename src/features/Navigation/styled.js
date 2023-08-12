@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 export const MainNav = styled.nav`
@@ -46,7 +47,7 @@ export const ItemNav = styled.li`
   margin-bottom: 7px;
 `;
 
-export const LinkNav = styled.a`
+export const LinkNav = styled(Link)`
   display: flex;
   align-items: center;
   gap: 12px;

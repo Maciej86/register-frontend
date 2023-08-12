@@ -9,8 +9,10 @@ import {
   LogoName,
   MainNav,
 } from "./styled";
+import { NAVIGATION } from "../../core/InfoText";
 import { AiFillDatabase } from "react-icons/ai";
 import { CiSettings } from "react-icons/ci";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 export const Navigation = () => {
   const toggleNav = useSelector(selectToggleNavState);
@@ -23,9 +25,13 @@ export const Navigation = () => {
         </Logo>
         <ListNav>
           <ItemNav>
-            <LinkNav href="">
+            <LinkNav to={NAVIGATION.NAV_LINK_DASHBOARD}>
+              <LuLayoutDashboard size={"18px"} />
+              {NAVIGATION.NAV_DASHBOARD}
+            </LinkNav>
+            <LinkNav to={NAVIGATION.NAV_LINK_SETINGS}>
               <CiSettings size={"21px"} />
-              Ustawienia
+              {NAVIGATION.NAV_SETINGS}
             </LinkNav>
           </ItemNav>
         </ListNav>
