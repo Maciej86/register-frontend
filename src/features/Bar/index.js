@@ -28,6 +28,7 @@ import {
   TextLink,
   LoginOut,
 } from "./styled";
+import { NAVIGATION } from "../../core/InfoText";
 import { BsArrowBarRight } from "react-icons/bs";
 import { PiUserThin } from "react-icons/pi";
 import { CiSettings, CiLogout } from "react-icons/ci";
@@ -84,9 +85,9 @@ export const Bar = () => {
           </PanelUserHeader>
           <PanelUserList>
             <li>
-              <ListLink href="#">
+              <ListLink to={NAVIGATION.NAV_LINK_SETINGS}>
                 <CiSettings size={"21px"} />
-                <TextLink>Ustawienia</TextLink>
+                <TextLink>{NAVIGATION.NAV_SETINGS}</TextLink>
               </ListLink>
             </li>
             <li>

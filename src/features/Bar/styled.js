@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -120,7 +121,7 @@ export const PanelUserList = styled.ul`
   overflow: auto;
 `;
 
-export const ListLink = styled.a`
+export const ListLink = styled(Link)`
   display: flex;
   align-items: center;
   width: 100%;

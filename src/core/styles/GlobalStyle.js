@@ -32,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const ContentBar = styled.main`
+export const Main = styled.main`
   width: calc(100% - ${({ theme }) => theme.size.width_nav});
   margin-left: ${({ theme }) => theme.size.width_nav};
   transition: width 0.3s, margin-left 0.3s;
@@ -43,4 +43,8 @@ export const ContentBar = styled.main`
       width: 100%;
       margin-left: 0;
     `}
+`;
+
+export const Content = styled.section`
+  padding: 10px 20px;
 `;

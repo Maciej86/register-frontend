@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 import { PanelLogin } from "../features/Login";
 import { getDataSessionStorage } from "./saveSessionStorage";
 import {
@@ -12,7 +13,7 @@ import { selectToggleNavState } from "../features/Bar/sliceBar";
 import { Bar } from "../features/Bar";
 import { LoadingToken } from "../features/Login/LoadingToken";
 import { Navigation } from "../features/Navigation";
-import { ContentBar } from "./styles/GlobalStyle";
+import { Content, Main } from "./styles/GlobalStyle";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -39,10 +40,12 @@ export const App = () => {
   return (
     <>
       <Navigation />
-      <ContentBar $toggleNav={toggleNav}>
+      <Main $toggleNav={toggleNav}>
         <Bar />
-        <h1 style={{ padding: "10px 20px" }}>Zawartość aplikacji</h1>
-      </ContentBar>
+        <Content>
+          <Outlet />
+        </Content>
+      </Main>
     </>
   );
 };
