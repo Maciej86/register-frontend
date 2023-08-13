@@ -43,6 +43,11 @@ export const Main = styled.main`
       width: 100%;
       margin-left: 0;
     `}
+
+  @media (max-width: ${({ theme }) => theme.media.hidden_nav}) {
+    width: 100%;
+    margin-left: 0;
+  }
 `;
 
 export const Content = styled.section`

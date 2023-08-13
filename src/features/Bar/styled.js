@@ -25,6 +25,18 @@ export const ButtonToggleNav = styled.button`
   cursor: pointer;
   transform: rotate(${({ $toggleNav }) => ($toggleNav ? 0 : 180)}deg);
   transition: transform 0.4s;
+
+  @media (max-width: ${({ theme }) => theme.media.hidden_nav}) {
+    display: none;
+  }
+`;
+
+export const ButtonToggleMobileNav = styled(ButtonToggleNav)`
+  display: none;
+  @media (max-width: ${({ theme }) => theme.media.hidden_nav}) {
+    transform: rotate(0deg);
+    display: block;
+  }
 `;
 
 export const BarRight = styled.div`
@@ -52,7 +64,7 @@ export const ButtonUser = styled.button`
   }
 `;
 
-export const NameRoleUser = styled.span`
+export const DataUser = styled.span`
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -76,6 +88,10 @@ export const PanelUser = styled.div`
   visibility: ${({ $visible }) => ($visible ? "visible" : "hidden")};
   box-shadow: 0 0 10px 2px ${({ theme }) => theme.color.dark};
   transition: opacity 0.4s, visibility 0.4s;
+
+  @media (max-width: 380px) {
+    width: 85vw;
+  }
 `;
 
 export const PanelUserHeader = styled.div`

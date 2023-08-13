@@ -32,6 +32,10 @@ export const ThemeDefault = {
     width_nav: "250px",
     heightLogoBar: "80px",
   },
+
+  media: {
+    hidden_nav: "1000px",
+  },
 };
 
 export const ThemeEbonyClay = {
@@ -67,5 +71,9 @@ export const ThemeEbonyClay = {
     border_radius_small: "4px",
     width_nav: "250px",
     heightLogoBar: "80px",
+  },
+
+  media: {
+    hidden_nav: "1000px",
   },
 };

@@ -6,14 +6,18 @@ import {
   selectUserState,
   selectloadingOut,
 } from "../Login/sliceLoginUser";
-import { selectToggleNavState, setToggleNav } from "./sliceBar";
+import {
+  selectToggleNavState,
+  setToggleMobileNav,
+  setToggleNav,
+} from "./sliceBar";
 import { Loader } from "../../common/Loader";
 import {
   BarLeft,
   BarRight,
   ButtonToggleNav,
   ButtonUser,
-  NameRoleUser,
+  DataUser,
   PanelUser,
   Email,
   PanelUserHeader,
@@ -27,6 +31,7 @@ import {
   ListButton,
   TextLink,
   LoginOut,
+  ButtonToggleMobileNav,
 } from "./styled";
 import { NAVIGATION } from "../../core/InfoText";
 import { BsArrowBarRight } from "react-icons/bs";
@@ -62,16 +67,22 @@ export const Bar = () => {
         >
           <BsArrowBarRight size={"25px"} />
         </ButtonToggleNav>
+        <ButtonToggleMobileNav onClick={() => dispatch(setToggleMobileNav())}>
+          <BsArrowBarRight size={"25px"} />
+        </ButtonToggleMobileNav>
       </BarLeft>
       <BarRight>
         <ButtonUser onClick={() => setVisible((visible) => !visible)}>
-          <NameRoleUser>
+          <DataUser>
             <UserName>{user?.name}</UserName>
             <UserRole>{userRole}</UserRole>
-          </NameRoleUser>
+          </DataUser>
           <PiUserThin size={"30px"} />
         </ButtonUser>
-        <PanelUser $visible={visible}>
+        <PanelUser
+          onClick={() => setVisible((visible) => !visible)}
+          $visible={visible}
+        >
           <PanelUserHeader>
             <div>
               <Initials>{userInitials()}</Initials>
@@ -90,7 +101,7 @@ export const Bar = () => {
                 <TextLink>{NAVIGATION.NAV_SETINGS}</TextLink>
               </ListLink>
             </li>
-            <li>
+            <li onClick={() => setVisible((visible) => !visible)}>
               <LoginOut>
                 {loadingOut ? (
                   <Loader size="26px" border="4px" margin="12px auto" />
