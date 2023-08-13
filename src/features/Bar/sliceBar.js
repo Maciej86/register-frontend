@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialToggle = {
   toggle: false,
+  toggleMobiel: false,
 };
 
 const toggleNavSlice = createSlice({
@@ -11,12 +12,17 @@ const toggleNavSlice = createSlice({
     setToggleNav: (state) => {
       state.toggle = !state.toggle;
     },
+    setToggleMobileNav: (state) => {
+      state.toggleMobiel = !state.toggleMobiel;
+    },
   },
 });
 
 export const selectToggleNav = (state) => state.toggleNavStore;
 export const selectToggleNavState = (state) => selectToggleNav(state).toggle;
+export const selectToggleNavMobileState = (state) =>
+  selectToggleNav(state).toggleMobiel;
 
-export const { setToggleNav } = toggleNavSlice.actions;
+export const { setToggleNav, setToggleMobileNav } = toggleNavSlice.actions;
 
 export default toggleNavSlice.reducer;

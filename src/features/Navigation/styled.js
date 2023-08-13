@@ -12,13 +12,39 @@ export const MainNav = styled.nav`
   box-shadow: 0 0 8px 1px ${({ theme }) => theme.colorElements.nav_shadow};
   transform: translateX(0);
   transition: transform 0.3s;
-  z-index: 1;
+  z-index: 10;
 
   ${({ $toggleNav }) =>
     $toggleNav &&
     css`
       transform: translateX(-${({ theme }) => theme.size.width_nav});
     `}
+
+  @media (max-width: ${({ theme }) => theme.media.hidden_nav}) {
+    transform: translateX(-${({ theme }) => theme.size.width_nav});
+
+    ${({ $toggleMobileNav }) =>
+      $toggleMobileNav &&
+      css`
+        transform: translateX(0);
+      `}
+  }
+`;
+
+export const MobileMask = styled.div`
+  position: absolute;
+  display: ${({ $toggleMobileNav }) => ($toggleMobileNav ? "block" : "none")};
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: ${({ theme }) => theme.color.primary_light_color};
+  opacity: 0.7;
+  z-index: 5;
+
+  @media (min-width: ${({ theme }) => theme.media.hidden_nav}) {
+    display: none;
+  }
 `;
 
 export const Logo = styled.div`
@@ -51,7 +77,7 @@ export const LinkNav = styled(Link)`
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 10px 10px 20px;
+  padding: 15px 10px 15px 20px;
   font-size: 18px;
   font-weight: 500;
   color: ${({ theme }) => theme.color.light};
