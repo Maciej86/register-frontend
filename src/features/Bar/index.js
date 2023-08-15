@@ -111,7 +111,7 @@ export const Bar = () => {
                 ) : (
                   <ListButton onClick={loginOut}>
                     <CiLogout size={"21px"} />
-                    <TextLink>Wyloguj się</TextLink>
+                    <TextLink>{NAVIGATION.NAV_LOGIN_OUT}</TextLink>
                   </ListButton>
                 )}
               </LoginOut>
