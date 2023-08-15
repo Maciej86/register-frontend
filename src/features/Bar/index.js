@@ -72,7 +72,10 @@ export const Bar = () => {
         </ButtonToggleMobileNav>
       </BarLeft>
       <BarRight>
-        <ButtonUser onClick={() => setVisible((visible) => !visible)}>
+        <ButtonUser
+          onClick={() => setVisible((visible) => !visible)}
+          $visible={visible}
+        >
           <DataUser>
             <UserName>{user?.name}</UserName>
             <UserRole>{userRole}</UserRole>

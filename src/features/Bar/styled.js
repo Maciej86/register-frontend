@@ -52,7 +52,8 @@ export const ButtonUser = styled.button`
   align-items: center;
   gap: 10px;
   padding: 5px 13px;
-  background: none;
+  background: ${({ $visible, theme }) =>
+    $visible ? theme.color.primary_light_color : "none"};
   border: none;
   border-radius: ${({ theme }) => theme.size.border_radius_small};
   color: ${({ theme }) => theme.color.light};
