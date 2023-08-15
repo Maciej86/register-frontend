@@ -13,7 +13,6 @@ export const RouterSetings = createBrowserRouter([
     children: [
       {
         index: true,
-        path: NAVIGATION.NAV_LINK_DASHBOARD,
         element: <Dashboard />,
       },
       {
