@@ -27,7 +27,7 @@ import {
   Name,
   UserName,
   UserRole,
-  Wrapper,
+  Conteiner,
   ListButton,
   TextLink,
   LoginOut,
@@ -59,7 +59,7 @@ export const Bar = () => {
   };
 
   return (
-    <Wrapper>
+    <Conteiner>
       <BarLeft>
         <ButtonToggleNav
           onClick={() => dispatch(setToggleNav())}
@@ -116,6 +116,6 @@ export const Bar = () => {
           </PanelUserList>
         </PanelUser>
       </BarRight>
-    </Wrapper>
+    </Conteiner>
   );
 };

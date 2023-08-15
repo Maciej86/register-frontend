@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Conteiner = styled.div`
   position: sticky;
   display: flex;
   justify-content: space-between;
