@@ -16,6 +16,10 @@ export const RouterSetings = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+        path: NAVIGATION.NAV_LINK_DASHBOARD,
+        element: <Dashboard />,
+      },
+      {
         path: NAVIGATION.NAV_LINK_SETINGS,
         element: <Setings />,
       },
