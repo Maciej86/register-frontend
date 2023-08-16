@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Conteiner = styled.div`
-  padding: 12px;
+  padding: 14px 14px 20px 14px;
   background: ${({ theme }) => theme.color.primary_dark_color};
   border-radius: ${({ theme }) => theme.size.tile_radius};
   box-shadow: 0 0 8px 1px ${({ theme }) => theme.colorElements.tile_shadow};

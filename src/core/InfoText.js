@@ -16,5 +16,6 @@ export const NAVIGATION = {
 
 export const COMPONENTS = {
   COM_TITLE_SETINGS: "Ustawienia",
-  COM_SUBTITLE_SETINGS: "Ustawienia użytkownika",
+  COM_SUBTITLE_SETINGS: "Dane użytkownika",
+  COM_TITLE_CHANGED_PASSWORD: "Zmiana hasła",
 };

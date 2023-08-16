@@ -66,7 +66,7 @@ export const ThemeEbonyClay = {
     nav_shadow: "rgb(21, 21, 36)",
     nav_logo_bg: "rgb(26, 27, 48)",
     nav_logo_border: "rgb(56, 57, 77)",
-    tile_shadow: "rgb(26, 27, 48)",
+    tile_shadow: "rgb(16, 16, 26)",
   },
 
   size: {
