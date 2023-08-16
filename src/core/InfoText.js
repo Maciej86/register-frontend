@@ -13,3 +13,8 @@ export const NAVIGATION = {
   NAV_LINK_SETINGS: "ustawienia",
   NAV_LOGIN_OUT: "Wyloguj się",
 };
+
+export const COMPONENTS = {
+  COM_TITLE_SETINGS: "Ustawienia",
+  COM_SUBTITLE_SETINGS: "Ustawienia użytkownika",
+};
