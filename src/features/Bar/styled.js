@@ -160,6 +160,19 @@ export const LoginOut = styled.div`
   border-top: 1px solid ${({ theme }) => theme.color.dark};
 `;
 
-export const ListButton = styled(ListLink)`
+export const ListButton = styled.button`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 15px 10px;
+  background: ${({ theme }) => theme.color.primary_light_color};
+  border: none;
+  text-decoration: none;
+  color: ${({ theme }) => theme.color.light};
+  transition: background 0.4s;
+
+  &:hover {
+    background: ${({ theme }) => theme.color.primary_color};
+  }
   cursor: pointer;
 `;
