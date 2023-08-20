@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectUserState } from "../Login/sliceLoginUser";
+import { useRoleUser } from "../../core/hooks/useRoleUser";
 import { COMPONENTS } from "../../core/InfoText";
 import { Tile } from "../../common/Tile";
 import { InputText } from "../../common/elements/Input/InputText";
@@ -7,6 +8,11 @@ import { Conteiner, Form } from "./styled";
 
 export const Setings = () => {
   const userData = useSelector(selectUserState);
+  const { userRole } = useRoleUser(userData?.role);
+
+  const showList = () => {
+    console.log("Działa");
+  };
 
   const bodyTileSetings = (
     <Form>
@@ -24,10 +30,31 @@ export const Setings = () => {
       />
       <InputText
         id="email"
+        type="email"
         placeholder="you@com.pl"
         label="Email"
         value={userData.email}
       />
+      <InputText
+        id="role"
+        label="Typ konta"
+        value={userRole}
+        disabled="disabled"
+      />
+      <div>
+        <label htmlFor="theme">Styl aplikacji</label>
+        <input
+          id="theme"
+          type="text"
+          autoCapitalize="none"
+          autoComplete="off"
+          aria-autocomplete="list"
+          aria-haspopup="true"
+          role="combobox"
+          defaultValue="Theme 1"
+          onClick={showList}
+        />
+      </div>
     </Form>
   );
 

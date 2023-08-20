@@ -7,6 +7,7 @@ export const InputText = ({
   maxlength = 20,
   placeholder,
   value = "",
+  disabled = "",
 }) => {
   return (
     <FormInput>
@@ -17,6 +18,7 @@ export const InputText = ({
         maxLength={maxlength}
         placeholder={placeholder}
         defaultValue={value}
+        disabled={disabled}
       />
     </FormInput>
   );
