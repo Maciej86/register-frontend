@@ -4,15 +4,13 @@ import { useRoleUser } from "../../core/hooks/useRoleUser";
 import { COMPONENTS } from "../../core/InfoText";
 import { Tile } from "../../common/Tile";
 import { InputText } from "../../common/elements/Input/InputText";
-import { Conteiner, Form } from "./styled";
+import { Conteiner, Form, Select, SelectItem, SelectList } from "./styled";
+import { useState } from "react";
 
 export const Setings = () => {
   const userData = useSelector(selectUserState);
   const { userRole } = useRoleUser(userData?.role);
-
-  const showList = () => {
-    console.log("Działa");
-  };
+  const [selectVisibilty, setSelectVisibilty] = useState(false);
 
   const bodyTileSetings = (
     <Form>
@@ -41,7 +39,8 @@ export const Setings = () => {
         value={userRole}
         disabled="disabled"
       />
-      <div>
+
+      <Select onMouseLeave={() => setSelectVisibilty(() => false)}>
         <label htmlFor="theme">Styl aplikacji</label>
         <input
           id="theme"
@@ -52,9 +51,40 @@ export const Setings = () => {
           aria-haspopup="true"
           role="combobox"
           defaultValue="Theme 1"
-          onClick={showList}
+          onClick={() =>
+            setSelectVisibilty((selectVisibilty) => !selectVisibilty)
+          }
         />
-      </div>
+        <SelectList $selectVisibilty={selectVisibilty}>
+          <SelectItem>Pozycja 1</SelectItem>
+          <SelectItem>Pozycja 2</SelectItem>
+          <SelectItem>Pozycja 3</SelectItem>
+          <SelectItem>Pozycja 4</SelectItem>
+        </SelectList>
+      </Select>
+
+      <Select onMouseLeave={() => setSelectVisibilty(() => false)}>
+        <label htmlFor="theme">Styl aplikacji</label>
+        <input
+          id="theme1"
+          type="text"
+          autoCapitalize="none"
+          autoComplete="off"
+          aria-autocomplete="list"
+          aria-haspopup="true"
+          role="combobox"
+          defaultValue="Theme 1"
+          onClick={() =>
+            setSelectVisibilty((selectVisibilty) => !selectVisibilty)
+          }
+        />
+        <SelectList $selectVisibilty={selectVisibilty}>
+          <SelectItem>Pozycja 1</SelectItem>
+          <SelectItem>Pozycja 2</SelectItem>
+          <SelectItem>Pozycja 3</SelectItem>
+          <SelectItem>Pozycja 4</SelectItem>
+        </SelectList>
+      </Select>
     </Form>
   );
 
