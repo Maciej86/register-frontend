@@ -83,6 +83,7 @@ export const Bar = () => {
           <PiUserThin size={"30px"} />
         </ButtonUser>
         <PanelUser
+          onMouseLeave={() => setVisible(() => false)}
           onClick={() => setVisible((visible) => !visible)}
           $visible={visible}
         >
