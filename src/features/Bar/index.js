@@ -84,7 +84,6 @@ export const Bar = () => {
         </ButtonUser>
         <PanelUser
           onMouseLeave={() => setVisible(() => false)}
-          onClick={() => setVisible((visible) => !visible)}
           $visible={visible}
         >
           <PanelUserHeader>
