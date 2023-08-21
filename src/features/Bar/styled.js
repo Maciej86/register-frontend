@@ -85,13 +85,14 @@ export const PanelUser = styled.div`
   position: absolute;
   top: 53px;
   right: 0;
+  min-width: 300px;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   visibility: ${({ $visible }) => ($visible ? "visible" : "hidden")};
   box-shadow: 0 0 10px 2px ${({ theme }) => theme.color.dark};
   transition: opacity 0.4s, visibility 0.4s;
 
   @media (max-width: 380px) {
-    width: 85vw;
+    min-width: 85vw;
   }
 `;
 
