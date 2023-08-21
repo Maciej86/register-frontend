@@ -4,13 +4,25 @@ import { useRoleUser } from "../../core/hooks/useRoleUser";
 import { COMPONENTS } from "../../core/InfoText";
 import { Tile } from "../../common/Tile";
 import { InputText } from "../../common/elements/Input/InputText";
-import { Conteiner, Form, Select, SelectItem, SelectList } from "./styled";
+import {
+  Conteiner,
+  Form,
+  Select,
+  SelectButton,
+  SelectItem,
+  SelectList,
+} from "./styled";
 import { useState } from "react";
+import { Input, Label } from "../../common/elements/Input/styled";
 
 export const Setings = () => {
   const userData = useSelector(selectUserState);
   const { userRole } = useRoleUser(userData?.role);
-  const [selectVisibilty, setSelectVisibilty] = useState(false);
+  const [selectVisibiltyTheme, setSelectVisibiltyTheme] = useState(false);
+  const [selectVisibiltyTest, setSelectVisibiltyTest] = useState(false);
+
+  const [selectThemeValue, setSelectThemeValue] = useState("Theme 1");
+  console.log(selectThemeValue);
 
   const bodyTileSetings = (
     <Form>
@@ -40,9 +52,9 @@ export const Setings = () => {
         disabled="disabled"
       />
 
-      <Select onMouseLeave={() => setSelectVisibilty(() => false)}>
-        <label htmlFor="theme">Styl aplikacji</label>
-        <input
+      <Select onMouseLeave={() => setSelectVisibiltyTheme(false)}>
+        <Label htmlFor="theme">Styl aplikacji</Label>
+        <Input
           id="theme"
           type="text"
           autoCapitalize="none"
@@ -50,20 +62,51 @@ export const Setings = () => {
           aria-autocomplete="list"
           aria-haspopup="true"
           role="combobox"
-          defaultValue="Theme 1"
+          value={selectThemeValue}
           onClick={() =>
-            setSelectVisibilty((selectVisibilty) => !selectVisibilty)
+            setSelectVisibiltyTheme(
+              (selectVisibiltyTheme) => !selectVisibiltyTheme
+            )
           }
         />
-        <SelectList $selectVisibilty={selectVisibilty}>
-          <SelectItem>Pozycja 1</SelectItem>
-          <SelectItem>Pozycja 2</SelectItem>
-          <SelectItem>Pozycja 3</SelectItem>
-          <SelectItem>Pozycja 4</SelectItem>
+        <SelectList $isVisibilty={selectVisibiltyTheme}>
+          <SelectItem>
+            <SelectButton
+              onClick={() => {
+                setSelectThemeValue("Opcja 1");
+                setSelectVisibiltyTheme(false);
+              }}
+              type="button"
+            >
+              Opcja 1
+            </SelectButton>
+          </SelectItem>
+          <SelectItem>
+            <SelectButton
+              onClick={() => {
+                setSelectThemeValue("Opcja 2");
+                setSelectVisibiltyTheme(false);
+              }}
+              type="button"
+            >
+              Opcja 2
+            </SelectButton>
+          </SelectItem>
+          <SelectItem>
+            <SelectButton
+              onClick={() => {
+                setSelectThemeValue("Opcja 3");
+                setSelectVisibiltyTheme(false);
+              }}
+              type="button"
+            >
+              Opcja 3
+            </SelectButton>
+          </SelectItem>
         </SelectList>
       </Select>
 
-      <Select onMouseLeave={() => setSelectVisibilty(() => false)}>
+      <Select onMouseLeave={() => setSelectVisibiltyTest(false)}>
         <label htmlFor="theme">Styl aplikacji</label>
         <input
           id="theme1"
@@ -75,14 +118,21 @@ export const Setings = () => {
           role="combobox"
           defaultValue="Theme 1"
           onClick={() =>
-            setSelectVisibilty((selectVisibilty) => !selectVisibilty)
+            setSelectVisibiltyTest(
+              (selectVisibiltyTest) => !selectVisibiltyTest
+            )
           }
         />
-        <SelectList $selectVisibilty={selectVisibilty}>
-          <SelectItem>Pozycja 1</SelectItem>
-          <SelectItem>Pozycja 2</SelectItem>
-          <SelectItem>Pozycja 3</SelectItem>
-          <SelectItem>Pozycja 4</SelectItem>
+        <SelectList $isVisibilty={selectVisibiltyTest}>
+          <SelectItem>
+            <SelectButton type="button">Opcja 1</SelectButton>
+          </SelectItem>
+          <SelectItem>
+            <SelectButton type="button">Opcja 2</SelectButton>
+          </SelectItem>
+          <SelectItem>
+            <SelectButton type="button">Opcja 3</SelectButton>
+          </SelectItem>
         </SelectList>
       </Select>
     </Form>
