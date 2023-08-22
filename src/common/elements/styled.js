@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormInput = styled.div`
+export const BoxInput = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -16,6 +16,7 @@ export const Input = styled.input`
   background: ${({ theme }) => theme.color.dark};
   border: none;
   border-bottom: 2px solid ${({ theme }) => theme.color.info};
+  border-radius: ${({ theme }) => theme.size.border_radius_small};
   color: ${({ theme }) => theme.color.light};
   opacity: ${({ disabled }) => (disabled ? ".6" : "1")};
   transition: border-bottom-color 0.5s;
@@ -28,7 +29,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Select = styled.div`
+export const BoxSelect = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -41,8 +42,6 @@ export const SelectList = styled.ul`
   padding: 0;
   top: 71px;
   width: 100%;
-  background: ${({ theme }) => theme.color.primary_light_color};
-  border-radius: ${({ theme }) => theme.size.border_radius_small};
   opacity: ${({ $isVisibilty }) => ($isVisibilty ? 1 : 0)};
   visibility: ${({ $isVisibilty }) => ($isVisibilty ? "visible" : "hidden")};
   box-shadow: 0 0 10px 2px ${({ theme }) => theme.color.dark};
@@ -69,4 +68,26 @@ export const SelectButton = styled.button`
     background: ${({ theme }) => theme.color.primary_color};
   }
   cursor: pointer;
+`;
+
+export const BoxButton = styled.button`
+  padding: 4px 27px;
+  background: ${({ theme, $type }) =>
+    $type ? theme.color.info : theme.color.primary_light_color};
+  border: 2px solid
+    ${({ theme, $type }) =>
+      $type ? theme.color.info : theme.color.primary_light_color};
+  border-radius: ${({ theme }) => theme.size.border_radius_small};
+  font-weight: 500;
+  color: ${({ theme, $type }) =>
+    $type ? theme.color.white : theme.color.info};
+  box-shadow: ${({ theme, $type }) =>
+    $type ? `0 0 15px ${theme.color.dark}` : "none"};
+  cursor: pointer;
+  transition: background 0.4s;
+
+  &:hover {
+    background: ${({ theme, $type }) =>
+      $type ? theme.color.info_dark : theme.color.primary_color};
+  }
 `;

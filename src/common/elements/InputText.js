@@ -1,4 +1,4 @@
-import { FormInput, Input, Label } from "./styled";
+import { BoxInput, Input, Label } from "./styled";
 
 export const InputText = ({
   id,
@@ -10,7 +10,7 @@ export const InputText = ({
   disabled = "",
 }) => {
   return (
-    <FormInput>
+    <BoxInput>
       <Label htmlFor={id}>{label}</Label>
       <Input
         id={id}
@@ -20,6 +20,6 @@ export const InputText = ({
         defaultValue={value}
         disabled={disabled}
       />
-    </FormInput>
+    </BoxInput>
   );
 };

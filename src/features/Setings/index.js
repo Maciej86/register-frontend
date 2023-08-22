@@ -6,8 +6,9 @@ import { COMPONENTS } from "../../core/InfoText";
 import { themesStyles } from "../../core/styles/theme";
 import { Tile } from "../../common/Tile";
 import { InputText } from "../../common/elements/InputText";
-import { Conteiner, Form } from "./styled";
 import { InputSelect } from "../../common/elements/InputSelect";
+import { Conteiner, FormInput } from "./styled";
+import { Button } from "../../common/elements/Button";
 
 export const Setings = () => {
   const userData = useSelector(selectUserState);
@@ -16,63 +17,68 @@ export const Setings = () => {
   const [themeValue, setThemeValue] = useState(userData.theme);
 
   const bodyTileSetings = (
-    <Form>
-      <InputText
-        id="name"
-        placeholder="Twoje imię"
-        label="imię"
-        value={userData.name}
-      />
-      <InputText
-        id="lastname"
-        placeholder="Twoje nazwisko"
-        label="Nazwisko"
-        value={userData.last_name}
-      />
-      <InputText
-        id="email"
-        type="email"
-        placeholder="you@com.pl"
-        label="Email"
-        value={userData.email}
-      />
-      <InputText
-        id="role"
-        label="Typ konta"
-        value={userRole}
-        disabled="disabled"
-      />
-      <InputSelect
-        id="theme"
-        label="Styl aplikacji"
-        data={themesStyles}
-        currentTheme={userData.theme}
-        toggle={themeToggle}
-        setToggle={setThemeToggle}
-        value={themeValue}
-        setValue={setThemeValue}
-      />
-    </Form>
+    <form>
+      <FormInput>
+        <InputText
+          id="name"
+          placeholder="Twoje imię"
+          label="imię"
+          value={userData.name}
+        />
+        <InputText
+          id="lastname"
+          placeholder="Twoje nazwisko"
+          label="Nazwisko"
+          value={userData.last_name}
+        />
+        <InputText
+          id="email"
+          type="email"
+          placeholder="you@com.pl"
+          label="Email"
+          value={userData.email}
+        />
+        <InputText
+          id="role"
+          label="Typ konta"
+          value={userRole}
+          disabled="disabled"
+        />
+        <InputSelect
+          id="theme"
+          label="Styl aplikacji"
+          data={themesStyles}
+          currentTheme={userData.theme}
+          toggle={themeToggle}
+          setToggle={setThemeToggle}
+          value={themeValue}
+          setValue={setThemeValue}
+        />
+      </FormInput>
+      <Button text="Zapisz" type={false} /> <Button text="Anuluj" />
+    </form>
   );
 
   const bodyTilePassword = (
-    <Form>
-      <InputText
-        id="oldpassword"
-        placeholder="**********"
-        label="Obecne hasło"
-      />
-      <InputText
-        id="newpassword"
-        placeholder="Wpisz trudne do złamania hasło"
-        label="Nowe hasło"
-      />
-      <InputText
-        id="newpasswordconform"
-        placeholder="Powtórz nowe hasło"
-        label="Powtórz nowe hasło"
-      />
-    </Form>
+    <form>
+      <FormInput>
+        <InputText
+          id="oldpassword"
+          placeholder="**********"
+          label="Obecne hasło"
+        />
+        <InputText
+          id="newpassword"
+          placeholder="Wpisz trudne do złamania hasło"
+          label="Nowe hasło"
+        />
+        <InputText
+          id="newpasswordconform"
+          placeholder="Powtórz nowe hasło"
+          label="Powtórz nowe hasło"
+        />
+      </FormInput>
+    </form>
   );
 
   return (

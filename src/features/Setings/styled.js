@@ -6,10 +6,11 @@ export const Conteiner = styled.div`
   gap: 25px;
 `;
 
-export const Form = styled.form`
+export const FormInput = styled.form`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 25px;
+  margin-bottom: 25px;
 
   @media (max-width: 470px) {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

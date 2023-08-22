@@ -1,7 +1,7 @@
 import {
   Input,
   Label,
-  Select,
+  BoxSelect,
   SelectButton,
   SelectItem,
   SelectList,
@@ -17,7 +17,7 @@ export const InputSelect = ({
   setValue,
 }) => {
   return (
-    <Select onMouseLeave={() => setToggle(false)}>
+    <BoxSelect onMouseLeave={() => setToggle(false)}>
       <Label htmlFor={id}>{label}</Label>
       <Input
         id={id}
@@ -41,6 +41,6 @@ export const InputSelect = ({
           </SelectItem>
         ))}
       </SelectList>
-    </Select>
+    </BoxSelect>
   );
 };
