@@ -15,9 +15,6 @@ export const Setings = () => {
   const [themeToggle, setThemeToggle] = useState(false);
   const [themeValue, setThemeValue] = useState(userData.theme);
 
-  const [themeToggle1, setThemeToggle1] = useState(false);
-  const [themeValue1, setThemeValue1] = useState(userData.theme);
-
   const bodyTileSetings = (
     <Form>
       <InputText
