@@ -1,28 +1,22 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUserState } from "../Login/sliceLoginUser";
 import { useRoleUser } from "../../core/hooks/useRoleUser";
 import { COMPONENTS } from "../../core/InfoText";
+import { themesStyles } from "../../core/styles/theme";
 import { Tile } from "../../common/Tile";
-import { InputText } from "../../common/elements/Input/InputText";
-import {
-  Conteiner,
-  Form,
-  Select,
-  SelectButton,
-  SelectItem,
-  SelectList,
-} from "./styled";
-import { useState } from "react";
-import { Input, Label } from "../../common/elements/Input/styled";
+import { InputText } from "../../common/elements/InputText";
+import { Conteiner, Form } from "./styled";
+import { InputSelect } from "../../common/elements/InputSelect";
 
 export const Setings = () => {
   const userData = useSelector(selectUserState);
-  const { userRole } = useRoleUser(userData?.role);
-  const [selectVisibiltyTheme, setSelectVisibiltyTheme] = useState(false);
-  const [selectVisibiltyTest, setSelectVisibiltyTest] = useState(false);
+  const { userRole } = useRoleUser(userData.role);
+  const [themeToggle, setThemeToggle] = useState(false);
+  const [themeValue, setThemeValue] = useState(userData.theme);
 
-  const [selectThemeValue, setSelectThemeValue] = useState("Theme 1");
-  console.log(selectThemeValue);
+  const [themeToggle1, setThemeToggle1] = useState(false);
+  const [themeValue1, setThemeValue1] = useState(userData.theme);
 
   const bodyTileSetings = (
     <Form>
@@ -51,90 +45,16 @@ export const Setings = () => {
         value={userRole}
         disabled="disabled"
       />
-
-      <Select onMouseLeave={() => setSelectVisibiltyTheme(false)}>
-        <Label htmlFor="theme">Styl aplikacji</Label>
-        <Input
-          id="theme"
-          type="text"
-          autoCapitalize="none"
-          autoComplete="off"
-          aria-autocomplete="list"
-          aria-haspopup="true"
-          role="combobox"
-          value={selectThemeValue}
-          onClick={() =>
-            setSelectVisibiltyTheme(
-              (selectVisibiltyTheme) => !selectVisibiltyTheme
-            )
-          }
-        />
-        <SelectList $isVisibilty={selectVisibiltyTheme}>
-          <SelectItem>
-            <SelectButton
-              onClick={() => {
-                setSelectThemeValue("Opcja 1");
-                setSelectVisibiltyTheme(false);
-              }}
-              type="button"
-            >
-              Opcja 1
-            </SelectButton>
-          </SelectItem>
-          <SelectItem>
-            <SelectButton
-              onClick={() => {
-                setSelectThemeValue("Opcja 2");
-                setSelectVisibiltyTheme(false);
-              }}
-              type="button"
-            >
-              Opcja 2
-            </SelectButton>
-          </SelectItem>
-          <SelectItem>
-            <SelectButton
-              onClick={() => {
-                setSelectThemeValue("Opcja 3");
-                setSelectVisibiltyTheme(false);
-              }}
-              type="button"
-            >
-              Opcja 3
-            </SelectButton>
-          </SelectItem>
-        </SelectList>
-      </Select>
-
-      <Select onMouseLeave={() => setSelectVisibiltyTest(false)}>
-        <label htmlFor="theme">Styl aplikacji</label>
-        <input
-          id="theme1"
-          type="text"
-          autoCapitalize="none"
-          autoComplete="off"
-          aria-autocomplete="list"
-          aria-haspopup="true"
-          role="combobox"
-          defaultValue="Theme 1"
-          onClick={() =>
-            setSelectVisibiltyTest(
-              (selectVisibiltyTest) => !selectVisibiltyTest
-            )
-          }
-        />
-        <SelectList $isVisibilty={selectVisibiltyTest}>
-          <SelectItem>
-            <SelectButton type="button">Opcja 1</SelectButton>
-          </SelectItem>
-          <SelectItem>
-            <SelectButton type="button">Opcja 2</SelectButton>
-          </SelectItem>
-          <SelectItem>
-            <SelectButton type="button">Opcja 3</SelectButton>
-          </SelectItem>
-        </SelectList>
-      </Select>
+      <InputSelect
+        id="theme"
+        label="Styl aplikacji"
+        data={themesStyles}
+        currentTheme={userData.theme}
+        toggle={themeToggle}
+        setToggle={setThemeToggle}
+        value={themeValue}
+        setValue={setThemeValue}
+      />
     </Form>
   );
 

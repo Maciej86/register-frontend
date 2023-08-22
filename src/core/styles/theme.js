@@ -81,3 +81,5 @@ export const ThemeEbonyClay = {
     hidden_nav: "1000px",
   },
 };
+
+export const themesStyles = ["ThemeDefault", "ThemeEbonyClay"];
