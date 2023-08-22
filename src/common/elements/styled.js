@@ -73,7 +73,7 @@ export const SelectButton = styled.button`
 export const BoxButton = styled.button`
   padding: 4px 27px;
   background: ${({ theme, $type }) =>
-    $type ? theme.color.info : theme.color.primary_light_color};
+    $type ? theme.color.info : theme.color.primary_color};
   border: 2px solid
     ${({ theme, $type }) =>
       $type ? theme.color.info : theme.color.primary_light_color};
@@ -88,6 +88,6 @@ export const BoxButton = styled.button`
 
   &:hover {
     background: ${({ theme, $type }) =>
-      $type ? theme.color.info_dark : theme.color.primary_color};
+      $type ? theme.color.info_dark : theme.color.dark};
   }
 `;
