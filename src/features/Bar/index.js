@@ -98,13 +98,13 @@ export const Bar = () => {
             </div>
           </PanelUserHeader>
           <PanelUserList>
-            <li>
+            <li onClick={() => setVisible((visible) => !visible)}>
               <ListLink to={NAVIGATION.NAV_LINK_SETINGS}>
                 <CiSettings size={"21px"} />
                 <TextLink>{NAVIGATION.NAV_SETINGS}</TextLink>
               </ListLink>
             </li>
-            <li onClick={() => setVisible((visible) => !visible)}>
+            <li>
               <LoginOut>
                 {loadingOut ? (
                   <Loader size="26px" border="4px" margin="12px auto" />
