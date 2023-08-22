@@ -76,7 +76,7 @@ export const BoxButton = styled.button`
     $type ? theme.color.info : theme.color.primary_color};
   border: 2px solid
     ${({ theme, $type }) =>
-      $type ? theme.color.info : theme.color.primary_light_color};
+      $type ? theme.color.info : theme.color.primary_color};
   border-radius: ${({ theme }) => theme.size.border_radius_small};
   font-weight: 500;
   color: ${({ theme, $type }) =>
