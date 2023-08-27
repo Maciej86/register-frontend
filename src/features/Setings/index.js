@@ -16,6 +16,10 @@ export const Setings = () => {
   const [themeToggle, setThemeToggle] = useState(false);
   const [themeValue, setThemeValue] = useState(userData.theme);
 
+  const saveNewDataUser = () => {
+    console.log("Klik button");
+  };
+
   const bodyTileSetings = (
     <form>
       <FormInput>
@@ -55,7 +59,7 @@ export const Setings = () => {
           setValue={setThemeValue}
         />
       </FormInput>
-      <Button text="Zapisz" />
+      <Button text="Zapisz" action={saveNewDataUser} />
     </form>
   );
 
