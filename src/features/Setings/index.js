@@ -55,7 +55,7 @@ export const Setings = () => {
           setValue={setThemeValue}
         />
       </FormInput>
-      <Button text="Zapisz" /> <Button text="Anuluj" type={false} />
+      <Button text="Zapisz" />
     </form>
   );
 
