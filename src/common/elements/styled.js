@@ -71,6 +71,9 @@ export const SelectButton = styled.button`
 `;
 
 export const BoxButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 4px 27px;
   background: ${({ theme, $type }) =>
     $type ? theme.color.info : theme.color.primary_color};

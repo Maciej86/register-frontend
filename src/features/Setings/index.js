@@ -55,7 +55,7 @@ export const Setings = () => {
           setValue={setThemeValue}
         />
       </FormInput>
-      <Button text="Zapisz" type={false} /> <Button text="Anuluj" />
+      <Button text="Zapisz" /> <Button text="Anuluj" type={false} />
     </form>
   );
 
@@ -78,6 +78,7 @@ export const Setings = () => {
           label="Powtórz nowe hasło"
         />
       </FormInput>
+      <Button text="Zmień hasło" />
     </form>
   );
 
