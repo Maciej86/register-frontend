@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./rootSaga";
-import toggleNavSlice from "../common/user/sliceUser";
+import toggleNavSlice from "../features/Bar/sliceBar";
 import loginUserSlice from "../common/user/sliceUser";
 
 const sagaMiddleware = createSagaMiddleware();
