@@ -7,7 +7,7 @@ import {
   selectUserState,
   selectloadingEditPassword,
 } from "../../common/user/sliceUser";
-import { useRoleUser } from "../../core/hooks/useRoleUser";
+import { useRoleUser } from "../../common/user/useRoleUser";
 import { COMPONENTS } from "../../core/InfoText";
 import { themesStyles } from "../../core/styles/theme";
 import { Tile } from "../../common/Tile";
