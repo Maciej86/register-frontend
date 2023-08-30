@@ -6,7 +6,7 @@ import {
   selectStatusUser,
   selectUserState,
   selectloadingEditPassword,
-} from "../../core/user/sliceUser";
+} from "../../common/user/sliceUser";
 import { useRoleUser } from "../../core/hooks/useRoleUser";
 import { COMPONENTS } from "../../core/InfoText";
 import { themesStyles } from "../../core/styles/theme";

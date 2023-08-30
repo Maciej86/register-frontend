@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { PanelLogin } from "../features/Login";
-import { getDataSessionStorage } from "./user/saveSessionStorage";
+import { getDataSessionStorage } from "../common/user/saveSessionStorage";
 import {
   fetchLoginUserToken,
   selectStatusTokenUser,
   selectTokenSessionUserState,
   selectUserNotExist,
-} from "./user/sliceUser";
+} from "../common/user/sliceUser";
 import { selectToggleNavState } from "../features/Bar/sliceBar";
 import { Bar } from "../features/Bar";
 import { LoadingToken } from "../features/Login/LoadingToken";

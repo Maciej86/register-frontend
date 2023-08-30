@@ -13,7 +13,7 @@ import {
 } from "./sliceUser";
 import { saveDataInSessionStorage } from "./saveSessionStorage";
 
-import { URL_USER } from "../urlBackend";
+import { URL_USER } from "../../core/urlBackend";
 
 function* fechLoginUserHandler({ payload: dataUser }) {
   try {
