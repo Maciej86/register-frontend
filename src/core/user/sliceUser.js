@@ -9,6 +9,7 @@ const loginUserSlice = createSlice({
     loading: false,
     loadingTokenUser: false,
     loadingOut: false,
+    loadingEditPassword: false,
   },
   reducers: {
     fetchLoginUser: (state) => {
@@ -39,6 +40,20 @@ const loginUserSlice = createSlice({
       state.userOut = true;
       state.loadingOut = false;
     },
+    fetchEditUser: (state) => {
+      state.loading = true;
+    },
+    setEditUser: (state, { payload: user }) => {
+      state.loading = false;
+      state.user = user;
+    },
+    fetchEditPassword: (state) => {
+      state.loadingEditPassword = true;
+    },
+    setEditPassword: (state, { payload: changedPassword }) => {
+      state.loadingEditPassword = false;
+      console.log(changedPassword);
+    },
   },
 });
 
@@ -49,6 +64,8 @@ export const selectUserState = (state) => selectLoginUser(state).user[0];
 export const selectStatusUserOut = (state) => selectLoginUser(state).userOut;
 export const selectStatusUser = (state) => selectLoginUser(state).loading;
 export const selectloadingOut = (state) => selectLoginUser(state).loadingOut;
+export const selectloadingEditPassword = (state) =>
+  selectLoginUser(state).loadingEditPassword;
 export const selectStatusTokenUser = (state) =>
   selectLoginUser(state).loadingTokenUser;
 export const selectUserNotExist = (state) =>
@@ -60,6 +77,10 @@ export const {
   fetchLoginUserOut,
   setLoginUser,
   setLoginOutUser,
+  fetchEditUser,
+  setEditUser,
+  fetchEditPassword,
+  setEditPassword,
 } = loginUserSlice.actions;
 
 export default loginUserSlice.reducer;

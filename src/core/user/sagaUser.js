@@ -1,15 +1,19 @@
 import axios from "axios";
 import { call, delay, put, takeEvery } from "redux-saga/effects";
 import {
+  fetchEditPassword,
+  fetchEditUser,
   fetchLoginUser,
   fetchLoginUserOut,
   fetchLoginUserToken,
+  setEditPassword,
+  setEditUser,
   setLoginOutUser,
   setLoginUser,
-} from "./sliceLoginUser";
-import { saveDataInSessionStorage } from "../../core/saveSessionStorage";
+} from "./sliceUser";
+import { saveDataInSessionStorage } from "./saveSessionStorage";
 
-import { URL_USER } from "../../core/urlBackend";
+import { URL_USER } from "../urlBackend";
 
 function* fechLoginUserHandler({ payload: dataUser }) {
   try {
@@ -55,8 +59,41 @@ function* fetchLoginUserOutTokenHandler({ payload: id }) {
   }
 }
 
+function* fechEditUserHandler({ payload: dataUser }) {
+  try {
+    const user = yield axios.post(URL_USER.EDIT_USER, {
+      id: dataUser.id,
+      name: dataUser.name,
+      lastname: dataUser.lastname,
+      email: dataUser.email,
+      theme: dataUser.theme,
+    });
+    yield delay(1500);
+    yield put(setEditUser(user.data));
+  } catch (error) {
+    yield console.log(error);
+  }
+}
+
+function* fetchEditPasswordHandler({ payload: passwordUser }) {
+  console.log(passwordUser);
+  try {
+    const changedPassword = yield axios.post(URL_USER.CHANGED_PASSWORD, {
+      id: passwordUser.id,
+      oldpassword: passwordUser.oldpassword,
+      newpassword: passwordUser.newpassword,
+    });
+    yield delay(1500);
+    yield put(setEditPassword(changedPassword.data));
+  } catch (error) {
+    yield console.log(error);
+  }
+}
+
 export function* loginUserSaga() {
   yield takeEvery(fetchLoginUser.type, fechLoginUserHandler);
   yield takeEvery(fetchLoginUserToken.type, fetchLoginUserTokenHandler);
   yield takeEvery(fetchLoginUserOut.type, fetchLoginUserOutTokenHandler);
+  yield takeEvery(fetchEditUser.type, fechEditUserHandler);
+  yield takeEvery(fetchEditPassword.type, fetchEditPasswordHandler);
 }

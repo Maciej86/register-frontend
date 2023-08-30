@@ -5,7 +5,7 @@ import {
   fetchLoginUserOut,
   selectUserState,
   selectloadingOut,
-} from "../Login/sliceLoginUser";
+} from "../../core/user/sliceUser";
 import {
   selectToggleNavState,
   setToggleMobileNav,
