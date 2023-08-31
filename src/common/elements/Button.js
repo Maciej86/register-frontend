@@ -1,7 +1,13 @@
 import { BoxButton } from "./styled";
-export const Button = ({ text, icon = "", type = true, action = null }) => {
+export const Button = ({
+  text,
+  type = "button",
+  icon = "",
+  typeAction = true,
+  action = null,
+}) => {
   return (
-    <BoxButton type="button" $type={type} onClick={action}>
+    <BoxButton type={type} $typeAction={typeAction} onClick={action}>
       {icon}
       {text}
     </BoxButton>

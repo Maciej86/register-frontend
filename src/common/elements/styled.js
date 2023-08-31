@@ -15,7 +15,8 @@ export const Input = styled.input`
   padding: 10px 7px;
   background: ${({ theme }) => theme.color.dark};
   border: none;
-  border-bottom: 2px solid ${({ theme }) => theme.color.info};
+  border-bottom: 2px solid
+    ${({ theme, $empty }) => ($empty ? theme.color.danger : theme.color.info)};
   border-radius: ${({ theme }) => theme.size.border_radius_small};
   color: ${({ theme }) => theme.color.light};
   opacity: ${({ disabled }) => (disabled ? ".6" : "1")};
@@ -75,22 +76,22 @@ export const BoxButton = styled.button`
   align-items: center;
   gap: 6px;
   padding: 4px 27px;
-  background: ${({ theme, $type }) =>
-    $type ? theme.color.info : theme.color.primary_color};
+  background: ${({ theme, $typeAction }) =>
+    $typeAction ? theme.color.info : theme.color.primary_color};
   border: 2px solid
-    ${({ theme, $type }) =>
-      $type ? theme.color.info : theme.color.primary_color};
+    ${({ theme, $typeAction }) =>
+      $typeAction ? theme.color.info : theme.color.primary_color};
   border-radius: ${({ theme }) => theme.size.border_radius_small};
   font-weight: 500;
-  color: ${({ theme, $type }) =>
-    $type ? theme.color.white : theme.color.info};
-  box-shadow: ${({ theme, $type }) =>
-    $type ? `0 0 15px ${theme.color.dark}` : "none"};
+  color: ${({ theme, $typeAction }) =>
+    $typeAction ? theme.color.white : theme.color.info};
+  box-shadow: ${({ theme, $typeAction }) =>
+    $typeAction ? `0 0 15px ${theme.color.dark}` : "none"};
   cursor: pointer;
   transition: background 0.4s;
 
   &:hover {
-    background: ${({ theme, $type }) =>
-      $type ? theme.color.info_dark : theme.color.dark};
+    background: ${({ theme, $typeAction }) =>
+      $typeAction ? theme.color.info_dark : theme.color.dark};
   }
 `;
