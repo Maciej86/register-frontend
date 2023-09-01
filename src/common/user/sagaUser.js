@@ -12,8 +12,9 @@ import {
   setLoginUser,
 } from "./sliceUser";
 import { saveDataInSessionStorage } from "./saveSessionStorage";
-
 import { URL_USER } from "../../core/urlBackend";
+
+const timeDelay = 700;
 
 function* fechLoginUserHandler({ payload: dataUser }) {
   try {
@@ -21,7 +22,7 @@ function* fechLoginUserHandler({ payload: dataUser }) {
       email: dataUser.login,
       password: dataUser.password,
     });
-    yield delay(1500);
+    yield delay(timeDelay);
     yield put(setLoginUser(user.data));
     if (user.data.length !== 0) {
       yield call(
@@ -40,7 +41,7 @@ function* fetchLoginUserTokenHandler({ payload: token }) {
     const user = yield axios.post(URL_USER.LOGIN_USER_TOKEN, {
       token: token,
     });
-    yield delay(1500);
+    yield delay(timeDelay);
     yield put(setLoginUser(user.data));
   } catch (error) {
     yield console.log(error);
@@ -52,7 +53,7 @@ function* fetchLoginUserOutTokenHandler({ payload: id }) {
     yield axios.post(URL_USER.LOGIN_OUT_USER, {
       id: id,
     });
-    yield delay(1500);
+    yield delay(timeDelay);
     yield put(setLoginOutUser());
   } catch (error) {
     yield console.log(error);
@@ -68,7 +69,7 @@ function* fechEditUserHandler({ payload: dataUser }) {
       email: dataUser.email,
       theme: dataUser.theme,
     });
-    yield delay(1500);
+    yield delay(timeDelay);
     yield put(setEditUser(user.data));
   } catch (error) {
     yield console.log(error);
@@ -82,7 +83,7 @@ function* fetchEditPasswordHandler({ payload: passwordUser }) {
       oldpassword: passwordUser.oldpassword,
       newpassword: passwordUser.newpassword,
     });
-    yield delay(1500);
+    yield delay(timeDelay);
     yield put(setEditPassword(changedPassword.data));
   } catch (error) {
     yield console.log(error);
