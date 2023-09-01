@@ -4,7 +4,7 @@ import { useRoleUser } from "../../common/user/useRoleUser";
 import {
   fetchLoginUserOut,
   selectUserState,
-  selectloadingOut,
+  selectStatusloadingOut,
 } from "../../common/user/sliceUser";
 import {
   selectToggleNavState,
@@ -41,7 +41,7 @@ import { CiSettings, CiLogout } from "react-icons/ci";
 export const Bar = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserState);
-  const loadingOut = useSelector(selectloadingOut);
+  const loadingOut = useSelector(selectStatusloadingOut);
   const toggleNav = useSelector(selectToggleNavState);
   const [visible, setVisible] = useState(false);
   const { userRole } = useRoleUser(user?.role);

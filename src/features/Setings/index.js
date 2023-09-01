@@ -1,91 +1,82 @@
-import { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import {
-  fetchEditPassword,
-  fetchEditUser,
   selectStatusUser,
   selectUserState,
-  selectloadingEditPassword,
+  selectStatusEditPassword,
 } from "../../common/user/sliceUser";
 import { useRoleUser } from "../../common/user/useRoleUser";
-import { COMPONENTS } from "../../core/InfoText";
+import { COMPONENTS, USERSETINGS } from "../../core/InfoText";
 import { themesStyles } from "../../core/styles/theme";
 import { Tile } from "../../common/Tile";
 import { InputText } from "../../common/elements/InputText";
 import { InputSelect } from "../../common/elements/InputSelect";
 import { Loader } from "../../common/Loader";
 import { Button } from "../../common/elements/Button";
+import { useCheckValue } from "./useCheckValue";
 import { Conteiner, FormInput } from "./styled";
 import { LuSave } from "react-icons/lu";
 
 export const Setings = () => {
-  const dispatch = useDispatch();
   const userData = useSelector(selectUserState);
-  const loadingEditUser = useSelector(selectStatusUser);
-  const loadingEditPassword = useSelector(selectloadingEditPassword);
-  const { userRole } = useRoleUser(userData?.role);
-  const [themeToggle, setThemeToggle] = useState(false);
   const [themeValue, setThemeValue] = useState(userData?.theme);
 
-  const dataUser = useRef([]);
-  const passwordUser = useRef([]);
+  const {
+    dataUser,
+    passwordUser,
+    detaUserEmpty,
+    passwordUserEmpty,
+    differentPasswords,
+    incorrectEmail,
+    saveNewDataUser,
+    changedPassword,
+  } = useCheckValue(userData, themeValue);
 
-  const saveNewDataUser = () => {
-    dispatch(
-      fetchEditUser({
-        id: userData?.id,
-        name: dataUser.current[0].value,
-        lastname: dataUser.current[1].value,
-        email: dataUser.current[2].value,
-        theme: themeValue,
-      })
-    );
-  };
-
-  const changedPassword = () => {
-    dispatch(
-      fetchEditPassword({
-        id: userData?.id,
-        oldpassword: passwordUser.current[0].value,
-        newpassword: passwordUser.current[1].value,
-      })
-    );
-  };
+  const loadingEditUser = useSelector(selectStatusUser);
+  const loadingEditPassword = useSelector(selectStatusEditPassword);
+  const { userRole } = useRoleUser(userData?.role);
+  const [themeToggle, setThemeToggle] = useState(false);
 
   const bodyTileSetings = (
     <form>
       <FormInput>
         <InputText
           id="name"
-          placeholder="Twoje imię"
-          label="imię"
+          placeholder={USERSETINGS.NAME_PLACEHOLDER}
+          label={USERSETINGS.NAME_PLACEHOLDER}
+          maxlength="20"
+          empty={detaUserEmpty[0] === ""}
           ref={(ref) => (dataUser.current[0] = ref)}
           value={userData?.name}
         />
         <InputText
           id="lastname"
-          placeholder="Twoje nazwisko"
-          label="Nazwisko"
+          placeholder={USERSETINGS.LAST_NAME_PLACEHOLDER}
+          label={USERSETINGS.LAST_NAME_LABEL}
+          maxlength="45"
+          empty={detaUserEmpty[1] === ""}
           ref={(ref) => (dataUser.current[1] = ref)}
           value={userData?.last_name}
         />
         <InputText
           id="email"
           type="email"
-          placeholder="you@com.pl"
-          label="Email"
+          placeholder={USERSETINGS.EMAIL_PLACEHOLDER}
+          label={USERSETINGS.EMAIL_LABEL}
+          maxlength="50"
+          empty={detaUserEmpty[2] === "" || incorrectEmail}
           ref={(ref) => (dataUser.current[2] = ref)}
           value={userData?.email}
         />
         <InputText
           id="role"
-          label="Typ konta"
+          label={USERSETINGS.TYPE_ACCOUNT}
           value={userRole}
           disabled="disabled"
         />
         <InputSelect
           id="theme"
-          label="Styl aplikacji"
+          label={USERSETINGS.TYPE_THEME}
           data={themesStyles}
           toggle={themeToggle}
           setToggle={setThemeToggle}
@@ -97,7 +88,7 @@ export const Setings = () => {
         <Loader margin="0" />
       ) : (
         <Button
-          text="Zmień dane"
+          text={USERSETINGS.COFIRM_DATA_USER}
           icon={<LuSave size={"15px"} />}
           action={saveNewDataUser}
         />
@@ -110,23 +101,28 @@ export const Setings = () => {
       <FormInput>
         <InputText
           id="oldpassword"
-          placeholder="**********"
-          label="Obecne hasło"
+          placeholder={USERSETINGS.OLD_PASSWORD_PLACEHOLDER}
+          label={USERSETINGS.OLD_PASSWORD_LABEL}
           type="password"
+          empty={passwordUserEmpty[0] === ""}
           ref={(ref) => (passwordUser.current[0] = ref)}
         />
         <InputText
           id="newpassword"
-          placeholder="Wpisz trudne do złamania hasło"
-          label="Nowe hasło"
+          placeholder={USERSETINGS.NEW_PASSWORD_PLACEHOLDER}
+          label={USERSETINGS.NEW_PASSWORD_LABEL}
           type="password"
+          maxlength="100"
+          empty={passwordUserEmpty[1] === "" || differentPasswords}
           ref={(ref) => (passwordUser.current[1] = ref)}
         />
         <InputText
           id="newpasswordconform"
-          placeholder="Powtórz nowe hasło"
-          label="Powtórz nowe hasło"
+          placeholder={USERSETINGS.NEW_PASSWORD_REPEAT_PLACEHOLDER}
+          label={USERSETINGS.NEW_PASSWORD_REPEAT_LABEL}
           type="password"
+          maxlength="100"
+          empty={passwordUserEmpty[2] === "" || differentPasswords}
           ref={(ref) => (passwordUser.current[2] = ref)}
         />
       </FormInput>
@@ -134,7 +130,7 @@ export const Setings = () => {
         <Loader margin="0" />
       ) : (
         <Button
-          text="Zmień hasło"
+          text={USERSETINGS.NEW_PASSWORD_CONFIRM}
           icon={<LuSave size={"15px"} />}
           action={changedPassword}
         />

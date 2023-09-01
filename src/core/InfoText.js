@@ -19,3 +19,22 @@ export const COMPONENTS = {
   COM_SUBTITLE_SETINGS: "Dane użytkownika",
   COM_TITLE_CHANGED_PASSWORD: "Zmiana hasła",
 };
+
+export const USERSETINGS = {
+  NAME_LABEL: "Imię",
+  NAME_PLACEHOLDER: "Twoje imię",
+  LAST_NAME_LABEL: "Nazwisko",
+  LAST_NAME_PLACEHOLDER: "Twoje nazwisko",
+  EMAIL_LABEL: "Email",
+  EMAIL_PLACEHOLDER: "you@com.pl",
+  TYPE_ACCOUNT: "Rodzaj konta",
+  TYPE_THEME: "Styl aplikacji",
+  COFIRM_DATA_USER: "Zmień dane",
+  OLD_PASSWORD_LABEL: "Obecne hasło",
+  OLD_PASSWORD_PLACEHOLDER: "**********",
+  NEW_PASSWORD_LABEL: "Nowe hasło",
+  NEW_PASSWORD_PLACEHOLDER: "Wpisz trudne do złamania hasło",
+  NEW_PASSWORD_REPEAT_LABEL: "Powtórz nowe hasło",
+  NEW_PASSWORD_REPEAT_PLACEHOLDER: "Powtórz nowe hasło",
+  NEW_PASSWORD_CONFIRM: "Zmień hasło",
+};

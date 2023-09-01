@@ -76,7 +76,6 @@ function* fechEditUserHandler({ payload: dataUser }) {
 }
 
 function* fetchEditPasswordHandler({ payload: passwordUser }) {
-  console.log(passwordUser);
   try {
     const changedPassword = yield axios.post(URL_USER.CHANGED_PASSWORD, {
       id: passwordUser.id,
