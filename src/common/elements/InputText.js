@@ -29,7 +29,6 @@ export const InputText = forwardRef(
           $empty={empty}
           defaultValue={value}
           disabled={disabled}
-          required
         />
       </BoxInput>
     );
