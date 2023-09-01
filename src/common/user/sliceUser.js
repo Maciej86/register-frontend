@@ -10,7 +10,7 @@ const initialUser = {
   loadingTokenUser: false,
   loadingOut: false,
   loadingEditPassword: false,
-}
+};
 
 const loginUserSlice = createSlice({
   name: "loginUser",
@@ -49,7 +49,6 @@ const loginUserSlice = createSlice({
       state.loading = true;
     },
     setEditUser: (state, { payload: user }) => {
-      console.log(user);
       state.loading = false;
       state.user = user;
       state.editAccount = true;
