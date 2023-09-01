@@ -7,8 +7,8 @@ export const InputText = forwardRef(
       id,
       label,
       type = "text",
-      maxlength = 20,
-      minLength = 0,
+      maxlength = "20",
+      minlength = "0",
       placeholder,
       empty = false,
       value = "",
@@ -23,7 +23,7 @@ export const InputText = forwardRef(
           id={id}
           type={type}
           maxLength={maxlength}
-          minLength={minLength}
+          minLength={minlength}
           placeholder={placeholder}
           ref={ref}
           $empty={empty}
