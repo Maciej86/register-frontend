@@ -2,10 +2,11 @@
 
 ## W przygotowaniu
 
-- Ustawienia użytkownika
+- Wyświetlanie informacji po działaniach użytkownika
 
 ## Ostatnie zmiany
 
+- Ustawienia użytkownika
 - Utworzenie nawigacji głównej.
 - Wylogowanie użytkownika
 - Panel użytkownika po kliknięciu w nazwę użytkownika

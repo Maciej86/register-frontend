@@ -13,6 +13,9 @@ export const RouterSetings = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <Dashboard />,
+      },
+      {
         path: NAVIGATION.NAV_LINK_DASHBOARD,
         element: <Dashboard />,
       },

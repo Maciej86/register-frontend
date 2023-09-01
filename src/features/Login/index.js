@@ -3,7 +3,7 @@ import {
   selectStatusUser,
   selectStatusUserOut,
   selectUserNotExist,
-} from "./sliceLoginUser";
+} from "../../common/user//sliceUser";
 import { useLoginUser } from "./useLoginUser";
 import { USER_TEXT } from "../../core/InfoText";
 import { Loader } from "../../common/Loader";

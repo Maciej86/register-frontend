@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRoleUser } from "../../core/hooks/useRoleUser";
+import { useRoleUser } from "../../common/user/useRoleUser";
 import {
   fetchLoginUserOut,
   selectUserState,
-  selectloadingOut,
-} from "../Login/sliceLoginUser";
+  selectStatusloadingOut,
+} from "../../common/user/sliceUser";
 import {
   selectToggleNavState,
   setToggleMobileNav,
@@ -27,7 +27,7 @@ import {
   Name,
   UserName,
   UserRole,
-  Wrapper,
+  Conteiner,
   ListButton,
   TextLink,
   LoginOut,
@@ -41,7 +41,7 @@ import { CiSettings, CiLogout } from "react-icons/ci";
 export const Bar = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserState);
-  const loadingOut = useSelector(selectloadingOut);
+  const loadingOut = useSelector(selectStatusloadingOut);
   const toggleNav = useSelector(selectToggleNavState);
   const [visible, setVisible] = useState(false);
   const { userRole } = useRoleUser(user?.role);
@@ -59,7 +59,7 @@ export const Bar = () => {
   };
 
   return (
-    <Wrapper>
+    <Conteiner>
       <BarLeft>
         <ButtonToggleNav
           onClick={() => dispatch(setToggleNav())}
@@ -72,7 +72,10 @@ export const Bar = () => {
         </ButtonToggleMobileNav>
       </BarLeft>
       <BarRight>
-        <ButtonUser onClick={() => setVisible((visible) => !visible)}>
+        <ButtonUser
+          onClick={() => setVisible((visible) => !visible)}
+          $visible={visible}
+        >
           <DataUser>
             <UserName>{user?.name}</UserName>
             <UserRole>{userRole}</UserRole>
@@ -80,7 +83,7 @@ export const Bar = () => {
           <PiUserThin size={"30px"} />
         </ButtonUser>
         <PanelUser
-          onClick={() => setVisible((visible) => !visible)}
+          onMouseLeave={() => setVisible(() => false)}
           $visible={visible}
         >
           <PanelUserHeader>
@@ -95,20 +98,20 @@ export const Bar = () => {
             </div>
           </PanelUserHeader>
           <PanelUserList>
-            <li>
+            <li onClick={() => setVisible((visible) => !visible)}>
               <ListLink to={NAVIGATION.NAV_LINK_SETINGS}>
                 <CiSettings size={"21px"} />
                 <TextLink>{NAVIGATION.NAV_SETINGS}</TextLink>
               </ListLink>
             </li>
-            <li onClick={() => setVisible((visible) => !visible)}>
+            <li>
               <LoginOut>
                 {loadingOut ? (
                   <Loader size="26px" border="4px" margin="12px auto" />
                 ) : (
                   <ListButton onClick={loginOut}>
                     <CiLogout size={"21px"} />
-                    <TextLink>Wyloguj się</TextLink>
+                    <TextLink>{NAVIGATION.NAV_LOGIN_OUT}</TextLink>
                   </ListButton>
                 )}
               </LoginOut>
@@ -116,6 +119,6 @@ export const Bar = () => {
           </PanelUserList>
         </PanelUser>
       </BarRight>
-    </Wrapper>
+    </Conteiner>
   );
 };

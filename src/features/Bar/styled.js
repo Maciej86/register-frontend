@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Conteiner = styled.div`
   position: sticky;
   display: flex;
   justify-content: space-between;
@@ -52,7 +52,8 @@ export const ButtonUser = styled.button`
   align-items: center;
   gap: 10px;
   padding: 5px 13px;
-  background: none;
+  background: ${({ $visible, theme }) =>
+    $visible ? theme.color.primary_light_color : "none"};
   border: none;
   border-radius: ${({ theme }) => theme.size.border_radius_small};
   color: ${({ theme }) => theme.color.light};
@@ -84,13 +85,14 @@ export const PanelUser = styled.div`
   position: absolute;
   top: 53px;
   right: 0;
+  min-width: 300px;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   visibility: ${({ $visible }) => ($visible ? "visible" : "hidden")};
   box-shadow: 0 0 10px 2px ${({ theme }) => theme.color.dark};
   transition: opacity 0.4s, visibility 0.4s;
 
   @media (max-width: 380px) {
-    width: 85vw;
+    min-width: 85vw;
   }
 `;
 
@@ -159,6 +161,19 @@ export const LoginOut = styled.div`
   border-top: 1px solid ${({ theme }) => theme.color.dark};
 `;
 
-export const ListButton = styled(ListLink)`
+export const ListButton = styled.button`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 15px 10px;
+  background: ${({ theme }) => theme.color.primary_light_color};
+  border: none;
+  text-decoration: none;
+  color: ${({ theme }) => theme.color.light};
+  transition: background 0.4s;
+
+  &:hover {
+    background: ${({ theme }) => theme.color.primary_color};
+  }
   cursor: pointer;
 `;

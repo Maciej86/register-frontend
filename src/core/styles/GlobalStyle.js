@@ -35,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Main = styled.main`
   width: calc(100% - ${({ theme }) => theme.size.width_nav});
   margin-left: ${({ theme }) => theme.size.width_nav};
+  color: ${({ theme }) => theme.color.light};
   transition: width 0.3s, margin-left 0.3s;
 
   ${({ $toggleNav }) =>

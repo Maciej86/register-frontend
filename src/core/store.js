@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./rootSaga";
 import toggleNavSlice from "../features/Bar/sliceBar";
-import loginUserSlice from "../features/Login/sliceLoginUser";
+import loginUserSlice from "../common/user/sliceUser";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -15,5 +15,3 @@ export const store = configureStore({
 });
 
 sagaMiddleware.run(rootSaga);
-
-export default store;
