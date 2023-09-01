@@ -8,7 +8,9 @@ export const InputText = forwardRef(
       label,
       type = "text",
       maxlength = 20,
+      minLength = 0,
       placeholder,
+      empty = false,
       value = "",
       disabled = "",
     },
@@ -21,10 +23,13 @@ export const InputText = forwardRef(
           id={id}
           type={type}
           maxLength={maxlength}
+          minLength={minLength}
           placeholder={placeholder}
           ref={ref}
+          $empty={empty}
           defaultValue={value}
           disabled={disabled}
+          required
         />
       </BoxInput>
     );
