@@ -32,7 +32,7 @@ export const USERSETINGS = {
   COFIRM_DATA_USER: "Zmień dane",
   OLD_PASSWORD_LABEL: "Obecne hasło",
   OLD_PASSWORD_PLACEHOLDER: "**********",
-  NEW_PASSWORD_LABEL: "Nowe hasło",
+  NEW_PASSWORD_LABEL: "Nowe hasło (minimum 6 znaków)",
   NEW_PASSWORD_PLACEHOLDER: "Wpisz trudne do złamania hasło",
   NEW_PASSWORD_REPEAT_LABEL: "Powtórz nowe hasło",
   NEW_PASSWORD_REPEAT_PLACEHOLDER: "Powtórz nowe hasło",
