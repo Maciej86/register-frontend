@@ -20,6 +20,7 @@ export const Modal = styled.div`
   font-size: 14px;
   color: ${({ theme, $type }) =>
     $type ? theme.color.success_dark : theme.color.danger_dark};
+  cursor: pointer;
 
   &:last-child {
     margin-bottom: 0;

@@ -1,24 +1,37 @@
-import { Conteiner, Content, Modal, Title } from "./styled";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeAutoConfirm,
+  removeConfirm,
+  selectConfirmState,
+} from "./sliceConfirm";
 import { BiErrorCircle } from "react-icons/bi";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import { Conteiner, Content, Modal, Title } from "./styled";
 
-export const Confirm = ({ id, type, text }) => {
-  const allConfirm = [
-    {
-      id: 1,
-      type: false,
-      text: "Przykładowy tekst, który będzie bardzo długi",
-    },
-    {
-      id: 2,
-      type: true,
-      text: "Przykładowy tekst, który będzie bardzo długi",
-    },
-  ];
+export const Confirm = () => {
+  const dispatch = useDispatch();
+  const confirm = useSelector(selectConfirmState);
+  console.log(confirm);
+
+  // useEffect(() => {
+  //   const timeRemoveConfirm = setTimeout(() => {
+  //     dispatch(removeAutoConfirm());
+  //   }, 3000);
+
+  //   return () => {
+  //     clearTimeout(timeRemoveConfirm);
+  //   };
+  // }, [confirm]);
+
   return (
     <Conteiner>
-      {allConfirm.map((item) => (
-        <Modal key={item.id} $type={item.type}>
+      {confirm.toReversed().map((item) => (
+        <Modal
+          key={item.id}
+          $type={item.type}
+          onClick={() => dispatch(removeConfirm(item.id))}
+        >
           <Content>
             <Title $type={item.type}>
               {item.type ? (

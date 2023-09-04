@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import {
   fetchEditPassword,
   fetchEditUser,
   selectEditAccount,
   selectEditPassword,
 } from "../../common/user/sliceUser";
+import { addConfirm } from "../Confirm/sliceConfirm";
 
 export const useCheckValue = (userData, themeValue) => {
   const dispatch = useDispatch();
@@ -39,7 +41,13 @@ export const useCheckValue = (userData, themeValue) => {
 
     for (const checkEmptyInput of dataUser.current) {
       if (checkEmptyInput.value === "") {
-        // Dodać obsługę błędu o braku wypełnionego pola
+        dispatch(
+          addConfirm({
+            id: nanoid(),
+            type: false,
+            text: "1 Proszę o wypełnienie pól zaznaczonych na czerowono",
+          })
+        );
         return;
       }
     }
@@ -78,7 +86,14 @@ export const useCheckValue = (userData, themeValue) => {
 
     for (const checkEmptyInput of passwordUser.current) {
       if (checkEmptyInput.value === "") {
-        // Dodać obsługę błędu o braku wypełnionego pola
+        dispatch(
+          addConfirm({
+            id: nanoid(),
+            type: false,
+            text: "2 Proszę o wypełnienie pól zaznaczonych na czerowono",
+            visibility: false,
+          })
+        );
         return;
       }
     }
