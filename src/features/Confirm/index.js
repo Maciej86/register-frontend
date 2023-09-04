@@ -14,15 +14,15 @@ export const Confirm = () => {
   const confirm = useSelector(selectConfirmState);
   console.log(confirm);
 
-  // useEffect(() => {
-  //   const timeRemoveConfirm = setTimeout(() => {
-  //     dispatch(removeAutoConfirm());
-  //   }, 3000);
+  useEffect(() => {
+    const timeRemoveConfirm = setTimeout(() => {
+      dispatch(removeAutoConfirm());
+    }, 3000);
 
-  //   return () => {
-  //     clearTimeout(timeRemoveConfirm);
-  //   };
-  // }, [confirm]);
+    return () => {
+      clearTimeout(timeRemoveConfirm);
+    };
+  }, [confirm]);
 
   return (
     <Conteiner>

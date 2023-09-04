@@ -13,8 +13,7 @@ const confirmSlice = createSlice({
       const index = state.confirmModal.findIndex(
         (status) => status.id === modalId
       );
-      // state.confirmModal.splice(index, 1);
-      state.confirmModal[index].visibility = true;
+      state.confirmModal.splice(index, 1);
     },
     removeAutoConfirm: (state) => {
       state.confirmModal.splice(0, 1);
