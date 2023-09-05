@@ -8,6 +8,7 @@ import {
   selectEditAccount,
   selectEditPassword,
   selectEmailExsist,
+  selectErrorServer,
 } from "../../common/user/sliceUser";
 import { addConfirm } from "../Confirm/sliceConfirm";
 import { USERSETINGS } from "../../core/InfoText";
@@ -16,6 +17,7 @@ export const useCheckValue = (userData, themeValue) => {
   const dispatch = useDispatch();
   const confirmEditAccount = useSelector(selectEditAccount);
   const confirmNewPassword = useSelector(selectEditPassword);
+  const errorServer = useSelector(selectErrorServer);
   const emailExsist = useSelector(selectEmailExsist);
   const [detaUserEmpty, setDataUserEmpty] = useState([]);
   const [passwordUserEmpty, setPasswordUserEmpty] = useState([]);
@@ -25,6 +27,18 @@ export const useCheckValue = (userData, themeValue) => {
   const differentPasswords = useRef(false);
   const oldPassword = useRef(false);
   const checkEmail = useRef(false);
+
+  useEffect(() => {
+    if (errorServer) {
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: false,
+          text: "Błąd połączenia z serwerem",
+        })
+      );
+    }
+  }, [errorServer]);
 
   useEffect(() => {
     if (confirmEditAccount) {
@@ -50,7 +64,7 @@ export const useCheckValue = (userData, themeValue) => {
         );
         return;
       }
-      changed();
+      changedAccountUser();
       checkEmail.current = false;
     }
   }, [emailExsist]);
@@ -118,10 +132,10 @@ export const useCheckValue = (userData, themeValue) => {
       checkEmail.current = true;
       return;
     }
-    changed();
+    changedAccountUser();
   };
 
-  const changed = () => {
+  const changedAccountUser = () => {
     if (emailExsist === "notexsist" || emailExsist === "") {
       dispatch(
         fetchEditUser({
@@ -178,11 +192,13 @@ export const useCheckValue = (userData, themeValue) => {
 
     if (passwordUserValue.current[1].value.trim().length < 6) {
       differentPasswords.current = true;
-      addConfirm({
-        id: nanoid(),
-        type: false,
-        text: USERSETINGS.CONFRIM_LENGTH_PASSWORD,
-      });
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: false,
+          text: USERSETINGS.CONFRIM_LENGTH_PASSWORD,
+        })
+      );
       return;
     }
 

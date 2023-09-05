@@ -11,6 +11,7 @@ const initialUser = {
   loadingOut: false,
   loadingEditPassword: false,
   emailExsist: "",
+  serverError: false,
 };
 
 const loginUserSlice = createSlice({
@@ -46,6 +47,7 @@ const loginUserSlice = createSlice({
       state.loadingOut = false;
     },
     fetchEditUser: (state) => {
+      state.serverError = false;
       state.editAccount = false;
       state.emailExsist = "";
       state.loading = true;
@@ -56,6 +58,7 @@ const loginUserSlice = createSlice({
       state.editAccount = true;
     },
     fetchEditPassword: (state) => {
+      state.serverError = false;
       state.changingPassword = false;
       state.loadingEditPassword = true;
     },
@@ -64,6 +67,7 @@ const loginUserSlice = createSlice({
       state.changingPassword = changedPassword;
     },
     fetchEditEmail: (state) => {
+      state.serverError = false;
       state.loading = true;
     },
     setEditEmail: (state, { payload: emailExsist }) => {
@@ -71,6 +75,12 @@ const loginUserSlice = createSlice({
       if (emailExsist) {
         state.loading = false;
       }
+    },
+    serverConnectionError: (state) => {
+      state.serverError = !state.serverError;
+      state.loading = false;
+      state.loadingEditPassword = false;
+      state.loadingEditPassword = false;
     },
   },
 });
@@ -93,6 +103,7 @@ export const selectStatusTokenUser = (state) =>
 export const selectUserNotExist = (state) =>
   selectLoginUser(state).userNotExist;
 export const selectEmailExsist = (state) => selectLoginUser(state).emailExsist;
+export const selectErrorServer = (state) => selectLoginUser(state).serverError;
 
 export const {
   fetchLoginUser,
@@ -106,6 +117,7 @@ export const {
   setEditPassword,
   fetchEditEmail,
   setEditEmail,
+  serverConnectionError,
 } = loginUserSlice.actions;
 
 export default loginUserSlice.reducer;
