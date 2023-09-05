@@ -37,4 +37,13 @@ export const USERSETINGS = {
   NEW_PASSWORD_REPEAT_LABEL: "Powtórz nowe hasło",
   NEW_PASSWORD_REPEAT_PLACEHOLDER: "Powtórz nowe hasło",
   NEW_PASSWORD_CONFIRM: "Zmień hasło",
+  CONFIRMT_EDIT_EMPTY_INPUT:
+    "Proszę o wypełnienie pól zaznaczonych na czerowono",
+  CONFIRM_EDIT_ACCOUNT: "Dane zostały zmienione",
+  CONFIRM_ERROR_EMAIL: "Wprowadzony adres e-mail nie jest poprawny.",
+  CONFIRM_EDIT_PASSWORD: "Hasło zostało zmienione",
+  CONFIRM_OLD_PASSWORD_ERROR: "Obecne hasło jest niepoprawne.",
+  CONFIRM_DIFFRENT_PASSWORD: "Nowe hasło różnią się od siebie.",
+  CONFRIM_LENGTH_PASSWORD: "Hasło powinno zawierać minimum 6 znaków.",
+  CONFIRM_EMAIL_EXSIST: "Podany adres e-mail już istnieje.",
 };

@@ -4,12 +4,13 @@ const initialUser = {
   user: [],
   userOut: false,
   userNotExist: false,
-  editAccount: "",
+  editAccount: false,
   changingPassword: false,
   loading: false,
   loadingTokenUser: false,
   loadingOut: false,
   loadingEditPassword: false,
+  emailExsist: "",
 };
 
 const loginUserSlice = createSlice({
@@ -61,6 +62,21 @@ const loginUserSlice = createSlice({
       state.loadingEditPassword = false;
       state.changingPassword = changedPassword;
     },
+    fetchEditEmail: (state) => {
+      state.loading = true;
+    },
+    setEditEmail: (state, { payload: emailExsist }) => {
+      console.log(emailExsist);
+      state.emailExsist = emailExsist;
+      if (emailExsist) {
+        state.loading = false;
+      }
+    },
+    resetVariablesEditUser: (state) => {
+      state.editAccount = false;
+      state.emailExsist = "";
+      state.changingPassword = false;
+    },
   },
 });
 
@@ -81,6 +97,7 @@ export const selectStatusTokenUser = (state) =>
   selectLoginUser(state).loadingTokenUser;
 export const selectUserNotExist = (state) =>
   selectLoginUser(state).userNotExist;
+export const selectEmailExsist = (state) => selectLoginUser(state).emailExsist;
 
 export const {
   fetchLoginUser,
@@ -92,6 +109,9 @@ export const {
   setEditUser,
   fetchEditPassword,
   setEditPassword,
+  resetVariablesEditUser,
+  fetchEditEmail,
+  setEditEmail,
 } = loginUserSlice.actions;
 
 export default loginUserSlice.reducer;

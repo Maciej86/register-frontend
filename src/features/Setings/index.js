@@ -4,6 +4,7 @@ import {
   selectStatusUser,
   selectUserState,
   selectStatusEditPassword,
+  selectEmailExsist,
 } from "../../common/user/sliceUser";
 import { useRoleUser } from "../../common/user/useRoleUser";
 import { COMPONENTS, USERSETINGS } from "../../core/InfoText";
@@ -19,17 +20,19 @@ import { LuSave } from "react-icons/lu";
 
 export const Setings = () => {
   const userData = useSelector(selectUserState);
+  const emailExsist = useSelector(selectEmailExsist);
   const [themeValue, setThemeValue] = useState(userData?.theme);
 
   const {
-    dataUser,
-    passwordUser,
+    dataUserValue,
+    passwordUserValue,
     detaUserEmpty,
     passwordUserEmpty,
     differentPasswords,
     incorrectEmail,
-    saveNewDataUser,
+    changedDataUser,
     changedPassword,
+    oldPassword,
   } = useCheckValue(userData, themeValue);
 
   const loadingEditUser = useSelector(selectStatusUser);
@@ -46,7 +49,7 @@ export const Setings = () => {
           label={USERSETINGS.NAME_PLACEHOLDER}
           maxlength="20"
           empty={detaUserEmpty[0] === ""}
-          ref={(ref) => (dataUser.current[0] = ref)}
+          ref={(ref) => (dataUserValue.current[0] = ref)}
           value={userData?.name}
         />
         <InputText
@@ -55,7 +58,7 @@ export const Setings = () => {
           label={USERSETINGS.LAST_NAME_LABEL}
           maxlength="45"
           empty={detaUserEmpty[1] === ""}
-          ref={(ref) => (dataUser.current[1] = ref)}
+          ref={(ref) => (dataUserValue.current[1] = ref)}
           value={userData?.last_name}
         />
         <InputText
@@ -64,8 +67,12 @@ export const Setings = () => {
           placeholder={USERSETINGS.EMAIL_PLACEHOLDER}
           label={USERSETINGS.EMAIL_LABEL}
           maxlength="50"
-          empty={detaUserEmpty[2] === "" || incorrectEmail}
-          ref={(ref) => (dataUser.current[2] = ref)}
+          empty={
+            detaUserEmpty[2] === "" ||
+            incorrectEmail.current ||
+            emailExsist === "exsist"
+          }
+          ref={(ref) => (dataUserValue.current[2] = ref)}
           value={userData?.email}
         />
         <InputText
@@ -90,7 +97,7 @@ export const Setings = () => {
         <Button
           text={USERSETINGS.COFIRM_DATA_USER}
           icon={<LuSave size={"15px"} />}
-          action={saveNewDataUser}
+          action={changedDataUser}
         />
       )}
     </form>
@@ -104,8 +111,8 @@ export const Setings = () => {
           placeholder={USERSETINGS.OLD_PASSWORD_PLACEHOLDER}
           label={USERSETINGS.OLD_PASSWORD_LABEL}
           type="password"
-          empty={passwordUserEmpty[0] === ""}
-          ref={(ref) => (passwordUser.current[0] = ref)}
+          empty={passwordUserEmpty[0] === "" || oldPassword.current}
+          ref={(ref) => (passwordUserValue.current[0] = ref)}
         />
         <InputText
           id="newpassword"
@@ -113,8 +120,8 @@ export const Setings = () => {
           label={USERSETINGS.NEW_PASSWORD_LABEL}
           type="password"
           maxlength="100"
-          empty={passwordUserEmpty[1] === "" || differentPasswords}
-          ref={(ref) => (passwordUser.current[1] = ref)}
+          empty={passwordUserEmpty[1] === "" || differentPasswords.current}
+          ref={(ref) => (passwordUserValue.current[1] = ref)}
         />
         <InputText
           id="newpasswordconform"
@@ -122,8 +129,8 @@ export const Setings = () => {
           label={USERSETINGS.NEW_PASSWORD_REPEAT_LABEL}
           type="password"
           maxlength="100"
-          empty={passwordUserEmpty[2] === "" || differentPasswords}
-          ref={(ref) => (passwordUser.current[2] = ref)}
+          empty={passwordUserEmpty[2] === "" || differentPasswords.current}
+          ref={(ref) => (passwordUserValue.current[2] = ref)}
         />
       </FormInput>
       {loadingEditPassword ? (
