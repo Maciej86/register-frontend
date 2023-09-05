@@ -12,15 +12,18 @@ import { Conteiner, Content, Modal, Title } from "./styled";
 export const Confirm = () => {
   const dispatch = useDispatch();
   const confirm = useSelector(selectConfirmState);
+  console.log(confirm);
 
   useEffect(() => {
-    const timeRemoveConfirm = setTimeout(() => {
-      dispatch(removeAutoConfirm());
-    }, 3500);
+    if (confirm.length !== 0) {
+      const timeRemoveConfirm = setTimeout(() => {
+        dispatch(removeAutoConfirm());
+      }, 3500);
 
-    return () => {
-      clearTimeout(timeRemoveConfirm);
-    };
+      return () => {
+        clearTimeout(timeRemoveConfirm);
+      };
+    }
   }, [confirm]);
 
   return (
