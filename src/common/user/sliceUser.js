@@ -46,7 +46,6 @@ const loginUserSlice = createSlice({
       state.loadingOut = false;
     },
     fetchEditUser: (state) => {
-      console.log("Klik");
       state.editAccount = false;
       state.emailExsist = "";
       state.loading = true;
