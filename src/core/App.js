@@ -14,6 +14,7 @@ import { Bar } from "../features/Bar";
 import { LoadingToken } from "../features/Login/LoadingToken";
 import { Navigation } from "../features/Navigation";
 import { Content, Main } from "./styles/GlobalStyle";
+import { Confirm } from "../features/Confirm";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ export const App = () => {
           <Outlet />
         </Content>
       </Main>
+      <Confirm />
     </>
   );
 };

@@ -1,18 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialUser = {
+  user: [],
+  userOut: false,
+  userNotExist: false,
+  editAccount: false,
+  changingPassword: false,
+  loading: false,
+  loadingTokenUser: false,
+  loadingOut: false,
+  loadingEditPassword: false,
+  emailExsist: "",
+};
+
 const loginUserSlice = createSlice({
   name: "loginUser",
-  initialState: {
-    user: [],
-    userOut: false,
-    userNotExist: false,
-    editAccount: "",
-    changingPassword: false,
-    loading: false,
-    loadingTokenUser: false,
-    loadingOut: false,
-    loadingEditPassword: false,
-  },
+  initialState: initialUser,
   reducers: {
     fetchLoginUser: (state) => {
       state.loading = true;
@@ -44,21 +47,30 @@ const loginUserSlice = createSlice({
     },
     fetchEditUser: (state) => {
       state.editAccount = false;
+      state.emailExsist = "";
       state.loading = true;
     },
     setEditUser: (state, { payload: user }) => {
-      console.log(user);
       state.loading = false;
       state.user = user;
       state.editAccount = true;
     },
     fetchEditPassword: (state) => {
-      state.changingPassword = "";
+      state.changingPassword = false;
       state.loadingEditPassword = true;
     },
     setEditPassword: (state, { payload: changedPassword }) => {
       state.loadingEditPassword = false;
       state.changingPassword = changedPassword;
+    },
+    fetchEditEmail: (state) => {
+      state.loading = true;
+    },
+    setEditEmail: (state, { payload: emailExsist }) => {
+      state.emailExsist = emailExsist;
+      if (emailExsist) {
+        state.loading = false;
+      }
     },
   },
 });
@@ -80,6 +92,7 @@ export const selectStatusTokenUser = (state) =>
   selectLoginUser(state).loadingTokenUser;
 export const selectUserNotExist = (state) =>
   selectLoginUser(state).userNotExist;
+export const selectEmailExsist = (state) => selectLoginUser(state).emailExsist;
 
 export const {
   fetchLoginUser,
@@ -91,6 +104,8 @@ export const {
   setEditUser,
   fetchEditPassword,
   setEditPassword,
+  fetchEditEmail,
+  setEditEmail,
 } = loginUserSlice.actions;
 
 export default loginUserSlice.reducer;

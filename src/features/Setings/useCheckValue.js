@@ -1,45 +1,99 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import {
+  fetchEditEmail,
   fetchEditPassword,
   fetchEditUser,
   selectEditAccount,
   selectEditPassword,
+  selectEmailExsist,
 } from "../../common/user/sliceUser";
+import { addConfirm } from "../Confirm/sliceConfirm";
+import { USERSETINGS } from "../../core/InfoText";
 
 export const useCheckValue = (userData, themeValue) => {
   const dispatch = useDispatch();
   const confirmEditAccount = useSelector(selectEditAccount);
   const confirmNewPassword = useSelector(selectEditPassword);
-  const dataUser = useRef([]);
-  const passwordUser = useRef([]);
+  const emailExsist = useSelector(selectEmailExsist);
   const [detaUserEmpty, setDataUserEmpty] = useState([]);
   const [passwordUserEmpty, setPasswordUserEmpty] = useState([]);
-  const [differentPasswords, setDifferentPasswords] = useState(false);
-  const [incorrectEmail, setIncorrectEmail] = useState(false);
+  const dataUserValue = useRef([]);
+  const passwordUserValue = useRef([]);
+  const incorrectEmail = useRef(false);
+  const differentPasswords = useRef(false);
+  const oldPassword = useRef(false);
+  const checkEmail = useRef(false);
 
   useEffect(() => {
     if (confirmEditAccount) {
-      // Dodać obsługę zmiany danych użytkownika
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: true,
+          text: USERSETINGS.CONFIRM_EDIT_ACCOUNT,
+        })
+      );
     }
+  }, [confirmEditAccount]);
 
+  useEffect(() => {
+    if (checkEmail.current) {
+      if (emailExsist === "exsist") {
+        dispatch(
+          addConfirm({
+            id: nanoid(),
+            type: false,
+            text: USERSETINGS.CONFIRM_EMAIL_EXSIST,
+          })
+        );
+        return;
+      }
+      changed();
+      checkEmail.current = false;
+    }
+  }, [emailExsist]);
+
+  useEffect(() => {
     if (confirmNewPassword === "ok") {
-      // Dodać obsługę poprawnej zmiany hasła
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: true,
+          text: USERSETINGS.CONFIRM_EDIT_PASSWORD,
+        })
+      );
     } else if (confirmNewPassword === "error") {
-      // Dodać obsługę podania błędnego obecnego hasła
+      oldPassword.current = true;
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: false,
+          text: USERSETINGS.CONFIRM_OLD_PASSWORD_ERROR,
+        })
+      );
     }
-  }, [confirmEditAccount, confirmNewPassword]);
+  }, [confirmNewPassword]);
 
-  const saveNewDataUser = () => {
-    setDataUserEmpty(() => []);
-    for (const inputValue of dataUser.current) {
+  const changedDataUser = () => {
+    setDataUserEmpty([]);
+    incorrectEmail.current = false;
+
+    for (const inputValue of dataUserValue.current) {
       let inputValueTrim = inputValue.value.trim();
       setDataUserEmpty((detaUserEmpty) => [...detaUserEmpty, inputValueTrim]);
     }
 
-    for (const checkEmptyInput of dataUser.current) {
+    for (const checkEmptyInput of dataUserValue.current) {
       if (checkEmptyInput.value === "") {
-        // Dodać obsługę błędu o braku wypełnionego pola
+        dispatch(
+          addConfirm({
+            id: nanoid(),
+            type: false,
+            text: USERSETINGS.CONFIRMT_EDIT_EMPTY_INPUT,
+          })
+        );
         return;
       }
     }
@@ -47,28 +101,46 @@ export const useCheckValue = (userData, themeValue) => {
     const regexpEmail =
       /^[a-z\d-]+\w?\.?([\w\d-]+)?@[\w\d-]{2,}\.[a-z]{2,6}(\.[a-z]{2,6})?$/gi;
 
-    if (!regexpEmail.test(dataUser.current[2].value)) {
-      setIncorrectEmail(true);
-      // Dodać obsługę błędu braku poprawnego adresu e-mail
+    if (!regexpEmail.test(dataUserValue.current[2].value.trim())) {
+      incorrectEmail.current = true;
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: false,
+          text: USERSETINGS.CONFIRM_ERROR_EMAIL,
+        })
+      );
       return;
     }
 
-    dispatch(
-      fetchEditUser({
-        id: userData?.id,
-        name: dataUser.current[0].value,
-        lastname: dataUser.current[1].value,
-        email: dataUser.current[2].value,
-        theme: themeValue,
-      })
-    );
+    if (userData?.email !== dataUserValue.current[2].value) {
+      dispatch(fetchEditEmail(dataUserValue.current[2].value.trim()));
+      checkEmail.current = true;
+      return;
+    }
+    changed();
   };
 
-  const changedPassword = (event) => {
-    event.preventDefault();
+  const changed = () => {
+    if (emailExsist === "notexsist" || emailExsist === "") {
+      dispatch(
+        fetchEditUser({
+          id: userData?.id,
+          name: dataUserValue.current[0].value.trim(),
+          lastname: dataUserValue.current[1].value.trim(),
+          email: dataUserValue.current[2].value.trim(),
+          theme: themeValue,
+        })
+      );
+    }
+  };
+
+  const changedPassword = () => {
+    oldPassword.current = false;
+    differentPasswords.current = false;
 
     setPasswordUserEmpty(() => []);
-    for (const inputValue of passwordUser.current) {
+    for (const inputValue of passwordUserValue.current) {
       let inputValueTrim = inputValue.value.trim();
       setPasswordUserEmpty((passwordUserEmpty) => [
         ...passwordUserEmpty,
@@ -76,41 +148,62 @@ export const useCheckValue = (userData, themeValue) => {
       ]);
     }
 
-    for (const checkEmptyInput of passwordUser.current) {
+    for (const checkEmptyInput of passwordUserValue.current) {
       if (checkEmptyInput.value === "") {
-        // Dodać obsługę błędu o braku wypełnionego pola
+        dispatch(
+          addConfirm({
+            id: nanoid(),
+            type: false,
+            text: USERSETINGS.CONFIRMT_EDIT_EMPTY_INPUT,
+          })
+        );
         return;
       }
     }
 
-    if (passwordUser.current[1].value !== passwordUser.current[2].value) {
-      setDifferentPasswords(true);
+    if (
+      passwordUserValue.current[1].value.trim() !==
+      passwordUserValue.current[2].value.trim()
+    ) {
+      differentPasswords.current = true;
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: false,
+          text: USERSETINGS.CONFIRM_DIFFRENT_PASSWORD,
+        })
+      );
       return;
     }
 
-    if (passwordUser.current[1].value.length < 6) {
-      setDifferentPasswords(true);
-      // Dodać obsługę błędu przy podaniu mniej niż 6 znaków
+    if (passwordUserValue.current[1].value.trim().length < 6) {
+      differentPasswords.current = true;
+      addConfirm({
+        id: nanoid(),
+        type: false,
+        text: USERSETINGS.CONFRIM_LENGTH_PASSWORD,
+      });
       return;
     }
 
     dispatch(
       fetchEditPassword({
         id: userData?.id,
-        oldpassword: passwordUser.current[0].value,
-        newpassword: passwordUser.current[1].value,
+        oldpassword: passwordUserValue.current[0].value.trim(),
+        newpassword: passwordUserValue.current[1].value.trim(),
       })
     );
   };
 
   return {
-    dataUser,
-    passwordUser,
+    dataUserValue,
+    passwordUserValue,
     detaUserEmpty,
     passwordUserEmpty,
     differentPasswords,
     incorrectEmail,
-    saveNewDataUser,
+    changedDataUser,
     changedPassword,
+    oldPassword,
   };
 };
