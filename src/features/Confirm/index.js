@@ -12,7 +12,6 @@ import { Conteiner, Content, Modal, Title } from "./styled";
 export const Confirm = () => {
   const dispatch = useDispatch();
   const confirm = useSelector(selectConfirmState);
-  console.log(confirm);
 
   useEffect(() => {
     if (confirm.length !== 0) {
