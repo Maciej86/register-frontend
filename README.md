@@ -2,10 +2,11 @@
 
 ## W przygotowaniu
 
-- Wyświetlanie informacji po działaniach użytkownika
+- Obsługa błędów serwera
 
 ## Ostatnie zmiany
 
+- Wyświetlanie informacji po działaniach użytkownika
 - Ustawienia użytkownika
 - Utworzenie nawigacji głównej.
 - Wylogowanie użytkownika
