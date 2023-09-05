@@ -37,6 +37,16 @@ export const BoxSelect = styled.div`
   gap: 5px;
 `;
 
+export const MaskSelect = styled.div`
+  position: absolute;
+  top: 29px;
+  width: 100%;
+  height: 41px;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1;
+  cursor: pointer;
+`;
+
 export const SelectList = styled.ul`
   position: absolute;
   margin: 0;

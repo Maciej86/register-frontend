@@ -5,6 +5,7 @@ import {
   SelectButton,
   SelectItem,
   SelectList,
+  MaskSelect,
 } from "./styled";
 
 export const InputSelect = ({
@@ -18,13 +19,13 @@ export const InputSelect = ({
 }) => {
   return (
     <BoxSelect onMouseLeave={() => setToggle(false)}>
+      <MaskSelect onClick={() => setToggle((toggle) => !toggle)}></MaskSelect>
       <Label htmlFor={id}>{label}</Label>
       <Input
         id={id}
         type="text"
         value={value}
         onChange={({ target }) => setValue(target.value)}
-        onClick={() => setToggle((toggle) => !toggle)}
       />
       <SelectList $isVisibilty={toggle}>
         {data.map((item, index) => (
