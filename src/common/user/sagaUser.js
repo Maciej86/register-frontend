@@ -7,6 +7,7 @@ import {
   fetchLoginUser,
   fetchLoginUserOut,
   fetchLoginUserToken,
+  serverConnectionError,
   setEditEmail,
   setEditPassword,
   setEditUser,
@@ -15,7 +16,6 @@ import {
 } from "./sliceUser";
 import { saveDataInSessionStorage } from "./saveSessionStorage";
 import { URL_USER } from "../../core/urlBackend";
-
 const timeDelay = 700;
 
 function* fechLoginUserHandler({ payload: dataUser }) {
@@ -34,7 +34,7 @@ function* fechLoginUserHandler({ payload: dataUser }) {
       );
     }
   } catch (error) {
-    yield console.log(error);
+    yield console.error(error);
   }
 }
 
@@ -46,7 +46,7 @@ function* fetchLoginUserTokenHandler({ payload: token }) {
     yield delay(timeDelay);
     yield put(setLoginUser(user.data));
   } catch (error) {
-    yield console.log(error);
+    yield console.error(error);
   }
 }
 
@@ -58,7 +58,7 @@ function* fetchLoginUserOutTokenHandler({ payload: id }) {
     yield delay(timeDelay);
     yield put(setLoginOutUser());
   } catch (error) {
-    yield console.log(error);
+    yield console.error(error);
   }
 }
 
@@ -74,7 +74,8 @@ function* fechEditUserHandler({ payload: dataUser }) {
     yield delay(timeDelay);
     yield put(setEditUser(user.data));
   } catch (error) {
-    yield console.log(error);
+    yield console.error(error);
+    yield put(serverConnectionError());
   }
 }
 
@@ -88,7 +89,8 @@ function* fetchEditPasswordHandler({ payload: passwordUser }) {
     yield delay(timeDelay);
     yield put(setEditPassword(changedPassword.data));
   } catch (error) {
-    yield console.log(error);
+    yield console.error(error);
+    yield put(serverConnectionError());
   }
 }
 
@@ -100,7 +102,8 @@ function* fetchEditEmailHandler({ payload: newEmail }) {
     yield delay(timeDelay);
     yield put(setEditEmail(checkEmailExsist.data));
   } catch (error) {
-    yield console.log(error);
+    yield console.error(error);
+    yield put(serverConnectionError());
   }
 }
 
