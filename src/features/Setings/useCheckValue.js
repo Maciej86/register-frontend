@@ -26,8 +26,6 @@ export const useCheckValue = (userData, themeValue) => {
   const oldPassword = useRef(false);
   const checkEmail = useRef(false);
 
-  console.log(confirmEditAccount);
-
   useEffect(() => {
     if (confirmEditAccount) {
       dispatch(
