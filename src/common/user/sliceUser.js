@@ -46,7 +46,9 @@ const loginUserSlice = createSlice({
       state.loadingOut = false;
     },
     fetchEditUser: (state) => {
+      console.log("Klik");
       state.editAccount = false;
+      state.emailExsist = "";
       state.loading = true;
     },
     setEditUser: (state, { payload: user }) => {
@@ -55,7 +57,7 @@ const loginUserSlice = createSlice({
       state.editAccount = true;
     },
     fetchEditPassword: (state) => {
-      state.changingPassword = "";
+      state.changingPassword = false;
       state.loadingEditPassword = true;
     },
     setEditPassword: (state, { payload: changedPassword }) => {
@@ -66,16 +68,10 @@ const loginUserSlice = createSlice({
       state.loading = true;
     },
     setEditEmail: (state, { payload: emailExsist }) => {
-      console.log(emailExsist);
       state.emailExsist = emailExsist;
       if (emailExsist) {
         state.loading = false;
       }
-    },
-    resetVariablesEditUser: (state) => {
-      state.editAccount = false;
-      state.emailExsist = "";
-      state.changingPassword = false;
     },
   },
 });
@@ -109,7 +105,6 @@ export const {
   setEditUser,
   fetchEditPassword,
   setEditPassword,
-  resetVariablesEditUser,
   fetchEditEmail,
   setEditEmail,
 } = loginUserSlice.actions;

@@ -5,7 +5,6 @@ import {
   fetchEditEmail,
   fetchEditPassword,
   fetchEditUser,
-  resetVariablesEditUser,
   selectEditAccount,
   selectEditPassword,
   selectEmailExsist,
@@ -27,6 +26,8 @@ export const useCheckValue = (userData, themeValue) => {
   const oldPassword = useRef(false);
   const checkEmail = useRef(false);
 
+  console.log(confirmEditAccount);
+
   useEffect(() => {
     if (confirmEditAccount) {
       dispatch(
@@ -37,7 +38,9 @@ export const useCheckValue = (userData, themeValue) => {
         })
       );
     }
+  }, [confirmEditAccount]);
 
+  useEffect(() => {
     if (checkEmail.current) {
       if (emailExsist === "exsist") {
         dispatch(
@@ -52,9 +55,7 @@ export const useCheckValue = (userData, themeValue) => {
       changed();
       checkEmail.current = false;
     }
-
-    dispatch(resetVariablesEditUser());
-  }, [confirmEditAccount, emailExsist]);
+  }, [emailExsist]);
 
   useEffect(() => {
     if (confirmNewPassword === "ok") {
@@ -75,8 +76,6 @@ export const useCheckValue = (userData, themeValue) => {
         })
       );
     }
-
-    dispatch(resetVariablesEditUser());
   }, [confirmNewPassword]);
 
   const changedDataUser = () => {
