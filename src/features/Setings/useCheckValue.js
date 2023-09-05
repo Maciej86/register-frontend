@@ -121,12 +121,11 @@ export const useCheckValue = (userData, themeValue) => {
       checkEmail.current = true;
       return;
     }
-
     changed();
   };
 
   const changed = () => {
-    if (emailExsist === "notexsist") {
+    if (emailExsist === "notexsist" || emailExsist === "") {
       dispatch(
         fetchEditUser({
           id: userData?.id,
