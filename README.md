@@ -2,10 +2,11 @@
 
 ## W przygotowaniu
 
-- Obsługa błędów serwera
+- zarządzanie użytkownikami przez administratora
 
 ## Ostatnie zmiany
 
+- Obsługa błędów serwera
 - Wyświetlanie informacji po działaniach użytkownika
 - Ustawienia użytkownika
 - Utworzenie nawigacji głównej.
