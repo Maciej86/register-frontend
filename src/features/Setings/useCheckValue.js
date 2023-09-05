@@ -9,7 +9,7 @@ import {
   selectEditPassword,
   selectEmailExsist,
   selectErrorServer,
-} from "../../common/user/sliceUser";
+} from "../../common/User/sliceUser";
 import { addConfirm } from "../Confirm/sliceConfirm";
 import { USERSETINGS } from "../../core/InfoText";
 

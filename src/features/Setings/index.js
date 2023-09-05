@@ -5,8 +5,8 @@ import {
   selectUserState,
   selectStatusEditPassword,
   selectEmailExsist,
-} from "../../common/user/sliceUser";
-import { useRoleUser } from "../../common/user/useRoleUser";
+} from "../../common/User/sliceUser";
+import { useRoleUser } from "../../common/User/useRoleUser";
 import { COMPONENTS, USERSETINGS } from "../../core/InfoText";
 import { themesStyles } from "../../core/styles/theme";
 import { Tile } from "../../common/Tile";

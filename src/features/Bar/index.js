@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRoleUser } from "../../common/user/useRoleUser";
+import { useRoleUser } from "../../common/User/useRoleUser";
 import {
   fetchLoginUserOut,
   selectUserState,
   selectStatusloadingOut,
-} from "../../common/user/sliceUser";
+} from "../../common/User/sliceUser";
 import {
   selectToggleNavState,
   setToggleMobileNav,
