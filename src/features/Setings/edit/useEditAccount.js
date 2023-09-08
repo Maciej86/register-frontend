@@ -3,29 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import {
   fetchEditEmail,
-  fetchEditPassword,
   fetchEditUser,
   selectEditAccount,
-  selectEditPassword,
   selectEmailExsist,
   selectErrorServer,
-} from "../../common/User/sliceUser";
-import { addConfirm } from "../Confirm/sliceConfirm";
-import { USERSETINGS } from "../../core/InfoText";
+} from "../../../common/User/sliceUser";
+import { addConfirm } from "../../Confirm/sliceConfirm";
+import { USERSETINGS } from "../../../core/InfoText";
 
-export const useCheckValue = (userData, themeValueData) => {
+export const useEditAccount = (userData, themeValueData) => {
   const dispatch = useDispatch();
   const confirmEditAccount = useSelector(selectEditAccount);
-  const confirmNewPassword = useSelector(selectEditPassword);
-  const errorServer = useSelector(selectErrorServer);
   const emailExsist = useSelector(selectEmailExsist);
+  const errorServer = useSelector(selectErrorServer);
   const [detaUserEmpty, setDataUserEmpty] = useState([]);
-  const [passwordUserEmpty, setPasswordUserEmpty] = useState([]);
   const dataUserValue = useRef([]);
-  const passwordUserValue = useRef([]);
   const incorrectEmail = useRef(false);
-  const differentPasswords = useRef(false);
-  const oldPassword = useRef(false);
   const checkEmail = useRef(false);
 
   useEffect(() => {
@@ -64,31 +57,10 @@ export const useCheckValue = (userData, themeValueData) => {
         );
         return;
       }
-      changedAccountUser();
+      changedValueUser();
       checkEmail.current = false;
     }
   }, [emailExsist]);
-
-  useEffect(() => {
-    if (confirmNewPassword === "ok") {
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: true,
-          text: USERSETINGS.CONFIRM_EDIT_PASSWORD,
-        })
-      );
-    } else if (confirmNewPassword === "error") {
-      oldPassword.current = true;
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: false,
-          text: USERSETINGS.CONFIRM_OLD_PASSWORD_ERROR,
-        })
-      );
-    }
-  }, [confirmNewPassword]);
 
   const changedDataUser = () => {
     setDataUserEmpty([]);
@@ -132,10 +104,10 @@ export const useCheckValue = (userData, themeValueData) => {
       checkEmail.current = true;
       return;
     }
-    changedAccountUser();
+    changedValueUser();
   };
 
-  const changedAccountUser = () => {
+  const changedValueUser = () => {
     if (emailExsist === "notexsist" || emailExsist === "") {
       dispatch(
         fetchEditUser({
@@ -149,77 +121,5 @@ export const useCheckValue = (userData, themeValueData) => {
     }
   };
 
-  const changedPassword = () => {
-    oldPassword.current = false;
-    differentPasswords.current = false;
-
-    setPasswordUserEmpty(() => []);
-    for (const inputValue of passwordUserValue.current) {
-      let inputValueTrim = inputValue.value.trim();
-      setPasswordUserEmpty((passwordUserEmpty) => [
-        ...passwordUserEmpty,
-        inputValueTrim,
-      ]);
-    }
-
-    for (const checkEmptyInput of passwordUserValue.current) {
-      if (checkEmptyInput.value === "") {
-        dispatch(
-          addConfirm({
-            id: nanoid(),
-            type: false,
-            text: USERSETINGS.CONFIRMT_EDIT_EMPTY_INPUT,
-          })
-        );
-        return;
-      }
-    }
-
-    if (
-      passwordUserValue.current[1].value.trim() !==
-      passwordUserValue.current[2].value.trim()
-    ) {
-      differentPasswords.current = true;
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: false,
-          text: USERSETINGS.CONFIRM_DIFFRENT_PASSWORD,
-        })
-      );
-      return;
-    }
-
-    if (passwordUserValue.current[1].value.trim().length < 6) {
-      differentPasswords.current = true;
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: false,
-          text: USERSETINGS.CONFRIM_LENGTH_PASSWORD,
-        })
-      );
-      return;
-    }
-
-    dispatch(
-      fetchEditPassword({
-        id: userData?.id,
-        oldpassword: passwordUserValue.current[0].value.trim(),
-        newpassword: passwordUserValue.current[1].value.trim(),
-      })
-    );
-  };
-
-  return {
-    dataUserValue,
-    passwordUserValue,
-    detaUserEmpty,
-    passwordUserEmpty,
-    differentPasswords,
-    incorrectEmail,
-    changedDataUser,
-    changedPassword,
-    oldPassword,
-  };
+  return { changedDataUser, dataUserValue, detaUserEmpty, incorrectEmail };
 };
