@@ -13,7 +13,7 @@ import {
 import { addConfirm } from "../Confirm/sliceConfirm";
 import { USERSETINGS } from "../../core/InfoText";
 
-export const useCheckValue = (userData, themeValue) => {
+export const useCheckValue = (userData, themeValueData) => {
   const dispatch = useDispatch();
   const confirmEditAccount = useSelector(selectEditAccount);
   const confirmNewPassword = useSelector(selectEditPassword);
@@ -143,7 +143,7 @@ export const useCheckValue = (userData, themeValue) => {
           name: dataUserValue.current[0].value.trim(),
           lastname: dataUserValue.current[1].value.trim(),
           email: dataUserValue.current[2].value.trim(),
-          theme: themeValue,
+          theme: themeValueData,
         })
       );
     }

@@ -82,4 +82,7 @@ export const ThemeEbonyClay = {
   },
 };
 
-export const themesStyles = ["ThemeDefault", "ThemeEbonyClay"];
+export const themesStyles = [
+  { db: "ThemeDefault", name: "Default" },
+  { db: "ThemeEbonyClay", name: "Ebony Clay" },
+];

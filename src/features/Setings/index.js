@@ -22,7 +22,7 @@ export const Setings = () => {
   const userData = useSelector(selectUserState);
   const emailExsist = useSelector(selectEmailExsist);
   const [themeValue, setThemeValue] = useState(userData?.theme);
-
+  const [themeValueData, setThemeValueData] = useState(userData?.theme);
   const {
     dataUserValue,
     passwordUserValue,
@@ -33,8 +33,7 @@ export const Setings = () => {
     changedDataUser,
     changedPassword,
     oldPassword,
-  } = useCheckValue(userData, themeValue);
-
+  } = useCheckValue(userData, themeValueData);
   const loadingEditUser = useSelector(selectStatusUser);
   const loadingEditPassword = useSelector(selectStatusEditPassword);
   const { userRole } = useRoleUser(userData?.role);
@@ -89,6 +88,8 @@ export const Setings = () => {
           setToggle={setThemeToggle}
           value={themeValue}
           setValue={setThemeValue}
+          valueData={themeValueData}
+          setValueData={setThemeValueData}
         />
       </FormInput>
       {loadingEditUser ? (
