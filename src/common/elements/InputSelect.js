@@ -19,12 +19,6 @@ export const InputSelect = ({
   valueData,
   setValueData,
 }) => {
-  data.map((item, index) => {
-    index = 0;
-    if (Object.values(item)[index] === value)
-      setValue(Object.values(item)[index + 1]);
-  });
-
   return (
     <BoxSelect onMouseLeave={() => setToggle(false)}>
       <MaskSelect onClick={() => setToggle((toggle) => !toggle)}></MaskSelect>
