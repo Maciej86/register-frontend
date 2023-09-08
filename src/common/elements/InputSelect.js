@@ -31,7 +31,7 @@ export const InputSelect = ({
       />
       <input type="hidden" value={valueData} />
       <SelectList $isVisibilty={toggle}>
-        {data.map((item, index) => {
+        {data?.map((item, index) => {
           index = 0;
           return (
             <SelectItem key={Object.values(item)[index]}>
