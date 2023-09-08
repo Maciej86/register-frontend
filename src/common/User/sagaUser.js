@@ -70,6 +70,7 @@ function* fechEditUserHandler({ payload: dataUser }) {
       lastname: dataUser.lastname,
       email: dataUser.email,
       theme: dataUser.theme,
+      organizationid: dataUser.organization,
     });
     yield delay(timeDelay);
     yield put(setEditUser(user.data));

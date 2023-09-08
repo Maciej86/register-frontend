@@ -5,6 +5,7 @@ import {
   selectUserState,
   selectStatusEditPassword,
   selectEmailExsist,
+  selectUserOrganization,
 } from "../../common/User/sliceUser";
 import { useRoleUser } from "../../common/User/useRoleUser";
 import { COMPONENTS, USERSETINGS } from "../../core/InfoText";
@@ -15,32 +16,39 @@ import { InputSelect } from "../../common/elements/InputSelect";
 import { Loader } from "../../common/Loader";
 import { Button } from "../../common/elements/Button";
 import { SelectDefaultValue } from "../../common/elements/SelectDefaultValue";
-import { useCheckValue } from "./useCheckValue";
 import { Conteiner, FormInput } from "./styled";
 import { LuSave } from "react-icons/lu";
+import { useEditAccount } from "./edit/useEditAccount";
+import { useEditPassword } from "./edit/useEditPassword";
 
 export const Setings = () => {
   const userData = useSelector(selectUserState);
+  const organization = useSelector(selectUserOrganization);
   const emailExsist = useSelector(selectEmailExsist);
   const [themeValue, setThemeValue] = useState(() =>
     SelectDefaultValue(themesStyles, userData?.theme)
   );
+  const [organizationValue, setOrganizationValue] = useState(() =>
+    SelectDefaultValue(organization, userData?.main_organization)
+  );
   const [themeValueData, setThemeValueData] = useState(userData?.theme);
+  const [organizationValueData, setOrganizationValueData] = useState(
+    userData?.main_organization
+  );
+  const { changedDataUser, dataUserValue, detaUserEmpty, incorrectEmail } =
+    useEditAccount(userData, themeValueData, organizationValueData);
   const {
-    dataUserValue,
+    changedPassword,
     passwordUserValue,
-    detaUserEmpty,
     passwordUserEmpty,
     differentPasswords,
-    incorrectEmail,
-    changedDataUser,
-    changedPassword,
     oldPassword,
-  } = useCheckValue(userData, themeValueData);
+  } = useEditPassword(userData);
   const loadingEditUser = useSelector(selectStatusUser);
   const loadingEditPassword = useSelector(selectStatusEditPassword);
   const { userRole } = useRoleUser(userData?.role);
   const [themeToggle, setThemeToggle] = useState(false);
+  const [organizationToggle, setOrganizationToggle] = useState(false);
 
   const bodyTileSetings = (
     <form>
@@ -82,6 +90,17 @@ export const Setings = () => {
           label={USERSETINGS.TYPE_ACCOUNT}
           value={userRole}
           disabled="disabled"
+        />
+        <InputSelect
+          id="organization"
+          label="Główna organizacja"
+          data={organization}
+          toggle={organizationToggle}
+          setToggle={setOrganizationToggle}
+          value={organizationValue}
+          setValue={setOrganizationValue}
+          valueData={organizationValueData}
+          setValueData={setOrganizationValueData}
         />
         <InputSelect
           id="theme"

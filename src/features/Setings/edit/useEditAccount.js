@@ -11,7 +11,11 @@ import {
 import { addConfirm } from "../../Confirm/sliceConfirm";
 import { USERSETINGS } from "../../../core/InfoText";
 
-export const useEditAccount = (userData, themeValueData) => {
+export const useEditAccount = (
+  userData,
+  themeValueData,
+  organizationValueData
+) => {
   const dispatch = useDispatch();
   const confirmEditAccount = useSelector(selectEditAccount);
   const emailExsist = useSelector(selectEmailExsist);
@@ -116,6 +120,7 @@ export const useEditAccount = (userData, themeValueData) => {
           lastname: dataUserValue.current[1].value.trim(),
           email: dataUserValue.current[2].value.trim(),
           theme: themeValueData,
+          organization: organizationValueData,
         })
       );
     }
