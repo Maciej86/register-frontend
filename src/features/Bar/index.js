@@ -1,23 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRoleUser } from "../../common/User/useRoleUser";
 import {
   fetchLoginUserOut,
   selectUserState,
   selectStatusloadingOut,
+  selectUserOrganization,
 } from "../../common/User/sliceUser";
+import { SelectButton, SelectItem } from "../../common/elements/styled";
+import { useOrganization } from "../../common/Organization/useOrganization";
+import { Loader } from "../../common/Loader";
 import {
   selectToggleNavState,
   setToggleMobileNav,
   setToggleNav,
 } from "./sliceBar";
-import { Loader } from "../../common/Loader";
 import {
   BarLeft,
   BarRight,
   ButtonToggleNav,
-  ButtonUser,
-  DataUser,
+  Button,
+  Data,
   PanelUser,
   Email,
   PanelUserHeader,
@@ -25,13 +28,16 @@ import {
   PanelUserList,
   ListLink,
   Name,
-  UserName,
-  UserRole,
+  DataName,
+  DataValue,
   Conteiner,
   ListButton,
   TextLink,
   LoginOut,
   ButtonToggleMobileNav,
+  BarCenter,
+  SelectBar,
+  SelectListBar,
 } from "./styled";
 import { NAVIGATION } from "../../core/InfoText";
 import { BsArrowBarRight } from "react-icons/bs";
@@ -41,10 +47,16 @@ import { CiSettings, CiLogout } from "react-icons/ci";
 export const Bar = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserState);
+  const organization = useSelector(selectUserOrganization);
   const loadingOut = useSelector(selectStatusloadingOut);
   const toggleNav = useSelector(selectToggleNavState);
+  const { NameMainOrganization } = useOrganization();
   const [visible, setVisible] = useState(false);
   const { userRole } = useRoleUser(user?.role);
+  const [valueSelect, setValueSelect] = useState(
+    NameMainOrganization(user?.main_organization)
+  );
+  const [selectVisibility, setSelectVisibility] = useState(false);
 
   const userInitials = () => {
     const name = user?.name.slice(0, 1).toUpperCase();
@@ -71,17 +83,47 @@ export const Bar = () => {
           <BsArrowBarRight size={"25px"} />
         </ButtonToggleMobileNav>
       </BarLeft>
+
+      <BarCenter>
+        <SelectBar onMouseLeave={() => setSelectVisibility(() => false)}>
+          <Button
+            onClick={() =>
+              setSelectVisibility((selectVisibility) => !selectVisibility)
+            }
+            $visible={selectVisibility}
+          >
+            {/* <PiUserThin size={"30px"} /> */}
+            <Data>
+              <DataValue>Organizacja</DataValue>
+              <DataName>{valueSelect}</DataName>
+            </Data>
+          </Button>
+          <SelectListBar $isVisibilty={selectVisibility}>
+            {organization?.map((item, index) => (
+              <SelectItem key={index}>
+                <SelectButton
+                  type="button"
+                  onClick={() => setValueSelect(item.name_organization)}
+                >
+                  {item.name_organization}
+                </SelectButton>
+              </SelectItem>
+            ))}
+          </SelectListBar>
+        </SelectBar>
+      </BarCenter>
+
       <BarRight>
-        <ButtonUser
+        <Button
           onClick={() => setVisible((visible) => !visible)}
           $visible={visible}
         >
-          <DataUser>
-            <UserName>{user?.name}</UserName>
-            <UserRole>{userRole}</UserRole>
-          </DataUser>
+          <Data>
+            <DataName>{user?.name}</DataName>
+            <DataValue>{userRole}</DataValue>
+          </Data>
           <PiUserThin size={"30px"} />
-        </ButtonUser>
+        </Button>
         <PanelUser
           onMouseLeave={() => setVisible(() => false)}
           $visible={visible}

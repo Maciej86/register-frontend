@@ -1,19 +1,40 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { SelectList } from "../../common/elements/styled";
 
 export const Conteiner = styled.div`
   position: sticky;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   height: ${({ theme }) => theme.size.heightLogoBar};
   padding: 10px 20px;
   background: ${({ theme }) => theme.colorElements.bar_bg};
   border-bottom: 1px solid ${({ theme }) => theme.colorElements.bar_border};
+
+  @media (max-width: 400px) {
+    height: auto;
+  }
+`;
+
+export const Data = styled.span`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1;
+`;
+
+export const DataName = styled.span`
+  font-weight: 600;
+  font-size: 18px;
+`;
+
+export const DataValue = styled.span`
+  font-size: 14px;
 `;
 
 export const BarLeft = styled.div`
-  width: 30%;
   padding-right: 10px;
 `;
 
@@ -39,15 +60,43 @@ export const ButtonToggleMobileNav = styled(ButtonToggleNav)`
   }
 `;
 
+export const BarCenter = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-left: 10px;
+  flex-grow: 1;
+
+  @media (max-width: 400px) {
+    order: 1;
+    width: 100%;
+    padding: 10px;
+  }
+`;
+
+export const SelectBar = styled.div`
+  position: relative;
+
+  ${DataName} {
+    text-align: center;
+  }
+
+  ${DataValue} {
+    text-align: center;
+  }
+`;
+
+export const SelectListBar = styled(SelectList)`
+  top: 42px;
+`;
+
 export const BarRight = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 70%;
   position: relative;
   padding-left: 10px;
 `;
 
-export const ButtonUser = styled.button`
+export const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
@@ -65,22 +114,6 @@ export const ButtonUser = styled.button`
   }
 `;
 
-export const DataUser = styled.span`
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  line-height: 1;
-`;
-
-export const UserName = styled.span`
-  font-weight: 600;
-  font-size: 18px;
-`;
-
-export const UserRole = styled.span`
-  font-size: 14px;
-`;
-
 export const PanelUser = styled.div`
   position: absolute;
   top: 53px;
@@ -90,6 +123,7 @@ export const PanelUser = styled.div`
   visibility: ${({ $visible }) => ($visible ? "visible" : "hidden")};
   box-shadow: 0 0 10px 2px ${({ theme }) => theme.color.dark};
   transition: opacity 0.4s, visibility 0.4s;
+  z-index: 1;
 
   @media (max-width: 380px) {
     min-width: 85vw;
