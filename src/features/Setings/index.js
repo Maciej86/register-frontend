@@ -14,6 +14,7 @@ import { InputText } from "../../common/elements/InputText";
 import { InputSelect } from "../../common/elements/InputSelect";
 import { Loader } from "../../common/Loader";
 import { Button } from "../../common/elements/Button";
+import { SelectDefaultValue } from "../../common/elements/SelectDefaultValue";
 import { useCheckValue } from "./useCheckValue";
 import { Conteiner, FormInput } from "./styled";
 import { LuSave } from "react-icons/lu";
@@ -21,7 +22,9 @@ import { LuSave } from "react-icons/lu";
 export const Setings = () => {
   const userData = useSelector(selectUserState);
   const emailExsist = useSelector(selectEmailExsist);
-  const [themeValue, setThemeValue] = useState(userData?.theme);
+  const [themeValue, setThemeValue] = useState(() =>
+    SelectDefaultValue(themesStyles, userData?.theme)
+  );
   const [themeValueData, setThemeValueData] = useState(userData?.theme);
   const {
     dataUserValue,
