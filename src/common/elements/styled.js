@@ -63,6 +63,9 @@ export const SelectList = styled.ul`
 
 export const SelectItem = styled.li`
   border-top: 1px solid ${({ theme }) => theme.color.dark};
+  &:first-child {
+    border-top: none;
+  }
 `;
 
 export const SelectButton = styled.button`
