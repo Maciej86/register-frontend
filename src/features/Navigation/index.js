@@ -18,6 +18,7 @@ import { NAVIGATION } from "../../core/InfoText";
 import { AiFillDatabase } from "react-icons/ai";
 import { CiSettings } from "react-icons/ci";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { RiOrganizationChart } from "react-icons/ri";
 
 export const Navigation = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,10 @@ export const Navigation = () => {
               <LinkNav to={NAVIGATION.NAV_LINK_DASHBOARD}>
                 <LuLayoutDashboard size={"18px"} />
                 {NAVIGATION.NAV_DASHBOARD}
+              </LinkNav>
+              <LinkNav to={NAVIGATION.NAV_LINK_ORGANIZATION}>
+                <RiOrganizationChart size={"18px"} />
+                {NAVIGATION.NAV_ORGANIZATION}
               </LinkNav>
               <LinkNav to={NAVIGATION.NAV_LINK_SETINGS}>
                 <CiSettings size={"21px"} />

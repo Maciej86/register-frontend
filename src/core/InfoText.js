@@ -11,6 +11,8 @@ export const NAVIGATION = {
   NAV_LINK_DASHBOARD: "pulpit",
   NAV_SETINGS: "Ustawienia",
   NAV_LINK_SETINGS: "ustawienia",
+  NAV_ORGANIZATION: "Organizacje",
+  NAV_LINK_ORGANIZATION: "organizacje",
   NAV_LOGIN_OUT: "Wyloguj się",
 };
 

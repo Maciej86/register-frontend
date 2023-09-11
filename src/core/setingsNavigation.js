@@ -4,6 +4,7 @@ import { App } from "./App";
 import { Setings } from "../features/Setings";
 import { Dashboard } from "../features/Dashboard";
 import { ErrorPage } from "../features/ErrorPage";
+import { Organization } from "../features/Organization";
 
 export const RouterSetings = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ export const RouterSetings = createBrowserRouter([
       {
         path: NAVIGATION.NAV_LINK_DASHBOARD,
         element: <Dashboard />,
+      },
+      {
+        path: NAVIGATION.NAV_LINK_ORGANIZATION,
+        element: <Organization />,
       },
       {
         path: NAVIGATION.NAV_LINK_SETINGS,
