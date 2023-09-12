@@ -89,7 +89,6 @@ export const selectLoginUser = (state) => state.loginUserStore;
 export const selectTokenSessionUserState = (state) =>
   selectLoginUser(state).user[0]?.token_login;
 export const selectUserState = (state) => selectLoginUser(state).user[0];
-export const selectUserOrganization = (state) => selectLoginUser(state).user[1];
 export const selectEditAccount = (state) => selectLoginUser(state).editAccount;
 export const selectEditPassword = (state) =>
   selectLoginUser(state).changingPassword;

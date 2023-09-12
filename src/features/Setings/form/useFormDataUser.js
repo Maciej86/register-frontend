@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import {
   selectEmailExsist,
   selectStatusUser,
-  selectUserOrganization,
   selectUserState,
 } from "../../../common/User/sliceUser";
+import { selectUserOrganization } from "../../../common/Organization/sliceOrganization";
 import { useEditAccount } from "../checkValue/useEditAccount";
 import { USERSETINGS } from "../../../core/InfoText";
 import { themesStyles } from "../../../core/styles/theme";

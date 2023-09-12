@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectUserOrganization } from "../User/sliceUser";
+import { selectUserOrganization } from "./sliceOrganization";
 
 export const useOrganization = () => {
   const organization = useSelector(selectUserOrganization);

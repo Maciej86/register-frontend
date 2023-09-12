@@ -5,8 +5,8 @@ import {
   fetchLoginUserOut,
   selectUserState,
   selectStatusloadingOut,
-  selectUserOrganization,
 } from "../../common/User/sliceUser";
+import { selectUserOrganization } from "../../common/Organization/sliceOrganization";
 import { SelectButton, SelectItem } from "../../common/elements/styled";
 import { useOrganization } from "../../common/Organization/useOrganization";
 import { Loader } from "../../common/Loader";

@@ -8,3 +8,7 @@ export const URL_USER = {
   CHANGED_PASSWORD: `${url}/editpassword`,
   EMAIL_EXSIST: `${url}/emailexsist`,
 };
+
+export const URL_ORGANIZATION = {
+  FETCH_ORGANIZATION: `${url}/organization`,
+};

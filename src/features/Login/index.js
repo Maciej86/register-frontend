@@ -7,6 +7,7 @@ import {
 import { useLoginUser } from "./useLoginUser";
 import { USER_TEXT } from "../../core/InfoText";
 import { Loader } from "../../common/Loader";
+import { selectLoadingOrganization } from "../../common/Organization/sliceOrganization";
 import { ErrorLogin } from "./ErrorLogin";
 import {
   Conteiner,
@@ -31,6 +32,7 @@ export const PanelLogin = () => {
     useLoginUser();
   const loginOut = useSelector(selectStatusUserOut);
   const statusLogin = useSelector(selectStatusUser);
+  const loadingOrganization = useSelector(selectLoadingOrganization);
   const userExist = useSelector(selectUserNotExist);
 
   return (
@@ -79,7 +81,7 @@ export const PanelLogin = () => {
                   placeholder="****************"
                 />
               </FormBox>
-              {statusLogin ? (
+              {statusLogin || loadingOrganization ? (
                 <Loader size="36px" border="4px" margin="25px auto 0 auto" />
               ) : (
                 <FormButton type="submit">Zaloguj</FormButton>
