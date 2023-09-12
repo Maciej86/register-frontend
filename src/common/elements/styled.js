@@ -12,7 +12,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  padding: 10px 7px;
+  padding: ${({ $small }) => ($small ? "5px" : "10px")} 7px;
   background: ${({ theme }) => theme.color.dark};
   border: none;
   border-bottom: 2px solid

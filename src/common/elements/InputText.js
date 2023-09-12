@@ -11,6 +11,7 @@ export const InputText = forwardRef(
       minlength = "0",
       placeholder,
       empty = false,
+      small = false,
       value = "",
       disabled = "",
     },
@@ -27,6 +28,7 @@ export const InputText = forwardRef(
           placeholder={placeholder}
           ref={ref}
           $empty={empty}
+          $small={small}
           defaultValue={value}
           disabled={disabled}
         />
