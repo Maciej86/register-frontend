@@ -8,7 +8,7 @@ import {
 import { Loader } from "../../../common/Loader";
 import { Button } from "../../../common/elements/Button";
 import { InputText } from "../../../common/elements/InputText";
-import { FormInput } from "../styled";
+import { FormArea } from "../styled";
 import { LuSave } from "react-icons/lu";
 
 export const useFromPasswordUser = () => {
@@ -25,7 +25,7 @@ export const useFromPasswordUser = () => {
 
   const formUserPassword = (
     <form>
-      <FormInput>
+      <FormArea>
         <InputText
           id="oldpassword"
           placeholder={USERSETINGS.OLD_PASSWORD_PLACEHOLDER}
@@ -52,7 +52,7 @@ export const useFromPasswordUser = () => {
           empty={passwordUserEmpty[2] === "" || differentPasswords.current}
           ref={(ref) => (passwordUserValue.current[2] = ref)}
         />
-      </FormInput>
+      </FormArea>
       {loadingEditPassword ? (
         <Loader margin="0" />
       ) : (

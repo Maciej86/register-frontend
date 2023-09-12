@@ -15,7 +15,7 @@ import { SelectDefaultValue } from "../../../common/elements/SelectDefaultValue"
 import { InputSelect } from "../../../common/elements/InputSelect";
 import { InputText } from "../../../common/elements/InputText";
 import { Button } from "../../../common/elements/Button";
-import { FormInput } from "../styled";
+import { FormArea } from "../styled";
 import { LuSave } from "react-icons/lu";
 
 export const useFormDataUser = () => {
@@ -41,7 +41,7 @@ export const useFormDataUser = () => {
 
   const formUserSetings = (
     <form>
-      <FormInput>
+      <FormArea>
         <InputText
           id="name"
           placeholder={USERSETINGS.NAME_PLACEHOLDER}
@@ -102,7 +102,7 @@ export const useFormDataUser = () => {
           valueData={themeValueData}
           setValueData={setThemeValueData}
         />
-      </FormInput>
+      </FormArea>
       {loadingEditUser ? (
         <Loader margin="0" />
       ) : (

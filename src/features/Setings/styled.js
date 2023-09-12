@@ -6,7 +6,7 @@ export const Conteiner = styled.div`
   gap: 25px;
 `;
 
-export const FormInput = styled.div`
+export const FormArea = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 25px;
