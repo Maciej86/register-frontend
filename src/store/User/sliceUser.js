@@ -5,7 +5,7 @@ const initialUser = {
   userOut: false,
   userNotExist: false,
   editAccount: false,
-  changingPassword: false,
+  changingPassword: "",
   loading: false,
   loadingTokenUser: false,
   loadingOut: false,
