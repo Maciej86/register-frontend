@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import {
   fetchEditPassword,
+  resetUser,
   selectEditPassword,
   selectErrorServer,
 } from "../../../store/User/sliceUser";
@@ -28,6 +29,7 @@ export const useEditPassword = (userData) => {
         })
       );
     }
+    dispatch(resetUser());
   }, [errorServer]);
 
   useEffect(() => {
@@ -49,6 +51,7 @@ export const useEditPassword = (userData) => {
         })
       );
     }
+    dispatch(resetUser());
   }, [confirmNewPassword]);
 
   const changedPassword = () => {

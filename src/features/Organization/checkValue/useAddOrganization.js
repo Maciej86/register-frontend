@@ -4,6 +4,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { addConfirm } from "../../Confirm/sliceConfirm";
 import {
   fetchAddNewOrganization,
+  resetOrganization,
   selectAddNewOrganization,
 } from "../../../store/Organization/sliceOrganization";
 import { selectUserState } from "../../../store/User/sliceUser";
@@ -16,13 +17,16 @@ export const useAddOrganization = () => {
   const [emptyNameOrganization, setEmptyNameOrganization] = useState(false);
 
   useEffect(() => {
-    dispatch(
-      addConfirm({
-        id: nanoid(),
-        type: true,
-        text: "Utworzono nową organizację.",
-      })
-    );
+    if (confirmAddNewOrganization) {
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: true,
+          text: "Utworzono nową organizację.",
+        })
+      );
+    }
+    dispatch(resetOrganization());
   }, [confirmAddNewOrganization]);
 
   const addNewOrganization = () => {

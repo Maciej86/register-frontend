@@ -32,6 +32,9 @@ const organizationSlice = createSlice({
       state.loadingNewOrganization = false;
       state.addNewOrganization = true;
     },
+    resetOrganization: (state) => {
+      state.addNewOrganization = false;
+    },
   },
 });
 
@@ -53,6 +56,7 @@ export const {
   setOrganization,
   fetchAddNewOrganization,
   setAddNewOrganization,
+  resetOrganization,
 } = organizationSlice.actions;
 
 export default organizationSlice.reducer;
