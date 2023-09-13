@@ -5,6 +5,7 @@ const initialOrganization = {
   loadingOrganization: false,
   loadingTokenOrganization: false,
   loadingNewOrganization: false,
+  addNewOrganization: false,
 };
 
 const organizationSlice = createSlice({
@@ -24,10 +25,12 @@ const organizationSlice = createSlice({
     },
     fetchAddNewOrganization: (state) => {
       state.loadingNewOrganization = true;
+      state.addNewOrganization = false;
     },
     setAddNewOrganization: (state, { payload: organization }) => {
       state.organization = organization;
       state.loadingNewOrganization = false;
+      state.addNewOrganization = true;
     },
   },
 });
@@ -37,6 +40,10 @@ export const selectUserOrganization = (state) =>
   selectOrganization(state).organization;
 export const selectLoadingOrganization = (state) =>
   selectOrganization(state).loadingOrganization;
+export const selectLoadingAddOrganization = (state) =>
+  selectOrganization(state).loadingNewOrganization;
+export const selectAddNewOrganization = (state) =>
+  selectOrganization(state).addNewOrganization;
 export const selectLoadingTokenOrganization = (state) =>
   selectOrganization(state).loadingTokenOrganization;
 
@@ -45,6 +52,7 @@ export const {
   fetchTokenOrganization,
   setOrganization,
   fetchAddNewOrganization,
+  setAddNewOrganization,
 } = organizationSlice.actions;
 
 export default organizationSlice.reducer;

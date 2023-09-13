@@ -5,6 +5,7 @@ import {
   fetchAddNewOrganization,
   fetchOrganization,
   fetchTokenOrganization,
+  setAddNewOrganization,
   setOrganization,
 } from "./sliceOrganization";
 
@@ -22,8 +23,17 @@ function* fetchOrganizationHandler({ payload: id }) {
   }
 }
 
-function* fetchAddNewOrganizationHandler({ payload: name }) {
-  console.log(name);
+function* fetchAddNewOrganizationHandler({ payload: data }) {
+  try {
+    const organization = yield axios.post(URL_ORGANIZATION.ADD_ORGANIZATION, {
+      idUser: data.idUser,
+      name: data.name,
+    });
+    yield delay(timeDelay);
+    yield put(setAddNewOrganization(organization.data));
+  } catch (error) {
+    yield console.error(error);
+  }
 }
 
 export function* organizationSaga() {
