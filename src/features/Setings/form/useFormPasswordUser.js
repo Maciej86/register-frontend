@@ -23,8 +23,6 @@ export const useFromPasswordUser = () => {
     oldPassword,
   } = useEditPassword(userData);
 
-  console.log(oldPassword);
-
   const formUserPassword = (
     <form>
       <FormArea>
