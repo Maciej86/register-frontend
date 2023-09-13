@@ -23,6 +23,8 @@ export const useFromPasswordUser = () => {
     oldPassword,
   } = useEditPassword(userData);
 
+  console.log(oldPassword);
+
   const formUserPassword = (
     <form>
       <FormArea>
@@ -31,7 +33,7 @@ export const useFromPasswordUser = () => {
           placeholder={USERSETINGS.OLD_PASSWORD_PLACEHOLDER}
           label={USERSETINGS.OLD_PASSWORD_LABEL}
           type="password"
-          empty={passwordUserEmpty[0] === "" || oldPassword.current}
+          empty={passwordUserEmpty[0] === "" || oldPassword}
           ref={(ref) => (passwordUserValue.current[0] = ref)}
         />
         <InputText

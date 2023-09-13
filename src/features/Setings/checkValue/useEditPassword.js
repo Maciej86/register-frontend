@@ -14,9 +14,9 @@ export const useEditPassword = (userData) => {
   const confirmNewPassword = useSelector(selectEditPassword);
   const errorServer = useSelector(selectErrorServer);
   const [passwordUserEmpty, setPasswordUserEmpty] = useState([]);
+  const [oldPassword, setOldPassword] = useState(false);
   const passwordUserValue = useRef([]);
   const differentPasswords = useRef(false);
-  const oldPassword = useRef(false);
 
   useEffect(() => {
     if (errorServer) {
@@ -40,7 +40,8 @@ export const useEditPassword = (userData) => {
         })
       );
     } else if (confirmNewPassword === "error") {
-      oldPassword.current = true;
+      // oldPassword.current = true;
+      setOldPassword(true);
       dispatch(
         addConfirm({
           id: nanoid(),
@@ -52,7 +53,8 @@ export const useEditPassword = (userData) => {
   }, [confirmNewPassword]);
 
   const changedPassword = () => {
-    oldPassword.current = false;
+    // oldPassword.current = false;
+    setOldPassword(false);
     differentPasswords.current = false;
 
     setPasswordUserEmpty(() => []);
