@@ -1,3 +1,7 @@
+export const COMMON = {
+  ERROR_CONNECT_SERVER: "Błąd połączenia z serwerem.",
+};
+
 export const USER_TEXT = {
   LOGIN_USER_EMPTY_INPUT: "Proszę o wypełnienie wszystkich pól.",
   LOGIN_USER_ERROR_DATA:

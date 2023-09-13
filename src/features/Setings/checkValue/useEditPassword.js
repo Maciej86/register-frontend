@@ -7,7 +7,7 @@ import {
   selectErrorServer,
 } from "../../../common/User/sliceUser";
 import { addConfirm } from "../../Confirm/sliceConfirm";
-import { USERSETINGS } from "../../../core/InfoText";
+import { COMMON, USERSETINGS } from "../../../core/InfoText";
 
 export const useEditPassword = (userData) => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export const useEditPassword = (userData) => {
         addConfirm({
           id: nanoid(),
           type: false,
-          text: "Błąd połączenia z serwerem",
+          text: COMMON.ERROR_CONNECT_SERVER,
         })
       );
     }
