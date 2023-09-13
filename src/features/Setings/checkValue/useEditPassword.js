@@ -40,7 +40,6 @@ export const useEditPassword = (userData) => {
         })
       );
     } else if (confirmNewPassword === "error") {
-      // oldPassword.current = true;
       setOldPassword(true);
       dispatch(
         addConfirm({
@@ -53,7 +52,6 @@ export const useEditPassword = (userData) => {
   }, [confirmNewPassword]);
 
   const changedPassword = () => {
-    // oldPassword.current = false;
     setOldPassword(false);
     differentPasswords.current = false;
 
