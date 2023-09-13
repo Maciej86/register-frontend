@@ -7,7 +7,7 @@ import {
   selectEditAccount,
   selectEmailExsist,
   selectErrorServer,
-} from "../../../common/User/sliceUser";
+} from "../../../store/User/sliceUser";
 import { addConfirm } from "../../Confirm/sliceConfirm";
 import { COMMON, USERSETINGS } from "../../../core/InfoText";
 

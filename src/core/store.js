@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./rootSaga";
-import loginUserSlice from "../common/User/sliceUser";
-import organizationSlice from "../common/Organization/sliceOrganization";
+import loginUserSlice from "../store/User/sliceUser";
+import organizationSlice from "../store/Organization/sliceOrganization";
 import toggleNavSlice from "../features/Bar/sliceBar";
 import confirmSlice from "../features/Confirm/sliceConfirm";
 

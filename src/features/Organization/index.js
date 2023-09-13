@@ -1,25 +1,10 @@
-import { LuSave } from "react-icons/lu";
-import { InputText } from "../../common/elements/InputText";
-import { Button } from "../../common/elements/Button";
 import { TileTwoHalf } from "../../common/TileTwoHalf";
 import { Tile } from "../../common/Tile";
-import { Conteiner, FormArea } from "./styled";
+import { Conteiner } from "./styled";
+import { useFormAddOrganization } from "./form/useFormAddOrganization";
 
 export const Organization = () => {
-  const formNewOrganization = (
-    <form>
-      <FormArea>
-        <InputText
-          id="organization"
-          placeholder="Nazwa organizacji"
-          label=""
-          small={true}
-          maxlength="50"
-        />
-        <Button text="Dodaj" icon={<LuSave size={"15px"} />} action={null} />
-      </FormArea>
-    </form>
-  );
+  const { formNewOrganization } = useFormAddOrganization();
 
   return (
     <Conteiner>

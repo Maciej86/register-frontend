@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchLoginUser } from "../../common/User/sliceUser";
+import { fetchLoginUser } from "../../store/User/sliceUser";
 
 export const useLoginUser = () => {
   const dispatch = useDispatch();

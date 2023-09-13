@@ -4,7 +4,7 @@ import { USERSETINGS } from "../../../core/InfoText";
 import {
   selectStatusEditPassword,
   selectUserState,
-} from "../../../common/User/sliceUser";
+} from "../../../store/User/sliceUser";
 import { Loader } from "../../../common/Loader";
 import { Button } from "../../../common/elements/Button";
 import { InputText } from "../../../common/elements/InputText";

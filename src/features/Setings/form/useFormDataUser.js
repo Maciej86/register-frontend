@@ -4,12 +4,12 @@ import {
   selectEmailExsist,
   selectStatusUser,
   selectUserState,
-} from "../../../common/User/sliceUser";
-import { selectUserOrganization } from "../../../common/Organization/sliceOrganization";
+} from "../../../store/User/sliceUser";
+import { useRoleUser } from "../../../store/User/useRoleUser";
+import { selectUserOrganization } from "../../../store/Organization/sliceOrganization";
 import { useEditAccount } from "../checkValue/useEditAccount";
 import { USERSETINGS } from "../../../core/InfoText";
 import { themesStyles } from "../../../core/styles/theme";
-import { useRoleUser } from "../../../common/User/useRoleUser";
 import { Loader } from "../../../common/Loader";
 import { SelectDefaultValue } from "../../../common/elements/SelectDefaultValue";
 import { InputSelect } from "../../../common/elements/InputSelect";

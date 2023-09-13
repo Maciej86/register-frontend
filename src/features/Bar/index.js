@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRoleUser } from "../../common/User/useRoleUser";
+import { useRoleUser } from "../../store/User/useRoleUser";
 import {
   fetchLoginUserOut,
   selectUserState,
   selectStatusloadingOut,
-} from "../../common/User/sliceUser";
-import { selectUserOrganization } from "../../common/Organization/sliceOrganization";
+} from "../../store/User/sliceUser";
+import { selectUserOrganization } from "../../store/Organization/sliceOrganization";
+import { useOrganization } from "../../store/Organization/useOrganization";
 import { SelectButton, SelectItem } from "../../common/elements/styled";
-import { useOrganization } from "../../common/Organization/useOrganization";
 import { Loader } from "../../common/Loader";
 import {
   selectToggleNavState,

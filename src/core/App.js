@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { PanelLogin } from "../features/Login";
-import { getDataSessionStorage } from "../common/User/saveSessionStorage";
+import { getDataSessionStorage } from "../store/User/saveSessionStorage";
 import {
   fetchLoginUserToken,
   selectStatusTokenUser,
   selectTokenSessionUserState,
   selectUserNotExist,
-} from "../common/User/sliceUser";
+} from "../store/User/sliceUser";
 import { selectToggleNavState } from "../features/Bar/sliceBar";
 import { Bar } from "../features/Bar";
 import { LoadingToken } from "../features/Login/LoadingToken";
@@ -18,7 +18,7 @@ import { Confirm } from "../features/Confirm";
 import {
   selectLoadingOrganization,
   selectLoadingTokenOrganization,
-} from "../common/Organization/sliceOrganization";
+} from "../store/Organization/sliceOrganization";
 
 export const App = () => {
   const dispatch = useDispatch();
