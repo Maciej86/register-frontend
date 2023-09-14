@@ -6,6 +6,7 @@ import {
   fetchAddNewOrganization,
   resetOrganization,
   selectAddNewOrganization,
+  selectNameOrganizationExsist,
 } from "../../../store/Organization/sliceOrganization";
 import { selectUserState } from "../../../store/User/sliceUser";
 
@@ -13,8 +14,10 @@ export const useAddOrganization = () => {
   const dispatch = useDispatch();
   const userData = useSelector(selectUserState);
   const confirmAddNewOrganization = useSelector(selectAddNewOrganization);
+  const organizationExsist = useSelector(selectNameOrganizationExsist);
   const nameOrganization = useRef(null);
   const [emptyNameOrganization, setEmptyNameOrganization] = useState(false);
+  console.log(confirmAddNewOrganization);
 
   useEffect(() => {
     if (confirmAddNewOrganization) {
@@ -28,6 +31,19 @@ export const useAddOrganization = () => {
     }
     dispatch(resetOrganization());
   }, [confirmAddNewOrganization]);
+
+  useEffect(() => {
+    if (organizationExsist) {
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: false,
+          text: "Podana nazwa organizacji już istnieje.",
+        })
+      );
+    }
+    dispatch(resetOrganization());
+  }, [organizationExsist]);
 
   const addNewOrganization = () => {
     setEmptyNameOrganization(false);
