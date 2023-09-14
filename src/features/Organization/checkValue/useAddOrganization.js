@@ -17,7 +17,6 @@ export const useAddOrganization = () => {
   const organizationExsist = useSelector(selectNameOrganizationExsist);
   const nameOrganization = useRef(null);
   const [emptyNameOrganization, setEmptyNameOrganization] = useState(false);
-  console.log(confirmAddNewOrganization);
 
   useEffect(() => {
     if (confirmAddNewOrganization) {
