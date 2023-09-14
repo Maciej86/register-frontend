@@ -31,12 +31,12 @@ const organizationSlice = createSlice({
     },
     setAddNewOrganization: (state, { payload: organization }) => {
       state.loadingNewOrganization = false;
-      state.nameOrganizationExsist = true;
-      if (organization.length === 0) {
-        return;
+      if (organization.length !== 0) {
+        state.addNewOrganization = true;
+        state.organization = organization;
+      } else {
+        state.nameOrganizationExsist = true;
       }
-      state.addNewOrganization = true;
-      state.organization = organization;
     },
     resetOrganization: (state) => {
       state.addNewOrganization = false;
