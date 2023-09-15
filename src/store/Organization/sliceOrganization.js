@@ -2,9 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialOrganization = {
   organization: [],
+  allOrganizaton: [],
   loadingOrganization: false,
   loadingTokenOrganization: false,
   loadingNewOrganization: false,
+  loadingAllOrganization: false,
   addNewOrganization: false,
   nameOrganizationExsist: false,
 };
@@ -23,6 +25,7 @@ const organizationSlice = createSlice({
       state.organization = organization;
       state.loadingOrganization = false;
       state.loadingTokenOrganization = false;
+      state.loadingRefreshOrganization = false;
     },
     fetchAddNewOrganization: (state) => {
       state.loadingNewOrganization = true;
@@ -38,6 +41,13 @@ const organizationSlice = createSlice({
         state.nameOrganizationExsist = true;
       }
     },
+    fetchAllOrganization: (state) => {
+      state.loadingAllOrganization = true;
+    },
+    setAllOrganization: (state, { payload: organization }) => {
+      state.allOrganizaton = organization;
+      state.loadingAllOrganization = false;
+    },
     resetOrganization: (state) => {
       state.addNewOrganization = false;
       state.nameOrganizationExsist = false;
@@ -48,10 +58,14 @@ const organizationSlice = createSlice({
 export const selectOrganization = (state) => state.organizationStore;
 export const selectUserOrganization = (state) =>
   selectOrganization(state).organization;
+export const selectAllOrganization = (state) =>
+  selectOrganization(state).allOrganizaton;
 export const selectLoadingOrganization = (state) =>
   selectOrganization(state).loadingOrganization;
 export const selectLoadingAddOrganization = (state) =>
   selectOrganization(state).loadingNewOrganization;
+export const selectLoadingAllOrganization = (state) =>
+  selectOrganization(state).loadingAllOrganization;
 export const selectAddNewOrganization = (state) =>
   selectOrganization(state).addNewOrganization;
 export const selectNameOrganizationExsist = (state) =>
@@ -65,6 +79,8 @@ export const {
   setOrganization,
   fetchAddNewOrganization,
   setAddNewOrganization,
+  fetchAllOrganization,
+  setAllOrganization,
   resetOrganization,
 } = organizationSlice.actions;
 
