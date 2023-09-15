@@ -4,6 +4,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import {
   fetchEditEmail,
   fetchEditUser,
+  resetUser,
   selectEditAccount,
   selectEmailExsist,
   selectErrorServer,
@@ -47,6 +48,7 @@ export const useEditAccount = (
         })
       );
     }
+    dispatch(resetUser());
   }, [confirmEditAccount]);
 
   useEffect(() => {
@@ -64,6 +66,7 @@ export const useEditAccount = (
       changedValueUser();
       checkEmail.current = false;
     }
+    dispatch(resetUser());
   }, [emailExsist]);
 
   const changedDataUser = () => {
