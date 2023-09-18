@@ -85,7 +85,6 @@ export const SelectButton = styled.button`
 `;
 
 const getColorButtonOnValue = (theme, action) => {
-  console.log(action);
   switch (action) {
     case "confirm":
       return theme.color.info;
@@ -99,7 +98,6 @@ const getColorButtonOnValue = (theme, action) => {
 };
 
 const getColorButtoHovernOnValue = (theme, action) => {
-  console.log(action);
   switch (action) {
     case "confirm":
       return theme.color.info_dark;
