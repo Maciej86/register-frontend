@@ -84,27 +84,53 @@ export const SelectButton = styled.button`
   cursor: pointer;
 `;
 
+const getColorButtonOnValue = (theme, action) => {
+  console.log(action);
+  switch (action) {
+    case "confirm":
+      return theme.color.info;
+    case "cancel":
+      return theme.color.primary_color;
+    case "delete":
+      return theme.color.danger;
+    default:
+      return theme.color.info;
+  }
+};
+
+const getColorButtoHovernOnValue = (theme, action) => {
+  console.log(action);
+  switch (action) {
+    case "confirm":
+      return theme.color.info_dark;
+    case "cancel":
+      return theme.color.dark;
+    case "delete":
+      return theme.color.danger_dark;
+    default:
+      return theme.color.info_dark;
+  }
+};
+
 export const BoxButton = styled.button`
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 27px;
+  padding: 4px ${({ $small }) => ($small ? "10px" : "27px")};
   background: ${({ theme, $typeAction }) =>
-    $typeAction ? theme.color.info : theme.color.primary_color};
+    getColorButtonOnValue(theme, $typeAction)};
   border: 2px solid
-    ${({ theme, $typeAction }) =>
-      $typeAction ? theme.color.info : theme.color.primary_color};
+    ${({ theme, $typeAction }) => getColorButtonOnValue(theme, $typeAction)};
   border-radius: ${({ theme }) => theme.size.border_radius_small};
   font-weight: 500;
   color: ${({ theme, $typeAction }) =>
-    $typeAction ? theme.color.white : theme.color.info};
-  box-shadow: ${({ theme, $typeAction }) =>
-    $typeAction ? `0 0 15px ${theme.color.dark}` : "none"};
+    $typeAction !== "cancel" ? theme.color.white : theme.color.info};
+  box-shadow: 0 0 15px ${({ theme }) => theme.color.dark};
   cursor: pointer;
   transition: background 0.4s;
 
   &:hover {
     background: ${({ theme, $typeAction }) =>
-      $typeAction ? theme.color.info_dark : theme.color.dark};
+      getColorButtoHovernOnValue(theme, $typeAction)};
   }
 `;
