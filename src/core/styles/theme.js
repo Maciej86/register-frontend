@@ -1,6 +1,7 @@
 export const ThemeDefault = {
   color: {
     primary_color: "rgb(30, 35, 64)",
+    primary_color_alpha: "rgba(30, 35, 64, .6)",
     primary_light_color: "rgb(58, 66, 117)",
     primary_dark_color: "rgb(40, 45, 77)",
     info: "rgb(77, 142, 246)",
@@ -43,6 +44,7 @@ export const ThemeDefault = {
 export const ThemeEbonyClay = {
   color: {
     primary_color: "rgb(35, 35, 59)",
+    primary_color_alpha: "rgba(35, 35, 59, .6)",
     primary_light_color: "rgb(56, 57, 77)",
     primary_dark_color: "rgb(26, 27, 48)",
     info: "rgb(118, 102, 206)",
