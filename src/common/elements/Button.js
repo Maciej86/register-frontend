@@ -6,6 +6,7 @@ export const Button = ({
   small = false,
   typeAction = "confirm",
   action = null,
+  disabled = "",
 }) => {
   return (
     <BoxButton
@@ -13,6 +14,7 @@ export const Button = ({
       $typeAction={typeAction}
       onClick={action}
       $small={small}
+      disabled={disabled}
     >
       {icon}
       {text}

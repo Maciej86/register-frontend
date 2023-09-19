@@ -135,4 +135,14 @@ export const BoxButton = styled.button`
     background: ${({ theme, $typeAction }) =>
       getColorButtoHovernOnValue(theme, $typeAction)};
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &:disabled:hover {
+    background: ${({ theme, $typeAction }) =>
+      getColorButtonOnValue(theme, $typeAction)};
+  }
 `;
