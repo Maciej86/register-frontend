@@ -90,6 +90,8 @@ const getColorButtonOnValue = (theme, action) => {
       return theme.color.info;
     case "cancel":
       return theme.color.primary_color;
+    case "warning":
+      return theme.color.warning;
     case "delete":
       return theme.color.danger;
     default:
@@ -103,6 +105,8 @@ const getColorButtoHovernOnValue = (theme, action) => {
       return theme.color.info_dark;
     case "cancel":
       return theme.color.dark;
+    case "warning":
+      return theme.color.warning_dark;
     case "delete":
       return theme.color.danger_dark;
     default:
