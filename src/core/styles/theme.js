@@ -5,7 +5,7 @@ export const ThemeDefault = {
     primary_light_color: "rgb(58, 66, 117)",
     primary_dark_color: "rgb(40, 45, 77)",
     info: "rgb(77, 142, 246)",
-    info_dark: "rgb(53, 93, 158)",
+    info_dark: "rgb(37, 66, 112)",
     success: "rgb(0, 211, 197)",
     success_dark: "rgb(0, 103, 53)",
     warning: "rgb(238, 187, 81)",
