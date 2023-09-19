@@ -48,7 +48,7 @@ export const ThemeEbonyClay = {
     primary_light_color: "rgb(56, 57, 77)",
     primary_dark_color: "rgb(26, 27, 48)",
     info: "rgb(118, 102, 206)",
-    info_dark: "rgb(70, 61, 122)",
+    info_dark: "rgb(45, 39, 79)",
     success: "rgb(112, 199, 162)",
     success_dark: "rgb(57,103, 83)",
     warning: "rgb(245, 185, 61)",
