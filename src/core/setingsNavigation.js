@@ -5,6 +5,7 @@ import { Setings } from "../features/Setings";
 import { Dashboard } from "../features/Dashboard";
 import { ErrorPage } from "../features/ErrorPage";
 import { Organization } from "../features/Organization";
+import { OrganizationEdit } from "../features/OrganizationEdit";
 
 export const RouterSetings = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const RouterSetings = createBrowserRouter([
       {
         path: NAVIGATION.NAV_LINK_ORGANIZATION,
         element: <Organization />,
+      },
+      {
+        path: "organizacja-edytuj/:id",
+        element: <OrganizationEdit />,
       },
       {
         path: NAVIGATION.NAV_LINK_SETINGS,
