@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRoleUser } from "../../store/User/useRoleUser";
 import {
@@ -6,9 +6,6 @@ import {
   selectUserState,
   selectStatusloadingOut,
 } from "../../store/User/sliceUser";
-import { selectUserOrganization } from "../../store/Organization/sliceOrganization";
-import { useOrganization } from "../../store/Organization/useOrganization";
-import { SelectButton, SelectItem } from "../../common/elements/styled";
 import { Loader } from "../../common/Loader";
 import {
   selectToggleNavState,
@@ -35,9 +32,6 @@ import {
   TextLink,
   LoginOut,
   ButtonToggleMobileNav,
-  BarCenter,
-  SelectBar,
-  SelectListBar,
 } from "./styled";
 import { NAVIGATION } from "../../core/InfoText";
 import { BsArrowBarRight } from "react-icons/bs";
@@ -47,16 +41,10 @@ import { CiSettings, CiLogout } from "react-icons/ci";
 export const Bar = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserState);
-  const organization = useSelector(selectUserOrganization);
   const loadingOut = useSelector(selectStatusloadingOut);
   const toggleNav = useSelector(selectToggleNavState);
-  const { NameMainOrganization } = useOrganization();
   const [visible, setVisible] = useState(false);
   const { userRole } = useRoleUser(user?.role);
-  const [valueSelect, setValueSelect] = useState(
-    NameMainOrganization(user?.main_organization)
-  );
-  const [selectVisibility, setSelectVisibility] = useState(false);
 
   const userInitials = () => {
     const name = user?.name.slice(0, 1).toUpperCase();
@@ -83,36 +71,6 @@ export const Bar = () => {
           <BsArrowBarRight size={"25px"} />
         </ButtonToggleMobileNav>
       </BarLeft>
-
-      <BarCenter>
-        <SelectBar onMouseLeave={() => setSelectVisibility(() => false)}>
-          <Button
-            onClick={() =>
-              setSelectVisibility((selectVisibility) => !selectVisibility)
-            }
-            $visible={selectVisibility}
-          >
-            {/* <PiUserThin size={"30px"} /> */}
-            <Data>
-              <DataValue>Organizacja</DataValue>
-              <DataName>{valueSelect}</DataName>
-            </Data>
-          </Button>
-          <SelectListBar $isVisibilty={selectVisibility}>
-            {organization?.map((item, index) => (
-              <SelectItem key={index}>
-                <SelectButton
-                  type="button"
-                  onClick={() => setValueSelect(item.name_organization)}
-                >
-                  {item.name_organization}
-                </SelectButton>
-              </SelectItem>
-            ))}
-          </SelectListBar>
-        </SelectBar>
-      </BarCenter>
-
       <BarRight>
         <Button
           onClick={() => setVisible((visible) => !visible)}

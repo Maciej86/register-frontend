@@ -60,35 +60,6 @@ export const ButtonToggleMobileNav = styled(ButtonToggleNav)`
   }
 `;
 
-export const BarCenter = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-left: 10px;
-  flex-grow: 1;
-
-  @media (max-width: 400px) {
-    order: 1;
-    width: 100%;
-    padding: 10px;
-  }
-`;
-
-export const SelectBar = styled.div`
-  position: relative;
-
-  ${DataName} {
-    text-align: center;
-  }
-
-  ${DataValue} {
-    text-align: center;
-  }
-`;
-
-export const SelectListBar = styled(SelectList)`
-  top: 42px;
-`;
-
 export const BarRight = styled.div`
   display: flex;
   justify-content: flex-end;

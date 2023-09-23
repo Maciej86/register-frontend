@@ -5,15 +5,28 @@ import {
   fetchAddNewOrganization,
   fetchAllOrganization,
   fetchUserOrganization,
-  fetchTokenOrganization,
   setAddNewOrganization,
   setAllOrganization,
   setUserOrganization,
+  fetchOrganization,
+  setOrganization,
 } from "./sliceOrganization";
 
 const timeDelay = 700;
 
 function* fetchOrganizationHandler({ payload: id }) {
+  try {
+    const organization = yield axios.post(URL_ORGANIZATION.FETCH_ORGANIZATION, {
+      id: id,
+    });
+    yield delay(timeDelay);
+    yield put(setOrganization(organization.data));
+  } catch (error) {
+    yield console.error(error);
+  }
+}
+
+function* fetchUserOrganizationHandler({ payload: id }) {
   try {
     const organization = yield axios.post(
       URL_ORGANIZATION.FETCH_USER_ORGANIZATION,
@@ -52,10 +65,8 @@ function* fetchAllOrganizationHandler() {
 }
 
 export function* organizationSaga() {
-  yield takeEvery(
-    [fetchUserOrganization.type, fetchTokenOrganization.type],
-    fetchOrganizationHandler
-  );
+  yield takeEvery(fetchUserOrganization.type, fetchUserOrganizationHandler);
   yield takeEvery(fetchAddNewOrganization.type, fetchAddNewOrganizationHandler);
   yield takeEvery(fetchAllOrganization.type, fetchAllOrganizationHandler);
+  yield takeEvery(fetchOrganization.type, fetchOrganizationHandler);
 }

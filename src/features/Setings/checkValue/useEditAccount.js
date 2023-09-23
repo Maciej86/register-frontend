@@ -123,7 +123,6 @@ export const useEditAccount = (
           lastname: dataUserValue.current[1].value.trim(),
           email: dataUserValue.current[2].value.trim(),
           theme: themeValueData,
-          organization: organizationValueData,
         })
       );
     }

@@ -6,7 +6,6 @@ import {
   selectUserState,
 } from "../../../store/User/sliceUser";
 import { useRoleUser } from "../../../store/User/useRoleUser";
-import { selectUserOrganization } from "../../../store/Organization/sliceOrganization";
 import { useEditAccount } from "../checkValue/useEditAccount";
 import { USERSETINGS } from "../../../core/InfoText";
 import { themesStyles } from "../../../core/styles/theme";
@@ -20,24 +19,17 @@ import { LuSave } from "react-icons/lu";
 
 export const useFormDataUser = () => {
   const userData = useSelector(selectUserState);
-  const organization = useSelector(selectUserOrganization);
   const emailExsist = useSelector(selectEmailExsist);
   const loadingEditUser = useSelector(selectStatusUser);
   const [themeValue, setThemeValue] = useState(() =>
     SelectDefaultValue(themesStyles, userData?.theme)
   );
-  const [organizationValue, setOrganizationValue] = useState(() =>
-    SelectDefaultValue(organization, userData?.main_organization)
-  );
   const [themeValueData, setThemeValueData] = useState(userData?.theme);
-  const [organizationValueData, setOrganizationValueData] = useState(
-    userData?.main_organization
-  );
+  const [organizationValueData] = useState(userData?.main_organization);
   const { changedDataUser, dataUserValue, detaUserEmpty, incorrectEmail } =
     useEditAccount(userData, themeValueData, organizationValueData);
   const { userRole } = useRoleUser(userData?.role);
   const [themeToggle, setThemeToggle] = useState(false);
-  const [organizationToggle, setOrganizationToggle] = useState(false);
 
   const formUserSetings = (
     <form>
@@ -79,17 +71,6 @@ export const useFormDataUser = () => {
           label={USERSETINGS.TYPE_ACCOUNT}
           value={userRole}
           disabled="disabled"
-        />
-        <InputSelect
-          id="organization"
-          label="Główna organizacja"
-          data={organization}
-          toggle={organizationToggle}
-          setToggle={setOrganizationToggle}
-          value={organizationValue}
-          setValue={setOrganizationValue}
-          valueData={organizationValueData}
-          setValueData={setOrganizationValueData}
         />
         <InputSelect
           id="theme"

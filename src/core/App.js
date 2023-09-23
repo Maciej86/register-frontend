@@ -15,17 +15,11 @@ import { LoadingToken } from "../features/Login/LoadingToken";
 import { Navigation } from "../features/Navigation";
 import { Content, Main } from "./styles/GlobalStyle";
 import { Confirm } from "../features/Confirm";
-import {
-  selectLoadingOrganization,
-  selectLoadingTokenOrganization,
-} from "../store/Organization/sliceOrganization";
 
 export const App = () => {
   const dispatch = useDispatch();
   const tokenUser = useSelector(selectTokenSessionUserState);
   const loadingTokenUser = useSelector(selectStatusTokenUser);
-  const loadingTokenOrganization = useSelector(selectLoadingTokenOrganization);
-  const loadingOrganization = useSelector(selectLoadingOrganization);
   const userExist = useSelector(selectUserNotExist);
   const toggleNav = useSelector(selectToggleNavState);
   const tokenSessionStorage = getDataSessionStorage("token_user");
@@ -36,11 +30,11 @@ export const App = () => {
     }
   }, [dispatch, tokenUser, tokenSessionStorage]);
 
-  if (loadingTokenUser || loadingTokenOrganization) {
+  if (loadingTokenUser) {
     return <LoadingToken />;
   }
 
-  if (userExist || loadingOrganization || tokenSessionStorage === "") {
+  if (userExist || tokenSessionStorage === "") {
     return <PanelLogin />;
   }
 

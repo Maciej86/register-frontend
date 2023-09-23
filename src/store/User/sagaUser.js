@@ -14,10 +14,6 @@ import {
   setLoginOutUser,
   setLoginUser,
 } from "./sliceUser";
-import {
-  fetchUserOrganization,
-  fetchTokenOrganization,
-} from "../Organization/sliceOrganization";
 import { saveDataInSessionStorage } from "./saveSessionStorage";
 import { URL_USER } from "../../core/urlBackend";
 const timeDelay = 700;
@@ -29,7 +25,6 @@ function* fechLoginUserHandler({ payload: dataUser }) {
       password: dataUser.password,
     });
     yield delay(timeDelay);
-    yield put(fetchUserOrganization(user.data[0]?.id));
     yield put(setLoginUser(user.data));
     if (user.data.length !== 0) {
       yield call(
@@ -49,7 +44,6 @@ function* fetchLoginUserTokenHandler({ payload: token }) {
       token: token,
     });
     yield delay(timeDelay);
-    yield put(fetchTokenOrganization(user.data[0]?.id));
     yield put(setLoginUser(user.data));
   } catch (error) {
     yield console.error(error);
@@ -76,7 +70,6 @@ function* fechEditUserHandler({ payload: dataUser }) {
       lastname: dataUser.lastname,
       email: dataUser.email,
       theme: dataUser.theme,
-      organizationid: dataUser.organization,
     });
     yield delay(timeDelay);
     yield put(setEditUser(user.data));
