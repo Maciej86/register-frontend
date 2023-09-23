@@ -50,6 +50,7 @@ function* fetchAddNewOrganizationHandler({ payload: data }) {
     });
     yield delay(timeDelay);
     yield put(setAddNewOrganization(organization.data));
+    yield put(setUserOrganization(organization.data));
   } catch (error) {
     yield console.error(error);
   }
@@ -67,7 +68,7 @@ function* fetchAllOrganizationHandler() {
 
 export function* organizationSaga() {
   yield takeEvery(
-    [fetchUserOrganization.type, fetchTokenOrganization.type],
+    [fetchTokenOrganization.type, fetchAddNewOrganization.type],
     fetchUserOrganizationHandler
   );
   yield takeEvery(fetchAddNewOrganization.type, fetchAddNewOrganizationHandler);

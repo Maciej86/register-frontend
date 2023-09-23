@@ -46,7 +46,7 @@ const organizationSlice = createSlice({
       state.loadingNewOrganization = false;
       if (organization.length !== 0) {
         state.addNewOrganization = true;
-        state.organization = organization;
+        state.userOrganization = organization;
       } else {
         state.nameOrganizationExsist = true;
       }
