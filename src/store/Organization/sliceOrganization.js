@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialOrganization = {
-  organization: [],
+  userOrganization: [],
   allOrganizaton: [],
   loadingOrganization: false,
   loadingTokenOrganization: false,
@@ -15,14 +15,14 @@ const organizationSlice = createSlice({
   name: "organization",
   initialState: initialOrganization,
   reducers: {
-    fetchOrganization: (state) => {
+    fetchUserOrganization: (state) => {
       state.loadingOrganization = true;
     },
     fetchTokenOrganization: (state) => {
       state.loadingTokenOrganization = true;
     },
-    setOrganization: (state, { payload: organization }) => {
-      state.organization = organization;
+    setUserOrganization: (state, { payload: organization }) => {
+      state.userOrganization = organization;
       state.loadingOrganization = false;
       state.loadingTokenOrganization = false;
       state.loadingRefreshOrganization = false;
@@ -57,7 +57,7 @@ const organizationSlice = createSlice({
 
 export const selectOrganization = (state) => state.organizationStore;
 export const selectUserOrganization = (state) =>
-  selectOrganization(state).organization;
+  selectOrganization(state).userOrganization;
 export const selectAllOrganization = (state) =>
   selectOrganization(state).allOrganizaton;
 export const selectLoadingOrganization = (state) =>
@@ -74,9 +74,9 @@ export const selectLoadingTokenOrganization = (state) =>
   selectOrganization(state).loadingTokenOrganization;
 
 export const {
-  fetchOrganization,
+  fetchUserOrganization,
   fetchTokenOrganization,
-  setOrganization,
+  setUserOrganization,
   fetchAddNewOrganization,
   setAddNewOrganization,
   fetchAllOrganization,

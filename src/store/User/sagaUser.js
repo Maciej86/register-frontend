@@ -15,7 +15,7 @@ import {
   setLoginUser,
 } from "./sliceUser";
 import {
-  fetchOrganization,
+  fetchUserOrganization,
   fetchTokenOrganization,
 } from "../Organization/sliceOrganization";
 import { saveDataInSessionStorage } from "./saveSessionStorage";
@@ -29,7 +29,7 @@ function* fechLoginUserHandler({ payload: dataUser }) {
       password: dataUser.password,
     });
     yield delay(timeDelay);
-    yield put(fetchOrganization(user.data[0]?.id));
+    yield put(fetchUserOrganization(user.data[0]?.id));
     yield put(setLoginUser(user.data));
     if (user.data.length !== 0) {
       yield call(
