@@ -5,6 +5,7 @@ import {
   fetchAddNewOrganization,
   fetchAllOrganization,
   fetchUserOrganization,
+  fetchTokenOrganization,
   setAddNewOrganization,
   setAllOrganization,
   setUserOrganization,
@@ -65,7 +66,10 @@ function* fetchAllOrganizationHandler() {
 }
 
 export function* organizationSaga() {
-  yield takeEvery(fetchUserOrganization.type, fetchUserOrganizationHandler);
+  yield takeEvery(
+    [fetchUserOrganization.type, fetchTokenOrganization.type],
+    fetchUserOrganizationHandler
+  );
   yield takeEvery(fetchAddNewOrganization.type, fetchAddNewOrganizationHandler);
   yield takeEvery(fetchAllOrganization.type, fetchAllOrganizationHandler);
   yield takeEvery(fetchOrganization.type, fetchOrganizationHandler);
