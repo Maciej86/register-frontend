@@ -7,7 +7,7 @@ import {
 } from "../../../store/User/sliceUser";
 import { useRoleUser } from "../../../store/User/useRoleUser";
 import { useEditAccount } from "../checkValue/useEditAccount";
-import { USERSETINGS } from "../../../core/InfoText";
+import { USERSETTINGS } from "../../../core/InfoText";
 import { themesStyles } from "../../../core/styles/theme";
 import { Loader } from "../../../common/Loader";
 import { SelectDefaultValue } from "../../../common/elements/SelectDefaultValue";
@@ -36,8 +36,8 @@ export const useFormDataUser = () => {
       <FormArea>
         <InputText
           id="name"
-          placeholder={USERSETINGS.NAME_PLACEHOLDER}
-          label={USERSETINGS.NAME_PLACEHOLDER}
+          placeholder={USERSETTINGS.NAME_PLACEHOLDER}
+          label={USERSETTINGS.NAME_PLACEHOLDER}
           maxlength="20"
           empty={detaUserEmpty[0] === ""}
           ref={(ref) => (dataUserValue.current[0] = ref)}
@@ -45,8 +45,8 @@ export const useFormDataUser = () => {
         />
         <InputText
           id="lastname"
-          placeholder={USERSETINGS.LAST_NAME_PLACEHOLDER}
-          label={USERSETINGS.LAST_NAME_LABEL}
+          placeholder={USERSETTINGS.LAST_NAME_PLACEHOLDER}
+          label={USERSETTINGS.LAST_NAME_LABEL}
           maxlength="45"
           empty={detaUserEmpty[1] === ""}
           ref={(ref) => (dataUserValue.current[1] = ref)}
@@ -55,8 +55,8 @@ export const useFormDataUser = () => {
         <InputText
           id="email"
           type="email"
-          placeholder={USERSETINGS.EMAIL_PLACEHOLDER}
-          label={USERSETINGS.EMAIL_LABEL}
+          placeholder={USERSETTINGS.EMAIL_PLACEHOLDER}
+          label={USERSETTINGS.EMAIL_LABEL}
           maxlength="50"
           empty={
             detaUserEmpty[2] === "" ||
@@ -68,13 +68,13 @@ export const useFormDataUser = () => {
         />
         <InputText
           id="role"
-          label={USERSETINGS.TYPE_ACCOUNT}
+          label={USERSETTINGS.TYPE_ACCOUNT}
           value={userRole}
           disabled="disabled"
         />
         <InputSelect
           id="theme"
-          label={USERSETINGS.TYPE_THEME}
+          label={USERSETTINGS.TYPE_THEME}
           data={themesStyles}
           toggle={themeToggle}
           setToggle={setThemeToggle}
@@ -88,7 +88,7 @@ export const useFormDataUser = () => {
         <Loader margin="0" />
       ) : (
         <Button
-          text={USERSETINGS.COFIRM_DATA_USER}
+          text={USERSETTINGS.COFIRM_DATA_USER}
           icon={<LuSave size={"15px"} />}
           action={changedDataUser}
         />

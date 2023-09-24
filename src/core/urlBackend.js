@@ -10,6 +10,7 @@ export const URL_USER = {
 };
 
 export const URL_ORGANIZATION = {
+  FETCH_ORGANIZATION: `${url}/organization`,
   FETCH_USER_ORGANIZATION: `${url}/userorganization`,
   ADD_ORGANIZATION: `${url}/addorganization`,
   ALL_ORGANIZATION: `${url}/allorganization`,

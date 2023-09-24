@@ -8,7 +8,7 @@ import {
   selectErrorServer,
 } from "../../../store/User/sliceUser";
 import { addConfirm } from "../../Confirm/sliceConfirm";
-import { COMMON, USERSETINGS } from "../../../core/InfoText";
+import { COMMON, USERSETTINGS } from "../../../core/InfoText";
 
 export const useEditPassword = (userData) => {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ export const useEditPassword = (userData) => {
         addConfirm({
           id: nanoid(),
           type: true,
-          text: USERSETINGS.CONFIRM_EDIT_PASSWORD,
+          text: USERSETTINGS.CONFIRM_EDIT_PASSWORD,
         })
       );
     } else if (confirmNewPassword === "error") {
@@ -47,7 +47,7 @@ export const useEditPassword = (userData) => {
         addConfirm({
           id: nanoid(),
           type: false,
-          text: USERSETINGS.CONFIRM_OLD_PASSWORD_ERROR,
+          text: USERSETTINGS.CONFIRM_OLD_PASSWORD_ERROR,
         })
       );
     }
@@ -73,7 +73,7 @@ export const useEditPassword = (userData) => {
           addConfirm({
             id: nanoid(),
             type: false,
-            text: USERSETINGS.CONFIRMT_EDIT_EMPTY_INPUT,
+            text: USERSETTINGS.CONFIRMT_EDIT_EMPTY_INPUT,
           })
         );
         return;
@@ -89,7 +89,7 @@ export const useEditPassword = (userData) => {
         addConfirm({
           id: nanoid(),
           type: false,
-          text: USERSETINGS.CONFIRM_DIFFRENT_PASSWORD,
+          text: USERSETTINGS.CONFIRM_DIFFRENT_PASSWORD,
         })
       );
       return;
@@ -101,7 +101,7 @@ export const useEditPassword = (userData) => {
         addConfirm({
           id: nanoid(),
           type: false,
-          text: USERSETINGS.CONFRIM_LENGTH_PASSWORD,
+          text: USERSETTINGS.CONFRIM_LENGTH_PASSWORD,
         })
       );
       return;

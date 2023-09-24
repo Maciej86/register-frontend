@@ -10,13 +10,9 @@ import {
   selectErrorServer,
 } from "../../../store/User/sliceUser";
 import { addConfirm } from "../../Confirm/sliceConfirm";
-import { COMMON, USERSETINGS } from "../../../core/InfoText";
+import { COMMON, USERSETTINGS } from "../../../core/InfoText";
 
-export const useEditAccount = (
-  userData,
-  themeValueData,
-  organizationValueData
-) => {
+export const useEditAccount = (userData, themeValueData) => {
   const dispatch = useDispatch();
   const confirmEditAccount = useSelector(selectEditAccount);
   const emailExsist = useSelector(selectEmailExsist);
@@ -44,7 +40,7 @@ export const useEditAccount = (
         addConfirm({
           id: nanoid(),
           type: true,
-          text: USERSETINGS.CONFIRM_EDIT_ACCOUNT,
+          text: USERSETTINGS.CONFIRM_EDIT_ACCOUNT,
         })
       );
     }
@@ -58,7 +54,7 @@ export const useEditAccount = (
           addConfirm({
             id: nanoid(),
             type: false,
-            text: USERSETINGS.CONFIRM_EMAIL_EXSIST,
+            text: USERSETTINGS.CONFIRM_EMAIL_EXSIST,
           })
         );
         return;
@@ -84,7 +80,7 @@ export const useEditAccount = (
           addConfirm({
             id: nanoid(),
             type: false,
-            text: USERSETINGS.CONFIRMT_EDIT_EMPTY_INPUT,
+            text: USERSETTINGS.CONFIRMT_EDIT_EMPTY_INPUT,
           })
         );
         return;
@@ -100,7 +96,7 @@ export const useEditAccount = (
         addConfirm({
           id: nanoid(),
           type: false,
-          text: USERSETINGS.CONFIRM_ERROR_EMAIL,
+          text: USERSETTINGS.CONFIRM_ERROR_EMAIL,
         })
       );
       return;

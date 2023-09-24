@@ -5,15 +5,15 @@ import { Conteiner } from "./styled";
 import { useFormDataUser } from "./form/useFormDataUser";
 import { useFromPasswordUser } from "./form/useFormPasswordUser";
 
-export const Setings = () => {
+export const Settings = () => {
   const formUserSetings = useFormDataUser();
   const formUserPassword = useFromPasswordUser();
 
   return (
     <Conteiner>
       <Tile
-        title={COMPONENTS.COM_TITLE_SETINGS}
-        subTitle={COMPONENTS.COM_SUBTITLE_SETINGS}
+        title={COMPONENTS.COM_TITLE_SETTINGS}
+        subTitle={COMPONENTS.COM_SUBTITLE_SETTINGS}
         body={formUserSetings}
       />
       <Tile

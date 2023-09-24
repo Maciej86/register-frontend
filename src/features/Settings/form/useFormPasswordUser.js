@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useEditPassword } from "../checkValue/useEditPassword";
-import { USERSETINGS } from "../../../core/InfoText";
+import { USERSETTINGS } from "../../../core/InfoText";
 import {
   selectStatusEditPassword,
   selectUserState,
@@ -28,16 +28,16 @@ export const useFromPasswordUser = () => {
       <FormArea>
         <InputText
           id="oldpassword"
-          placeholder={USERSETINGS.OLD_PASSWORD_PLACEHOLDER}
-          label={USERSETINGS.OLD_PASSWORD_LABEL}
+          placeholder={USERSETTINGS.OLD_PASSWORD_PLACEHOLDER}
+          label={USERSETTINGS.OLD_PASSWORD_LABEL}
           type="password"
           empty={passwordUserEmpty[0] === "" || oldPassword}
           ref={(ref) => (passwordUserValue.current[0] = ref)}
         />
         <InputText
           id="newpassword"
-          placeholder={USERSETINGS.NEW_PASSWORD_PLACEHOLDER}
-          label={USERSETINGS.NEW_PASSWORD_LABEL}
+          placeholder={USERSETTINGS.NEW_PASSWORD_PLACEHOLDER}
+          label={USERSETTINGS.NEW_PASSWORD_LABEL}
           type="password"
           maxlength="100"
           empty={passwordUserEmpty[1] === "" || differentPasswords.current}
@@ -45,8 +45,8 @@ export const useFromPasswordUser = () => {
         />
         <InputText
           id="newpasswordconform"
-          placeholder={USERSETINGS.NEW_PASSWORD_REPEAT_PLACEHOLDER}
-          label={USERSETINGS.NEW_PASSWORD_REPEAT_LABEL}
+          placeholder={USERSETTINGS.NEW_PASSWORD_REPEAT_PLACEHOLDER}
+          label={USERSETTINGS.NEW_PASSWORD_REPEAT_LABEL}
           type="password"
           maxlength="100"
           empty={passwordUserEmpty[2] === "" || differentPasswords.current}
@@ -57,7 +57,7 @@ export const useFromPasswordUser = () => {
         <Loader margin="0" />
       ) : (
         <Button
-          text={USERSETINGS.NEW_PASSWORD_CONFIRM}
+          text={USERSETTINGS.NEW_PASSWORD_CONFIRM}
           icon={<LuSave size={"15px"} />}
           action={changedPassword}
         />

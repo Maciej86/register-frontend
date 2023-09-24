@@ -21,12 +21,12 @@ export const NAVIGATION = {
 };
 
 export const COMPONENTS = {
-  COM_TITLE_SETINGS: "Ustawienia",
-  COM_SUBTITLE_SETINGS: "Dane użytkownika",
+  COM_TITLE_SETTINGS: "Ustawienia",
+  COM_SUBTITLE_SETTINGS: "Dane użytkownika",
   COM_TITLE_CHANGED_PASSWORD: "Zmiana hasła",
 };
 
-export const USERSETINGS = {
+export const USERSETTINGS = {
   NAME_LABEL: "Imię",
   NAME_PLACEHOLDER: "Twoje imię",
   LAST_NAME_LABEL: "Nazwisko",
