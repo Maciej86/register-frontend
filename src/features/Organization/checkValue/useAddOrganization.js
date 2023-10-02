@@ -4,7 +4,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { addConfirm } from "../../Confirm/sliceConfirm";
 import {
   fetchAddNewOrganization,
-  resetOrganization,
+  resetOrganizationState,
   selectAddNewOrganization,
   selectNameOrganizationExsist,
 } from "../../../store/Organization/sliceOrganization";
@@ -27,8 +27,8 @@ export const useAddOrganization = () => {
           text: "Utworzono nową organizację.",
         })
       );
+      dispatch(resetOrganizationState());
     }
-    dispatch(resetOrganization());
   }, [confirmAddNewOrganization]);
 
   useEffect(() => {
@@ -40,8 +40,8 @@ export const useAddOrganization = () => {
           text: "Podana nazwa organizacji już istnieje.",
         })
       );
+      dispatch(resetOrganizationState());
     }
-    dispatch(resetOrganization());
   }, [organizationExsist]);
 
   const addNewOrganization = () => {
