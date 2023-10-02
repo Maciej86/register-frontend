@@ -82,7 +82,7 @@ const loginUserSlice = createSlice({
       state.loadingEditPassword = false;
       state.loadingEditPassword = false;
     },
-    resetUser: (state) => {
+    resetUserState: (state) => {
       state.changingPassword = "";
       state.editAccount = false;
       state.emailExsist = "";
@@ -124,7 +124,7 @@ export const {
   fetchEditEmail,
   setEditEmail,
   serverConnectionError,
-  resetUser,
+  resetUserState,
 } = loginUserSlice.actions;
 
 export default loginUserSlice.reducer;
