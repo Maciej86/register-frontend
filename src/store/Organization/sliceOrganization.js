@@ -58,6 +58,9 @@ const organizationSlice = createSlice({
       state.allOrganizaton = organization;
       state.loadingAllOrganization = false;
     },
+    fetchEditNameOrganization: (state) => {
+      state.loadingEditOrganization = true;
+    },
     resetOrganizationState: (state) => {
       state.addNewOrganization = false;
       state.nameOrganizationExsist = false;
@@ -76,6 +79,8 @@ export const selectLoadingOrganization = (state) =>
   selectOrganization(state).loadingOrganization;
 export const selectLoadingAddOrganization = (state) =>
   selectOrganization(state).loadingNewOrganization;
+export const selectLoadingEditOrganization = (state) =>
+  selectOrganization(state).loadingEditOrganization;
 export const selectLoadingOneOrganization = (state) =>
   selectOrganization(state).loadingOneOrganization;
 export const selectLoadingAllOrganization = (state) =>
@@ -97,6 +102,7 @@ export const {
   setAddNewOrganization,
   fetchAllOrganization,
   setAllOrganization,
+  fetchEditNameOrganization,
   resetOrganizationState,
 } = organizationSlice.actions;
 
