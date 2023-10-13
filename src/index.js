@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
-import { store } from "./core/store";
+import { store } from "./store/store";
 import { RouterSetings } from "./core/setingsNavigation";
 import { GlobalStyle } from "./core/styles/GlobalStyle";
 import { useSwitchTheme } from "./core/useSwitchTheme";
