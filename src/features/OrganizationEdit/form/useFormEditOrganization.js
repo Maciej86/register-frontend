@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../../../common/Loader";
 import { Button } from "../../../common/elements/Button";
 import { InputText } from "../../../common/elements/InputText";
-import { FormArea } from "../styled";
+import { FormArea, NotExsist } from "../styled";
 import {
   fetchOrganization,
   selectLoadingEditOrganization,
@@ -15,6 +15,7 @@ import { LuFileEdit } from "react-icons/lu";
 
 export const useFormEditOrganization = () => {
   const { id } = useParams();
+
   const {
     editNameOrganization,
     idEditOrganization,
@@ -31,31 +32,34 @@ export const useFormEditOrganization = () => {
     dispatch(fetchOrganization(id));
   }, [id]);
 
-  const formEditname = (
-    <form>
-      <FormArea>
-        <InputText
-          id="organization"
-          placeholder="Nazwa organizacji"
-          label=""
-          small={true}
-          maxlength="50"
-          value={nameOrganization[0]?.name_organization}
-          empty={emptyNameOrganization}
-          ref={editNameOrganization}
-        />
-        <input type="hidden" value={id} ref={idEditOrganization} />
-        {loadingEditNameOrganization ? (
-          <Loader margin="0 67px" />
-        ) : (
-          <Button
-            text="Zmień nazwę"
-            icon={<LuFileEdit size={"15px"} />}
-            action={changeNameOrganization}
+  const formEditname =
+    nameOrganization.length == 0 ? (
+      <NotExsist>Taka kategoria nie istnieje.</NotExsist>
+    ) : (
+      <form>
+        <FormArea>
+          <InputText
+            id="organization"
+            placeholder="Nazwa organizacji"
+            label=""
+            small={true}
+            maxlength="50"
+            value={nameOrganization[0]?.name_organization}
+            empty={emptyNameOrganization}
+            ref={editNameOrganization}
           />
-        )}
-      </FormArea>
-    </form>
-  );
+          <input type="hidden" value={id} ref={idEditOrganization} />
+          {loadingEditNameOrganization ? (
+            <Loader margin="0 67px" />
+          ) : (
+            <Button
+              text="Zmień nazwę"
+              icon={<LuFileEdit size={"15px"} />}
+              action={changeNameOrganization}
+            />
+          )}
+        </FormArea>
+      </form>
+    );
   return { formEditname };
 };
