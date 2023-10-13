@@ -44,10 +44,14 @@ const organizationSlice = createSlice({
       state.loadingEditOrganization = true;
     },
     setEditNameOrganization: (state, { payload: organization }) => {
-      console.log(organization);
       state.loadingEditOrganization = false;
       if (organization.length !== 0) {
         state.editNameOrganization = true;
+        const index = state.userOrganization.findIndex(
+          (item) => item.id_organization === organization[0].id
+        );
+        state.userOrganization[index].name_organization =
+          organization[0].name_organization;
       } else {
         state.nameOrganizationExsist = true;
       }

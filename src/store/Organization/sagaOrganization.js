@@ -47,7 +47,6 @@ function* fetchAddNewOrganizationHandler({ payload: data }) {
 }
 
 function* fetchEditNameOrganizationHandler({ payload: data }) {
-  console.log(data);
   try {
     const organization = yield axios.post(
       URL_ORGANIZATION.FETCH_EDIT_NAME_ORGANIZATION,

@@ -10,9 +10,13 @@ export const useFetchData = (urlFetch, dependency = [], parameters = {}) => {
       try {
         const dataFetch = await axios.post(urlFetch, parameters);
         setFetchData(dataFetch.data);
-        setTimeout(() => {
+        const timeFetch = setTimeout(() => {
           setFetchDataLoading(false);
         }, 700);
+
+        return () => {
+          clearTimeout(timeFetch);
+        };
       } catch (error) {
         console.error(error);
       }
