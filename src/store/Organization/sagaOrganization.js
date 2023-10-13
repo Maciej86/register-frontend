@@ -17,18 +17,6 @@ import {
 
 const timeDelay = 700;
 
-function* fetchOrganizationHandler({ payload: id }) {
-  try {
-    const organization = yield axios.post(URL_ORGANIZATION.FETCH_ORGANIZATION, {
-      id: id,
-    });
-    yield delay(timeDelay);
-    yield put(setOrganization(organization.data));
-  } catch (error) {
-    yield console.error(error);
-  }
-}
-
 function* fetchUserOrganizationHandler({ payload: id }) {
   try {
     const organization = yield axios.post(
@@ -85,7 +73,6 @@ export function* organizationSaga() {
     fetchUserOrganizationHandler
   );
   yield takeEvery(fetchAddNewOrganization.type, fetchAddNewOrganizationHandler);
-  yield takeEvery(fetchOrganization.type, fetchOrganizationHandler);
   yield takeEvery(
     fetchEditNameOrganization.type,
     fetchEditNameOrganizationHandler

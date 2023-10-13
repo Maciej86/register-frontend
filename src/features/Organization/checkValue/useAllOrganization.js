@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAddNewOrganization } from "../../../store/Organization/sliceOrganization";
 import { URL_ORGANIZATION } from "../../../core/urlBackend";
+import { useFetchData } from "../../../core/useFetchData";
 import { Loader } from "../../../common/Loader";
 import { Modal } from "../../../common/Modal";
 import { Button } from "../../../common/elements/Button";
+import { LinkButton } from "../../../common/elements/styled";
 import {
   ColumnAction,
   ColumnCountUser,
@@ -21,8 +23,6 @@ import {
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 import { LuSave } from "react-icons/lu";
-import { LinkButton } from "../../../common/elements/styled";
-import { useFetchData } from "../../../core/useFetchData";
 
 export const useAllOrganizaton = () => {
   const addNewOrganization = useSelector(selectAddNewOrganization);
@@ -31,8 +31,8 @@ export const useAllOrganizaton = () => {
   const [selectedOrganization, setSelectedOrganization] = useState(null);
 
   const { fetchData, fetchDataLoading } = useFetchData(
-    URL_ORGANIZATION.ALL_ORGANIZATION,
-    addNewOrganization
+    URL_ORGANIZATION.FETCH_ALL_ORGANIZATION,
+    [addNewOrganization]
   );
 
   const ContentDelete = (

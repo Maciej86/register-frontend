@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialOrganization = {
-  organization: [],
   userOrganization: [],
-  loadingOneOrganization: false,
   loadingOrganization: false,
   loadingTokenOrganization: false,
   loadingNewOrganization: false,
   loadingEditOrganization: false,
+  loadingAllOrganization: false,
   addNewOrganization: false,
   nameOrganizationExsist: false,
   editNameOrganization: false,
@@ -17,13 +16,6 @@ const organizationSlice = createSlice({
   name: "organization",
   initialState: initialOrganization,
   reducers: {
-    fetchOrganization: (state) => {
-      state.loadingOneOrganization = true;
-    },
-    setOrganization: (state, { payload: organization }) => {
-      state.organization = organization;
-      state.loadingOneOrganization = false;
-    },
     fetchUserOrganization: (state) => {
       state.loadingOrganization = true;
     },
@@ -60,7 +52,6 @@ const organizationSlice = createSlice({
     resetOrganizationState: (state) => {
       state.addNewOrganization = false;
       state.nameOrganizationExsist = false;
-      state.editNameOrganization = false;
     },
   },
 });
@@ -70,31 +61,33 @@ export const selectOneOrganization = (state) =>
   selectOrganization(state).organization;
 export const selectUserOrganization = (state) =>
   selectOrganization(state).userOrganization;
+export const selectAllOrganization = (state) =>
+  selectOrganization(state).allOrganizaton;
 export const selectLoadingOrganization = (state) =>
   selectOrganization(state).loadingOrganization;
 export const selectLoadingAddOrganization = (state) =>
   selectOrganization(state).loadingNewOrganization;
 export const selectLoadingEditOrganization = (state) =>
   selectOrganization(state).loadingEditOrganization;
-export const selectLoadingOneOrganization = (state) =>
-  selectOrganization(state).loadingOneOrganization;
+export const selectLoadingAllOrganization = (state) =>
+  selectOrganization(state).loadingAllOrganization;
 export const selectAddNewOrganization = (state) =>
   selectOrganization(state).addNewOrganization;
 export const selectNameOrganizationExsist = (state) =>
   selectOrganization(state).nameOrganizationExsist;
 export const selectEditNameOrganization = (state) =>
-  selectOrganization(state).editNameOrganization;
+  selectOrganization(state).nameOrganizationExsist;
 export const selectLoadingTokenOrganization = (state) =>
   selectOrganization(state).loadingTokenOrganization;
 
 export const {
-  fetchOrganization,
-  setOrganization,
   fetchUserOrganization,
   fetchTokenOrganization,
   setUserOrganization,
   fetchAddNewOrganization,
   setAddNewOrganization,
+  fetchAllOrganization,
+  setAllOrganization,
   fetchEditNameOrganization,
   resetOrganizationState,
   setEditNameOrganization,
