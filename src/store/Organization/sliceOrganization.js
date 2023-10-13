@@ -12,6 +12,7 @@ const initialOrganization = {
   loadingAllOrganization: false,
   addNewOrganization: false,
   nameOrganizationExsist: false,
+  editNameOrganization: false,
 };
 
 const organizationSlice = createSlice({
@@ -35,7 +36,6 @@ const organizationSlice = createSlice({
       state.userOrganization = organization;
       state.loadingOrganization = false;
       state.loadingTokenOrganization = false;
-      state.loadingRefreshOrganization = false;
     },
     fetchAddNewOrganization: (state) => {
       state.loadingNewOrganization = true;
@@ -61,9 +61,15 @@ const organizationSlice = createSlice({
     fetchEditNameOrganization: (state) => {
       state.loadingEditOrganization = true;
     },
+    setEditNameOrganization: (state, { payload: organization }) => {
+      state.organization = organization;
+      state.editNameOrganization = organization;
+      state.loadingEditOrganization = false;
+    },
     resetOrganizationState: (state) => {
       state.addNewOrganization = false;
       state.nameOrganizationExsist = false;
+      state.editNameOrganization = false;
     },
   },
 });
@@ -89,6 +95,8 @@ export const selectAddNewOrganization = (state) =>
   selectOrganization(state).addNewOrganization;
 export const selectNameOrganizationExsist = (state) =>
   selectOrganization(state).nameOrganizationExsist;
+export const selectEditNameOrganization = (state) =>
+  selectOrganization(state).editNameOrganization;
 export const selectLoadingTokenOrganization = (state) =>
   selectOrganization(state).loadingTokenOrganization;
 
@@ -104,6 +112,7 @@ export const {
   setAllOrganization,
   fetchEditNameOrganization,
   resetOrganizationState,
+  setEditNameOrganization,
 } = organizationSlice.actions;
 
 export default organizationSlice.reducer;

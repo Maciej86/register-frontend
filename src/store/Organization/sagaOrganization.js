@@ -4,13 +4,15 @@ import { URL_ORGANIZATION } from "../../core/urlBackend";
 import {
   fetchAddNewOrganization,
   fetchAllOrganization,
-  fetchUserOrganization,
   fetchTokenOrganization,
   setAddNewOrganization,
   setAllOrganization,
   setUserOrganization,
   fetchOrganization,
   setOrganization,
+  fetchEditNameOrganization,
+  setEditNameOrganization,
+  fetchUserOrganization,
 } from "./sliceOrganization";
 
 const timeDelay = 700;
@@ -66,12 +68,37 @@ function* fetchAllOrganizationHandler() {
   }
 }
 
+function* fetchEditNameOrganizationHandler({ payload: data }) {
+  console.log(data);
+  try {
+    const organization = yield axios.post(
+      URL_ORGANIZATION.FETCH_EDIT_NAME_ORGANIZATION,
+      {
+        id: data.id,
+        name: data.name,
+      }
+    );
+    yield delay(timeDelay);
+    yield put(setEditNameOrganization(organization.data));
+  } catch (error) {
+    yield console.error(error);
+  }
+}
+
 export function* organizationSaga() {
   yield takeEvery(
-    [fetchTokenOrganization.type, fetchAddNewOrganization.type],
+    [
+      fetchUserOrganization.type,
+      fetchTokenOrganization.type,
+      fetchAddNewOrganization.type,
+    ],
     fetchUserOrganizationHandler
   );
   yield takeEvery(fetchAddNewOrganization.type, fetchAddNewOrganizationHandler);
   yield takeEvery(fetchAllOrganization.type, fetchAllOrganizationHandler);
   yield takeEvery(fetchOrganization.type, fetchOrganizationHandler);
+  yield takeEvery(
+    fetchEditNameOrganization.type,
+    fetchEditNameOrganizationHandler
+  );
 }
