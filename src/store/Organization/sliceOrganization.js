@@ -51,6 +51,7 @@ const organizationSlice = createSlice({
     resetOrganizationState: (state) => {
       state.addNewOrganization = false;
       state.nameOrganizationExsist = false;
+      state.editNameOrganization = false;
     },
   },
 });
