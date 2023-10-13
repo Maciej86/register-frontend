@@ -3,13 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialOrganization = {
   organization: [],
   userOrganization: [],
-  allOrganizaton: [],
   loadingOneOrganization: false,
   loadingOrganization: false,
   loadingTokenOrganization: false,
   loadingNewOrganization: false,
   loadingEditOrganization: false,
-  loadingAllOrganization: false,
   addNewOrganization: false,
   nameOrganizationExsist: false,
   editNameOrganization: false,
@@ -51,13 +49,6 @@ const organizationSlice = createSlice({
         state.nameOrganizationExsist = true;
       }
     },
-    fetchAllOrganization: (state) => {
-      state.loadingAllOrganization = true;
-    },
-    setAllOrganization: (state, { payload: organization }) => {
-      state.allOrganizaton = organization;
-      state.loadingAllOrganization = false;
-    },
     fetchEditNameOrganization: (state) => {
       state.loadingEditOrganization = true;
     },
@@ -79,8 +70,6 @@ export const selectOneOrganization = (state) =>
   selectOrganization(state).organization;
 export const selectUserOrganization = (state) =>
   selectOrganization(state).userOrganization;
-export const selectAllOrganization = (state) =>
-  selectOrganization(state).allOrganizaton;
 export const selectLoadingOrganization = (state) =>
   selectOrganization(state).loadingOrganization;
 export const selectLoadingAddOrganization = (state) =>
@@ -89,8 +78,6 @@ export const selectLoadingEditOrganization = (state) =>
   selectOrganization(state).loadingEditOrganization;
 export const selectLoadingOneOrganization = (state) =>
   selectOrganization(state).loadingOneOrganization;
-export const selectLoadingAllOrganization = (state) =>
-  selectOrganization(state).loadingAllOrganization;
 export const selectAddNewOrganization = (state) =>
   selectOrganization(state).addNewOrganization;
 export const selectNameOrganizationExsist = (state) =>
@@ -108,8 +95,6 @@ export const {
   setUserOrganization,
   fetchAddNewOrganization,
   setAddNewOrganization,
-  fetchAllOrganization,
-  setAllOrganization,
   fetchEditNameOrganization,
   resetOrganizationState,
   setEditNameOrganization,

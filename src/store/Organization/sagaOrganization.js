@@ -58,16 +58,6 @@ function* fetchAddNewOrganizationHandler({ payload: data }) {
   }
 }
 
-function* fetchAllOrganizationHandler() {
-  try {
-    const organization = yield axios.post(URL_ORGANIZATION.ALL_ORGANIZATION);
-    yield delay(timeDelay);
-    yield put(setAllOrganization(organization.data));
-  } catch (error) {
-    yield console.error(error);
-  }
-}
-
 function* fetchEditNameOrganizationHandler({ payload: data }) {
   console.log(data);
   try {
@@ -95,7 +85,6 @@ export function* organizationSaga() {
     fetchUserOrganizationHandler
   );
   yield takeEvery(fetchAddNewOrganization.type, fetchAddNewOrganizationHandler);
-  yield takeEvery(fetchAllOrganization.type, fetchAllOrganizationHandler);
   yield takeEvery(fetchOrganization.type, fetchOrganizationHandler);
   yield takeEvery(
     fetchEditNameOrganization.type,

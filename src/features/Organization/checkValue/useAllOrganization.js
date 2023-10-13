@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchAllOrganization,
-  selectAddNewOrganization,
-  selectAllOrganization,
-} from "../../../store/Organization/sliceOrganization";
+import { useSelector } from "react-redux";
+import { selectAddNewOrganization } from "../../../store/Organization/sliceOrganization";
+import { URL_ORGANIZATION } from "../../../core/urlBackend";
+import { Loader } from "../../../common/Loader";
 import { Modal } from "../../../common/Modal";
 import { Button } from "../../../common/elements/Button";
 import {
@@ -24,24 +22,26 @@ import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 import { LuSave } from "react-icons/lu";
 import { LinkButton } from "../../../common/elements/styled";
+import { useFetchData } from "../../../core/useFetchData";
 
 export const useAllOrganizaton = () => {
-  const dispatch = useDispatch();
-  const allOrganization = useSelector(selectAllOrganization);
   const addNewOrganization = useSelector(selectAddNewOrganization);
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false);
   const [visibleConfirmModal, setVisibleConfirmModal] = useState(false);
   const [selectedOrganization, setSelectedOrganization] = useState(null);
 
-  useEffect(() => {
-    dispatch(fetchAllOrganization());
-  }, [addNewOrganization]);
+  const { fetchData, fetchDataLoading } = useFetchData(
+    URL_ORGANIZATION.ALL_ORGANIZATION,
+    addNewOrganization
+  );
 
   const ContentDelete = (
     <TextDelete>{`Czy napewno chcesz usunąć organizację: ${selectedOrganization}?`}</TextDelete>
   );
 
-  const viewOrganization = (
+  const viewOrganization = fetchDataLoading ? (
+    <Loader margin=" 30px auto" />
+  ) : (
     <>
       <Modal
         setVisible={setVisibleDeleteModal}
@@ -75,7 +75,7 @@ export const useAllOrganizaton = () => {
             </TrHead>
           </thead>
           <tbody>
-            {allOrganization.map((item, index) => {
+            {fetchData?.map((item, index) => {
               index++;
               return (
                 <TrBody key={index}>
