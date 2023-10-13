@@ -45,7 +45,6 @@ const organizationSlice = createSlice({
       state.loadingEditOrganization = true;
     },
     setEditNameOrganization: (state, { payload: organization }) => {
-      state.organization = organization;
       state.editNameOrganization = organization;
       state.loadingEditOrganization = false;
     },
@@ -76,7 +75,7 @@ export const selectAddNewOrganization = (state) =>
 export const selectNameOrganizationExsist = (state) =>
   selectOrganization(state).nameOrganizationExsist;
 export const selectEditNameOrganization = (state) =>
-  selectOrganization(state).nameOrganizationExsist;
+  selectOrganization(state).editNameOrganization;
 export const selectLoadingTokenOrganization = (state) =>
   selectOrganization(state).loadingTokenOrganization;
 
