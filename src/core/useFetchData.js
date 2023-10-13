@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export const useFetchData = (urlFetch, dependency = [], parameters = {}) => {
-  console.log(parameters);
   const [fetchData, setFetchData] = useState([]);
   const [fetchDataLoading, setFetchDataLoading] = useState(true);
 

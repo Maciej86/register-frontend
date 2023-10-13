@@ -6,7 +6,6 @@ const initialOrganization = {
   loadingTokenOrganization: false,
   loadingNewOrganization: false,
   loadingEditOrganization: false,
-  loadingAllOrganization: false,
   addNewOrganization: false,
   nameOrganizationExsist: false,
   editNameOrganization: false,
@@ -45,8 +44,13 @@ const organizationSlice = createSlice({
       state.loadingEditOrganization = true;
     },
     setEditNameOrganization: (state, { payload: organization }) => {
-      state.editNameOrganization = organization;
+      console.log(organization);
       state.loadingEditOrganization = false;
+      if (organization.length !== 0) {
+        state.editNameOrganization = true;
+      } else {
+        state.nameOrganizationExsist = true;
+      }
     },
     resetOrganizationState: (state) => {
       state.addNewOrganization = false;
@@ -69,8 +73,6 @@ export const selectLoadingAddOrganization = (state) =>
   selectOrganization(state).loadingNewOrganization;
 export const selectLoadingEditOrganization = (state) =>
   selectOrganization(state).loadingEditOrganization;
-export const selectLoadingAllOrganization = (state) =>
-  selectOrganization(state).loadingAllOrganization;
 export const selectAddNewOrganization = (state) =>
   selectOrganization(state).addNewOrganization;
 export const selectNameOrganizationExsist = (state) =>
