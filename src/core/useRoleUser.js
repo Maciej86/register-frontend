@@ -1,5 +1,5 @@
 export const useRoleUser = () => {
-  const roleUser = ["Devwloper", "super Admin", "Administrator", "Użytkownik"];
+  const roleUser = ["Devwloper", "Super Admin", "Administrator", "Użytkownik"];
 
   const userRole = (role) => {
     let userRoleName = "";
