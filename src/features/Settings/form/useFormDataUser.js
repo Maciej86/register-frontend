@@ -5,7 +5,7 @@ import {
   selectStatusUser,
   selectUserState,
 } from "../../../store/User/sliceUser";
-import { useRoleUser } from "../../../store/User/useRoleUser";
+import { useRoleUser } from "../../../core/useRoleUser";
 import { useEditAccount } from "../checkValue/useEditAccount";
 import { USERSETTINGS } from "../../../core/InfoText";
 import { themesStyles } from "../../../core/styles/theme";
@@ -28,7 +28,7 @@ export const useFormDataUser = () => {
   const [organizationValueData] = useState(userData?.main_organization);
   const { changedDataUser, dataUserValue, detaUserEmpty, incorrectEmail } =
     useEditAccount(userData, themeValueData, organizationValueData);
-  const { userRole } = useRoleUser(userData?.role);
+  const { userRole } = useRoleUser();
   const [themeToggle, setThemeToggle] = useState(false);
 
   const formUserSetings = (
@@ -69,7 +69,7 @@ export const useFormDataUser = () => {
         <InputText
           id="role"
           label={USERSETTINGS.TYPE_ACCOUNT}
-          value={userRole}
+          value={userRole(userData?.role)}
           disabled="disabled"
         />
         <InputSelect
