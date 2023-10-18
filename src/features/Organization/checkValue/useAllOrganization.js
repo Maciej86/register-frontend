@@ -7,6 +7,9 @@ import { Loader } from "../../../common/Loader";
 import { Modal } from "../../../common/Modal";
 import { Button } from "../../../common/elements/Button";
 import { LinkButton } from "../../../common/elements/styled";
+import { FiEdit } from "react-icons/fi";
+import { GoTrash } from "react-icons/go";
+import { LuSave } from "react-icons/lu";
 import {
   ColumnAction,
   ColumnCountUser,
@@ -14,15 +17,12 @@ import {
   ColumnName,
   ConteinerTable,
   Table,
-  TextDelete,
   Th,
   ThLeft,
   TrBody,
   TrHead,
-} from "../styled";
-import { FiEdit } from "react-icons/fi";
-import { GoTrash } from "react-icons/go";
-import { LuSave } from "react-icons/lu";
+} from "../../../common/styledCommon";
+import { TextDelete } from "../styled";
 
 export const useAllOrganizaton = () => {
   const addNewOrganization = useSelector(selectAddNewOrganization);
