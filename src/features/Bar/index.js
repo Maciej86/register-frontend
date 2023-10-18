@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRoleUser } from "../../store/User/useRoleUser";
+import { useRoleUser } from "../../core/useRoleUser";
 import {
   fetchLoginUserOut,
   selectUserState,
@@ -44,7 +44,7 @@ export const Bar = () => {
   const loadingOut = useSelector(selectStatusloadingOut);
   const toggleNav = useSelector(selectToggleNavState);
   const [visible, setVisible] = useState(false);
-  const { userRole } = useRoleUser(user?.role);
+  const { userRole } = useRoleUser();
 
   const userInitials = () => {
     const name = user?.name.slice(0, 1).toUpperCase();
@@ -78,7 +78,7 @@ export const Bar = () => {
         >
           <Data>
             <DataName>{user?.name}</DataName>
-            <DataValue>{userRole}</DataValue>
+            <DataValue>{userRole(user?.role)}</DataValue>
           </Data>
           <PiUserThin size={"30px"} />
         </Button>
