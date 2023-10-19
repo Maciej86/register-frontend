@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { SelectList } from "../../common/elements/styled";
 
 export const Conteiner = styled.div`
   position: sticky;
