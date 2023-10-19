@@ -17,7 +17,7 @@ export const OrganizationEdit = () => {
       />
       <Tile
         title="Uzytkownicy w organizacji"
-        subTitle="Zarządzaj użytkownikami przypisanymi do tej organizacji"
+        subTitle="Zarządzaj użytkownikami w organizacji"
         body={formUserInOrganization}
       />
     </Conteiner>

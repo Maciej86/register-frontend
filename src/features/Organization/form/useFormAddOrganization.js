@@ -5,7 +5,7 @@ import { useAddOrganization } from "../checkValue/useAddOrganization";
 import { InputText } from "../../../common/elements/InputText";
 import { Button } from "../../../common/elements/Button";
 import { FormArea } from "../styled";
-import { LuSave } from "react-icons/lu";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 export const useFormAddOrganization = () => {
   const loadingAddOrganization = useSelector(selectLoadingAddOrganization);
@@ -29,7 +29,7 @@ export const useFormAddOrganization = () => {
         ) : (
           <Button
             text="Dodaj"
-            icon={<LuSave size={"15px"} />}
+            icon={<IoIosAddCircleOutline size={"15px"} />}
             action={addNewOrganization}
           />
         )}

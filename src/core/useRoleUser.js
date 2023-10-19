@@ -1,24 +1,46 @@
-export const useRoleUser = () => {
-  const roleUser = ["Devwloper", "Super Admin", "Administrator", "Użytkownik"];
+import { UserAdmin, UserDeveloper, UserUser } from "../common/styledCommon";
 
-  const userRole = (role) => {
+export const useRoleUser = () => {
+  const roleUser = ["Deweloper", "Super Admin", "Administrator", "Użytkownik"];
+
+  const userRole = (role, color) => {
     let userRoleName = "";
 
     switch (role) {
       case "0":
-        userRoleName = roleUser[parseInt(role)];
+        userRoleName = color ? (
+          <UserDeveloper>{roleUser[parseInt(role)]}</UserDeveloper>
+        ) : (
+          roleUser[parseInt(role)]
+        );
         break;
       case "1":
-        userRoleName = roleUser[parseInt(role)];
+        userRoleName = color ? (
+          <UserAdmin>{roleUser[parseInt(role)]}</UserAdmin>
+        ) : (
+          roleUser[parseInt(role)]
+        );
         break;
       case "2":
-        userRoleName = roleUser[parseInt(role)];
+        userRoleName = color ? (
+          <UserAdmin>{roleUser[parseInt(role)]}</UserAdmin>
+        ) : (
+          roleUser[parseInt(role)]
+        );
         break;
       case "3":
-        userRoleName = roleUser[parseInt(role)];
+        userRoleName = color ? (
+          <UserUser>{roleUser[parseInt(role)]}</UserUser>
+        ) : (
+          roleUser[parseInt(role)]
+        );
         break;
       default:
-        userRoleName = roleUser[3];
+        userRoleName = color ? (
+          <UserUser>{roleUser[parseInt(role)]}</UserUser>
+        ) : (
+          roleUser[parseInt(role)]
+        );
     }
 
     return userRoleName;

@@ -11,16 +11,16 @@ import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 import { LuSave } from "react-icons/lu";
 import {
-  ColumnAction,
-  ColumnCountUser,
   ColumnLp,
-  ColumnName,
+  Column80,
   ConteinerTable,
   Table,
   Th,
   ThLeft,
   TrBody,
   TrHead,
+  Column,
+  ColumnCenter,
 } from "../../../common/styledCommon";
 import { TextDelete } from "../styled";
 
@@ -80,17 +80,17 @@ export const useAllOrganizaton = () => {
               return (
                 <TrBody key={index}>
                   <ColumnLp>{index}</ColumnLp>
-                  <ColumnName>{item.name_organization}</ColumnName>
-                  <ColumnCountUser>{item.count_user}</ColumnCountUser>
-                  <ColumnAction>
+                  <Column80>{item.name_organization}</Column80>
+                  <ColumnCenter>{item.count_user}</ColumnCenter>
+                  <ColumnCenter>
                     <LinkButton
                       to={`/organizacja-edytuj/${item.id}`}
                       $small="true"
                     >
                       <FiEdit size={"15px"} />
                     </LinkButton>
-                  </ColumnAction>
-                  <ColumnAction>
+                  </ColumnCenter>
+                  <ColumnCenter>
                     <Button
                       type="button"
                       small="true"
@@ -104,7 +104,7 @@ export const useAllOrganizaton = () => {
                       }}
                       disabled={item.count_user > 0 ? "disabled" : ""}
                     />
-                  </ColumnAction>
+                  </ColumnCenter>
                 </TrBody>
               );
             })}
