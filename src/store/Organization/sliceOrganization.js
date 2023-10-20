@@ -10,6 +10,7 @@ const initialOrganization = {
   addNewOrganization: false,
   nameOrganizationExsist: false,
   editNameOrganization: false,
+  deleteUserOrganization: false,
 };
 
 const organizationSlice = createSlice({
@@ -62,11 +63,13 @@ const organizationSlice = createSlice({
     },
     setDeleteUserInOrganization: (state) => {
       state.loadingDeleteUserOrganization = false;
+      state.deleteUserOrganization = true;
     },
     resetOrganizationState: (state) => {
       state.addNewOrganization = false;
       state.nameOrganizationExsist = false;
       state.editNameOrganization = false;
+      state.deleteUserOrganization = false;
     },
   },
 });
@@ -94,6 +97,8 @@ export const selectEditNameOrganization = (state) =>
   selectOrganization(state).editNameOrganization;
 export const selectLoadingTokenOrganization = (state) =>
   selectOrganization(state).loadingTokenOrganization;
+export const selectDeleteUserOrganization = (state) =>
+  selectOrganization(state).deleteUserOrganization;
 
 export const {
   fetchUserOrganization,

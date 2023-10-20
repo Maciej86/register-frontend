@@ -40,26 +40,10 @@ export const useFormUsersInOrganization = () => {
     selectLoadingDeleteUserOrganization
   );
   const { userRole } = useRoleUser();
-  const [inputCheckbox, setInputCheckbox] = useState([]);
   const [notChecked, setNotChecked] = useState();
 
-  useEffect(() => {
-    for (let i = 0; i <= fetchData.length; i++) {
-      setInputCheckbox((isChecked) => [...isChecked, true]);
-    }
-  }, [fetchData]);
-
-  const changeChecked = (index, value) => {
-    const chnagedInputCheckbox = [...inputCheckbox];
-    chnagedInputCheckbox[index] = value;
-    setInputCheckbox(chnagedInputCheckbox);
-    setNotChecked(chnagedInputCheckbox.find((item) => item === false));
-  };
-
-  const { deleteUserInOrganization } = useDeleteUserInOrganization(
-    fetchData,
-    inputCheckbox
-  );
+  const { deleteUserInOrganization, changeChecked, inputCheckbox } =
+    useDeleteUserInOrganization(fetchData, setNotChecked);
 
   const formUserInOrganization = fetchDataLoading ? (
     <ConteinerLoader>
@@ -114,7 +98,7 @@ export const useFormUsersInOrganization = () => {
       </ConteinerTable>
       <TableAction>
         {loadingDeleteUserInOrganization ? (
-          <Loader margin="0" />
+          <Loader margin="0 5px 0 0" />
         ) : (
           <Button
             text="Usuń z organizacji"

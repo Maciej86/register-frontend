@@ -34,7 +34,7 @@ export const useFormEditOrganization = () => {
       <Loader margin="0" />
     </ConteinerLoader>
   ) : fetchData.length == 0 ? (
-    <NotExsist>Taka kategoria nie istnieje.</NotExsist>
+    <NotExsist>Taka organizacja nie istnieje.</NotExsist>
   ) : (
     <form>
       <FormArea>
