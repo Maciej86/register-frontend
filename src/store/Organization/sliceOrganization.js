@@ -69,7 +69,8 @@ const organizationSlice = createSlice({
     fetchDeleteUserInOrganization: (state) => {
       state.loadingDeleteUserOrganization = true;
     },
-    setDeleteUserInOrganization: (state) => {
+    setDeleteUserInOrganization: (state, { payload: organization }) => {
+      state.usersInOrganization = organization;
       state.loadingDeleteUserOrganization = false;
       state.deleteUserOrganization = true;
     },

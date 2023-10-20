@@ -43,11 +43,13 @@ export const useFormUsersInOrganization = () => {
   const loadingDeleteUserInOrganization = useSelector(
     selectLoadingDeleteUserOrganization
   );
-  const dataUserInOrganization = useSelector(selectUsersInOrganization);
+  const usersInOrganization = useSelector(selectUsersInOrganization);
   const loadingUserInOrganization = useSelector(selectLoadingOrganization);
   const { userRole } = useRoleUser();
   const { deleteUserInOrganization, changeChecked, inputCheckbox, notChecked } =
-    useDeleteUserInOrganization(dataUserInOrganization);
+    useDeleteUserInOrganization(usersInOrganization, id);
+
+  console.log(usersInOrganization);
 
   const formUserInOrganization = loadingUserInOrganization ? (
     <ConteinerLoader>
@@ -67,7 +69,7 @@ export const useFormUsersInOrganization = () => {
             </TrHead>
           </thead>
           <tbody>
-            {dataUserInOrganization?.map((item, index) => {
+            {usersInOrganization?.map((item, index) => {
               let number = index + 1;
               return (
                 <TrBody key={index}>

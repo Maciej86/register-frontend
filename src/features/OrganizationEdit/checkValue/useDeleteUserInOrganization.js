@@ -8,7 +8,7 @@ import {
 } from "../../../store/Organization/sliceOrganization";
 import { addConfirm } from "../../Confirm/sliceConfirm";
 
-export const useDeleteUserInOrganization = (data) => {
+export const useDeleteUserInOrganization = (data, idOrganization) => {
   const dispatch = useDispatch();
   const confirmDeleteUserOrganization = useSelector(
     selectDeleteUserOrganization
@@ -50,7 +50,12 @@ export const useDeleteUserInOrganization = (data) => {
       }
     }
 
-    dispatch(fetchDeleteUserInOrganization(usersToDelete));
+    dispatch(
+      fetchDeleteUserInOrganization({
+        idsUsers: usersToDelete,
+        idOrganization: parseInt(idOrganization),
+      })
+    );
   };
 
   return {

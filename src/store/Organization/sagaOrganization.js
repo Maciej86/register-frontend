@@ -82,7 +82,8 @@ function* fetchDeleteUserInOrganizationHandler({ payload: data }) {
     const organization = yield axios.post(
       URL_ORGANIZATION.FETCH_DELETE_USER_IN_ORGANIZATION,
       {
-        id: data,
+        idUsers: data.idsUsers,
+        idOrganization: data.idOrganization,
       }
     );
     yield delay(timeDelay);
