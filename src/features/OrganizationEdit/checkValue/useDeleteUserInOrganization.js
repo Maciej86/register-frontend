@@ -8,12 +8,13 @@ import {
 } from "../../../store/Organization/sliceOrganization";
 import { addConfirm } from "../../Confirm/sliceConfirm";
 
-export const useDeleteUserInOrganization = (data, setNotChecked) => {
+export const useDeleteUserInOrganization = (data) => {
   const dispatch = useDispatch();
   const confirmDeleteUserOrganization = useSelector(
     selectDeleteUserOrganization
   );
   const [inputCheckbox, setInputCheckbox] = useState([]);
+  const [notChecked, setNotChecked] = useState();
 
   useEffect(() => {
     if (confirmDeleteUserOrganization) {
@@ -57,5 +58,6 @@ export const useDeleteUserInOrganization = (data, setNotChecked) => {
     changeChecked,
     setInputCheckbox,
     inputCheckbox,
+    notChecked,
   };
 };

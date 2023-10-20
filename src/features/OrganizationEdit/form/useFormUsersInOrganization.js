@@ -40,10 +40,9 @@ export const useFormUsersInOrganization = () => {
     selectLoadingDeleteUserOrganization
   );
   const { userRole } = useRoleUser();
-  const [notChecked, setNotChecked] = useState();
 
-  const { deleteUserInOrganization, changeChecked, inputCheckbox } =
-    useDeleteUserInOrganization(fetchData, setNotChecked);
+  const { deleteUserInOrganization, changeChecked, inputCheckbox, notChecked } =
+    useDeleteUserInOrganization(fetchData);
 
   const formUserInOrganization = fetchDataLoading ? (
     <ConteinerLoader>
