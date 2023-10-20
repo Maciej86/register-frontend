@@ -35,6 +35,7 @@ export const useFormUsersInOrganization = () => {
   );
   const { userRole } = useRoleUser();
   const [isChecked, setIsChecked] = useState([]);
+  const [unactive, setUnactive] = useState();
 
   useEffect(() => {
     for (let i = 0; i <= fetchData.length; i++) {
@@ -46,6 +47,7 @@ export const useFormUsersInOrganization = () => {
     const newChceked = [...isChecked];
     newChceked[index] = value;
     setIsChecked(newChceked);
+    setUnactive(newChceked.find((notChecked) => notChecked === false));
   };
 
   const formUserInOrganization = fetchDataLoading ? (
@@ -106,6 +108,7 @@ export const useFormUsersInOrganization = () => {
           text="Usuń z organizacji"
           typeAction="delete"
           icon={<AiOutlineUserDelete size={"15px"} />}
+          disabled={unactive === false ? false : true}
         />
       </TableAction>
     </>
