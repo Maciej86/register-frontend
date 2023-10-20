@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { selectLoadingDeleteUserOrganization } from "../../../store/Organization/sliceOrganization";
 import { useFetchData } from "../../../core/useFetchData";
 import { URL_ORGANIZATION } from "../../../core/urlBackend";
 import { Loader } from "../../../common/Loader";
 import { useRoleUser } from "../../../core/useRoleUser";
+import { useDeleteUserInOrganization } from "../checkValue/useDeleteUserInOrganization";
+import { ConteinerLoader } from "../styled";
+import { Button } from "../../../common/elements/Button";
+import { AiOutlineUserDelete } from "react-icons/ai";
 import {
   Column,
   Column80,
@@ -16,9 +22,6 @@ import {
   TrBody,
   TrHead,
 } from "../../../common/styledCommon";
-import { ConteinerLoader } from "../styled";
-import { Button } from "../../../common/elements/Button";
-import { AiOutlineUserDelete } from "react-icons/ai";
 import {
   InputToggleSwitch,
   LabelToggleSwitch,
@@ -33,29 +36,37 @@ export const useFormUsersInOrganization = () => {
     [id],
     { id: parseInt(id) }
   );
+  const loadingDeleteUserInOrganization = useSelector(
+    selectLoadingDeleteUserOrganization
+  );
   const { userRole } = useRoleUser();
-  const [isChecked, setIsChecked] = useState([]);
-  const [unactive, setUnactive] = useState();
+  const [inputCheckbox, setInputCheckbox] = useState([]);
+  const [notChecked, setNotChecked] = useState();
 
   useEffect(() => {
     for (let i = 0; i <= fetchData.length; i++) {
-      setIsChecked((isChecked) => [...isChecked, true]);
+      setInputCheckbox((isChecked) => [...isChecked, true]);
     }
   }, [fetchData]);
 
   const changeChecked = (index, value) => {
-    const newChceked = [...isChecked];
-    newChceked[index] = value;
-    setIsChecked(newChceked);
-    setUnactive(newChceked.find((notChecked) => notChecked === false));
+    const chnagedInputCheckbox = [...inputCheckbox];
+    chnagedInputCheckbox[index] = value;
+    setInputCheckbox(chnagedInputCheckbox);
+    setNotChecked(chnagedInputCheckbox.find((item) => item === false));
   };
+
+  const { deleteUserInOrganization } = useDeleteUserInOrganization(
+    fetchData,
+    inputCheckbox
+  );
 
   const formUserInOrganization = fetchDataLoading ? (
     <ConteinerLoader>
       <Loader margin="30px auto" />
     </ConteinerLoader>
   ) : (
-    <>
+    <form>
       <ConteinerTable>
         <Table>
           <thead>
@@ -77,25 +88,23 @@ export const useFormUsersInOrganization = () => {
                   <Column>{item.last_name}</Column>
                   <Column80>{userRole(item.role, true)}</Column80>
                   <ColumnCenter>
-                    <form>
-                      <LabelToggleSwitch
-                        id={index}
-                        $isChecked={isChecked[index]}
-                      >
-                        <InputToggleSwitch
-                          htmlFor={index}
-                          type="checkbox"
-                          value={item.id}
-                          onChange={(event) =>
-                            changeChecked(index, event.target.checked)
-                          }
-                          checked={isChecked[index]}
-                        />
-                        <SpanToggleSwitch
-                          $isChecked={isChecked[index]}
-                        ></SpanToggleSwitch>
-                      </LabelToggleSwitch>
-                    </form>
+                    <LabelToggleSwitch
+                      id={index}
+                      $isChecked={inputCheckbox[index]}
+                    >
+                      <InputToggleSwitch
+                        htmlFor={index}
+                        type="checkbox"
+                        value={item.id}
+                        onChange={(event) =>
+                          changeChecked(index, event.target.checked)
+                        }
+                        checked={inputCheckbox[index]}
+                      />
+                      <SpanToggleSwitch
+                        $isChecked={inputCheckbox[index]}
+                      ></SpanToggleSwitch>
+                    </LabelToggleSwitch>
                   </ColumnCenter>
                 </TrBody>
               );
@@ -104,14 +113,19 @@ export const useFormUsersInOrganization = () => {
         </Table>
       </ConteinerTable>
       <TableAction>
-        <Button
-          text="Usuń z organizacji"
-          typeAction="delete"
-          icon={<AiOutlineUserDelete size={"15px"} />}
-          disabled={unactive === false ? false : true}
-        />
+        {loadingDeleteUserInOrganization ? (
+          <Loader margin="0" />
+        ) : (
+          <Button
+            text="Usuń z organizacji"
+            typeAction="delete"
+            icon={<AiOutlineUserDelete size={"15px"} />}
+            action={deleteUserInOrganization}
+            disabled={notChecked === false ? false : true}
+          />
+        )}
       </TableAction>
-    </>
+    </form>
   );
 
   return { formUserInOrganization };

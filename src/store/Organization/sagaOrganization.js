@@ -13,6 +13,8 @@ import {
   fetchEditNameOrganization,
   setEditNameOrganization,
   fetchUserOrganization,
+  fetchDeleteUserInOrganization,
+  setDeleteUserInOrganization,
 } from "./sliceOrganization";
 
 const timeDelay = 700;
@@ -62,6 +64,21 @@ function* fetchEditNameOrganizationHandler({ payload: data }) {
   }
 }
 
+function* fetchDeleteUserInOrganizationHandler({ payload: data }) {
+  try {
+    const organization = yield axios.post(
+      URL_ORGANIZATION.FETCH_DELETE_USER_IN_ORGANIZATION,
+      {
+        id: data,
+      }
+    );
+    yield delay(timeDelay);
+    yield put(setDeleteUserInOrganization(organization.data));
+  } catch (error) {
+    yield console.error(error);
+  }
+}
+
 export function* organizationSaga() {
   yield takeEvery(
     [
@@ -75,5 +92,9 @@ export function* organizationSaga() {
   yield takeEvery(
     fetchEditNameOrganization.type,
     fetchEditNameOrganizationHandler
+  );
+  yield takeEvery(
+    fetchDeleteUserInOrganization.type,
+    fetchDeleteUserInOrganizationHandler
   );
 }
