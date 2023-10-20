@@ -20,12 +20,11 @@ import { ConteinerLoader } from "../styled";
 import { Button } from "../../../common/elements/Button";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import {
-  InputToogleSwitch,
-  LabelToogleSwitch,
-  SpanToogleSwitch,
+  InputToggleSwitch,
+  LabelToggleSwitch,
+  SpanToggleSwitch,
   TableAction,
 } from "../../Organization/styled";
-import { current } from "@reduxjs/toolkit";
 
 export const useFormUsersInOrganization = () => {
   const { id } = useParams();
@@ -38,9 +37,9 @@ export const useFormUsersInOrganization = () => {
   const [isChecked, setIsChecked] = useState([]);
 
   useEffect(() => {
-    fetchData?.forEach(() => {
+    for (let i = 0; i <= fetchData.length; i++) {
       setIsChecked((isChecked) => [...isChecked, true]);
-    });
+    }
   }, [fetchData]);
 
   const changeChecked = (index, value) => {
@@ -77,11 +76,11 @@ export const useFormUsersInOrganization = () => {
                   <Column80>{userRole(item.role, true)}</Column80>
                   <ColumnCenter>
                     <form>
-                      <LabelToogleSwitch
+                      <LabelToggleSwitch
                         id={index}
                         $isChecked={isChecked[index]}
                       >
-                        <InputToogleSwitch
+                        <InputToggleSwitch
                           htmlFor={index}
                           type="checkbox"
                           value={item.id}
@@ -90,10 +89,10 @@ export const useFormUsersInOrganization = () => {
                           }
                           checked={isChecked[index]}
                         />
-                        <SpanToogleSwitch
+                        <SpanToggleSwitch
                           $isChecked={isChecked[index]}
-                        ></SpanToogleSwitch>
-                      </LabelToogleSwitch>
+                        ></SpanToggleSwitch>
+                      </LabelToggleSwitch>
                     </form>
                   </ColumnCenter>
                 </TrBody>

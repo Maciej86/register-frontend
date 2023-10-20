@@ -32,7 +32,7 @@ export const TableAction = styled.div`
   margin-top: 20px;
 `;
 
-export const LabelToogleSwitch = styled.label`
+export const LabelToggleSwitch = styled.label`
   display: inline-block;
   width: 45px;
   background-color: ${({ theme }) => theme.color.primary_color};
@@ -45,11 +45,11 @@ export const LabelToogleSwitch = styled.label`
   cursor: pointer;
 `;
 
-export const InputToogleSwitch = styled.input`
+export const InputToggleSwitch = styled.input`
   display: none;
 `;
 
-export const SpanToogleSwitch = styled.span`
+export const SpanToggleSwitch = styled.span`
   position: relative;
   display: block;
   left: ${({ $isChecked }) => ($isChecked ? 22 : 0)}px;
