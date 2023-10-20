@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectLoadingDeleteUserOrganization } from "../../../store/Organization/sliceOrganization";
-import { useFetchData } from "../../../core/useFetchData";
-import { URL_ORGANIZATION } from "../../../core/urlBackend";
+import {
+  fetchUserInOrganization,
+  selectLoadingDeleteUserOrganization,
+  selectLoadingOrganization,
+  selectUsersInOrganization,
+} from "../../../store/Organization/sliceOrganization";
 import { Loader } from "../../../common/Loader";
 import { useRoleUser } from "../../../core/useRoleUser";
 import { useDeleteUserInOrganization } from "../checkValue/useDeleteUserInOrganization";
@@ -31,20 +34,22 @@ import {
 
 export const useFormUsersInOrganization = () => {
   const { id } = useParams();
-  const { fetchData, fetchDataLoading } = useFetchData(
-    URL_ORGANIZATION.FETCH_USER_IN_ORGANIZATION,
-    [id],
-    { id: parseInt(id) }
-  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUserInOrganization({ id: id }));
+  }, [id]);
+
   const loadingDeleteUserInOrganization = useSelector(
     selectLoadingDeleteUserOrganization
   );
+  const dataUserInOrganization = useSelector(selectUsersInOrganization);
+  const loadingUserInOrganization = useSelector(selectLoadingOrganization);
   const { userRole } = useRoleUser();
-
   const { deleteUserInOrganization, changeChecked, inputCheckbox, notChecked } =
-    useDeleteUserInOrganization(fetchData);
+    useDeleteUserInOrganization(dataUserInOrganization);
 
-  const formUserInOrganization = fetchDataLoading ? (
+  const formUserInOrganization = loadingUserInOrganization ? (
     <ConteinerLoader>
       <Loader margin="30px auto" />
     </ConteinerLoader>
@@ -62,7 +67,7 @@ export const useFormUsersInOrganization = () => {
             </TrHead>
           </thead>
           <tbody>
-            {fetchData?.map((item, index) => {
+            {dataUserInOrganization?.map((item, index) => {
               let number = index + 1;
               return (
                 <TrBody key={index}>

@@ -3,18 +3,16 @@ import { delay, put, takeEvery } from "redux-saga/effects";
 import { URL_ORGANIZATION } from "../../core/urlBackend";
 import {
   fetchAddNewOrganization,
-  fetchAllOrganization,
   fetchTokenOrganization,
   setAddNewOrganization,
-  setAllOrganization,
   setUserOrganization,
-  fetchOrganization,
-  setOrganization,
   fetchEditNameOrganization,
   setEditNameOrganization,
   fetchUserOrganization,
   fetchDeleteUserInOrganization,
   setDeleteUserInOrganization,
+  fetchUserInOrganization,
+  setUserInOrganization,
 } from "./sliceOrganization";
 
 const timeDelay = 700;
@@ -64,6 +62,21 @@ function* fetchEditNameOrganizationHandler({ payload: data }) {
   }
 }
 
+function* fetchUserInOrganizationHandler({ payload: data }) {
+  try {
+    const organization = yield axios.post(
+      URL_ORGANIZATION.FETCH_USER_IN_ORGANIZATION,
+      {
+        id: data.id,
+      }
+    );
+    yield delay(timeDelay);
+    yield put(setUserInOrganization(organization.data));
+  } catch (error) {
+    yield console.error(error);
+  }
+}
+
 function* fetchDeleteUserInOrganizationHandler({ payload: data }) {
   try {
     const organization = yield axios.post(
@@ -93,6 +106,7 @@ export function* organizationSaga() {
     fetchEditNameOrganization.type,
     fetchEditNameOrganizationHandler
   );
+  yield takeEvery(fetchUserInOrganization.type, fetchUserInOrganizationHandler);
   yield takeEvery(
     fetchDeleteUserInOrganization.type,
     fetchDeleteUserInOrganizationHandler

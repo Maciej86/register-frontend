@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialOrganization = {
   userOrganization: [],
+  usersInOrganization: [],
   loadingOrganization: false,
   loadingTokenOrganization: false,
   loadingNewOrganization: false,
@@ -27,6 +28,13 @@ const organizationSlice = createSlice({
       state.userOrganization = organization;
       state.loadingOrganization = false;
       state.loadingTokenOrganization = false;
+    },
+    fetchUserInOrganization: (state) => {
+      state.loadingOrganization = true;
+    },
+    setUserInOrganization: (state, { payload: organization }) => {
+      state.usersInOrganization = organization;
+      state.loadingOrganization = false;
     },
     fetchAddNewOrganization: (state) => {
       state.loadingNewOrganization = true;
@@ -79,8 +87,8 @@ export const selectOneOrganization = (state) =>
   selectOrganization(state).organization;
 export const selectUserOrganization = (state) =>
   selectOrganization(state).userOrganization;
-export const selectAllOrganization = (state) =>
-  selectOrganization(state).allOrganizaton;
+export const selectUsersInOrganization = (state) =>
+  selectOrganization(state).usersInOrganization;
 export const selectLoadingOrganization = (state) =>
   selectOrganization(state).loadingOrganization;
 export const selectLoadingAddOrganization = (state) =>
@@ -106,11 +114,11 @@ export const {
   setUserOrganization,
   fetchAddNewOrganization,
   setAddNewOrganization,
-  fetchAllOrganization,
-  setAllOrganization,
   fetchEditNameOrganization,
   resetOrganizationState,
   setEditNameOrganization,
+  fetchUserInOrganization,
+  setUserInOrganization,
   fetchDeleteUserInOrganization,
   setDeleteUserInOrganization,
 } = organizationSlice.actions;
