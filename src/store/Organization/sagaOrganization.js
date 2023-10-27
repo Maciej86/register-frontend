@@ -11,8 +11,8 @@ import {
   fetchUserOrganization,
   fetchDeleteUserInOrganization,
   setDeleteUserInOrganization,
-  fetchUsersInOrganization,
-  setUserInOrganization,
+  fetchUsersInOutOrganization,
+  setUserInOutOrganization,
 } from "./sliceOrganization";
 
 const timeDelay = 700;
@@ -65,13 +65,15 @@ function* fetchEditNameOrganizationHandler({ payload: data }) {
 function* fetchUsersInOrganizationHandler({ payload: data }) {
   try {
     const organization = yield axios.post(
-      URL_ORGANIZATION.FETCH_USER_IN_ORGANIZATION,
+      data.in
+        ? URL_ORGANIZATION.FETCH_USER_IN_ORGANIZATION
+        : URL_ORGANIZATION.FETCH_USER_OUT_ORGANIZATION,
       {
         id: data.id,
       }
     );
     yield delay(timeDelay);
-    yield put(setUserInOrganization(organization.data));
+    yield put(setUserInOutOrganization(organization.data));
   } catch (error) {
     yield console.error(error);
   }
@@ -108,7 +110,7 @@ export function* organizationSaga() {
     fetchEditNameOrganizationHandler
   );
   yield takeEvery(
-    fetchUsersInOrganization.type,
+    fetchUsersInOutOrganization.type,
     fetchUsersInOrganizationHandler
   );
   yield takeEvery(

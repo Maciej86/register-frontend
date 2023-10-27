@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialOrganization = {
   userOrganization: [],
-  usersInOrganization: [],
+  usersInOutOrganization: [],
   loadingOrganization: false,
   loadingTokenOrganization: false,
   loadingNewOrganization: false,
@@ -29,11 +29,11 @@ const organizationSlice = createSlice({
       state.loadingOrganization = false;
       state.loadingTokenOrganization = false;
     },
-    fetchUsersInOrganization: (state) => {
+    fetchUsersInOutOrganization: (state) => {
       state.loadingOrganization = true;
     },
-    setUserInOrganization: (state, { payload: organization }) => {
-      state.usersInOrganization = organization;
+    setUserInOutOrganization: (state, { payload: organization }) => {
+      state.usersInOutOrganization = organization;
       state.loadingOrganization = false;
     },
     fetchAddNewOrganization: (state) => {
@@ -70,7 +70,7 @@ const organizationSlice = createSlice({
       state.loadingDeleteUserOrganization = true;
     },
     setDeleteUserInOrganization: (state, { payload: organization }) => {
-      state.usersInOrganization = organization;
+      state.usersInOutOrganization = organization;
       state.loadingDeleteUserOrganization = false;
       state.deleteUserOrganization = true;
     },
@@ -88,8 +88,8 @@ export const selectOneOrganization = (state) =>
   selectOrganization(state).organization;
 export const selectUserOrganization = (state) =>
   selectOrganization(state).userOrganization;
-export const selectUsersInOrganization = (state) =>
-  selectOrganization(state).usersInOrganization;
+export const selectUsersInOutOrganization = (state) =>
+  selectOrganization(state).usersInOutOrganization;
 export const selectLoadingOrganization = (state) =>
   selectOrganization(state).loadingOrganization;
 export const selectLoadingAddOrganization = (state) =>
@@ -118,8 +118,8 @@ export const {
   fetchEditNameOrganization,
   resetOrganizationState,
   setEditNameOrganization,
-  fetchUsersInOrganization,
-  setUserInOrganization,
+  fetchUsersInOutOrganization,
+  setUserInOutOrganization,
   fetchDeleteUserInOrganization,
   setDeleteUserInOrganization,
 } = organizationSlice.actions;

@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
-  fetchUsersInOrganization,
+  fetchUsersInOutOrganization,
   selectLoadingDeleteUserOrganization,
   selectLoadingOrganization,
-  selectUsersInOrganization,
+  selectUsersInOutOrganization,
 } from "../../../store/Organization/sliceOrganization";
 import { Loader } from "../../../common/Loader";
 import { useRoleUser } from "../../../core/useRoleUser";
 import { useDeleteUserInOrganization } from "../checkValue/useDeleteUserInOrganization";
 import { ButtonTab } from "../styled";
 import { Button } from "../../../common/elements/Button";
-import { AiOutlineUserDelete } from "react-icons/ai";
+import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";
 import {
   Column,
   ColumnCenter,
@@ -35,42 +35,37 @@ import {
 export const useFormUsersInOrganization = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const [toggleTabUsersInOrganization, setToggleTabUsersInOrganization] =
+  const loadingDeleteUserInOrganization = useSelector(
+    selectLoadingDeleteUserOrganization
+  );
+  const usersInOrganization = useSelector(selectUsersInOutOrganization);
+  const loadingUsersOrganization = useSelector(selectLoadingOrganization);
+  const { userRole } = useRoleUser();
+  const { deleteUserInOrganization, changeChecked, inputCheckbox, notChecked } =
+    useDeleteUserInOrganization(usersInOrganization, id);
+  const [toggleTabUsersOrganization, setToggleTabUsersOrganization] =
     useState(true);
-  const [toggleTabUsersOutOrganization, setToggleTabUserOutOrganization] =
-    useState(false);
 
   const loadUsersInOrganization = () => {
-    dispatch(fetchUsersInOrganization({ id: id }));
-    setToggleTabUsersInOrganization(true);
-    setToggleTabUserOutOrganization(false);
+    dispatch(fetchUsersInOutOrganization({ id: id, in: true }));
+    setToggleTabUsersOrganization(true);
   };
 
   const loadUsersOutOrganization = () => {
-    // dispatch(fetchUsersInOrganization({ id: id }));
-    setToggleTabUsersInOrganization(false);
-    setToggleTabUserOutOrganization(true);
+    dispatch(fetchUsersInOutOrganization({ id: id, in: false }));
+    setToggleTabUsersOrganization(false);
   };
 
   useEffect(() => {
     loadUsersInOrganization();
   }, [id]);
 
-  const loadingDeleteUserInOrganization = useSelector(
-    selectLoadingDeleteUserOrganization
-  );
-  const usersInOrganization = useSelector(selectUsersInOrganization);
-  const loadingUsersOrganization = useSelector(selectLoadingOrganization);
-  const { userRole } = useRoleUser();
-  const { deleteUserInOrganization, changeChecked, inputCheckbox, notChecked } =
-    useDeleteUserInOrganization(usersInOrganization, id);
-
   const formUserInOrganization = (
     <form>
       <ConteinerTable>
         <ButtonTab
           type="button"
-          $active={toggleTabUsersInOrganization}
+          $active={toggleTabUsersOrganization ? true : false}
           onClick={() => loadUsersInOrganization()}
           disabled={loadingUsersOrganization ? true : false}
         >
@@ -78,11 +73,11 @@ export const useFormUsersInOrganization = () => {
         </ButtonTab>
         <ButtonTab
           type="button"
-          $active={toggleTabUsersOutOrganization}
+          $active={toggleTabUsersOrganization ? false : true}
           onClick={() => loadUsersOutOrganization()}
           disabled={loadingUsersOrganization ? true : false}
         >
-          Dodaj innych użytkowników
+          Dodaj użytkowników
         </ButtonTab>
         <Table>
           <thead>
@@ -141,12 +136,20 @@ export const useFormUsersInOrganization = () => {
           ""
         ) : loadingDeleteUserInOrganization ? (
           <Loader margin="0 5px 0 0" />
-        ) : (
+        ) : toggleTabUsersOrganization ? (
           <Button
             text="Usuń z organizacji"
             typeAction="delete"
             icon={<AiOutlineUserDelete size={"15px"} />}
             action={deleteUserInOrganization}
+            disabled={notChecked === false ? false : true}
+          />
+        ) : (
+          <Button
+            text="Dodaj uzytkownika"
+            typeAction="add"
+            icon={<AiOutlineUserAdd size={"15px"} />}
+            action={null}
             disabled={notChecked === false ? false : true}
           />
         )}
