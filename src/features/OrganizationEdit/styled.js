@@ -51,4 +51,13 @@ export const ButtonTab = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.color.primary_color};
   }
+
+  &:disabled {
+    color: ${({ theme }) => theme.color.primary_dark_color};
+
+    &:hover {
+      background-color: ${({ theme, $active }) =>
+        $active ? theme.color.primary_color : theme.color.primary_light_color};
+    }
+  }
 `;

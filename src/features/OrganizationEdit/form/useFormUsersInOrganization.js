@@ -72,6 +72,7 @@ export const useFormUsersInOrganization = () => {
           type="button"
           $active={toggleTabUsersInOrganization}
           onClick={() => loadUsersInOrganization()}
+          disabled={loadingUsersOrganization ? true : false}
         >
           Użytkownicy w organizacji
         </ButtonTab>
@@ -79,6 +80,7 @@ export const useFormUsersInOrganization = () => {
           type="button"
           $active={toggleTabUsersOutOrganization}
           onClick={() => loadUsersOutOrganization()}
+          disabled={loadingUsersOrganization ? true : false}
         >
           Dodaj innych użytkowników
         </ButtonTab>
