@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
-  fetchUserInOrganization,
+  fetchUsersInOrganization,
   selectLoadingDeleteUserOrganization,
   selectLoadingOrganization,
   selectUsersInOrganization,
@@ -10,18 +10,18 @@ import {
 import { Loader } from "../../../common/Loader";
 import { useRoleUser } from "../../../core/useRoleUser";
 import { useDeleteUserInOrganization } from "../checkValue/useDeleteUserInOrganization";
-import { ConteinerLoader } from "../styled";
+import { ButtonTab } from "../styled";
 import { Button } from "../../../common/elements/Button";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import {
   Column,
-  Column80,
   ColumnCenter,
-  ColumnLp,
   ConteinerTable,
   Table,
   Th,
+  Th80,
   ThLeft,
+  ThLp,
   TrBody,
   TrHead,
 } from "../../../common/styledCommon";
@@ -35,75 +35,109 @@ import {
 export const useFormUsersInOrganization = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [toggleTabUsersInOrganization, setToggleTabUsersInOrganization] =
+    useState(true);
+  const [toggleTabUsersOutOrganization, setToggleTabUserOutOrganization] =
+    useState(false);
+
+  const loadUsersInOrganization = () => {
+    dispatch(fetchUsersInOrganization({ id: id }));
+    setToggleTabUsersInOrganization(true);
+    setToggleTabUserOutOrganization(false);
+  };
+
+  const loadUsersOutOrganization = () => {
+    // dispatch(fetchUsersInOrganization({ id: id }));
+    setToggleTabUsersInOrganization(false);
+    setToggleTabUserOutOrganization(true);
+  };
 
   useEffect(() => {
-    dispatch(fetchUserInOrganization({ id: id }));
+    loadUsersInOrganization();
   }, [id]);
 
   const loadingDeleteUserInOrganization = useSelector(
     selectLoadingDeleteUserOrganization
   );
   const usersInOrganization = useSelector(selectUsersInOrganization);
-  const loadingUserInOrganization = useSelector(selectLoadingOrganization);
+  const loadingUsersOrganization = useSelector(selectLoadingOrganization);
   const { userRole } = useRoleUser();
   const { deleteUserInOrganization, changeChecked, inputCheckbox, notChecked } =
     useDeleteUserInOrganization(usersInOrganization, id);
 
-  console.log(usersInOrganization);
-
-  const formUserInOrganization = loadingUserInOrganization ? (
-    <ConteinerLoader>
-      <Loader margin="30px auto" />
-    </ConteinerLoader>
-  ) : (
+  const formUserInOrganization = (
     <form>
       <ConteinerTable>
+        <ButtonTab
+          type="button"
+          $active={toggleTabUsersInOrganization}
+          onClick={() => loadUsersInOrganization()}
+        >
+          Użytkownicy w organizacji
+        </ButtonTab>
+        <ButtonTab
+          type="button"
+          $active={toggleTabUsersOutOrganization}
+          onClick={() => loadUsersOutOrganization()}
+        >
+          Dodaj innych użytkowników
+        </ButtonTab>
         <Table>
           <thead>
             <TrHead>
-              <Th>Lp.</Th>
+              <ThLp>Lp.</ThLp>
               <ThLeft>Imię</ThLeft>
               <ThLeft>Nazwisko</ThLeft>
-              <ThLeft>Konto</ThLeft>
+              <Th80>Konto</Th80>
               <Th>Zmień</Th>
             </TrHead>
           </thead>
           <tbody>
-            {usersInOrganization?.map((item, index) => {
-              let number = index + 1;
-              return (
-                <TrBody key={index}>
-                  <ColumnLp>{number}</ColumnLp>
-                  <Column>{item.name}</Column>
-                  <Column>{item.last_name}</Column>
-                  <Column80>{userRole(item.role, true)}</Column80>
-                  <ColumnCenter>
-                    <LabelToggleSwitch
-                      id={index}
-                      $isChecked={inputCheckbox[index]}
-                    >
-                      <InputToggleSwitch
-                        htmlFor={index}
-                        type="checkbox"
-                        value={item.id}
-                        onChange={(event) =>
-                          changeChecked(index, event.target.checked)
-                        }
-                        checked={inputCheckbox[index]}
-                      />
-                      <SpanToggleSwitch
+            {loadingUsersOrganization ? (
+              <tr>
+                <td colSpan="5">
+                  <Loader margin="15px auto" />
+                </td>
+              </tr>
+            ) : (
+              usersInOrganization?.map((item, index) => {
+                let number = index + 1;
+                return (
+                  <TrBody key={index}>
+                    <ColumnCenter>{number}</ColumnCenter>
+                    <Column>{item.name}</Column>
+                    <Column>{item.last_name}</Column>
+                    <td>{userRole(item.role, true)}</td>
+                    <ColumnCenter>
+                      <LabelToggleSwitch
+                        id={index}
                         $isChecked={inputCheckbox[index]}
-                      ></SpanToggleSwitch>
-                    </LabelToggleSwitch>
-                  </ColumnCenter>
-                </TrBody>
-              );
-            })}
+                      >
+                        <InputToggleSwitch
+                          htmlFor={index}
+                          type="checkbox"
+                          value={item.id}
+                          onChange={(event) =>
+                            changeChecked(index, event.target.checked)
+                          }
+                          checked={inputCheckbox[index]}
+                        />
+                        <SpanToggleSwitch
+                          $isChecked={inputCheckbox[index]}
+                        ></SpanToggleSwitch>
+                      </LabelToggleSwitch>
+                    </ColumnCenter>
+                  </TrBody>
+                );
+              })
+            )}
           </tbody>
         </Table>
       </ConteinerTable>
       <TableAction>
-        {loadingDeleteUserInOrganization ? (
+        {loadingUsersOrganization ? (
+          ""
+        ) : loadingDeleteUserInOrganization ? (
           <Loader margin="0 5px 0 0" />
         ) : (
           <Button

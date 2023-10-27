@@ -36,10 +36,10 @@ export const useDeleteUserInOrganization = (data, idOrganization) => {
   }, [data]);
 
   const changeChecked = (index, value) => {
-    const chnagedInputCheckbox = [...inputCheckbox];
-    chnagedInputCheckbox[index] = value;
-    setInputCheckbox(chnagedInputCheckbox);
-    setNotChecked(chnagedInputCheckbox.find((item) => item === false));
+    const changedInputCheckbox = [...inputCheckbox];
+    changedInputCheckbox[index] = value;
+    setInputCheckbox(changedInputCheckbox);
+    setNotChecked(changedInputCheckbox.find((item) => item === false));
   };
 
   const deleteUserInOrganization = () => {
