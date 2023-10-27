@@ -78,7 +78,7 @@ export const useAllOrganizaton = () => {
               index++;
               return (
                 <TrBody key={index}>
-                  <td>{index}</td>
+                  <ColumnCenter>{index}</ColumnCenter>
                   <td>{item.name_organization}</td>
                   <ColumnCenter>{item.count_user}</ColumnCenter>
                   <ColumnCenter>
