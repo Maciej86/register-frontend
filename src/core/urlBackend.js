@@ -14,6 +14,7 @@ export const URL_ORGANIZATION = {
   FETCH_EDIT_NAME_ORGANIZATION: `${url}/editnameorganization`,
   FETCH_USER_ORGANIZATION: `${url}/userorganization`,
   FETCH_USER_IN_ORGANIZATION: `${url}/userinorganization`,
+  FETCH_USER_OUT_ORGANIZATION: `${url}/useroutorganization`,
   FETCH_DELETE_USER_IN_ORGANIZATION: `${url}/deleteuserinorganization`,
   ADD_ORGANIZATION: `${url}/addorganization`,
   FETCH_ALL_ORGANIZATION: `${url}/allorganization`,
