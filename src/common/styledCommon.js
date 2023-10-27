@@ -54,12 +54,21 @@ export const TrHead = styled.tr`
 `;
 
 export const Th = styled.th`
+  min-width: 100px;
   padding: 10px 20px 10px 10px;
   border-bottom: 1px solid ${({ theme }) => theme.color.primary_light_color};
 `;
 
 export const ThLeft = styled(Th)`
   text-align: left;
+`;
+
+export const ThLp = styled(Th)`
+  min-width: 50px;
+`;
+
+export const Th80 = styled(ThLeft)`
+  width: 80%;
 `;
 
 export const TrBody = styled.tr`
@@ -76,18 +85,9 @@ export const TrBody = styled.tr`
 `;
 
 export const Column = styled.td`
-  min-width: 100px;
   padding: 10px 20px 10px 10px;
 `;
 
 export const ColumnCenter = styled(Column)`
   text-align: center;
-`;
-
-export const ColumnLp = styled(ColumnCenter)`
-  min-width: 50px;
-`;
-
-export const Column80 = styled(Column)`
-  width: 80%;
 `;

@@ -11,16 +11,15 @@ import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 import { LuSave } from "react-icons/lu";
 import {
-  ColumnLp,
-  Column80,
   ConteinerTable,
   Table,
   Th,
   ThLeft,
   TrBody,
   TrHead,
-  Column,
   ColumnCenter,
+  ThLp,
+  Th80,
 } from "../../../common/styledCommon";
 import { TextDelete } from "../styled";
 
@@ -67,8 +66,8 @@ export const useAllOrganizaton = () => {
         <Table>
           <thead>
             <TrHead>
-              <Th>Lp.</Th>
-              <ThLeft>Nazwa</ThLeft>
+              <ThLp>Lp.</ThLp>
+              <Th80>Nazwa</Th80>
               <Th>Użytkowników</Th>
               <Th>Edytuj</Th>
               <Th>Usuń</Th>
@@ -79,8 +78,8 @@ export const useAllOrganizaton = () => {
               index++;
               return (
                 <TrBody key={index}>
-                  <ColumnLp>{index}</ColumnLp>
-                  <Column80>{item.name_organization}</Column80>
+                  <td>{index}</td>
+                  <td>{item.name_organization}</td>
                   <ColumnCenter>{item.count_user}</ColumnCenter>
                   <ColumnCenter>
                     <LinkButton
