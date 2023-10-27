@@ -29,7 +29,7 @@ const organizationSlice = createSlice({
       state.loadingOrganization = false;
       state.loadingTokenOrganization = false;
     },
-    fetchUserInOrganization: (state) => {
+    fetchUsersInOrganization: (state) => {
       state.loadingOrganization = true;
     },
     setUserInOrganization: (state, { payload: organization }) => {
@@ -118,7 +118,7 @@ export const {
   fetchEditNameOrganization,
   resetOrganizationState,
   setEditNameOrganization,
-  fetchUserInOrganization,
+  fetchUsersInOrganization,
   setUserInOrganization,
   fetchDeleteUserInOrganization,
   setDeleteUserInOrganization,

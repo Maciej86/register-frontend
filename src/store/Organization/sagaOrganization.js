@@ -11,7 +11,7 @@ import {
   fetchUserOrganization,
   fetchDeleteUserInOrganization,
   setDeleteUserInOrganization,
-  fetchUserInOrganization,
+  fetchUsersInOrganization,
   setUserInOrganization,
 } from "./sliceOrganization";
 
@@ -62,7 +62,7 @@ function* fetchEditNameOrganizationHandler({ payload: data }) {
   }
 }
 
-function* fetchUserInOrganizationHandler({ payload: data }) {
+function* fetchUsersInOrganizationHandler({ payload: data }) {
   try {
     const organization = yield axios.post(
       URL_ORGANIZATION.FETCH_USER_IN_ORGANIZATION,
@@ -107,7 +107,10 @@ export function* organizationSaga() {
     fetchEditNameOrganization.type,
     fetchEditNameOrganizationHandler
   );
-  yield takeEvery(fetchUserInOrganization.type, fetchUserInOrganizationHandler);
+  yield takeEvery(
+    fetchUsersInOrganization.type,
+    fetchUsersInOrganizationHandler
+  );
   yield takeEvery(
     fetchDeleteUserInOrganization.type,
     fetchDeleteUserInOrganizationHandler
