@@ -7,11 +7,11 @@ const initialOrganization = {
   loadingTokenOrganization: false,
   loadingNewOrganization: false,
   loadingEditOrganization: false,
-  loadingDeleteUserOrganization: false,
+  loadingAddOrDeleteUsersOrganization: false,
   addNewOrganization: false,
   nameOrganizationExsist: false,
   editNameOrganization: false,
-  deleteUserOrganization: false,
+  addOrDeleteUsersOrganization: false,
 };
 
 const organizationSlice = createSlice({
@@ -66,19 +66,19 @@ const organizationSlice = createSlice({
         state.nameOrganizationExsist = true;
       }
     },
-    fetchDeleteUserInOrganization: (state) => {
-      state.loadingDeleteUserOrganization = true;
+    fetchAddOrDeleteUsersOrganization: (state) => {
+      state.loadingAddOrDeleteUsersOrganization = true;
     },
     setDeleteUserInOrganization: (state, { payload: organization }) => {
       state.usersInOutOrganization = organization;
-      state.loadingDeleteUserOrganization = false;
-      state.deleteUserOrganization = true;
+      state.loadingAddOrDeleteUsersOrganization = false;
+      state.addOrDeleteUsersOrganization = true;
     },
     resetOrganizationState: (state) => {
       state.addNewOrganization = false;
       state.nameOrganizationExsist = false;
       state.editNameOrganization = false;
-      state.deleteUserOrganization = false;
+      state.addOrDeleteUsersOrganization = false;
     },
   },
 });
@@ -96,8 +96,8 @@ export const selectLoadingAddOrganization = (state) =>
   selectOrganization(state).loadingNewOrganization;
 export const selectLoadingEditOrganization = (state) =>
   selectOrganization(state).loadingEditOrganization;
-export const selectLoadingDeleteUserOrganization = (state) =>
-  selectOrganization(state).loadingDeleteUserOrganization;
+export const selectLoadingAddOrDeleteUsersOrganization = (state) =>
+  selectOrganization(state).loadingAddOrDeleteUsersOrganization;
 export const selectAddNewOrganization = (state) =>
   selectOrganization(state).addNewOrganization;
 export const selectNameOrganizationExsist = (state) =>
@@ -106,8 +106,8 @@ export const selectEditNameOrganization = (state) =>
   selectOrganization(state).editNameOrganization;
 export const selectLoadingTokenOrganization = (state) =>
   selectOrganization(state).loadingTokenOrganization;
-export const selectDeleteUserOrganization = (state) =>
-  selectOrganization(state).deleteUserOrganization;
+export const selectAddOrDeleteUsersOrganization = (state) =>
+  selectOrganization(state).addOrDeleteUsersOrganization;
 
 export const {
   fetchUserOrganization,
@@ -120,7 +120,7 @@ export const {
   setEditNameOrganization,
   fetchUsersInOutOrganization,
   setUserInOutOrganization,
-  fetchDeleteUserInOrganization,
+  fetchAddOrDeleteUsersOrganization,
   setDeleteUserInOrganization,
 } = organizationSlice.actions;
 

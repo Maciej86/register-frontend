@@ -9,7 +9,7 @@ import {
   fetchEditNameOrganization,
   setEditNameOrganization,
   fetchUserOrganization,
-  fetchDeleteUserInOrganization,
+  fetchAddOrDeleteUsersOrganization,
   setDeleteUserInOrganization,
   fetchUsersInOutOrganization,
   setUserInOutOrganization,
@@ -65,7 +65,7 @@ function* fetchEditNameOrganizationHandler({ payload: data }) {
 function* fetchUsersInOrganizationHandler({ payload: data }) {
   try {
     const organization = yield axios.post(
-      data.in
+      data.inOut
         ? URL_ORGANIZATION.FETCH_USER_IN_ORGANIZATION
         : URL_ORGANIZATION.FETCH_USER_OUT_ORGANIZATION,
       {
@@ -79,12 +79,14 @@ function* fetchUsersInOrganizationHandler({ payload: data }) {
   }
 }
 
-function* fetchDeleteUserInOrganizationHandler({ payload: data }) {
+function* fetchAddOrDeleteUsersOrganizationHandler({ payload: data }) {
   try {
     const organization = yield axios.post(
-      URL_ORGANIZATION.FETCH_DELETE_USER_IN_ORGANIZATION,
+      data.inOut
+        ? URL_ORGANIZATION.FETCH_DELETE_USER_IN_ORGANIZATION
+        : URL_ORGANIZATION.FETCH_ADD_USER_FOR_ORGANIZATION,
       {
-        idUsers: data.idsUsers,
+        idUsers: data.idUsers,
         idOrganization: data.idOrganization,
       }
     );
@@ -114,7 +116,7 @@ export function* organizationSaga() {
     fetchUsersInOrganizationHandler
   );
   yield takeEvery(
-    fetchDeleteUserInOrganization.type,
-    fetchDeleteUserInOrganizationHandler
+    fetchAddOrDeleteUsersOrganization.type,
+    fetchAddOrDeleteUsersOrganizationHandler
   );
 }
