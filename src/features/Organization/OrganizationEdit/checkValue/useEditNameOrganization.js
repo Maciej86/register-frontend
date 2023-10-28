@@ -1,35 +1,34 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addConfirm } from "../../Confirm/sliceConfirm";
+import { addConfirm } from "../../../Confirm/sliceConfirm";
 import {
-  fetchAddNewOrganization,
+  fetchEditNameOrganization,
   resetOrganizationState,
-  selectAddNewOrganization,
+  selectEditNameOrganization,
   selectNameOrganizationExsist,
-} from "../../../store/Organization/sliceOrganization";
-import { selectUserState } from "../../../store/User/sliceUser";
+} from "../../../../store/Organization/sliceOrganization";
 
-export const useAddOrganization = () => {
+export const useEditNameOrganization = () => {
   const dispatch = useDispatch();
-  const userData = useSelector(selectUserState);
-  const confirmAddNewOrganization = useSelector(selectAddNewOrganization);
+  const confirmEditNameOrganization = useSelector(selectEditNameOrganization);
   const organizationExsist = useSelector(selectNameOrganizationExsist);
-  const nameOrganization = useRef(null);
+  const editNameOrganization = useRef(null);
+  const idEditOrganization = useRef(null);
   const [emptyNameOrganization, setEmptyNameOrganization] = useState(false);
 
   useEffect(() => {
-    if (confirmAddNewOrganization) {
+    if (confirmEditNameOrganization) {
       dispatch(
         addConfirm({
           id: nanoid(),
           type: true,
-          text: "Utworzono nową organizację.",
+          text: "Nazwa organizacji została zmieniona",
         })
       );
       dispatch(resetOrganizationState());
     }
-  }, [confirmAddNewOrganization]);
+  }, [confirmEditNameOrganization]);
 
   useEffect(() => {
     if (organizationExsist) {
@@ -44,24 +43,12 @@ export const useAddOrganization = () => {
     }
   }, [organizationExsist]);
 
-  const addNewOrganization = () => {
+  const changeNameOrganization = () => {
     setEmptyNameOrganization(false);
     const newNameOrganization =
-      nameOrganization.current !== null
-        ? nameOrganization.current.value.trim()
+      editNameOrganization.current !== null
+        ? editNameOrganization.current.value.trim()
         : "";
-
-    if (newNameOrganization.length < 3) {
-      setEmptyNameOrganization(true);
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: false,
-          text: "Nazwa musi zawierać co najmniej 3 znaki.",
-        })
-      );
-      return;
-    }
 
     if (newNameOrganization === "") {
       setEmptyNameOrganization(true);
@@ -69,19 +56,24 @@ export const useAddOrganization = () => {
         addConfirm({
           id: nanoid(),
           type: false,
-          text: "Proszę o uzupełnienie pola.",
+          text: "Proszę podać nazwę organizacji.",
         })
       );
       return;
     }
 
     dispatch(
-      fetchAddNewOrganization({
-        idUser: userData?.id,
+      fetchEditNameOrganization({
+        id: idEditOrganization.current.value,
         name: newNameOrganization,
       })
     );
   };
 
-  return { addNewOrganization, nameOrganization, emptyNameOrganization };
+  return {
+    editNameOrganization,
+    idEditOrganization,
+    emptyNameOrganization,
+    changeNameOrganization,
+  };
 };

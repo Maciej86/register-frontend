@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectAddNewOrganization } from "../../../store/Organization/sliceOrganization";
-import { URL_ORGANIZATION } from "../../../core/urlBackend";
-import { useFetchData } from "../../../core/useFetchData";
-import { Loader } from "../../../common/Loader";
-import { Modal } from "../../../common/Modal";
-import { Button } from "../../../common/elements/Button";
-import { LinkButton } from "../../../common/elements/styled";
+import { selectAddNewOrganization } from "../../../../store/Organization/sliceOrganization";
+import { URL_ORGANIZATION } from "../../../../core/urlBackend";
+import { useFetchData } from "../../../../core/useFetchData";
+import { Loader } from "../../../../common/Loader";
+import { Modal } from "../../../../common/Modal";
+import { Button } from "../../../../common/elements/Button";
+import { LinkButton } from "../../../../common/elements/styled";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 import { LuSave } from "react-icons/lu";
@@ -20,7 +20,7 @@ import {
   ColumnCenter,
   ThLp,
   Th80,
-} from "../../../common/styledCommon";
+} from "../../../../common/styledCommon";
 import { TextDelete } from "../styled";
 
 export const useAllOrganizaton = () => {

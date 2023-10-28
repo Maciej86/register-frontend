@@ -6,12 +6,12 @@ import {
   selectLoadingAddOrDeleteUsersOrganization,
   selectLoadingOrganization,
   selectUsersInOutOrganization,
-} from "../../../store/Organization/sliceOrganization";
-import { Loader } from "../../../common/Loader";
-import { useRoleUser } from "../../../core/useRoleUser";
+} from "../../../../store/Organization/sliceOrganization";
+import { Loader } from "../../../../common/Loader";
+import { useRoleUser } from "../../../../core/useRoleUser";
 import { useDeleteUserInOrganization } from "../checkValue/useAddOrDeleteUsersOrganization";
 import { ButtonTab } from "../styled";
-import { Button } from "../../../common/elements/Button";
+import { Button } from "../../../../common/elements/Button";
 import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";
 import {
   Column,
@@ -24,13 +24,13 @@ import {
   ThLp,
   TrBody,
   TrHead,
-} from "../../../common/styledCommon";
+} from "../../../../common/styledCommon";
 import {
   InputToggleSwitch,
   LabelToggleSwitch,
   SpanToggleSwitch,
   TableAction,
-} from "../../Organization/styled";
+} from "../../OrganizationAddOrDelete/styled";
 
 export const useFormUsersInOrganization = () => {
   const { id } = useParams();

@@ -1,7 +1,7 @@
 import { useFormEditOrganization } from "./form/useFormEditOrganization";
 import { useFormUsersInOrganization } from "./form/useFormUsersInOrganization";
-import { TileTwoHalf } from "../../common/TileTwoHalf";
-import { Tile } from "../../common/Tile";
+import { TileTwoHalf } from "../../../common/TileTwoHalf";
+import { Tile } from "../../../common/Tile";
 import { Conteiner } from "./styled";
 
 export const OrganizationEdit = () => {

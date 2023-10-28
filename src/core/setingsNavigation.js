@@ -4,8 +4,8 @@ import { App } from "./App";
 import { Settings } from "../features/Settings";
 import { Dashboard } from "../features/Dashboard";
 import { ErrorPage } from "../features/ErrorPage";
-import { Organization } from "../features/Organization";
-import { OrganizationEdit } from "../features/OrganizationEdit";
+import { Organization } from "../features/Organization/OrganizationAddOrDelete";
+import { OrganizationEdit } from "../features/Organization/OrganizationEdit";
 
 export const RouterSetings = createBrowserRouter([
   {

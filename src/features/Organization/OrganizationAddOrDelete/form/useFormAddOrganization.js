@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { selectLoadingAddOrganization } from "../../../store/Organization/sliceOrganization";
-import { Loader } from "../../../common/Loader";
+import { selectLoadingAddOrganization } from "../../../../store/Organization/sliceOrganization";
+import { Loader } from "../../../../common/Loader";
 import { useAddOrganization } from "../checkValue/useAddOrganization";
-import { InputText } from "../../../common/elements/InputText";
-import { Button } from "../../../common/elements/Button";
+import { InputText } from "../../../../common/elements/InputText";
+import { Button } from "../../../../common/elements/Button";
 import { FormArea } from "../styled";
 import { IoIosAddCircleOutline } from "react-icons/io";
 

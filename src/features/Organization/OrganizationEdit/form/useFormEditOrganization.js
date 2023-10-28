@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useFetchData } from "../../../core/useFetchData";
-import { URL_ORGANIZATION } from "../../../core/urlBackend";
-import { selectLoadingEditOrganization } from "../../../store/Organization/sliceOrganization";
-import { Loader } from "../../../common/Loader";
-import { Button } from "../../../common/elements/Button";
-import { InputText } from "../../../common/elements/InputText";
+import { useFetchData } from "../../../../core/useFetchData";
+import { URL_ORGANIZATION } from "../../../../core/urlBackend";
+import { selectLoadingEditOrganization } from "../../../../store/Organization/sliceOrganization";
+import { Loader } from "../../../../common/Loader";
+import { Button } from "../../../../common/elements/Button";
+import { InputText } from "../../../../common/elements/InputText";
 import { useEditNameOrganization } from "../checkValue/useEditNameOrganization";
 import { ConteinerLoader, FormArea, NotExsist } from "../styled";
 import { LuFileEdit } from "react-icons/lu";
