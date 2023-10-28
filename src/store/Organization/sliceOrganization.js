@@ -60,8 +60,11 @@ const organizationSlice = createSlice({
         const index = state.userOrganization.findIndex(
           (item) => item.id_organization === organization[0].id
         );
-        state.userOrganization[index].name_organization =
-          organization[0].name_organization;
+
+        if (index !== -1) {
+          state.userOrganization[index].name_organization =
+            organization[0].name_organization;
+        }
       } else {
         state.nameOrganizationExsist = true;
       }
