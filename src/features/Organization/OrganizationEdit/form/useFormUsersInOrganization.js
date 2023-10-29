@@ -121,11 +121,12 @@ export const useFormUsersInOrganization = () => {
                         <InputToggleSwitch
                           htmlFor={index}
                           type="checkbox"
-                          value={item.id}
+                          name="idUser"
+                          defaultValue={item.id}
                           onChange={(event) =>
                             changeChecked(index, event.target.checked)
                           }
-                          checked={inputCheckbox[index]}
+                          defaultChecked={inputCheckbox[index]}
                         />
                         <SpanToggleSwitch
                           $isChecked={inputCheckbox[index]}
