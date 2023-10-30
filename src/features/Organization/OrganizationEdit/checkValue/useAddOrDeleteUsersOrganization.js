@@ -20,8 +20,6 @@ export const useDeleteUserInOrganization = (
   const [inputCheckbox, setInputCheckbox] = useState([]);
   const [userChecked, setUserChecked] = useState();
 
-  console.log(data);
-
   useEffect(() => {
     setInputCheckbox(data.map(() => changeTab));
     setUserChecked(true);
