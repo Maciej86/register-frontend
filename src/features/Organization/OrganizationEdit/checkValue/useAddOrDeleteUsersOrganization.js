@@ -51,6 +51,8 @@ export const useDeleteUserInOrganization = (
     );
   };
 
+  console.log(confirmAddOrDeleteUsersOrganization);
+
   useEffect(() => {
     if (confirmAddOrDeleteUsersOrganization) {
       dispatch(
