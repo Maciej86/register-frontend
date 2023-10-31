@@ -1,5 +1,5 @@
 import { useFormAddOrganization } from "./form/useFormAddOrganization";
-import { useAllOrganizaton } from "./checkValue/useAllOrganization";
+import { useAllOrganizaton } from "./form/useTableOrganization";
 import { TileTwoHalf } from "../../../common/TileTwoHalf";
 import { Tile } from "../../../common/Tile";
 import { Conteiner } from "./styled";

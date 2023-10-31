@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAddNewOrganization } from "../../../../store/Organization/sliceOrganization";
 import { URL_ORGANIZATION } from "../../../../core/urlBackend";
@@ -14,7 +14,6 @@ import {
   ConteinerTable,
   Table,
   Th,
-  ThLeft,
   TrBody,
   TrHead,
   ColumnCenter,
