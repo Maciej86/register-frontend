@@ -10,7 +10,7 @@ import {
   setEditNameOrganization,
   fetchUserOrganization,
   fetchAddOrDeleteUsersOrganization,
-  setDeleteUserInOrganization,
+  setAddOrDeleteUserInOrganization,
   fetchUsersInOutOrganization,
   setUserInOutOrganization,
 } from "./sliceOrganization";
@@ -91,7 +91,7 @@ function* fetchAddOrDeleteUsersOrganizationHandler({ payload: data }) {
       }
     );
     yield delay(timeDelay);
-    yield put(setDeleteUserInOrganization(organization.data));
+    yield put(setAddOrDeleteUserInOrganization(organization.data));
   } catch (error) {
     yield console.error(error);
   }

@@ -72,7 +72,7 @@ const organizationSlice = createSlice({
     fetchAddOrDeleteUsersOrganization: (state) => {
       state.loadingAddOrDeleteUsersOrganization = true;
     },
-    setDeleteUserInOrganization: (state, { payload: organization }) => {
+    setAddOrDeleteUserInOrganization: (state, { payload: organization }) => {
       state.usersInOutOrganization = organization;
       state.loadingAddOrDeleteUsersOrganization = false;
       state.addOrDeleteUsersOrganization = true;
@@ -124,7 +124,7 @@ export const {
   fetchUsersInOutOrganization,
   setUserInOutOrganization,
   fetchAddOrDeleteUsersOrganization,
-  setDeleteUserInOrganization,
+  setAddOrDeleteUserInOrganization,
 } = organizationSlice.actions;
 
 export default organizationSlice.reducer;
