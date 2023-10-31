@@ -18,6 +18,7 @@ export const Modal = ({
   textHeader,
   buttonText,
   buttonIcon,
+  buttonAction,
 }) => {
   return (
     <Conteiner $visible={visible}>
@@ -46,7 +47,7 @@ export const Modal = ({
               text={buttonText}
               typeAction={typeButton}
               icon={buttonIcon}
-              action={null}
+              action={buttonAction}
             />
           </ButtonAction>
         </Body>
