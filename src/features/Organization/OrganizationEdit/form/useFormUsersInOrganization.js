@@ -126,7 +126,7 @@ export const useFormUsersInOrganization = () => {
                           onChange={(event) =>
                             changeChecked(index, event.target.checked)
                           }
-                          defaultChecked={inputCheckbox[index]}
+                          checked={inputCheckbox[index] || false}
                         />
                         <SpanToggleSwitch
                           $isChecked={inputCheckbox[index]}

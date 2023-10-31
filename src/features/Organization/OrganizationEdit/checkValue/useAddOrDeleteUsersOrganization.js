@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAddOrDeleteUsersOrganization,
   resetOrganizationState,
-  selectLoadingAddOrDeleteUsersOrganization,
+  selectAddOrDeleteUsersOrganization,
 } from "../../../../store/Organization/sliceOrganization";
 import { addConfirm } from "../../../Confirm/sliceConfirm";
 
@@ -15,7 +15,7 @@ export const useDeleteUserInOrganization = (
 ) => {
   const dispatch = useDispatch();
   const confirmAddOrDeleteUsersOrganization = useSelector(
-    selectLoadingAddOrDeleteUsersOrganization
+    selectAddOrDeleteUsersOrganization
   );
   const [inputCheckbox, setInputCheckbox] = useState([]);
   const [userChecked, setUserChecked] = useState();
@@ -50,8 +50,6 @@ export const useDeleteUserInOrganization = (
       })
     );
   };
-
-  console.log(confirmAddOrDeleteUsersOrganization);
 
   useEffect(() => {
     if (confirmAddOrDeleteUsersOrganization) {
