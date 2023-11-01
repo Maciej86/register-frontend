@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
 import {
   fetchUsersInOutOrganization,
   selectLoadingAddOrDeleteUsersOrganization,
@@ -77,7 +78,7 @@ export const useFormUsersInOrganization = () => {
           onClick={() => loadUsersInOrganization()}
           disabled={loadingUsersOrganization}
         >
-          Użytkownicy w organizacji
+          {ORGANIZATION.TAB_USER_IN_ORGANIZATION}
         </ButtonTab>
         <ButtonTab
           type="button"
@@ -85,16 +86,16 @@ export const useFormUsersInOrganization = () => {
           onClick={() => loadUsersOutOrganization()}
           disabled={loadingUsersOrganization}
         >
-          Dodaj użytkowników
+          {ORGANIZATION.TAB_ADD_USER_FOR_ORGANIZATION}
         </ButtonTab>
         <Table>
           <thead>
             <TrHead>
-              <ThLp>Lp.</ThLp>
-              <ThLeft>Imię</ThLeft>
-              <ThLeft>Nazwisko</ThLeft>
-              <Th80>Konto</Th80>
-              <Th>Zmień</Th>
+              <ThLp>{COMMON.TABLE_HEADER_COUNT}</ThLp>
+              <ThLeft>{COMMON.TABLE_HEADER_NAME2}</ThLeft>
+              <ThLeft>{COMMON.TABLE_HEADER_LASTNAME}</ThLeft>
+              <Th80>{COMMON.TABLE_HEADER_ACCOUNT}</Th80>
+              <Th>{COMMON.TABLE_HEADER_CHANGE}</Th>
             </TrHead>
           </thead>
           <tbody>
@@ -147,7 +148,7 @@ export const useFormUsersInOrganization = () => {
           <Loader margin="0 5px 0 0" />
         ) : toggleTabUsersOrganization ? (
           <Button
-            text="Usuń z organizacji"
+            text={ORGANIZATION.BUTTON_DELETE_USER_ORGANIZATION}
             typeAction="delete"
             icon={<AiOutlineUserDelete size={"15px"} />}
             action={addOrDeleteUsersOrganization}
@@ -155,7 +156,7 @@ export const useFormUsersInOrganization = () => {
           />
         ) : (
           <Button
-            text="Dodaj uzytkownika"
+            text={ORGANIZATION.BUTTON_ADD_USER_ORGANIZATION}
             typeAction="add"
             icon={<AiOutlineUserAdd size={"15px"} />}
             action={addOrDeleteUsersOrganization}

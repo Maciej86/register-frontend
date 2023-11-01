@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useFetchData } from "../../../../core/useFetchData";
 import { URL_ORGANIZATION } from "../../../../core/urlBackend";
+import { ORGANIZATION } from "../../../../core/InfoText";
 import { selectLoadingEditOrganization } from "../../../../store/Organization/sliceOrganization";
 import { Loader } from "../../../../common/Loader";
 import { Button } from "../../../../common/elements/Button";
@@ -40,7 +41,7 @@ export const useFormEditOrganization = () => {
       <FormArea>
         <InputText
           id="organization"
-          placeholder="Nazwa organizacji"
+          placeholder={ORGANIZATION.NEW_ORGANIZATION_PLACEHOLDER}
           label=""
           small={true}
           maxlength="50"

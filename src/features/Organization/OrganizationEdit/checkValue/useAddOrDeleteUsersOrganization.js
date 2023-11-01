@@ -6,6 +6,7 @@ import {
   resetOrganizationState,
   selectAddOrDeleteUsersOrganization,
 } from "../../../../store/Organization/sliceOrganization";
+import { ORGANIZATION } from "../../../../core/InfoText";
 import { addConfirm } from "../../../Confirm/sliceConfirm";
 
 export const useDeleteUserInOrganization = (
@@ -58,8 +59,8 @@ export const useDeleteUserInOrganization = (
           id: nanoid(),
           type: true,
           text: changeTab
-            ? "Wybrani użytkownicy zostali usunięci z organizacji"
-            : "Wybrani użytkownicy zostali dodani do organizacji",
+            ? ORGANIZATION.CONFIRM_DELETE_USERS_ORGANIZATION
+            : ORGANIZATION.CONFIRM_ADD_USERS_ORGANIZATION,
         })
       );
       dispatch(resetOrganizationState());

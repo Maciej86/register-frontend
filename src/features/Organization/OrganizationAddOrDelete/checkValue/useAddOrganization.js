@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { addConfirm } from "../../../Confirm/sliceConfirm";
+import { ORGANIZATION } from "../../../../core/InfoText";
 import {
   fetchAddNewOrganization,
   resetOrganizationState,
@@ -24,7 +25,7 @@ export const useAddOrganization = () => {
         addConfirm({
           id: nanoid(),
           type: true,
-          text: "Utworzono nową organizację.",
+          text: ORGANIZATION.ADD_NEW_ORGANIZATION,
         })
       );
       dispatch(resetOrganizationState());
@@ -37,7 +38,7 @@ export const useAddOrganization = () => {
         addConfirm({
           id: nanoid(),
           type: false,
-          text: "Podana nazwa organizacji już istnieje.",
+          text: ORGANIZATION.NAME_EXSIST_ORGANIZATION,
         })
       );
       dispatch(resetOrganizationState());
@@ -57,7 +58,7 @@ export const useAddOrganization = () => {
         addConfirm({
           id: nanoid(),
           type: false,
-          text: "Nazwa musi zawierać co najmniej 3 znaki.",
+          text: ORGANIZATION.ERROR_NAME_ORGANIZATION,
         })
       );
       return;
@@ -69,7 +70,7 @@ export const useAddOrganization = () => {
         addConfirm({
           id: nanoid(),
           type: false,
-          text: "Proszę o uzupełnienie pola.",
+          text: ORGANIZATION.EMPTY_INPUT_NAME_ORGANIZATION,
         })
       );
       return;

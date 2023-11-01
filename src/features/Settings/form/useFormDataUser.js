@@ -88,7 +88,7 @@ export const useFormDataUser = () => {
         <Loader margin="0" />
       ) : (
         <Button
-          text={USERSETTINGS.CONFIRM_DATA_USER}
+          text={USERSETTINGS.BUTTON_EDIT_DATA_USER}
           icon={<LuSave size={"15px"} />}
           action={changedDataUser}
         />

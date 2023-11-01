@@ -1,3 +1,4 @@
+import { ORGANIZATION } from "../../../core/InfoText";
 import { useFormEditOrganization } from "./form/useFormEditOrganization";
 import { useFormUsersInOrganization } from "./form/useFormUsersInOrganization";
 import { TileTwoHalf } from "../../../common/TileTwoHalf";
@@ -11,13 +12,13 @@ export const OrganizationEdit = () => {
   return (
     <Conteiner>
       <TileTwoHalf
-        title="Edytuj organizację"
-        subTitle="Zmień nazwę organizacji"
+        title={ORGANIZATION.COM_TITLE_EDIT_ORGANIZATION}
+        subTitle={ORGANIZATION.COM_SUBTITLE_EDIT_ORGANIZATION}
         body={formEditname}
       />
       <Tile
-        title="Uzytkownicy organizacji"
-        subTitle="Zarządzaj użytkownikami organizacji"
+        title={ORGANIZATION.COM_TITLE_USERS_IN_ORGANIZATION}
+        subTitle={ORGANIZATION.COM_SUBTITLE_USERS_IN_ORGANIZATION}
         body={formUserInOrganization}
       />
     </Conteiner>

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectLoadingAddOrganization } from "../../../../store/Organization/sliceOrganization";
+import { ORGANIZATION } from "../../../../core/InfoText";
 import { Loader } from "../../../../common/Loader";
 import { useAddOrganization } from "../checkValue/useAddOrganization";
 import { InputText } from "../../../../common/elements/InputText";
@@ -17,7 +18,7 @@ export const useFormAddOrganization = () => {
       <FormArea>
         <InputText
           id="organization"
-          placeholder="Nazwa organizacji"
+          placeholder={ORGANIZATION.NEW_ORGANIZATION_PLACEHOLDER}
           label=""
           small={true}
           maxlength="50"

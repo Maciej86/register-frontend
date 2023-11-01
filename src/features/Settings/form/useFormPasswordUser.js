@@ -57,7 +57,7 @@ export const useFromPasswordUser = () => {
         <Loader margin="0" />
       ) : (
         <Button
-          text={USERSETTINGS.NEW_PASSWORD_CONFIRM}
+          text={USERSETTINGS.NEW_PASSWORD_BUTTON}
           icon={<LuSave size={"15px"} />}
           action={changedPassword}
         />
