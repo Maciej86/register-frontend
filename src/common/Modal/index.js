@@ -1,3 +1,4 @@
+import { Loader } from "../Loader";
 import { Button } from "../elements/Button";
 import {
   Body,
@@ -19,6 +20,7 @@ export const Modal = ({
   buttonText,
   buttonIcon,
   buttonAction,
+  loadingAction,
 }) => {
   return (
     <Conteiner $visible={visible}>
@@ -35,20 +37,26 @@ export const Modal = ({
         <Body $type={type}>
           {content}
           <ButtonAction>
-            <Button
-              type="button"
-              text="Anuluj"
-              typeAction="cancel"
-              icon={<AiOutlineCloseCircle size={"15px"} />}
-              action={() => setVisible((visible) => !visible)}
-            />
-            <Button
-              type="button"
-              text={buttonText}
-              typeAction={typeButton}
-              icon={buttonIcon}
-              action={buttonAction}
-            />
+            {loadingAction ? (
+              <Loader margin="2px 0" />
+            ) : (
+              <>
+                <Button
+                  type="button"
+                  text="Anuluj"
+                  typeAction="cancel"
+                  icon={<AiOutlineCloseCircle size={"15px"} />}
+                  action={() => setVisible((visible) => !visible)}
+                />
+                <Button
+                  type="button"
+                  text={buttonText}
+                  typeAction={typeButton}
+                  icon={buttonIcon}
+                  action={buttonAction}
+                />
+              </>
+            )}
           </ButtonAction>
         </Body>
       </WindowModal>
