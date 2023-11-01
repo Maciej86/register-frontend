@@ -91,3 +91,13 @@ export const Column = styled.td`
 export const ColumnCenter = styled(Column)`
   text-align: center;
 `;
+
+export const EmptyTable = styled.span`
+  display: inline-block;
+  margin-top: 1cqi;
+  padding: 10px 20px;
+  background: ${({ theme }) => theme.color.warning};
+  border-radius: ${({ theme }) => theme.size.border_radius_small};
+  color: ${({ theme }) => theme.color.warning_dark};
+  font-weight: 500;
+`;

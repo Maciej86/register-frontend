@@ -13,6 +13,7 @@ import {
   ColumnCenter,
   ThLp,
   Th80,
+  EmptyTable,
 } from "../../../../common/styledCommon";
 import { TextDelete } from "../styled";
 import { FiEdit } from "react-icons/fi";
@@ -64,38 +65,48 @@ export const useAllOrganizaton = () => {
             </TrHead>
           </thead>
           <tbody>
-            {fetchData?.map((item, index) => {
-              index++;
-              return (
-                <TrBody key={index}>
-                  <ColumnCenter>{index}</ColumnCenter>
-                  <td>{item.name_organization}</td>
-                  <ColumnCenter>{item.count_user}</ColumnCenter>
-                  <ColumnCenter>
-                    <LinkButton
-                      to={`/${ORGANIZATION.LINK_ID_ORGANIZATION}/${item.id}`}
-                      $small="true"
-                    >
-                      <FiEdit size={"15px"} />
-                    </LinkButton>
-                  </ColumnCenter>
-                  <ColumnCenter>
-                    <Button
-                      type="button"
-                      small="true"
-                      typeAction="delete"
-                      icon={<GoTrash size={"15px"} />}
-                      action={() => {
-                        setVisibleModal((visibleModal) => !visibleModal);
-                        setSelectedOrganization(item.name_organization);
-                        setIdOrganization(item.id);
-                      }}
-                      disabled={item.count_user > 0 ? "disabled" : ""}
-                    />
-                  </ColumnCenter>
-                </TrBody>
-              );
-            })}
+            {fetchData.length === 0 ? (
+              <tr>
+                <ColumnCenter colSpan="5">
+                  <EmptyTable>
+                    {ORGANIZATION.EMPTY_TABLE_ALL_ORGANIZATION}
+                  </EmptyTable>
+                </ColumnCenter>
+              </tr>
+            ) : (
+              fetchData?.map((item, index) => {
+                index++;
+                return (
+                  <TrBody key={index}>
+                    <ColumnCenter>{index}</ColumnCenter>
+                    <td>{item.name_organization}</td>
+                    <ColumnCenter>{item.count_user}</ColumnCenter>
+                    <ColumnCenter>
+                      <LinkButton
+                        to={`/${ORGANIZATION.LINK_ID_ORGANIZATION}/${item.id}`}
+                        $small="true"
+                      >
+                        <FiEdit size={"15px"} />
+                      </LinkButton>
+                    </ColumnCenter>
+                    <ColumnCenter>
+                      <Button
+                        type="button"
+                        small="true"
+                        typeAction="delete"
+                        icon={<GoTrash size={"15px"} />}
+                        action={() => {
+                          setVisibleModal((visibleModal) => !visibleModal);
+                          setSelectedOrganization(item.name_organization);
+                          setIdOrganization(item.id);
+                        }}
+                        disabled={item.count_user > 0 ? "disabled" : ""}
+                      />
+                    </ColumnCenter>
+                  </TrBody>
+                );
+              })
+            )}
           </tbody>
         </Table>
       </ConteinerTable>

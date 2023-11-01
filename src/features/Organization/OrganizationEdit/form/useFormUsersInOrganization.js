@@ -18,6 +18,7 @@ import {
   Column,
   ColumnCenter,
   ConteinerTable,
+  EmptyTable,
   Table,
   Th,
   Th80,
@@ -105,6 +106,24 @@ export const useFormUsersInOrganization = () => {
                   <Loader margin="15px auto" />
                 </td>
               </tr>
+            ) : usersOrganization.length === 0 ? (
+              toggleTabUsersOrganization ? (
+                <tr>
+                  <ColumnCenter colSpan="5">
+                    <EmptyTable>
+                      {ORGANIZATION.EMPTY_TABLE_USERES_IN_ORGANIZATION}
+                    </EmptyTable>
+                  </ColumnCenter>
+                </tr>
+              ) : (
+                <tr>
+                  <ColumnCenter colSpan="5">
+                    <EmptyTable>
+                      {ORGANIZATION.EMPTY_TABLE_ALL_USERS_IN_ORGANIZATION}
+                    </EmptyTable>
+                  </ColumnCenter>
+                </tr>
+              )
             ) : (
               usersOrganization?.map((item, index) => {
                 let number = index + 1;

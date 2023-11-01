@@ -92,4 +92,9 @@ export const ORGANIZATION = {
   TAB_ADD_USER_FOR_ORGANIZATION: "Dodaj użytkowników",
   BUTTON_DELETE_USER_ORGANIZATION: "Usuń z organizacji",
   BUTTON_ADD_USER_ORGANIZATION: "Dodaj użytkownika",
+  EMPTY_TABLE_USERES_IN_ORGANIZATION:
+    "Żaden użytkownik nie został dodany do tej organizacji.",
+  EMPTY_TABLE_ALL_USERS_IN_ORGANIZATION:
+    "Wszyscy użytkownicy należą do tej organizacji.",
+  EMPTY_TABLE_ALL_ORGANIZATION: "Żadna organizacja nie została utworzona.",
 };
