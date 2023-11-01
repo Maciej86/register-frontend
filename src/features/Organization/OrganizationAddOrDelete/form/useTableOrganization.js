@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAddNewOrganization } from "../../../../store/Organization/sliceOrganization";
 import { URL_ORGANIZATION } from "../../../../core/urlBackend";
@@ -9,7 +9,6 @@ import { Button } from "../../../../common/elements/Button";
 import { LinkButton } from "../../../../common/elements/styled";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
-import { LuSave } from "react-icons/lu";
 import {
   ConteinerTable,
   Table,
@@ -21,20 +20,31 @@ import {
   Th80,
 } from "../../../../common/styledCommon";
 import { TextDelete } from "../styled";
+import { useDeleteOrganization } from "../checkValue/useDeleteOrganization";
 
 export const useAllOrganizaton = () => {
   const addNewOrganization = useSelector(selectAddNewOrganization);
+  const {
+    deleteOrganization,
+    loadingDeleteOrganization,
+    confirmDeleteOrganization,
+  } = useDeleteOrganization();
+
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false);
-  const [visibleConfirmModal, setVisibleConfirmModal] = useState(false);
   const [selectedOrganization, setSelectedOrganization] = useState(null);
+  const [idOrganization, setIdOrganization] = useState(null);
+
+  useEffect(() => {
+    setVisibleDeleteModal(loadingDeleteOrganization);
+  }, [loadingDeleteOrganization]);
 
   const { fetchData, fetchDataLoading } = useFetchData(
     URL_ORGANIZATION.FETCH_ALL_ORGANIZATION,
-    [addNewOrganization]
+    [addNewOrganization, confirmDeleteOrganization]
   );
 
   const ContentDelete = (
-    <TextDelete>{`Czy napewno chcesz usunąć organizację: ${selectedOrganization}?`}</TextDelete>
+    <TextDelete>{`Czy na pewno chcesz usunąć organizację: ${selectedOrganization}?`}</TextDelete>
   );
 
   const viewOrganization = fetchDataLoading ? (
@@ -50,16 +60,8 @@ export const useAllOrganizaton = () => {
         typeButton="delete"
         buttonText="Usuń"
         buttonIcon={<GoTrash size={"15px"} />}
-      />
-      <Modal
-        setVisible={setVisibleConfirmModal}
-        visible={visibleConfirmModal}
-        textHeader="Edycja"
-        content="Tutaj treść przy zapisie."
-        type="confirm"
-        typeButton="confirm"
-        buttonText="Zapisz"
-        buttonIcon={<LuSave size={"15px"} />}
+        buttonAction={() => deleteOrganization(idOrganization)}
+        loadingAction={loadingDeleteOrganization}
       />
       <ConteinerTable>
         <Table>
@@ -99,6 +101,7 @@ export const useAllOrganizaton = () => {
                           (visibleDeleteModal) => !visibleDeleteModal
                         );
                         setSelectedOrganization(item.name_organization);
+                        setIdOrganization(item.id);
                       }}
                       disabled={item.count_user > 0 ? "disabled" : ""}
                     />

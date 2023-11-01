@@ -18,5 +18,6 @@ export const URL_ORGANIZATION = {
   FETCH_DELETE_USER_IN_ORGANIZATION: `${url}/deleteuserinorganization`,
   FETCH_ADD_USER_FOR_ORGANIZATION: `${url}/adduserorganization`,
   ADD_ORGANIZATION: `${url}/addorganization`,
+  DELETE_ORGANIZATION: `${url}/deleteorganization`,
   FETCH_ALL_ORGANIZATION: `${url}/allorganization`,
 };

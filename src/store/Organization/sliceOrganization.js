@@ -8,9 +8,11 @@ const initialOrganization = {
   loadingNewOrganization: false,
   loadingEditOrganization: false,
   loadingAddOrDeleteUsersOrganization: false,
+  loadingDeleteOrganization: false,
   addNewOrganization: false,
   nameOrganizationExsist: false,
   editNameOrganization: false,
+  deleteOrganization: false,
   addOrDeleteUsersOrganization: false,
 };
 
@@ -77,11 +79,19 @@ const organizationSlice = createSlice({
       state.loadingAddOrDeleteUsersOrganization = false;
       state.addOrDeleteUsersOrganization = true;
     },
+    fetchDeleteOrganization: (state) => {
+      state.loadingDeleteOrganization = true;
+    },
+    setDeleteOrganization: (state) => {
+      state.loadingDeleteOrganization = false;
+      state.deleteOrganization = true;
+    },
     resetOrganizationState: (state) => {
       state.addNewOrganization = false;
       state.nameOrganizationExsist = false;
       state.editNameOrganization = false;
       state.addOrDeleteUsersOrganization = false;
+      state.deleteOrganization = false;
     },
   },
 });
@@ -111,6 +121,10 @@ export const selectLoadingTokenOrganization = (state) =>
   selectOrganization(state).loadingTokenOrganization;
 export const selectAddOrDeleteUsersOrganization = (state) =>
   selectOrganization(state).addOrDeleteUsersOrganization;
+export const selectloadingDeleteOrganization = (state) =>
+  selectOrganization(state).loadingDeleteOrganization;
+export const selectDeleteOrganization = (state) =>
+  selectOrganization(state).deleteOrganization;
 
 export const {
   fetchUserOrganization,
@@ -125,6 +139,8 @@ export const {
   setUserInOutOrganization,
   fetchAddOrDeleteUsersOrganization,
   setAddOrDeleteUserInOrganization,
+  fetchDeleteOrganization,
+  setDeleteOrganization,
 } = organizationSlice.actions;
 
 export default organizationSlice.reducer;
