@@ -88,7 +88,7 @@ export const useFormDataUser = () => {
         <Loader margin="0" />
       ) : (
         <Button
-          text={USERSETTINGS.COFIRM_DATA_USER}
+          text={USERSETTINGS.CONFIRM_DATA_USER}
           icon={<LuSave size={"15px"} />}
           action={changedDataUser}
         />
