@@ -23,8 +23,8 @@ export const useAllOrganizaton = () => {
     fetchDataLoading,
     deleteOrganization,
     loadingDeleteOrganization,
-    visibleDeleteModal,
-    setVisibleDeleteModal,
+    visibleModal,
+    setVisibleModal,
     selectedOrganization,
     setSelectedOrganization,
     idOrganization,
@@ -40,8 +40,8 @@ export const useAllOrganizaton = () => {
   ) : (
     <>
       <Modal
-        setVisible={setVisibleDeleteModal}
-        visible={visibleDeleteModal}
+        setVisible={setVisibleModal}
+        visible={visibleModal}
         textHeader="Usuń"
         content={ContentDelete}
         type="delete"
@@ -85,9 +85,7 @@ export const useAllOrganizaton = () => {
                       typeAction="delete"
                       icon={<GoTrash size={"15px"} />}
                       action={() => {
-                        setVisibleDeleteModal(
-                          (visibleDeleteModal) => !visibleDeleteModal
-                        );
+                        setVisibleModal((visibleModal) => !visibleModal);
                         setSelectedOrganization(item.name_organization);
                         setIdOrganization(item.id);
                       }}

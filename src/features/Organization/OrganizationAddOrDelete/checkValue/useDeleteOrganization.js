@@ -19,7 +19,7 @@ export const useDeleteOrganization = () => {
   const loadingDeleteOrganization = useSelector(
     selectloadingDeleteOrganization
   );
-  const [visibleDeleteModal, setVisibleDeleteModal] = useState(false);
+  const [visibleModal, setVisibleModal] = useState(false);
   const [selectedOrganization, setSelectedOrganization] = useState(null);
   const [idOrganization, setIdOrganization] = useState(null);
 
@@ -29,7 +29,7 @@ export const useDeleteOrganization = () => {
   );
 
   useEffect(() => {
-    setVisibleDeleteModal(loadingDeleteOrganization);
+    setVisibleModal(loadingDeleteOrganization);
   }, [loadingDeleteOrganization]);
 
   useEffect(() => {
@@ -54,8 +54,8 @@ export const useDeleteOrganization = () => {
     fetchDataLoading,
     deleteOrganization,
     loadingDeleteOrganization,
-    visibleDeleteModal,
-    setVisibleDeleteModal,
+    visibleModal,
+    setVisibleModal,
     selectedOrganization,
     setSelectedOrganization,
     idOrganization,
