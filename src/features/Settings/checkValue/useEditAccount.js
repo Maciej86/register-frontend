@@ -80,7 +80,7 @@ export const useEditAccount = (userData, themeValueData) => {
           addConfirm({
             id: nanoid(),
             type: false,
-            text: USERSETTINGS.CONFIRMT_EDIT_EMPTY_INPUT,
+            text: USERSETTINGS.CONFIRM_EDIT_EMPTY_INPUT,
           })
         );
         return;
