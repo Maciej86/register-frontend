@@ -1,8 +1,3 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectAddNewOrganization } from "../../../../store/Organization/sliceOrganization";
-import { URL_ORGANIZATION } from "../../../../core/urlBackend";
-import { useFetchData } from "../../../../core/useFetchData";
 import { Loader } from "../../../../common/Loader";
 import { Modal } from "../../../../common/Modal";
 import { Button } from "../../../../common/elements/Button";
@@ -23,25 +18,18 @@ import { TextDelete } from "../styled";
 import { useDeleteOrganization } from "../checkValue/useDeleteOrganization";
 
 export const useAllOrganizaton = () => {
-  const addNewOrganization = useSelector(selectAddNewOrganization);
   const {
+    fetchData,
+    fetchDataLoading,
     deleteOrganization,
     loadingDeleteOrganization,
-    confirmDeleteOrganization,
+    visibleDeleteModal,
+    setVisibleDeleteModal,
+    selectedOrganization,
+    setSelectedOrganization,
+    idOrganization,
+    setIdOrganization,
   } = useDeleteOrganization();
-
-  const [visibleDeleteModal, setVisibleDeleteModal] = useState(false);
-  const [selectedOrganization, setSelectedOrganization] = useState(null);
-  const [idOrganization, setIdOrganization] = useState(null);
-
-  useEffect(() => {
-    setVisibleDeleteModal(loadingDeleteOrganization);
-  }, [loadingDeleteOrganization]);
-
-  const { fetchData, fetchDataLoading } = useFetchData(
-    URL_ORGANIZATION.FETCH_ALL_ORGANIZATION,
-    [addNewOrganization, confirmDeleteOrganization]
-  );
 
   const ContentDelete = (
     <TextDelete>{`Czy na pewno chcesz usunąć organizację: ${selectedOrganization}?`}</TextDelete>
