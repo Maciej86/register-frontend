@@ -5,7 +5,7 @@ const initialUser = {
   userOut: false,
   userNotExist: false,
   editAccount: false,
-  changingPassword: false,
+  changingPassword: "",
   loading: false,
   loadingTokenUser: false,
   loadingOut: false,
@@ -82,6 +82,12 @@ const loginUserSlice = createSlice({
       state.loadingEditPassword = false;
       state.loadingEditPassword = false;
     },
+    resetUserState: (state) => {
+      state.changingPassword = "";
+      state.editAccount = false;
+      state.emailExsist = "";
+      state.serverError = false;
+    },
   },
 });
 
@@ -118,6 +124,7 @@ export const {
   fetchEditEmail,
   setEditEmail,
   serverConnectionError,
+  resetUserState,
 } = loginUserSlice.actions;
 
 export default loginUserSlice.reducer;

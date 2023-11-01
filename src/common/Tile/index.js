@@ -1,13 +1,14 @@
-import { Body, Conteiner, Header, SubTitle, Title } from "./styled";
+import { TileConteiner, TileSubTitle, TileTitle } from "../styledCommon";
+import { Body, Header } from "./styled";
 
 export const Tile = ({ title, subTitle = "", body }) => {
   return (
-    <Conteiner>
+    <TileConteiner>
       <Header>
-        <Title>{title}</Title>
-        <SubTitle>{subTitle}</SubTitle>
+        <TileTitle>{title}</TileTitle>
+        <TileSubTitle>{subTitle}</TileSubTitle>
       </Header>
       <Body>{body}</Body>
-    </Conteiner>
+    </TileConteiner>
   );
 };

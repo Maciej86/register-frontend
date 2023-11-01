@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import rootSaga from "./rootSaga";
-import loginUserSlice from "../common/user/sliceUser";
+import rootSaga from "../core/rootSaga";
+import loginUserSlice from "./User/sliceUser";
+import organizationSlice from "./Organization/sliceOrganization";
 import toggleNavSlice from "../features/Bar/sliceBar";
 import confirmSlice from "../features/Confirm/sliceConfirm";
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     toggleNavStore: toggleNavSlice,
     loginUserStore: loginUserSlice,
     confirmStore: confirmSlice,
+    organizationStore: organizationSlice,
   },
   middleware: [sagaMiddleware],
 });

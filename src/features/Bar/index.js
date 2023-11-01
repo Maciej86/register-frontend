@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRoleUser } from "../../common/user/useRoleUser";
+import { useRoleUser } from "../../core/useRoleUser";
 import {
   fetchLoginUserOut,
   selectUserState,
   selectStatusloadingOut,
-} from "../../common/user/sliceUser";
+} from "../../store/User/sliceUser";
+import { Loader } from "../../common/Loader";
 import {
   selectToggleNavState,
   setToggleMobileNav,
   setToggleNav,
 } from "./sliceBar";
-import { Loader } from "../../common/Loader";
 import {
   BarLeft,
   BarRight,
   ButtonToggleNav,
-  ButtonUser,
-  DataUser,
+  Button,
+  Data,
   PanelUser,
   Email,
   PanelUserHeader,
@@ -25,8 +25,8 @@ import {
   PanelUserList,
   ListLink,
   Name,
-  UserName,
-  UserRole,
+  DataName,
+  DataValue,
   Conteiner,
   ListButton,
   TextLink,
@@ -44,7 +44,7 @@ export const Bar = () => {
   const loadingOut = useSelector(selectStatusloadingOut);
   const toggleNav = useSelector(selectToggleNavState);
   const [visible, setVisible] = useState(false);
-  const { userRole } = useRoleUser(user?.role);
+  const { userRole } = useRoleUser();
 
   const userInitials = () => {
     const name = user?.name.slice(0, 1).toUpperCase();
@@ -72,16 +72,16 @@ export const Bar = () => {
         </ButtonToggleMobileNav>
       </BarLeft>
       <BarRight>
-        <ButtonUser
+        <Button
           onClick={() => setVisible((visible) => !visible)}
           $visible={visible}
         >
-          <DataUser>
-            <UserName>{user?.name}</UserName>
-            <UserRole>{userRole}</UserRole>
-          </DataUser>
+          <Data>
+            <DataName>{user?.name}</DataName>
+            <DataValue>{userRole(user?.role)}</DataValue>
+          </Data>
           <PiUserThin size={"30px"} />
-        </ButtonUser>
+        </Button>
         <PanelUser
           onMouseLeave={() => setVisible(() => false)}
           $visible={visible}

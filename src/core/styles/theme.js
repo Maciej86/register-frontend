@@ -1,14 +1,15 @@
 export const ThemeDefault = {
   color: {
     primary_color: "rgb(30, 35, 64)",
+    primary_color_alpha: "rgba(30, 35, 64, .6)",
     primary_light_color: "rgb(58, 66, 117)",
     primary_dark_color: "rgb(40, 45, 77)",
     info: "rgb(77, 142, 246)",
-    info_dark: "rgb(53, 93, 158)",
+    info_dark: "rgb(37, 66, 112)",
     success: "rgb(0, 211, 197)",
     success_dark: "rgb(0, 103, 53)",
     warning: "rgb(238, 187, 81)",
-    warning_dark: "rgb(197, 156, 68)",
+    warning_dark: "rgb(117, 92, 39)",
     danger: "rgb(226, 87, 88)",
     danger_dark: "rgb(107, 44, 44)",
     white: "rgb(255,255,255)",
@@ -43,14 +44,15 @@ export const ThemeDefault = {
 export const ThemeEbonyClay = {
   color: {
     primary_color: "rgb(35, 35, 59)",
+    primary_color_alpha: "rgba(35, 35, 59, .6)",
     primary_light_color: "rgb(56, 57, 77)",
     primary_dark_color: "rgb(26, 27, 48)",
     info: "rgb(118, 102, 206)",
-    info_dark: "rgb(70, 61, 122)",
+    info_dark: "rgb(45, 39, 79)",
     success: "rgb(112, 199, 162)",
     success_dark: "rgb(57,103, 83)",
     warning: "rgb(245, 185, 61)",
-    warning_dark: "rgb(150, 113, 36)",
+    warning_dark: "rgb(113, 85, 28)",
     danger: "rgb(223, 103, 91)",
     danger_dark: "rgb(111, 52, 47)",
     white: "rgb(255,255,255)",
@@ -82,4 +84,7 @@ export const ThemeEbonyClay = {
   },
 };
 
-export const themesStyles = ["ThemeDefault", "ThemeEbonyClay"];
+export const themesStyles = [
+  { db: "ThemeDefault", name: "Default" },
+  { db: "ThemeEbonyClay", name: "Ebony Clay" },
+];

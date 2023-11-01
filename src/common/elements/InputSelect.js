@@ -5,6 +5,7 @@ import {
   SelectButton,
   SelectItem,
   SelectList,
+  MaskSelect,
 } from "./styled";
 
 export const InputSelect = ({
@@ -15,31 +16,38 @@ export const InputSelect = ({
   setToggle,
   value,
   setValue,
+  valueData,
+  setValueData,
 }) => {
   return (
     <BoxSelect onMouseLeave={() => setToggle(false)}>
+      <MaskSelect onClick={() => setToggle((toggle) => !toggle)}></MaskSelect>
       <Label htmlFor={id}>{label}</Label>
       <Input
         id={id}
         type="text"
         value={value}
         onChange={({ target }) => setValue(target.value)}
-        onClick={() => setToggle((toggle) => !toggle)}
       />
+      <input type="hidden" value={valueData} />
       <SelectList $isVisibilty={toggle}>
-        {data.map((item, index) => (
-          <SelectItem key={index}>
-            <SelectButton
-              onClick={() => {
-                setValue(item);
-                setToggle(false);
-              }}
-              type="button"
-            >
-              {item}
-            </SelectButton>
-          </SelectItem>
-        ))}
+        {data?.map((item, index) => {
+          index = 0;
+          return (
+            <SelectItem key={Object.values(item)[index]}>
+              <SelectButton
+                onClick={() => {
+                  setValueData(Object.values(item)[index]);
+                  setValue(Object.values(item)[index + 1]);
+                  setToggle(false);
+                }}
+                type="button"
+              >
+                {Object.values(item)[index + 1]}
+              </SelectButton>
+            </SelectItem>
+          );
+        })}
       </SelectList>
     </BoxSelect>
   );
