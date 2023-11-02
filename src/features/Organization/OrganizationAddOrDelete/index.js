@@ -1,4 +1,6 @@
 import { ORGANIZATION } from "../../../core/InfoText";
+import { useErrorConnectServer } from "../../../core/hooks/useErrorConnectServer";
+import { selectServerErrorOrganization } from "../../../store/Organization/sliceOrganization";
 import { useFormAddOrganization } from "./form/useFormAddOrganization";
 import { useAllOrganizaton } from "./form/useTableOrganization";
 import { TileTwoHalf } from "../../../common/TileTwoHalf";
@@ -8,6 +10,7 @@ import { Conteiner } from "./styled";
 export const Organization = () => {
   const { formNewOrganization } = useFormAddOrganization();
   const { viewOrganization } = useAllOrganizaton();
+  useErrorConnectServer(selectServerErrorOrganization);
 
   return (
     <Conteiner>

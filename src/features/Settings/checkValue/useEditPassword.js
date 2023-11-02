@@ -5,32 +5,17 @@ import {
   fetchEditPassword,
   resetUserState,
   selectEditPassword,
-  selectErrorServer,
 } from "../../../store/User/sliceUser";
 import { addConfirm } from "../../Confirm/sliceConfirm";
-import { COMMON, USERSETTINGS } from "../../../core/InfoText";
+import { USERSETTINGS } from "../../../core/InfoText";
 
 export const useEditPassword = (userData) => {
   const dispatch = useDispatch();
   const confirmNewPassword = useSelector(selectEditPassword);
-  const errorServer = useSelector(selectErrorServer);
   const [passwordUserEmpty, setPasswordUserEmpty] = useState([]);
   const [oldPassword, setOldPassword] = useState(false);
   const passwordUserValue = useRef([]);
   const differentPasswords = useRef(false);
-
-  useEffect(() => {
-    if (errorServer) {
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: false,
-          text: COMMON.ERROR_CONNECT_SERVER,
-        })
-      );
-      dispatch(resetUserState());
-    }
-  }, [errorServer]);
 
   useEffect(() => {
     if (confirmNewPassword === "ok") {

@@ -15,6 +15,7 @@ import {
   setUserInOutOrganization,
   fetchDeleteOrganization,
   setDeleteOrganization,
+  serverConnectionError,
 } from "./sliceOrganization";
 
 const timeDelay = 700;
@@ -31,6 +32,7 @@ function* fetchUserOrganizationHandler({ payload: id }) {
     yield put(setUserOrganization(organization.data));
   } catch (error) {
     yield console.error(error);
+    yield put(serverConnectionError());
   }
 }
 
@@ -45,6 +47,7 @@ function* fetchAddNewOrganizationHandler({ payload: data }) {
     yield put(setUserOrganization(organization.data));
   } catch (error) {
     yield console.error(error);
+    yield put(serverConnectionError());
   }
 }
 
@@ -61,6 +64,7 @@ function* fetchEditNameOrganizationHandler({ payload: data }) {
     yield put(setEditNameOrganization(organization.data));
   } catch (error) {
     yield console.error(error);
+    yield put(serverConnectionError());
   }
 }
 
@@ -78,6 +82,7 @@ function* fetchUsersInOrganizationHandler({ payload: data }) {
     yield put(setUserInOutOrganization(organization.data));
   } catch (error) {
     yield console.error(error);
+    yield put(serverConnectionError());
   }
 }
 
@@ -96,6 +101,7 @@ function* fetchAddOrDeleteUsersOrganizationHandler({ payload: data }) {
     yield put(setAddOrDeleteUserInOrganization(organization.data));
   } catch (error) {
     yield console.error(error);
+    yield put(serverConnectionError());
   }
 }
 
@@ -106,6 +112,7 @@ function* fetchDeleteOrganizationnHandler({ payload: id }) {
     yield put(setDeleteOrganization());
   } catch (error) {
     yield console.error(error);
+    yield put(serverConnectionError());
   }
 }
 

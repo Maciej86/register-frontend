@@ -5,47 +5,18 @@ import {
   fetchEditEmail,
   fetchEditUser,
   resetUserState,
-  selectEditAccount,
   selectEmailExsist,
-  selectErrorServer,
 } from "../../../store/User/sliceUser";
 import { addConfirm } from "../../Confirm/sliceConfirm";
-import { COMMON, USERSETTINGS } from "../../../core/InfoText";
+import { USERSETTINGS } from "../../../core/InfoText";
 
 export const useEditAccount = (userData, themeValueData) => {
   const dispatch = useDispatch();
-  const confirmEditAccount = useSelector(selectEditAccount);
   const emailExsist = useSelector(selectEmailExsist);
-  const errorServer = useSelector(selectErrorServer);
   const [detaUserEmpty, setDataUserEmpty] = useState([]);
   const dataUserValue = useRef([]);
   const incorrectEmail = useRef(false);
   const checkEmail = useRef(false);
-
-  useEffect(() => {
-    if (errorServer) {
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: false,
-          text: COMMON.ERROR_CONNECT_SERVER,
-        })
-      );
-    }
-  }, [errorServer]);
-
-  useEffect(() => {
-    if (confirmEditAccount) {
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: true,
-          text: USERSETTINGS.CONFIRM_EDIT_ACCOUNT,
-        })
-      );
-      dispatch(resetUserState());
-    }
-  }, [confirmEditAccount]);
 
   useEffect(() => {
     if (checkEmail.current) {

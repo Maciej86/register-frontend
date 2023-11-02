@@ -80,7 +80,6 @@ const loginUserSlice = createSlice({
       state.serverError = !state.serverError;
       state.loading = false;
       state.loadingEditPassword = false;
-      state.loadingEditPassword = false;
     },
     resetUserState: (state) => {
       state.changingPassword = "";
@@ -109,7 +108,8 @@ export const selectStatusTokenUser = (state) =>
 export const selectUserNotExist = (state) =>
   selectLoginUser(state).userNotExist;
 export const selectEmailExsist = (state) => selectLoginUser(state).emailExsist;
-export const selectErrorServer = (state) => selectLoginUser(state).serverError;
+export const selectErrorServerUser = (state) =>
+  selectLoginUser(state).serverError;
 
 export const {
   fetchLoginUser,

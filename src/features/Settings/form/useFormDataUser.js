@@ -5,7 +5,7 @@ import {
   selectStatusUser,
   selectUserState,
 } from "../../../store/User/sliceUser";
-import { useRoleUser } from "../../../core/useRoleUser";
+import { useRoleUser } from "../../../core/hooks/useRoleUser";
 import { useEditAccount } from "../checkValue/useEditAccount";
 import { USERSETTINGS } from "../../../core/InfoText";
 import { themesStyles } from "../../../core/styles/theme";

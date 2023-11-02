@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { useFetchData } from "../../../../core/useFetchData";
+import { useFetchData } from "../../../../core/hooks/useFetchData";
 import { URL_ORGANIZATION } from "../../../../core/urlBackend";
-import { ORGANIZATION } from "../../../../core/InfoText";
+import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
 import {
   fetchDeleteOrganization,
   resetOrganizationState,

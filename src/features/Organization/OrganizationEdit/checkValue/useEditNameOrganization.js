@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { ORGANIZATION } from "../../../../core/InfoText";
+import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
 import {
   fetchEditNameOrganization,
   resetOrganizationState,
