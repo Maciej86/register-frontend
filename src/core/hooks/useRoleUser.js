@@ -1,4 +1,4 @@
-import { UserAdmin, UserDeveloper, UserUser } from "../common/styledCommon";
+import { UserAdmin, UserDeveloper, UserUser } from "../../common/styledCommon";
 
 export const useRoleUser = () => {
   const roleUser = ["Deweloper", "Super Admin", "Administrator", "Użytkownik"];

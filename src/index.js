@@ -5,7 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import { store } from "./store/store";
 import { RouterSetings } from "./core/setingsNavigation";
 import { GlobalStyle } from "./core/styles/GlobalStyle";
-import { useSwitchTheme } from "./core/useSwitchTheme";
+import { useSwitchTheme } from "./core/hooks/useSwitchTheme";
 import { ThemeProvider } from "styled-components";
 import reportWebVitals from "./reportWebVitals";
 

@@ -9,7 +9,7 @@ import {
   selectUsersInOutOrganization,
 } from "../../../../store/Organization/sliceOrganization";
 import { Loader } from "../../../../common/Loader";
-import { useRoleUser } from "../../../../core/useRoleUser";
+import { useRoleUser } from "../../../../core/hooks/useRoleUser";
 import { useDeleteUserInOrganization } from "../checkValue/useAddOrDeleteUsersOrganization";
 import { ButtonTab } from "../styled";
 import { Button } from "../../../../common/elements/Button";

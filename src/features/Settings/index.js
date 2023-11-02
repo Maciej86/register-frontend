@@ -1,11 +1,10 @@
 import { COMPONENTS } from "../../core/InfoText";
+import { useErrorConnectServer } from "../../core/hooks/useErrorConnectServer";
+import { selectErrorServerUser } from "../../store/User/sliceUser";
 import { Tile } from "../../common/Tile";
-
-import { Conteiner } from "./styled";
 import { useFormDataUser } from "./form/useFormDataUser";
 import { useFromPasswordUser } from "./form/useFormPasswordUser";
-import { useErrorConnectServer } from "../../core/useErrorConnectServer";
-import { selectErrorServerUser } from "../../store/User/sliceUser";
+import { Conteiner } from "./styled";
 
 export const Settings = () => {
   const formUserSetings = useFormDataUser();

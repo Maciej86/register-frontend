@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addConfirm } from "../features/Confirm/sliceConfirm";
-import { COMMON } from "./InfoText";
+import { addConfirm } from "../../features/Confirm/sliceConfirm";
+import { COMMON } from "../InfoText";
 
 export const useErrorConnectServer = (selector) => {
   const dispatch = useDispatch();

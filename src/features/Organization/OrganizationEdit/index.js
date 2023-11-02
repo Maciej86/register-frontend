@@ -1,5 +1,5 @@
 import { ORGANIZATION } from "../../../core/InfoText";
-import { useErrorConnectServer } from "../../../core/useErrorConnectServer";
+import { useErrorConnectServer } from "../../../core/hooks/useErrorConnectServer";
 import { selectServerErrorOrganization } from "../../../store/Organization/sliceOrganization";
 import { useFormEditOrganization } from "./form/useFormEditOrganization";
 import { useFormUsersInOrganization } from "./form/useFormUsersInOrganization";
