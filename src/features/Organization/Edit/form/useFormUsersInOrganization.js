@@ -32,7 +32,7 @@ import {
   LabelToggleSwitch,
   SpanToggleSwitch,
   TableAction,
-} from "../../OrganizationAddOrDelete/styled";
+} from "../../AddAndDelet/styled";
 
 export const useFormUsersInOrganization = () => {
   const { id } = useParams();
