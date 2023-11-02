@@ -14,6 +14,7 @@ const initialOrganization = {
   editNameOrganization: false,
   deleteOrganization: false,
   addOrDeleteUsersOrganization: false,
+  serverError: false,
 };
 
 const organizationSlice = createSlice({
@@ -86,12 +87,21 @@ const organizationSlice = createSlice({
       state.loadingDeleteOrganization = false;
       state.deleteOrganization = true;
     },
+    serverConnectionError: (state) => {
+      state.serverError = true;
+      state.loadingOrganization = false;
+      state.loadingNewOrganization = false;
+      state.loadingEditOrganization = false;
+      state.loadingAddOrDeleteUsersOrganization = false;
+      state.loadingDeleteOrganization = false;
+    },
     resetOrganizationState: (state) => {
       state.addNewOrganization = false;
       state.nameOrganizationExsist = false;
       state.editNameOrganization = false;
       state.addOrDeleteUsersOrganization = false;
       state.deleteOrganization = false;
+      state.serverError = false;
     },
   },
 });
@@ -125,6 +135,8 @@ export const selectloadingDeleteOrganization = (state) =>
   selectOrganization(state).loadingDeleteOrganization;
 export const selectDeleteOrganization = (state) =>
   selectOrganization(state).deleteOrganization;
+export const selectServerErrorOrganization = (state) =>
+  selectOrganization(state).serverError;
 
 export const {
   fetchUserOrganization,
@@ -133,7 +145,6 @@ export const {
   fetchAddNewOrganization,
   setAddNewOrganization,
   fetchEditNameOrganization,
-  resetOrganizationState,
   setEditNameOrganization,
   fetchUsersInOutOrganization,
   setUserInOutOrganization,
@@ -141,6 +152,8 @@ export const {
   setAddOrDeleteUserInOrganization,
   fetchDeleteOrganization,
   setDeleteOrganization,
+  serverConnectionError,
+  resetOrganizationState,
 } = organizationSlice.actions;
 
 export default organizationSlice.reducer;

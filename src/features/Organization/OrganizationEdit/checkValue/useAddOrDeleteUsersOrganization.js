@@ -6,7 +6,7 @@ import {
   resetOrganizationState,
   selectAddOrDeleteUsersOrganization,
 } from "../../../../store/Organization/sliceOrganization";
-import { ORGANIZATION } from "../../../../core/InfoText";
+import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
 import { addConfirm } from "../../../Confirm/sliceConfirm";
 
 export const useDeleteUserInOrganization = (

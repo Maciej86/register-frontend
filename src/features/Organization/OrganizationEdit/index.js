@@ -1,4 +1,6 @@
 import { ORGANIZATION } from "../../../core/InfoText";
+import { useErrorConnectServer } from "../../../core/useErrorConnectServer";
+import { selectServerErrorOrganization } from "../../../store/Organization/sliceOrganization";
 import { useFormEditOrganization } from "./form/useFormEditOrganization";
 import { useFormUsersInOrganization } from "./form/useFormUsersInOrganization";
 import { TileTwoHalf } from "../../../common/TileTwoHalf";
@@ -8,6 +10,7 @@ import { Conteiner } from "./styled";
 export const OrganizationEdit = () => {
   const { formEditname } = useFormEditOrganization();
   const { formUserInOrganization } = useFormUsersInOrganization();
+  useErrorConnectServer(selectServerErrorOrganization);
 
   return (
     <Conteiner>
