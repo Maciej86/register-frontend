@@ -17,6 +17,7 @@ export const useErrorConnectServer = (selector) => {
           text: COMMON.ERROR_CONNECT_SERVER,
         })
       );
+      dispatch(resetOrganizationState());
     }
   }, [errorServer]);
 };
