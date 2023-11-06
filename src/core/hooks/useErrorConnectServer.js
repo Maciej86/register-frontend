@@ -5,6 +5,7 @@ import { resetUserState } from "../../store/User/sliceUser";
 import { resetOrganizationState } from "../../store/Organization/sliceOrganization";
 import { addConfirm } from "../../features/Confirm/sliceConfirm";
 import { COMMON } from "../InfoText";
+import { LuBrackets } from "react-icons/lu";
 
 export const useErrorConnectServer = (selector, typeStore) => {
   const dispatch = useDispatch();
@@ -19,10 +20,13 @@ export const useErrorConnectServer = (selector, typeStore) => {
           text: COMMON.ERROR_CONNECT_SERVER,
         })
       );
-      if (typeStore === "storeUser") {
-        dispatch(resetUserState());
-      } else if (typeStore === "storeOrganization") {
-        dispatch(resetOrganizationState());
+      switch (typeStore) {
+        case "storeUser":
+          dispatch(resetUserState());
+          break;
+        case "storeOrganization":
+          dispatch(resetOrganizationState());
+          break;
       }
     }
   }, [errorServer]);
