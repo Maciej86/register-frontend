@@ -2,10 +2,11 @@
 
 ## W przygotowaniu
 
-- zarządzanie użytkownikami przez administratora
+- Zarządzanie użytkownikami przez administratora
 
 ## Ostatnie zmiany
 
+- Utworzenie organizacji
 - Obsługa błędów serwera
 - Wyświetlanie informacji po działaniach użytkownika
 - Ustawienia użytkownika
