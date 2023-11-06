@@ -10,7 +10,7 @@ import { Conteiner } from "./styled";
 export const Organization = () => {
   const { formNewOrganization } = useFormAddOrganization();
   const { viewOrganization } = useAllOrganizaton();
-  useErrorConnectServer(selectServerErrorOrganization);
+  useErrorConnectServer(selectServerErrorOrganization, "storeOrganization");
 
   return (
     <Conteiner>

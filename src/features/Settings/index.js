@@ -9,7 +9,7 @@ import { Conteiner } from "./styled";
 export const Settings = () => {
   const formUserSetings = useFormDataUser();
   const formUserPassword = useFromPasswordUser();
-  useErrorConnectServer(selectErrorServerUser);
+  useErrorConnectServer(selectErrorServerUser, "storeUser");
 
   return (
     <Conteiner>

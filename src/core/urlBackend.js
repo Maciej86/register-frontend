@@ -11,7 +11,7 @@ export const URL_USER = {
 
 export const URL_ORGANIZATION = {
   FETCH_ORGANIZATION: `${url}/organization`,
-  FETCH_EDIT_NAME_ORGANIZATION: `${url}/editnameorganization`,
+  FETCH_EDIT_NAME_ORGANIZATION: `${url}/editnameorganizationn`,
   FETCH_USER_ORGANIZATION: `${url}/userorganization`,
   FETCH_USER_IN_ORGANIZATION: `${url}/userinorganization`,
   FETCH_USER_OUT_ORGANIZATION: `${url}/useroutorganization`,
