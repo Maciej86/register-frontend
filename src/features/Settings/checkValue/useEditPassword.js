@@ -26,7 +26,6 @@ export const useEditPassword = (userData) => {
           text: USERSETTINGS.CONFIRM_EDIT_PASSWORD,
         })
       );
-      dispatch(resetUserState());
     } else if (confirmNewPassword === "error") {
       setOldPassword(true);
       dispatch(
@@ -36,8 +35,8 @@ export const useEditPassword = (userData) => {
           text: USERSETTINGS.CONFIRM_OLD_PASSWORD_ERROR,
         })
       );
-      dispatch(resetUserState());
     }
+    dispatch(resetUserState());
   }, [confirmNewPassword]);
 
   const changedPassword = () => {
