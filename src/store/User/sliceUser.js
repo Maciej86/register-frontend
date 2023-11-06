@@ -77,7 +77,7 @@ const loginUserSlice = createSlice({
       }
     },
     serverConnectionError: (state) => {
-      state.serverError = !state.serverError;
+      state.serverError = true;
       state.loading = false;
       state.loadingEditPassword = false;
     },
