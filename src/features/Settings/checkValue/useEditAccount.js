@@ -5,6 +5,7 @@ import {
   fetchEditEmail,
   fetchEditUser,
   resetUserState,
+  selectEditAccount,
   selectEmailExsist,
 } from "../../../store/User/sliceUser";
 import { addConfirm } from "../../Confirm/sliceConfirm";
@@ -13,6 +14,7 @@ import { USERSETTINGS } from "../../../core/InfoText";
 export const useEditAccount = (userData, themeValueData) => {
   const dispatch = useDispatch();
   const emailExsist = useSelector(selectEmailExsist);
+  const confirmEditUser = useSelector(selectEditAccount);
   const [detaUserEmpty, setDataUserEmpty] = useState([]);
   const dataUserValue = useRef([]);
   const incorrectEmail = useRef(false);
@@ -35,6 +37,19 @@ export const useEditAccount = (userData, themeValueData) => {
       dispatch(resetUserState());
     }
   }, [emailExsist]);
+
+  useEffect(() => {
+    if (confirmEditUser) {
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: true,
+          text: USERSETTINGS.CONFIRM_EDIT_ACCOUNT,
+        })
+      );
+      dispatch(resetUserState());
+    }
+  }, [confirmEditUser]);
 
   const changedDataUser = () => {
     setDataUserEmpty([]);
