@@ -2,7 +2,7 @@ import { Loader } from "../../../../common/Loader";
 import { Modal } from "../../../../common/Modal";
 import { Button } from "../../../../common/elements/Button";
 import { LinkButton } from "../../../../common/elements/styled";
-import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
+import { COMMON, NAVIGATION, ORGANIZATION } from "../../../../core/InfoText";
 import { useDeleteOrganization } from "../checkValue/useDeleteOrganization";
 import {
   ConteinerTable,
@@ -83,7 +83,7 @@ export const useAllOrganizaton = () => {
                     <ColumnCenter>{item.count_user}</ColumnCenter>
                     <ColumnCenter>
                       <LinkButton
-                        to={`/${ORGANIZATION.LINK_ID_ORGANIZATION}/${item.id}`}
+                        to={`/${NAVIGATION.NAV_ID_ORGANIZATION}/${item.id}`}
                         $small="true"
                       >
                         <FiEdit size={"15px"} />

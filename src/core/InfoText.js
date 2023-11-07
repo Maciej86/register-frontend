@@ -28,6 +28,7 @@ export const NAVIGATION = {
   NAV_LINK_SETINGS: "ustawienia",
   NAV_ORGANIZATION: "Organizacje",
   NAV_LINK_ORGANIZATION: "organizacje",
+  NAV_ID_ORGANIZATION: "organizacja-edytuj",
   NAV_LOGIN_OUT: "Wyloguj się",
 };
 
@@ -66,7 +67,6 @@ export const USERSETTINGS = {
 };
 
 export const ORGANIZATION = {
-  LINK_ID_ORGANIZATION: "organizacja-edytuj",
   ADD_NEW_ORGANIZATION: "Utworzono nową organizację.",
   NAME_EXSIST_ORGANIZATION: "Podana nazwa organizacji już istnieje.",
   ERROR_NAME_ORGANIZATION: "Nazwa musi zawierać co najmniej 3 znaki",

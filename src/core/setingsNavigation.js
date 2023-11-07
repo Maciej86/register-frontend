@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import { NAVIGATION } from "./InfoText";
+import { NAVIGATION, ORGANIZATION } from "./InfoText";
 import { App } from "./App";
 import { Settings } from "../features/Settings";
 import { Dashboard } from "../features/Dashboard";
 import { ErrorPage } from "../features/ErrorPage";
 import { Organization } from "../features/Organization/AddAndDelet";
 import { OrganizationEdit } from "../features/Organization/Edit";
-import { Users } from "../features/Users";
+import { UsersTable } from "../features/Users/UsersTable";
 
 export const RouterSetings = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ export const RouterSetings = createBrowserRouter([
       },
       {
         path: NAVIGATION.NAV_LINK_USERS,
-        element: <Users />,
+        element: <UsersTable />,
       },
       {
         path: NAVIGATION.NAV_LINK_DASHBOARD,
@@ -31,7 +31,7 @@ export const RouterSetings = createBrowserRouter([
         element: <Organization />,
       },
       {
-        path: "organizacja-edytuj/:id",
+        path: `${NAVIGATION.NAV_ID_ORGANIZATION}/:id`,
         element: <OrganizationEdit />,
       },
       {
