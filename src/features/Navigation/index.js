@@ -16,10 +16,10 @@ import {
 } from "./styled";
 import { NAVIGATION } from "../../core/InfoText";
 import { AiFillDatabase } from "react-icons/ai";
-import { CiSettings } from "react-icons/ci";
 import { LuLayoutDashboard } from "react-icons/lu";
-import { RiOrganizationChart } from "react-icons/ri";
-import { PiUsersLight } from "react-icons/pi";
+import { PiUsers } from "react-icons/pi";
+import { SlSettings } from "react-icons/sl";
+import { LiaProjectDiagramSolid } from "react-icons/lia";
 
 export const Navigation = () => {
   const dispatch = useDispatch();
@@ -45,15 +45,15 @@ export const Navigation = () => {
                 {NAVIGATION.NAV_DASHBOARD}
               </LinkNav>
               <LinkNav to={NAVIGATION.NAV_LINK_USERS}>
-                <PiUsersLight size={"21px"} />
+                <PiUsers size={"21px"} />
                 {NAVIGATION.NAV_USERS}
               </LinkNav>
               <LinkNav to={NAVIGATION.NAV_LINK_ORGANIZATION}>
-                <RiOrganizationChart size={"21px"} />
+                <LiaProjectDiagramSolid size={"21px"} />
                 {NAVIGATION.NAV_ORGANIZATION}
               </LinkNav>
               <LinkNav to={NAVIGATION.NAV_LINK_SETINGS}>
-                <CiSettings size={"21px"} />
+                <SlSettings size={"21px"} />
                 {NAVIGATION.NAV_SETINGS}
               </LinkNav>
             </ItemNav>
