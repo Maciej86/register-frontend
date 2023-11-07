@@ -76,8 +76,8 @@ export const ItemNav = styled.li`
 export const LinkNav = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 15px 10px 15px 20px;
+  gap: 10px;
+  padding: 15px 10px 15px 15px;
   font-size: 18px;
   font-weight: 500;
   color: ${({ theme }) => theme.color.light};
@@ -94,4 +94,11 @@ export const Autor = styled.p`
   text-align: center;
   color: ${({ theme }) => theme.color.primary_light_color};
   font-size: 14px;
+`;
+
+export const IconNav = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27px;
 `;

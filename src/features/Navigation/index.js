@@ -6,6 +6,7 @@ import {
 } from "../Bar/sliceBar";
 import {
   Autor,
+  IconNav,
   ItemNav,
   LinkNav,
   ListNav,
@@ -41,19 +42,27 @@ export const Navigation = () => {
           <ListNav>
             <ItemNav>
               <LinkNav to={NAVIGATION.NAV_LINK_DASHBOARD}>
-                <LuLayoutDashboard size={"21px"} />
+                <IconNav>
+                  <LuLayoutDashboard size={"20px"} />
+                </IconNav>
                 {NAVIGATION.NAV_DASHBOARD}
               </LinkNav>
               <LinkNav to={NAVIGATION.NAV_LINK_USERS}>
-                <PiUsers size={"21px"} />
+                <IconNav>
+                  <PiUsers size={"22px"} />
+                </IconNav>
                 {NAVIGATION.NAV_USERS}
               </LinkNav>
               <LinkNav to={NAVIGATION.NAV_LINK_ORGANIZATION}>
-                <LiaCubesSolid size={"21px"} />
+                <IconNav>
+                  <LiaCubesSolid size={"24px"} />
+                </IconNav>
                 {NAVIGATION.NAV_ORGANIZATION}
               </LinkNav>
               <LinkNav to={NAVIGATION.NAV_LINK_SETINGS}>
-                <SlSettings size={"21px"} />
+                <IconNav>
+                  <SlSettings size={"20px"} />
+                </IconNav>
                 {NAVIGATION.NAV_SETINGS}
               </LinkNav>
             </ItemNav>
