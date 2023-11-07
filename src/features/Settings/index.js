@@ -1,4 +1,4 @@
-import { COMPONENTS } from "../../core/InfoText";
+import { USERSETTINGS } from "../../core/InfoText";
 import { useErrorConnectServer } from "../../core/hooks/useErrorConnectServer";
 import { selectErrorServerUser } from "../../store/User/sliceUser";
 import { Tile } from "../../common/Tile";
@@ -14,12 +14,12 @@ export const Settings = () => {
   return (
     <Conteiner>
       <Tile
-        title={COMPONENTS.COM_TITLE_SETTINGS}
-        subTitle={COMPONENTS.COM_SUBTITLE_SETTINGS}
+        title={USERSETTINGS.COM_TITLE_SETTINGS}
+        subTitle={USERSETTINGS.COM_SUBTITLE_SETTINGS}
         body={formUserSetings}
       />
       <Tile
-        title={COMPONENTS.COM_TITLE_CHANGED_PASSWORD}
+        title={USERSETTINGS.COM_TITLE_CHANGED_PASSWORD}
         body={formUserPassword}
       />
     </Conteiner>

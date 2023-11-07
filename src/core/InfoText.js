@@ -32,40 +32,6 @@ export const NAVIGATION = {
   NAV_LOGIN_OUT: "Wyloguj się",
 };
 
-export const COMPONENTS = {
-  COM_TITLE_SETTINGS: "Ustawienia",
-  COM_SUBTITLE_SETTINGS: "Dane użytkownika",
-  COM_TITLE_CHANGED_PASSWORD: "Zmiana hasła",
-};
-
-export const USERSETTINGS = {
-  NAME_LABEL: "Imię",
-  NAME_PLACEHOLDER: "Twoje imię",
-  LAST_NAME_LABEL: "Nazwisko",
-  LAST_NAME_PLACEHOLDER: "Twoje nazwisko",
-  EMAIL_LABEL: "Email",
-  EMAIL_PLACEHOLDER: "you@com.pl",
-  TYPE_ACCOUNT: "Rodzaj konta",
-  TYPE_THEME: "Styl aplikacji",
-  BUTTON_EDIT_DATA_USER: "Zmień dane",
-  OLD_PASSWORD_LABEL: "Obecne hasło",
-  OLD_PASSWORD_PLACEHOLDER: "**********",
-  NEW_PASSWORD_LABEL: "Nowe hasło (minimum 6 znaków)",
-  NEW_PASSWORD_PLACEHOLDER: "Wpisz trudne do złamania hasło",
-  NEW_PASSWORD_REPEAT_LABEL: "Powtórz nowe hasło",
-  NEW_PASSWORD_REPEAT_PLACEHOLDER: "Powtórz nowe hasło",
-  NEW_PASSWORD_BUTTON: "Zmień hasło",
-  CONFIRM_EDIT_EMPTY_INPUT:
-    "Proszę o wypełnienie pól zaznaczonych na czerowono",
-  CONFIRM_EDIT_ACCOUNT: "Dane zostały zmienione",
-  CONFIRM_ERROR_EMAIL: "Wprowadzony adres e-mail nie jest poprawny.",
-  CONFIRM_EDIT_PASSWORD: "Hasło zostało zmienione",
-  CONFIRM_OLD_PASSWORD_ERROR: "Obecne hasło jest niepoprawne.",
-  CONFIRM_DIFFRENT_PASSWORD: "Nowe hasło różnią się od siebie.",
-  CONFRIM_LENGTH_PASSWORD: "Hasło powinno zawierać minimum 6 znaków.",
-  CONFIRM_EMAIL_EXSIST: "Podany adres e-mail już istnieje.",
-};
-
 export const ORGANIZATION = {
   BUTTON_ADD_ORGANIZATION: "Dodaj organizację",
   ADD_NEW_ORGANIZATION: "Utworzono nową organizację.",
@@ -101,4 +67,35 @@ export const ORGANIZATION = {
   EMPTY_TABLE_ALL_USERS_IN_ORGANIZATION:
     "Wszyscy użytkownicy należą do tej organizacji.",
   EMPTY_TABLE_ALL_ORGANIZATION: "Żadna organizacja nie została utworzona.",
+};
+
+export const USERSETTINGS = {
+  COM_TITLE_SETTINGS: "Ustawienia",
+  COM_SUBTITLE_SETTINGS: "Dane użytkownika",
+  COM_TITLE_CHANGED_PASSWORD: "Zmiana hasła",
+  NAME_LABEL: "Imię",
+  NAME_PLACEHOLDER: "Twoje imię",
+  LAST_NAME_LABEL: "Nazwisko",
+  LAST_NAME_PLACEHOLDER: "Twoje nazwisko",
+  EMAIL_LABEL: "Email",
+  EMAIL_PLACEHOLDER: "you@com.pl",
+  TYPE_ACCOUNT: "Rodzaj konta",
+  TYPE_THEME: "Styl aplikacji",
+  BUTTON_EDIT_DATA_USER: "Zmień dane",
+  OLD_PASSWORD_LABEL: "Obecne hasło",
+  OLD_PASSWORD_PLACEHOLDER: "**********",
+  NEW_PASSWORD_LABEL: "Nowe hasło (minimum 6 znaków)",
+  NEW_PASSWORD_PLACEHOLDER: "Wpisz trudne do złamania hasło",
+  NEW_PASSWORD_REPEAT_LABEL: "Powtórz nowe hasło",
+  NEW_PASSWORD_REPEAT_PLACEHOLDER: "Powtórz nowe hasło",
+  NEW_PASSWORD_BUTTON: "Zmień hasło",
+  CONFIRM_EDIT_EMPTY_INPUT:
+    "Proszę o wypełnienie pól zaznaczonych na czerowono",
+  CONFIRM_EDIT_ACCOUNT: "Dane zostały zmienione",
+  CONFIRM_ERROR_EMAIL: "Wprowadzony adres e-mail nie jest poprawny.",
+  CONFIRM_EDIT_PASSWORD: "Hasło zostało zmienione",
+  CONFIRM_OLD_PASSWORD_ERROR: "Obecne hasło jest niepoprawne.",
+  CONFIRM_DIFFRENT_PASSWORD: "Nowe hasło różnią się od siebie.",
+  CONFRIM_LENGTH_PASSWORD: "Hasło powinno zawierać minimum 6 znaków.",
+  CONFIRM_EMAIL_EXSIST: "Podany adres e-mail już istnieje.",
 };
