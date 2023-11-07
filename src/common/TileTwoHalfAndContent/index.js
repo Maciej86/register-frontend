@@ -4,7 +4,7 @@ import { Content, Half, TileArea } from "./styled";
 export const TileTwoHalfAndContenet = ({
   title,
   subTitle,
-  rightSite,
+  rightSide,
   content,
 }) => {
   return (
@@ -14,7 +14,7 @@ export const TileTwoHalfAndContenet = ({
           <TileTitle>{title}</TileTitle>
           <TileSubTitle>{subTitle}</TileSubTitle>
         </Half>
-        <Half>{rightSite}</Half>
+        <Half>{rightSide}</Half>
       </TileArea>
       <Content>{content}</Content>
     </TileConteiner>
