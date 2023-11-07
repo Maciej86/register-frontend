@@ -19,7 +19,7 @@ import { AiFillDatabase } from "react-icons/ai";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { PiUsers } from "react-icons/pi";
 import { SlSettings } from "react-icons/sl";
-import { LiaProjectDiagramSolid } from "react-icons/lia";
+import { LiaCubesSolid } from "react-icons/lia";
 
 export const Navigation = () => {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ export const Navigation = () => {
                 {NAVIGATION.NAV_USERS}
               </LinkNav>
               <LinkNav to={NAVIGATION.NAV_LINK_ORGANIZATION}>
-                <LiaProjectDiagramSolid size={"21px"} />
+                <LiaCubesSolid size={"21px"} />
                 {NAVIGATION.NAV_ORGANIZATION}
               </LinkNav>
               <LinkNav to={NAVIGATION.NAV_LINK_SETINGS}>
