@@ -54,7 +54,7 @@ export const useFormEditOrganization = () => {
           <Loader margin="0 67px" />
         ) : (
           <Button
-            text="Zmień nazwę"
+            text={ORGANIZATION.BUTTON_EDIT_NAME_ORGANIZATION}
             icon={<LuFileEdit size={"15px"} />}
             action={changeNameOrganization}
           />

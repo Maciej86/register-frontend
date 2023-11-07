@@ -67,8 +67,10 @@ export const USERSETTINGS = {
 };
 
 export const ORGANIZATION = {
+  BUTTON_ADD_ORGANIZATION: "Dodaj organizację",
   ADD_NEW_ORGANIZATION: "Utworzono nową organizację.",
   NAME_EXSIST_ORGANIZATION: "Podana nazwa organizacji już istnieje.",
+  BUTTON_EDIT_NAME_ORGANIZATION: "Zmień nazwę",
   ERROR_NAME_ORGANIZATION: "Nazwa musi zawierać co najmniej 3 znaki",
   EMPTY_INPUT_NAME_ORGANIZATION: "Proszę o uzupełnienie pola.",
   DELETE_ORGANIZATION: "Organizacja została usunięta.",

@@ -6,7 +6,7 @@ import { useAddOrganization } from "../checkValue/useAddOrganization";
 import { InputText } from "../../../../common/elements/InputText";
 import { Button } from "../../../../common/elements/Button";
 import { FormArea } from "../styled";
-import { IoIosAddCircleOutline } from "react-icons/io";
+import { TbCubePlus } from "react-icons/tb";
 
 export const useFormAddOrganization = () => {
   const loadingAddOrganization = useSelector(selectLoadingAddOrganization);
@@ -29,8 +29,8 @@ export const useFormAddOrganization = () => {
           <Loader margin="0 43px" />
         ) : (
           <Button
-            text="Dodaj"
-            icon={<IoIosAddCircleOutline size={"15px"} />}
+            text={ORGANIZATION.BUTTON_ADD_ORGANIZATION}
+            icon={<TbCubePlus size={"15px"} />}
             action={addNewOrganization}
           />
         )}
