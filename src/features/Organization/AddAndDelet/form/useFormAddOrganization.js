@@ -26,7 +26,7 @@ export const useFormAddOrganization = () => {
           ref={nameOrganization}
         />
         {loadingAddOrganization ? (
-          <Loader margin="0 43px" />
+          <Loader margin="0 82px" />
         ) : (
           <Button
             text={ORGANIZATION.BUTTON_ADD_ORGANIZATION}
