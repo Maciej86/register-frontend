@@ -9,6 +9,10 @@ export const URL_USER = {
   EMAIL_EXSIST: `${url}/emailexsist`,
 };
 
+export const URL_USERS = {
+  ALL_USERS: `${url}/allusers`,
+};
+
 export const URL_ORGANIZATION = {
   FETCH_ORGANIZATION: `${url}/organization`,
   FETCH_EDIT_NAME_ORGANIZATION: `${url}/editnameorganization`,

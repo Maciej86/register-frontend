@@ -9,6 +9,7 @@ export const COMMON = {
   TABLE_HEADER_DELETE: "Usuń",
   TABLE_HEADER_ACCOUNT: "Konto",
   TABLE_HEADER_CHANGE: "Zmień",
+  TABLE_HEADER_ORGANIZATION: "Organizacje",
 };
 
 export const USER_TEXT = {
@@ -70,6 +71,9 @@ export const ORGANIZATION = {
 };
 
 export const USERSETTINGS = {
+  COM_TITLE_TABLE_USERS: "Użytkownicy",
+  COM_SUBTITLE_TABLE_USERS: "Zarządzaj użytkownikami",
+  CREATE_ACCOUNT: "Utwórz konto",
   COM_TITLE_SETTINGS: "Ustawienia",
   COM_SUBTITLE_SETTINGS: "Dane użytkownika",
   COM_TITLE_CHANGED_PASSWORD: "Zmiana hasła",
