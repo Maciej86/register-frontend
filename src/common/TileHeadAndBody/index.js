@@ -1,11 +1,11 @@
 import { TileConteiner, TileSubTitle, TileTitle } from "../styledCommon";
 import { Content, Half, TileArea } from "./styled";
 
-export const TileTwoHalfAndContenet = ({
+export const TileHeadAndBody = ({
   title,
   subTitle,
   rightSide,
-  content,
+  content = "",
 }) => {
   return (
     <TileConteiner>
@@ -16,7 +16,7 @@ export const TileTwoHalfAndContenet = ({
         </Half>
         <Half>{rightSide}</Half>
       </TileArea>
-      <Content>{content}</Content>
+      {content === "" ? "" : <Content>{content}</Content>}
     </TileConteiner>
   );
 };

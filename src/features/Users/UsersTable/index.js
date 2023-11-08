@@ -1,4 +1,4 @@
-import { TileTwoHalfAndContenet } from "../../../common/TileTwoHalfAndContent";
+import { TileHeadAndBody } from "../../../common/TileHeadAndBody";
 import { LinkButton } from "../../../common/elements/styled";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { ButtonArea } from "./styled";
@@ -13,7 +13,7 @@ export const UsersTable = () => {
   );
 
   return (
-    <TileTwoHalfAndContenet
+    <TileHeadAndBody
       title="Użytkownicy"
       subTitle="Zarządzaj użytkownikami"
       rightSide={ButtonAddUser}
