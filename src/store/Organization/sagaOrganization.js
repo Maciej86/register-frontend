@@ -29,6 +29,7 @@ function* fetchUserOrganizationHandler({ payload: id }) {
       }
     );
     yield delay(timeDelay);
+    yield console.log(organization.data);
     yield put(setUserOrganization(organization.data));
   } catch (error) {
     yield console.error(error);
@@ -118,11 +119,7 @@ function* fetchDeleteOrganizationnHandler({ payload: id }) {
 
 export function* organizationSaga() {
   yield takeEvery(
-    [
-      fetchUserOrganization.type,
-      fetchTokenOrganization.type,
-      fetchAddNewOrganization.type,
-    ],
+    [fetchUserOrganization.type, fetchTokenOrganization.type],
     fetchUserOrganizationHandler
   );
   yield takeEvery(fetchAddNewOrganization.type, fetchAddNewOrganizationHandler);

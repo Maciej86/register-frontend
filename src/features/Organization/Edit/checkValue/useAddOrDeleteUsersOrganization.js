@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import {
   fetchAddOrDeleteUsersOrganization,
+  fetchUserOrganization,
   resetOrganizationState,
   selectAddOrDeleteUsersOrganization,
 } from "../../../../store/Organization/sliceOrganization";
-import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
+import { selectUserState } from "../../../../store/User/sliceUser";
+import { ORGANIZATION } from "../../../../core/InfoText";
 import { addConfirm } from "../../../Confirm/sliceConfirm";
 
 export const useDeleteUserInOrganization = (
@@ -20,6 +22,7 @@ export const useDeleteUserInOrganization = (
   );
   const [inputCheckbox, setInputCheckbox] = useState([]);
   const [userChecked, setUserChecked] = useState();
+  const loginUser = useSelector(selectUserState);
 
   useEffect(() => {
     setInputCheckbox(data.map(() => changeTab));
@@ -63,6 +66,7 @@ export const useDeleteUserInOrganization = (
             : ORGANIZATION.CONFIRM_ADD_USERS_ORGANIZATION,
         })
       );
+      dispatch(fetchUserOrganization(loginUser.id));
       dispatch(resetOrganizationState());
     }
   }, [confirmAddOrDeleteUsersOrganization]);
