@@ -29,7 +29,6 @@ function* fetchUserOrganizationHandler({ payload: id }) {
       }
     );
     yield delay(timeDelay);
-    yield console.log(organization.data);
     yield put(setUserOrganization(organization.data));
   } catch (error) {
     yield console.error(error);
