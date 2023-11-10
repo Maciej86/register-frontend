@@ -16,12 +16,15 @@ import {
 } from "../../../../common/styledCommon";
 import { Loader } from "../../../../common/Loader";
 import { LinkButton } from "../../../../common/elements/styled";
+import { Button } from "../../../../common/elements/Button";
 import { FiEdit } from "react-icons/fi";
+import { GoTrash } from "react-icons/go";
+import { useCompressionData } from "./useCompressionData";
 
 export const useAllUsers = () => {
   const { userRole } = useRoleUser();
   const { fetchData, fetchDataLoading } = useFetchData(URL_USERS.ALL_USERS);
-  console.log(fetchData);
+  const { compressionUsersData } = useCompressionData(fetchData);
 
   const viewAllUsers = fetchDataLoading ? (
     <Loader margin=" 30px auto" />
@@ -36,26 +39,42 @@ export const useAllUsers = () => {
             <ThLeft>{COMMON.TABLE_HEADER_ACCOUNT}</ThLeft>
             <Th80>{COMMON.TABLE_HEADER_ORGANIZATION}</Th80>
             <Th>{COMMON.TABLE_HEADER_EDIT}</Th>
+            <Th>{COMMON.TABLE_HEADER_DELETE}</Th>
           </TrHead>
         </thead>
         <tbody>
-          {fetchData?.map((item, index) => {
+          {compressionUsersData.map((item, index) => {
             index++;
             return (
               <TrBody key={index}>
                 <ColumnCenter>{index}</ColumnCenter>
                 <Column>{item.name}</Column>
                 <Column>{item.last_name}</Column>
-                <td>{userRole(item.role, true)}</td>
-                <td>
-                  {item.organization_name === null
+                <Column>{userRole(item.role, true)}</Column>
+                <Column>
+                  {item.organization_name.length === 0
                     ? "brak"
-                    : item.organization_name}
-                </td>
+                    : item.organization_name.map((item) => {
+                        return (
+                          <span key={item} style={{ paddingRight: 10 + "px" }}>
+                            {item}
+                          </span>
+                        );
+                      })}
+                </Column>
                 <ColumnCenter>
                   <LinkButton to={`#/${item.id}`} $small="true">
                     <FiEdit size={"15px"} />
                   </LinkButton>
+                </ColumnCenter>
+                <ColumnCenter>
+                  <Button
+                    type="button"
+                    small="true"
+                    typeAction="delete"
+                    icon={<GoTrash size={"15px"} />}
+                    action={null}
+                  />
                 </ColumnCenter>
               </TrBody>
             );

@@ -4,12 +4,12 @@ export const COMMON = {
   TABLE_HEADER_NAME: "Nazwa",
   TABLE_HEADER_NAME2: "Imię",
   TABLE_HEADER_LASTNAME: "Nazwisko",
-  TABLE_HEADER_USER: "Użytkownik",
+  TABLE_HEADER_USER: "Użytkowników",
   TABLE_HEADER_EDIT: "Edutuj",
   TABLE_HEADER_DELETE: "Usuń",
   TABLE_HEADER_ACCOUNT: "Konto",
   TABLE_HEADER_CHANGE: "Zmień",
-  TABLE_HEADER_ORGANIZATION: "Organizacje",
+  TABLE_HEADER_ORGANIZATION: "Przypisane organizacje",
 };
 
 export const USER_TEXT = {
