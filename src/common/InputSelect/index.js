@@ -1,4 +1,4 @@
-import { Input, Label } from "../styledCommon";
+import { Input, Label } from "../styledInput";
 import {
   BoxSelect,
   MaskSelect,
