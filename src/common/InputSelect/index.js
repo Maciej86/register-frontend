@@ -1,12 +1,11 @@
 import {
-  Input,
-  Label,
   BoxSelect,
+  MaskSelect,
   SelectButton,
   SelectItem,
   SelectList,
-  MaskSelect,
 } from "./styled";
+import { Input, Label } from "../elements/styled";
 
 export const InputSelect = ({
   id,
