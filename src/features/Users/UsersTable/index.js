@@ -1,6 +1,6 @@
 import { USERSETTINGS } from "../../../core/InfoText";
 import { Tile } from "../../../common/Tile";
-import { LinkButton } from "../../../common/LinkButton";
+import { LinkButton } from "../../../common/styledLinkButton";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { useAllUsers } from "./checkValue/useAllUsers";
 import { ButtonArea } from "./styled";

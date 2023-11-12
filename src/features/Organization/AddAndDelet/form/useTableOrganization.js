@@ -1,6 +1,6 @@
 import { Loader } from "../../../../common/Loader";
 import { Modal } from "../../../../common/Modal";
-import { LinkButton } from "../../../../common/LinkButton";
+import { LinkButton } from "../../../../common/styledLinkButton";
 import { Button } from "../../../../common/Button";
 import {
   ColumnCenter,

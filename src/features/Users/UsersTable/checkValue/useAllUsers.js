@@ -3,7 +3,7 @@ import { COMMON } from "../../../../core/InfoText";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
 import { useRoleUser } from "../../../../core/hooks/useRoleUser";
 import { Loader } from "../../../../common/Loader";
-import { LinkButton } from "../../../../common/LinkButton";
+import { LinkButton } from "../../../../common/styledLinkButton";
 import { Button } from "../../../../common/Button";
 import {
   Column,
