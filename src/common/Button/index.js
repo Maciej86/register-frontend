@@ -1,4 +1,5 @@
 import { BoxButton } from "./styled";
+
 export const Button = ({
   text = "",
   type = "button",

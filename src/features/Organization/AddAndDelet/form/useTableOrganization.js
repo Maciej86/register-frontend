@@ -1,6 +1,6 @@
 import { Loader } from "../../../../common/Loader";
 import { Modal } from "../../../../common/Modal";
-import { Button } from "../../../../common/elements/Button";
+import { Button } from "../../../../common/Button";
 import { LinkButton } from "../../../../common/elements/styled";
 import { COMMON, NAVIGATION, ORGANIZATION } from "../../../../core/InfoText";
 import { useDeleteOrganization } from "../checkValue/useDeleteOrganization";

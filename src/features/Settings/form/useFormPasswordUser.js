@@ -6,7 +6,7 @@ import {
   selectUserState,
 } from "../../../store/User/sliceUser";
 import { Loader } from "../../../common/Loader";
-import { Button } from "../../../common/elements/Button";
+import { Button } from "../../../common/Button";
 import { InputText } from "../../../common/elements/InputText";
 import { FormArea } from "../styled";
 import { LuSave } from "react-icons/lu";

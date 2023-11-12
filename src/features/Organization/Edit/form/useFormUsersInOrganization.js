@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
+import { useRoleUser } from "../../../../core/hooks/useRoleUser";
 import {
   fetchUsersInOutOrganization,
   selectLoadingAddOrDeleteUsersOrganization,
@@ -9,10 +10,9 @@ import {
   selectUsersInOutOrganization,
 } from "../../../../store/Organization/sliceOrganization";
 import { Loader } from "../../../../common/Loader";
-import { useRoleUser } from "../../../../core/hooks/useRoleUser";
+import { Button } from "../../../../common/Button";
 import { useDeleteUserInOrganization } from "../checkValue/useAddOrDeleteUsersOrganization";
 import { ButtonTab } from "../styled";
-import { Button } from "../../../../common/elements/Button";
 import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";
 import {
   Column,

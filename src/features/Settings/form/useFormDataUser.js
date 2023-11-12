@@ -11,9 +11,9 @@ import { USERSETTINGS } from "../../../core/InfoText";
 import { themesStyles } from "../../../core/styles/theme";
 import { Loader } from "../../../common/Loader";
 import { SelectDefaultValue } from "../../../common/elements/SelectDefaultValue";
+import { Button } from "../../../common/Button";
 import { InputSelect } from "../../../common/elements/InputSelect";
 import { InputText } from "../../../common/elements/InputText";
-import { Button } from "../../../common/elements/Button";
 import { FormArea } from "../styled";
 import { LuSave } from "react-icons/lu";
 
