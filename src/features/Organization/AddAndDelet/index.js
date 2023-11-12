@@ -4,7 +4,6 @@ import { selectServerErrorOrganization } from "../../../store/Organization/slice
 import { useFormAddOrganization } from "./form/useFormAddOrganization";
 import { useAllOrganizaton } from "./form/useTableOrganization";
 import { Tile } from "../../../common/Tile";
-import { TileHeadAndBody } from "../../../common/TileHeadAndBody";
 import { Conteiner } from "./styled";
 
 export const Organization = () => {
@@ -14,7 +13,7 @@ export const Organization = () => {
 
   return (
     <Conteiner>
-      <TileHeadAndBody
+      <Tile
         title={ORGANIZATION.COM_TITLE_NEW_ORGANIZATIION}
         subTitle={ORGANIZATION.COM_SUBTITLE_NEW_ORGANIZATION}
         rightSide={formNewOrganization}
@@ -22,7 +21,7 @@ export const Organization = () => {
       <Tile
         title={ORGANIZATION.COM_TITLE_ALL_ORGANIZATION}
         subTitle={ORGANIZATION.COM_SUBTITLE_ALL_ORGANIZATION}
-        body={viewOrganization}
+        content={viewOrganization}
       />
     </Conteiner>
   );

@@ -16,11 +16,11 @@ export const Settings = () => {
       <Tile
         title={USERSETTINGS.COM_TITLE_SETTINGS}
         subTitle={USERSETTINGS.COM_SUBTITLE_SETTINGS}
-        body={formUserSetings}
+        content={formUserSetings}
       />
       <Tile
         title={USERSETTINGS.COM_TITLE_CHANGED_PASSWORD}
-        body={formUserPassword}
+        content={formUserPassword}
       />
     </Conteiner>
   );

@@ -1,5 +1,5 @@
 import { USERSETTINGS } from "../../../core/InfoText";
-import { TileHeadAndBody } from "../../../common/TileHeadAndBody";
+import { Tile } from "../../../common/Tile";
 import { LinkButton } from "../../../common/LinkButton";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { useAllUsers } from "./checkValue/useAllUsers";
@@ -17,7 +17,7 @@ export const UsersTable = () => {
   );
 
   return (
-    <TileHeadAndBody
+    <Tile
       title={USERSETTINGS.COM_TITLE_TABLE_USERS}
       subTitle={USERSETTINGS.COM_SUBTITLE_TABLE_USERS}
       rightSide={ButtonAddUser}

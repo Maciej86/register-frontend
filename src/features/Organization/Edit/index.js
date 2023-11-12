@@ -5,7 +5,6 @@ import { useFormEditOrganization } from "./form/useFormEditOrganization";
 import { useFormUsersInOrganization } from "./form/useFormUsersInOrganization";
 import { Tile } from "../../../common/Tile";
 import { Conteiner } from "./styled";
-import { TileHeadAndBody } from "../../../common/TileHeadAndBody";
 
 export const OrganizationEdit = () => {
   const { formEditname } = useFormEditOrganization();
@@ -14,7 +13,7 @@ export const OrganizationEdit = () => {
 
   return (
     <Conteiner>
-      <TileHeadAndBody
+      <Tile
         title={ORGANIZATION.COM_TITLE_EDIT_ORGANIZATION}
         subTitle={ORGANIZATION.COM_SUBTITLE_EDIT_ORGANIZATION}
         rightSide={formEditname}
@@ -22,7 +21,7 @@ export const OrganizationEdit = () => {
       <Tile
         title={ORGANIZATION.COM_TITLE_USERS_IN_ORGANIZATION}
         subTitle={ORGANIZATION.COM_SUBTITLE_USERS_IN_ORGANIZATION}
-        body={formUserInOrganization}
+        content={formUserInOrganization}
       />
     </Conteiner>
   );
