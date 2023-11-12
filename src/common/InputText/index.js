@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
-import { BoxInput, Input, Label } from "./styled";
+import { BoxInput } from "./styled";
+import { Input, Label } from "../styledCommon";
 
 export const InputText = forwardRef(
   (

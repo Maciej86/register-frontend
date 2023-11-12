@@ -5,9 +5,9 @@ import {
   selectStatusEditPassword,
   selectUserState,
 } from "../../../store/User/sliceUser";
+import { InputText } from "../../../common/InputText";
 import { Loader } from "../../../common/Loader";
 import { Button } from "../../../common/Button";
-import { InputText } from "../../../common/elements/InputText";
 import { FormArea } from "../styled";
 import { LuSave } from "react-icons/lu";
 

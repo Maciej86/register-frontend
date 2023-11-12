@@ -5,7 +5,7 @@ import { URL_ORGANIZATION } from "../../../../core/urlBackend";
 import { ORGANIZATION } from "../../../../core/InfoText";
 import { selectLoadingEditOrganization } from "../../../../store/Organization/sliceOrganization";
 import { Loader } from "../../../../common/Loader";
-import { InputText } from "../../../../common/elements/InputText";
+import { InputText } from "../../../../common/InputText";
 import { Button } from "../../../../common/Button";
 import { useEditNameOrganization } from "../checkValue/useEditNameOrganization";
 import { ConteinerLoader, FormArea, NotExsist } from "../styled";

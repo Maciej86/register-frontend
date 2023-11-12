@@ -1,3 +1,4 @@
+import { Input, Label } from "../styledCommon";
 import {
   BoxSelect,
   MaskSelect,
@@ -5,7 +6,6 @@ import {
   SelectItem,
   SelectList,
 } from "./styled";
-import { Input, Label } from "../elements/styled";
 
 export const InputSelect = ({
   id,

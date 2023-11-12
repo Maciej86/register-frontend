@@ -15,8 +15,8 @@ import {
   TrHead,
 } from "../../../../common/styledCommon";
 import { Loader } from "../../../../common/Loader";
+import { LinkButton } from "../../../../common/LinkButton";
 import { Button } from "../../../../common/Button";
-import { LinkButton } from "../../../../common/elements/styled";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 import { useCompressionData } from "./useCompressionData";

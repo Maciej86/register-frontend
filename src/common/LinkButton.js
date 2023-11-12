@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import {
   getColorButtoHovernOnValue,
   getColorButtonOnValue,
-} from "../styledCommon";
+} from "./styledCommon";
 
-export const BoxButton = styled.button`
+export const LinkButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -17,6 +18,7 @@ export const BoxButton = styled.button`
   font-weight: 500;
   color: ${({ theme, $typeAction }) =>
     $typeAction !== "cancel" ? theme.color.white : theme.color.info};
+  text-decoration: none;
   box-shadow: 0 0 15px ${({ theme }) => theme.color.dark};
   cursor: pointer;
   transition: background 0.4s;

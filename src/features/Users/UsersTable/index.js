@@ -1,9 +1,9 @@
-import { TileHeadAndBody } from "../../../common/TileHeadAndBody";
-import { LinkButton } from "../../../common/elements/styled";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { ButtonArea } from "./styled";
-import { useAllUsers } from "./checkValue/useAllUsers";
 import { USERSETTINGS } from "../../../core/InfoText";
+import { TileHeadAndBody } from "../../../common/TileHeadAndBody";
+import { LinkButton } from "../../../common/LinkButton";
+import { AiOutlineUserAdd } from "react-icons/ai";
+import { useAllUsers } from "./checkValue/useAllUsers";
+import { ButtonArea } from "./styled";
 
 export const UsersTable = () => {
   const { viewAllUsers } = useAllUsers();
