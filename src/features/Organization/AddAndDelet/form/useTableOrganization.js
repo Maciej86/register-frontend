@@ -2,19 +2,19 @@ import { Loader } from "../../../../common/Loader";
 import { Modal } from "../../../../common/Modal";
 import { LinkButton } from "../../../../common/LinkButton";
 import { Button } from "../../../../common/Button";
-import { COMMON, NAVIGATION, ORGANIZATION } from "../../../../core/InfoText";
-import { useDeleteOrganization } from "../checkValue/useDeleteOrganization";
 import {
+  ColumnCenter,
   ConteinerTable,
+  EmptyTable,
   Table,
   Th,
+  Th80,
+  ThLp,
   TrBody,
   TrHead,
-  ColumnCenter,
-  ThLp,
-  Th80,
-  EmptyTable,
-} from "../../../../common/styledCommon";
+} from "../../../../common/styledTable";
+import { COMMON, NAVIGATION, ORGANIZATION } from "../../../../core/InfoText";
+import { useDeleteOrganization } from "../checkValue/useDeleteOrganization";
 import { TextDelete } from "../styled";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";

@@ -2,6 +2,9 @@ import { URL_USERS } from "../../../../core/urlBackend";
 import { COMMON } from "../../../../core/InfoText";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
 import { useRoleUser } from "../../../../core/hooks/useRoleUser";
+import { Loader } from "../../../../common/Loader";
+import { LinkButton } from "../../../../common/LinkButton";
+import { Button } from "../../../../common/Button";
 import {
   Column,
   ColumnCenter,
@@ -13,10 +16,7 @@ import {
   ThLp,
   TrBody,
   TrHead,
-} from "../../../../common/styledCommon";
-import { Loader } from "../../../../common/Loader";
-import { LinkButton } from "../../../../common/LinkButton";
-import { Button } from "../../../../common/Button";
+} from "../../../../common/styledTable";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 import { useCompressionData } from "./useCompressionData";

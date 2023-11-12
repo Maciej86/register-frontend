@@ -11,9 +11,6 @@ import {
 } from "../../../../store/Organization/sliceOrganization";
 import { Loader } from "../../../../common/Loader";
 import { Button } from "../../../../common/Button";
-import { useDeleteUserInOrganization } from "../checkValue/useAddOrDeleteUsersOrganization";
-import { ButtonTab } from "../styled";
-import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";
 import {
   Column,
   ColumnCenter,
@@ -26,7 +23,10 @@ import {
   ThLp,
   TrBody,
   TrHead,
-} from "../../../../common/styledCommon";
+} from "../../../../common/styledTable";
+import { useDeleteUserInOrganization } from "../checkValue/useAddOrDeleteUsersOrganization";
+import { ButtonTab } from "../styled";
+import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";
 import {
   InputToggleSwitch,
   LabelToggleSwitch,
@@ -132,7 +132,7 @@ export const useFormUsersInOrganization = () => {
                     <ColumnCenter>{number}</ColumnCenter>
                     <Column>{item.name}</Column>
                     <Column>{item.last_name}</Column>
-                    <td>{userRole(item.role, true)}</td>
+                    <Column>{userRole(item.role, true)}</Column>
                     <ColumnCenter>
                       <LabelToggleSwitch
                         id={index}
