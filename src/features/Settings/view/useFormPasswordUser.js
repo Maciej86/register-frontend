@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useEditPassword } from "../checkValue/useEditPassword";
+import { useEditPassword } from "../hooks/useEditPassword";
 import { USERSETTINGS } from "../../../core/InfoText";
 import {
   selectStatusEditPassword,
@@ -65,5 +65,5 @@ export const useFromPasswordUser = () => {
     </form>
   );
 
-  return formUserPassword;
+  return { formUserPassword };
 };

@@ -14,12 +14,12 @@ import {
   TrHead,
 } from "../../../../common/styledTable";
 import { COMMON, NAVIGATION, ORGANIZATION } from "../../../../core/InfoText";
-import { useDeleteOrganization } from "../checkValue/useDeleteOrganization";
+import { useDeleteOrganization } from "../hooks/useDeleteOrganization";
 import { TextDelete } from "../styled";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 
-export const useAllOrganizaton = () => {
+export const useTableOrganizaton = () => {
   const {
     fetchData,
     fetchDataLoading,

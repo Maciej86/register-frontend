@@ -7,7 +7,7 @@ import { selectLoadingEditOrganization } from "../../../../store/Organization/sl
 import { Loader } from "../../../../common/Loader";
 import { InputText } from "../../../../common/InputText";
 import { Button } from "../../../../common/Button";
-import { useEditNameOrganization } from "../checkValue/useEditNameOrganization";
+import { useEditNameOrganization } from "../hooks/useEditNameOrganization";
 import { ConteinerLoader, FormArea, NotExsist } from "../styled";
 import { LuFileEdit } from "react-icons/lu";
 

@@ -6,7 +6,7 @@ import {
   selectUserState,
 } from "../../../store/User/sliceUser";
 import { useRoleUser } from "../../../core/hooks/useRoleUser";
-import { useEditAccount } from "../checkValue/useEditAccount";
+import { useEditAccount } from "../hooks/useEditAccount";
 import { USERSETTINGS } from "../../../core/InfoText";
 import { themesStyles } from "../../../core/styles/theme";
 import { Loader } from "../../../common/Loader";
@@ -96,5 +96,5 @@ export const useFormDataUser = () => {
     </form>
   );
 
-  return formUserSetings;
+  return { formUserSetings };
 };

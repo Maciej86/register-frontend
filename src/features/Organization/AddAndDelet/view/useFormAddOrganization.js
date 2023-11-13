@@ -4,7 +4,7 @@ import { ORGANIZATION } from "../../../../core/InfoText";
 import { Loader } from "../../../../common/Loader";
 import { InputText } from "../../../../common/InputText";
 import { Button } from "../../../../common/Button";
-import { useAddOrganization } from "../checkValue/useAddOrganization";
+import { useAddOrganization } from "../hooks/useAddOrganization";
 import { FormArea } from "../styled";
 import { TbCubePlus } from "react-icons/tb";
 

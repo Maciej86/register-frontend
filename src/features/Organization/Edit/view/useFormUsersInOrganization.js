@@ -24,7 +24,7 @@ import {
   TrBody,
   TrHead,
 } from "../../../../common/styledTable";
-import { useDeleteUserInOrganization } from "../checkValue/useAddOrDeleteUsersOrganization";
+import { useDeleteUserInOrganization } from "../hooks/useAddOrDeleteUsersOrganization";
 import { ButtonTab } from "../styled";
 import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";
 import {
@@ -34,7 +34,7 @@ import {
   TableAction,
 } from "../../AddAndDelet/styled";
 
-export const useFormUsersInOrganization = () => {
+export const useTableUsersInOrganization = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const loadingAddOrDeleteUsersOrganization = useSelector(
@@ -70,7 +70,7 @@ export const useFormUsersInOrganization = () => {
     loadUsersInOrganization();
   }, [id]);
 
-  const formUserInOrganization = (
+  const tableUserInOrganization = (
     <form>
       <ConteinerTable>
         <ButtonTab
@@ -186,5 +186,5 @@ export const useFormUsersInOrganization = () => {
     </form>
   );
 
-  return { formUserInOrganization };
+  return { tableUserInOrganization };
 };

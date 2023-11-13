@@ -19,7 +19,7 @@ import {
 } from "../../../../common/styledTable";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
-import { useCompressionData } from "./useCompressionData";
+import { useCompressionData } from "../hooks/useCompressionData";
 
 export const useAllUsers = () => {
   const { userRole } = useRoleUser();

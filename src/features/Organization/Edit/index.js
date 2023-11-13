@@ -1,14 +1,14 @@
 import { ORGANIZATION } from "../../../core/InfoText";
 import { useErrorConnectServer } from "../../../core/hooks/useErrorConnectServer";
 import { selectServerErrorOrganization } from "../../../store/Organization/sliceOrganization";
-import { useFormEditOrganization } from "./form/useFormEditOrganization";
-import { useFormUsersInOrganization } from "./form/useFormUsersInOrganization";
 import { Tile } from "../../../common/Tile";
+import { useFormEditOrganization } from "./view/useFormEditOrganization";
+import { useTableUsersInOrganization } from "./view/useFormUsersInOrganization";
 import { Conteiner } from "./styled";
 
 export const OrganizationEdit = () => {
   const { formEditname } = useFormEditOrganization();
-  const { formUserInOrganization } = useFormUsersInOrganization();
+  const { tableUserInOrganization } = useTableUsersInOrganization();
   useErrorConnectServer(selectServerErrorOrganization, "storeOrganization");
 
   return (
@@ -21,7 +21,7 @@ export const OrganizationEdit = () => {
       <Tile
         title={ORGANIZATION.COM_TITLE_USERS_IN_ORGANIZATION}
         subTitle={ORGANIZATION.COM_SUBTITLE_USERS_IN_ORGANIZATION}
-        content={formUserInOrganization}
+        content={tableUserInOrganization}
       />
     </Conteiner>
   );
