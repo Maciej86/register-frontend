@@ -5,3 +5,20 @@ export const ButtonArea = styled.div`
   justify-content: end;
   align-items: center;
 `;
+
+export const Separator = styled.span`
+  &::after {
+    content: "|";
+    display: inline-block;
+    padding: 0 7px;
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child::after {
+    content: "";
+    padding: 0;
+  }
+`;

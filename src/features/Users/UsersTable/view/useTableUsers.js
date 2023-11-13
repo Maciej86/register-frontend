@@ -1,5 +1,5 @@
 import { URL_USERS } from "../../../../core/urlBackend";
-import { COMMON } from "../../../../core/InfoText";
+import { COMMON, NAVIGATION } from "../../../../core/InfoText";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
 import { useRoleUser } from "../../../../core/hooks/useRoleUser";
 import { Loader } from "../../../../common/Loader";
@@ -17,14 +17,16 @@ import {
   TrBody,
   TrHead,
 } from "../../../../common/styledTable";
+import { LinkText } from "../../../../common/styledLink";
+import { CompressionData } from "../hooks/CompressionData";
+import { Separator } from "../styled";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
-import { useCompressionData } from "../hooks/useCompressionData";
 
 export const useAllUsers = () => {
   const { userRole } = useRoleUser();
   const { fetchData, fetchDataLoading } = useFetchData(URL_USERS.ALL_USERS);
-  const { compressionUsersData } = useCompressionData(fetchData);
+  const { compressionUsersData } = CompressionData(fetchData);
 
   const viewAllUsers = fetchDataLoading ? (
     <Loader margin=" 30px auto" />
@@ -52,13 +54,17 @@ export const useAllUsers = () => {
                 <Column>{item.last_name}</Column>
                 <Column>{userRole(item.role, true)}</Column>
                 <Column>
-                  {item.organization_name.length === 0
+                  {item.organizations.length === 0
                     ? "brak"
-                    : item.organization_name.map((item) => {
+                    : item.organizations.map((organization, index) => {
                         return (
-                          <span key={item} style={{ paddingRight: 10 + "px" }}>
-                            {item}
-                          </span>
+                          <Separator key={index}>
+                            <LinkText
+                              to={`/${NAVIGATION.NAV_ID_ORGANIZATION}/${organization.id}`}
+                            >
+                              {organization.name}
+                            </LinkText>
+                          </Separator>
                         );
                       })}
                 </Column>
