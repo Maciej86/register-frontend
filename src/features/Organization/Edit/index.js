@@ -3,7 +3,7 @@ import { useErrorConnectServer } from "../../../core/hooks/useErrorConnectServer
 import { selectServerErrorOrganization } from "../../../store/Organization/sliceOrganization";
 import { Tile } from "../../../common/Tile";
 import { useFormEditOrganization } from "./view/useFormEditOrganization";
-import { useTableUsersInOrganization } from "./view/useFormUsersInOrganization";
+import { useTableUsersInOrganization } from "./view/useTableUsersInOrganization";
 import { Conteiner } from "./styled";
 
 export const OrganizationEdit = () => {
