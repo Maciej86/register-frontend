@@ -1,5 +1,5 @@
 import { URL_USERS } from "../../../../core/urlBackend";
-import { COMMON, NAVIGATION } from "../../../../core/InfoText";
+import { COMMON, NAVIGATION, USERSETTINGS } from "../../../../core/InfoText";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
 import { useRoleUser } from "../../../../core/hooks/useRoleUser";
 import { Loader } from "../../../../common/Loader";
@@ -19,7 +19,7 @@ import {
 } from "../../../../common/styledTable";
 import { LinkText } from "../../../../common/styledLink";
 import { CompressionData } from "../hooks/CompressionData";
-import { Separator } from "../styled";
+import { LackOrganization, Separator } from "../styled";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 
@@ -54,19 +54,23 @@ export const useAllUsers = () => {
                 <Column>{item.last_name}</Column>
                 <Column>{userRole(item.role, true)}</Column>
                 <Column>
-                  {item.organizations.length === 0
-                    ? "brak"
-                    : item.organizations.map((organization, index) => {
-                        return (
-                          <Separator key={index}>
-                            <LinkText
-                              to={`/${NAVIGATION.NAV_ID_ORGANIZATION}/${organization.id}`}
-                            >
-                              {organization.name}
-                            </LinkText>
-                          </Separator>
-                        );
-                      })}
+                  {item.organizations.length === 0 ? (
+                    <LackOrganization>
+                      {USERSETTINGS.LACK_ORGANIZATION}
+                    </LackOrganization>
+                  ) : (
+                    item.organizations.map((organization, index) => {
+                      return (
+                        <Separator key={index}>
+                          <LinkText
+                            to={`/${NAVIGATION.NAV_ID_ORGANIZATION}/${organization.id}`}
+                          >
+                            {organization.name}
+                          </LinkText>
+                        </Separator>
+                      );
+                    })
+                  )}
                 </Column>
                 <ColumnCenter>
                   <LinkButton to={`#/${item.id}`} $small="true">

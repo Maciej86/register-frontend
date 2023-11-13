@@ -102,4 +102,5 @@ export const USERSETTINGS = {
   CONFIRM_DIFFRENT_PASSWORD: "Nowe hasło różnią się od siebie.",
   CONFRIM_LENGTH_PASSWORD: "Hasło powinno zawierać minimum 6 znaków.",
   CONFIRM_EMAIL_EXSIST: "Podany adres e-mail już istnieje.",
+  LACK_ORGANIZATION: "brak",
 };

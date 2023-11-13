@@ -22,3 +22,8 @@ export const Separator = styled.span`
     padding: 0;
   }
 `;
+
+export const LackOrganization = styled.span`
+  color: ${({ theme }) => theme.color.dark};
+  font-weight: 500;
+`;
