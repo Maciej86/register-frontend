@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export const getColorButtonOnValue = (theme, action) => {
   switch (action) {
     case "confirm":
@@ -27,3 +29,14 @@ export const getColorButtoHovernOnValue = (theme, action) => {
       return theme.color.info_dark;
   }
 };
+
+export const Separator = styled.span`
+  padding: 0 5px;
+`;
+
+export const FontWeight500 = styled.span`
+  font-weight: 500;
+`;
+export const FontWeight600 = styled.span`
+  font-weight: 600;
+`;

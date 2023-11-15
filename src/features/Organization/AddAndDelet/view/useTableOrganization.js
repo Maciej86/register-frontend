@@ -1,11 +1,14 @@
+import { COMMON, NAVIGATION, ORGANIZATION } from "../../../../core/InfoText";
 import { Loader } from "../../../../common/Loader";
 import { Modal } from "../../../../common/Modal";
 import { LinkButton } from "../../../../common/styledLinkButton";
 import { Button } from "../../../../common/Button";
 import {
+  Column,
   ColumnCenter,
   ConteinerTable,
   EmptyTable,
+  SmallInfoTable,
   Table,
   Th,
   Th80,
@@ -13,7 +16,7 @@ import {
   TrBody,
   TrHead,
 } from "../../../../common/styledTable";
-import { COMMON, NAVIGATION, ORGANIZATION } from "../../../../core/InfoText";
+import { FontWeight600, Separator } from "../../../../common/styledCommon";
 import { useDeleteOrganization } from "../hooks/useDeleteOrganization";
 import { TextDelete } from "../styled";
 import { FiEdit } from "react-icons/fi";
@@ -79,7 +82,17 @@ export const useTableOrganizaton = () => {
                 return (
                   <TrBody key={index}>
                     <ColumnCenter>{index}</ColumnCenter>
-                    <td>{item.name_organization}</td>
+                    <Column>
+                      <span>{item.name_organization}</span>
+                      <SmallInfoTable>
+                        Utworzył:{" "}
+                        <FontWeight600>
+                          {item.name} {item.last_name}
+                        </FontWeight600>{" "}
+                        <Separator>|</Separator> Data utworzenia:{" "}
+                        <FontWeight600>{item.add_date}</FontWeight600>
+                      </SmallInfoTable>
+                    </Column>
                     <ColumnCenter>{item.count_user}</ColumnCenter>
                     <ColumnCenter>
                       <LinkButton

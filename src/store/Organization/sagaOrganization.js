@@ -2,7 +2,7 @@ import axios from "axios";
 import { delay, put, takeEvery } from "redux-saga/effects";
 import { URL_ORGANIZATION } from "../../core/urlBackend";
 import {
-  fetchAddNewOrganization,
+  fetchAddOrganization,
   fetchTokenOrganization,
   setAddNewOrganization,
   setUserOrganization,
@@ -36,11 +36,12 @@ function* fetchUserOrganizationHandler({ payload: id }) {
   }
 }
 
-function* fetchAddNewOrganizationHandler({ payload: data }) {
+function* fetchAddOrganizationHandler({ payload: data }) {
   try {
     const organization = yield axios.post(URL_ORGANIZATION.ADD_ORGANIZATION, {
       idUser: data.idUser,
       name: data.name,
+      createdDate: data.createdDate,
     });
     yield delay(timeDelay);
     yield put(setAddNewOrganization(organization.data));
@@ -121,7 +122,7 @@ export function* organizationSaga() {
     [fetchUserOrganization.type, fetchTokenOrganization.type],
     fetchUserOrganizationHandler
   );
-  yield takeEvery(fetchAddNewOrganization.type, fetchAddNewOrganizationHandler);
+  yield takeEvery(fetchAddOrganization.type, fetchAddOrganizationHandler);
   yield takeEvery(
     fetchEditNameOrganization.type,
     fetchEditNameOrganizationHandler

@@ -4,7 +4,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { addConfirm } from "../../../Confirm/sliceConfirm";
 import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
 import {
-  fetchAddNewOrganization,
+  fetchAddOrganization,
   resetOrganizationState,
   selectAddNewOrganization,
   selectNameOrganizationExsist,
@@ -76,10 +76,14 @@ export const useAddOrganization = () => {
       return;
     }
 
+    const currentDate = new Date();
+    const dateCreatedOrganization = currentDate.toISOString().split("T")[0];
+
     dispatch(
-      fetchAddNewOrganization({
+      fetchAddOrganization({
         idUser: userData?.id,
         name: newNameOrganization,
+        createdDate: dateCreatedOrganization,
       })
     );
   };

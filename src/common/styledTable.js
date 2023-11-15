@@ -8,6 +8,7 @@ export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   white-space: nowrap;
+  font-weight: 500;
 `;
 
 export const TrHead = styled.tr`
@@ -60,5 +61,11 @@ export const EmptyTable = styled.span`
   background: ${({ theme }) => theme.color.warning};
   border-radius: ${({ theme }) => theme.size.border_radius_small};
   color: ${({ theme }) => theme.color.warning_dark};
-  font-weight: 500;
+  font-weight: 600;
+`;
+
+export const SmallInfoTable = styled.div`
+  color: ${({ theme }) => theme.color.light_dark};
+  font-size: 14px;
+  font-weight: 400;
 `;

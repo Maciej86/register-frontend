@@ -39,7 +39,7 @@ const organizationSlice = createSlice({
       state.usersInOutOrganization = organization;
       state.loadingOrganization = false;
     },
-    fetchAddNewOrganization: (state) => {
+    fetchAddOrganization: (state) => {
       state.loadingNewOrganization = true;
       state.addNewOrganization = false;
       state.nameOrganizationExsist = false;
@@ -142,7 +142,7 @@ export const {
   fetchUserOrganization,
   fetchTokenOrganization,
   setUserOrganization,
-  fetchAddNewOrganization,
+  fetchAddOrganization,
   setAddNewOrganization,
   fetchEditNameOrganization,
   setEditNameOrganization,
