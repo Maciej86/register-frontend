@@ -16,7 +16,7 @@ export const TrHead = styled.tr`
 `;
 
 export const Th = styled.th`
-  min-width: 100px;
+  min-width: 70px;
   padding: 10px 20px 10px 10px;
   border-bottom: 1px solid ${({ theme }) => theme.color.primary_light_color};
 `;
