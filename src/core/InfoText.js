@@ -25,6 +25,7 @@ export const NAVIGATION = {
   NAV_LINK_DASHBOARD: "pulpit",
   NAV_LINK_USERS: "uzytkownicy",
   NAV_USERS: "Użytkownicy",
+  NAV_LINK_ADD_USERS: "utworz-konto",
   NAV_SETINGS: "Ustawienia",
   NAV_LINK_SETINGS: "ustawienia",
   NAV_ORGANIZATION: "Organizacje",

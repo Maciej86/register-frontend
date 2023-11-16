@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { NAVIGATION, ORGANIZATION } from "./InfoText";
+import { NAVIGATION } from "./InfoText";
 import { App } from "./App";
 import { Settings } from "../features/Settings";
 import { Dashboard } from "../features/Dashboard";
@@ -7,6 +7,7 @@ import { ErrorPage } from "../features/ErrorPage";
 import { Organization } from "../features/Organization/AddAndDelet";
 import { OrganizationEdit } from "../features/Organization/Edit";
 import { UsersTable } from "../features/Users/UsersTable";
+import { AddUser } from "../features/Users/AddUser";
 
 export const RouterSetings = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const RouterSetings = createBrowserRouter([
       {
         path: NAVIGATION.NAV_LINK_USERS,
         element: <UsersTable />,
+      },
+      {
+        path: NAVIGATION.NAV_LINK_ADD_USERS,
+        element: <AddUser />,
       },
       {
         path: NAVIGATION.NAV_LINK_DASHBOARD,

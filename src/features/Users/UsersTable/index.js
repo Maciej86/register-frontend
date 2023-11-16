@@ -1,4 +1,4 @@
-import { USERSETTINGS } from "../../../core/InfoText";
+import { NAVIGATION, USERSETTINGS } from "../../../core/InfoText";
 import { Tile } from "../../../common/Tile";
 import { LinkButton } from "../../../common/styledLinkButton";
 import { AiOutlineUserAdd } from "react-icons/ai";
@@ -10,7 +10,7 @@ export const UsersTable = () => {
 
   const ButtonAddUser = (
     <ButtonArea>
-      <LinkButton to={`#`}>
+      <LinkButton to={`/${NAVIGATION.NAV_LINK_ADD_USERS}`}>
         <AiOutlineUserAdd /> {USERSETTINGS.CREATE_ACCOUNT}
       </LinkButton>
     </ButtonArea>
