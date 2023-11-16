@@ -28,8 +28,6 @@ export const useAllUsers = () => {
   const { fetchData, fetchDataLoading } = useFetchData(URL_USERS.ALL_USERS);
   const { compressionUsersData } = CompressionData(fetchData);
 
-  console.log(compressionUsersData);
-
   const viewAllUsers = fetchDataLoading ? (
     <Loader margin=" 30px auto" />
   ) : (
