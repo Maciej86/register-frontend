@@ -8,6 +8,7 @@ export const COMMON = {
   TABLE_HEADER_EDIT: "Edutuj",
   TABLE_HEADER_DELETE: "Usuń",
   TABLE_HEADER_ACCOUNT: "Konto",
+  TABLE_HEADER_EMAIL: "E-mail",
   TABLE_HEADER_CHANGE: "Zmień",
   TABLE_HEADER_ORGANIZATION: "Przypisane organizacje",
 };

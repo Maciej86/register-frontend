@@ -28,6 +28,8 @@ export const useAllUsers = () => {
   const { fetchData, fetchDataLoading } = useFetchData(URL_USERS.ALL_USERS);
   const { compressionUsersData } = CompressionData(fetchData);
 
+  console.log(compressionUsersData);
+
   const viewAllUsers = fetchDataLoading ? (
     <Loader margin=" 30px auto" />
   ) : (
@@ -39,6 +41,7 @@ export const useAllUsers = () => {
             <ThLeft>{COMMON.TABLE_HEADER_NAME2}</ThLeft>
             <ThLeft>{COMMON.TABLE_HEADER_LASTNAME}</ThLeft>
             <ThLeft>{COMMON.TABLE_HEADER_ACCOUNT}</ThLeft>
+            <ThLeft>{COMMON.TABLE_HEADER_EMAIL}</ThLeft>
             <Th80>{COMMON.TABLE_HEADER_ORGANIZATION}</Th80>
             <Th>{COMMON.TABLE_HEADER_EDIT}</Th>
             <Th>{COMMON.TABLE_HEADER_DELETE}</Th>
@@ -53,6 +56,7 @@ export const useAllUsers = () => {
                 <Column>{item.name}</Column>
                 <Column>{item.last_name}</Column>
                 <Column>{userRole(item.role, true)}</Column>
+                <Column>{item.email}</Column>
                 <Column>
                   {item.organizations.length === 0 ? (
                     <LackOrganization>
