@@ -26,12 +26,6 @@ export const TextDelete = styled.p`
   text-align: center;
 `;
 
-export const TableAction = styled.div`
-  display: flex;
-  justify-content: end;
-  margin-top: 20px;
-`;
-
 export const LabelToggleSwitch = styled.label`
   display: inline-block;
   width: 45px;

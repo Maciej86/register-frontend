@@ -69,3 +69,9 @@ export const SmallInfoTable = styled.div`
   font-size: 14px;
   font-weight: 400;
 `;
+
+export const TableAction = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+`;

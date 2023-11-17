@@ -17,6 +17,7 @@ import {
   ConteinerTable,
   EmptyTable,
   Table,
+  TableAction,
   Th,
   Th80,
   ThLeft,
@@ -31,7 +32,6 @@ import {
   InputToggleSwitch,
   LabelToggleSwitch,
   SpanToggleSwitch,
-  TableAction,
 } from "../../AddAndDelet/styled";
 
 export const useTableUsersInOrganization = () => {
