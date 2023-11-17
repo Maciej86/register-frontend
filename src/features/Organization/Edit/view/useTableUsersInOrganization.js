@@ -25,14 +25,14 @@ import {
   TrBody,
   TrHead,
 } from "../../../../common/styledTable";
+import {
+  InputBoxSwitch,
+  LabelBoxSwitch,
+  SpanBoxSwitch,
+} from "../../../../common/styledInputBoxSwitch";
 import { useDeleteUserInOrganization } from "../hooks/useAddOrDeleteUsersOrganization";
 import { ButtonTab } from "../styled";
 import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";
-import {
-  InputToggleSwitch,
-  LabelToggleSwitch,
-  SpanToggleSwitch,
-} from "../../AddAndDelet/styled";
 
 export const useTableUsersInOrganization = () => {
   const { id } = useParams();
@@ -134,11 +134,11 @@ export const useTableUsersInOrganization = () => {
                     <Column>{item.last_name}</Column>
                     <Column>{userRole(item.role, true)}</Column>
                     <ColumnCenter>
-                      <LabelToggleSwitch
+                      <LabelBoxSwitch
                         id={index}
                         $isChecked={inputCheckbox[index]}
                       >
-                        <InputToggleSwitch
+                        <InputBoxSwitch
                           htmlFor={index}
                           type="checkbox"
                           name="idUser"
@@ -148,10 +148,10 @@ export const useTableUsersInOrganization = () => {
                           }
                           checked={inputCheckbox[index] || false}
                         />
-                        <SpanToggleSwitch
+                        <SpanBoxSwitch
                           $isChecked={inputCheckbox[index]}
-                        ></SpanToggleSwitch>
-                      </LabelToggleSwitch>
+                        ></SpanBoxSwitch>
+                      </LabelBoxSwitch>
                     </ColumnCenter>
                   </TrBody>
                 );
