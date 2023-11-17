@@ -10,6 +10,7 @@ export const COMMON = {
   TABLE_HEADER_ACCOUNT: "Konto",
   TABLE_HEADER_EMAIL: "E-mail",
   TABLE_HEADER_CHANGE: "Zmień",
+  TABLE_HEADER_ADD: "Dodaj",
   TABLE_HEADER_ORGANIZATION: "Przypisane organizacje",
 };
 
@@ -105,4 +106,9 @@ export const USERSETTINGS = {
   CONFRIM_LENGTH_PASSWORD: "Hasło powinno zawierać minimum 6 znaków.",
   CONFIRM_EMAIL_EXSIST: "Podany adres e-mail już istnieje.",
   LACK_ORGANIZATION: "brak",
+  CREATE_USER_NAME: "Imię",
+  CREATE_USER_LAST_NAME: "Nazwisko",
+  CREATE_USER_PASSWORD_LABEL: "Hasło (minimum 6 znaków)",
+  CREATE_USER_PASSWORD_REPEAT_LABEL: "Powtórz hasło",
+  BUTTON_CREATE_ACCOUNT: "Utwórz użytkownika",
 };

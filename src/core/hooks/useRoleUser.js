@@ -5,7 +5,12 @@ import {
 } from "../../common/styledUserRole";
 
 export const useRoleUser = () => {
-  const roleUser = ["Deweloper", "Super Admin", "Administrator", "Użytkownik"];
+  const roleDefinitions = [
+    { db: 0, name: "Deweloper" },
+    { db: 1, name: "Super Admin" },
+    { db: 2, name: "Administrator" },
+    { db: 3, name: "Użytkownik" },
+  ];
 
   const userRole = (role, color) => {
     let userRoleName = "";
@@ -13,42 +18,44 @@ export const useRoleUser = () => {
     switch (role) {
       case "0":
         userRoleName = color ? (
-          <UserDeveloper>{roleUser[parseInt(role)]}</UserDeveloper>
+          <UserDeveloper>{roleDefinitions[parseInt(role)].name}</UserDeveloper>
         ) : (
-          roleUser[parseInt(role)]
+          roleDefinitions[parseInt(role)].name
         );
         break;
       case "1":
         userRoleName = color ? (
-          <UserAdmin>{roleUser[parseInt(role)]}</UserAdmin>
+          <UserAdmin>{roleDefinitions[parseInt(role)].name}</UserAdmin>
         ) : (
-          roleUser[parseInt(role)]
+          roleDefinitions[parseInt(role)].name
         );
         break;
       case "2":
         userRoleName = color ? (
-          <UserAdmin>{roleUser[parseInt(role)]}</UserAdmin>
+          <UserAdmin>{roleDefinitions[parseInt(role)].name}</UserAdmin>
         ) : (
-          roleUser[parseInt(role)]
+          roleDefinitions[parseInt(role)].name
         );
         break;
       case "3":
         userRoleName = color ? (
-          <UserUser>{roleUser[parseInt(role)]}</UserUser>
+          <UserUser>{roleDefinitions[parseInt(role)].name}</UserUser>
         ) : (
-          roleUser[parseInt(role)]
+          roleDefinitions[parseInt(role)].name
         );
         break;
       default:
         userRoleName = color ? (
-          <UserUser>{roleUser[parseInt(role)]}</UserUser>
+          <UserUser>
+            {roleDefinitions[roleDefinitions.length - 1].name}
+          </UserUser>
         ) : (
-          roleUser[parseInt(role)]
+          roleDefinitions[roleDefinitions.length - 1].name
         );
     }
 
     return userRoleName;
   };
 
-  return { userRole };
+  return { roleDefinitions, userRole };
 };
