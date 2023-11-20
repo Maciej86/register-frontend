@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectToggleNavMobileState,
@@ -6,10 +7,14 @@ import {
 } from "../Bar/sliceBar";
 import {
   Autor,
+  EmptyIcon,
   IconNav,
   ItemNav,
   LinkNav,
+  LinkNavChild,
+  LinkNavHasChild,
   ListNav,
+  ListNavChild,
   Logo,
   LogoName,
   MainNav,
@@ -26,6 +31,11 @@ export const Navigation = () => {
   const dispatch = useDispatch();
   const toggleNav = useSelector(selectToggleNavState);
   const toggleMobileNav = useSelector(selectToggleNavMobileState);
+  const [openUsers, setOpenUsers] = useState(false);
+
+  const closeListNavChild = () => {
+    setOpenUsers(false);
+  };
 
   return (
     <>
@@ -41,27 +51,62 @@ export const Navigation = () => {
           </Logo>
           <ListNav>
             <ItemNav>
-              <LinkNav to={NAVIGATION.NAV_LINK_DASHBOARD}>
+              <LinkNav
+                to={NAVIGATION.NAV_LINK_DASHBOARD}
+                onClick={() => closeListNavChild()}
+              >
                 <IconNav>
-                  <LuLayoutDashboard size={"20px"} />
+                  <LuLayoutDashboard size={"18px"} />
                 </IconNav>
                 {NAVIGATION.NAV_DASHBOARD}
               </LinkNav>
-              <LinkNav to={NAVIGATION.NAV_LINK_USERS}>
+            </ItemNav>
+            <ItemNav>
+              <LinkNavHasChild
+                as="button"
+                onClick={() => {
+                  closeListNavChild();
+                  setOpenUsers((openUsers) => !openUsers);
+                }}
+              >
                 <IconNav>
-                  <PiUsers size={"22px"} />
+                  <PiUsers size={"20px"} />
                 </IconNav>
                 {NAVIGATION.NAV_USERS}
-              </LinkNav>
-              <LinkNav to={NAVIGATION.NAV_LINK_ORGANIZATION}>
+              </LinkNavHasChild>
+              <ListNavChild $open={openUsers} $quantityItemNav={2}>
+                <ItemNav>
+                  <LinkNavChild to={NAVIGATION.NAV_LINK_USERS}>
+                    <EmptyIcon />
+                    {NAVIGATION.NAV_USERS_CHILD}
+                  </LinkNavChild>
+                </ItemNav>
+                <ItemNav>
+                  <LinkNavChild to={NAVIGATION.NAV_LINK_ADD_USERS}>
+                    <EmptyIcon />
+                    {NAVIGATION.NAV_ADD_USERS}
+                  </LinkNavChild>
+                </ItemNav>
+              </ListNavChild>
+            </ItemNav>
+            <ItemNav>
+              <LinkNav
+                to={NAVIGATION.NAV_LINK_ORGANIZATION}
+                onClick={() => closeListNavChild()}
+              >
                 <IconNav>
-                  <LiaCubesSolid size={"24px"} />
+                  <LiaCubesSolid size={"22px"} />
                 </IconNav>
                 {NAVIGATION.NAV_ORGANIZATION}
               </LinkNav>
-              <LinkNav to={NAVIGATION.NAV_LINK_SETINGS}>
+            </ItemNav>
+            <ItemNav>
+              <LinkNav
+                to={NAVIGATION.NAV_LINK_SETINGS}
+                onClick={() => closeListNavChild()}
+              >
                 <IconNav>
-                  <SlSettings size={"20px"} />
+                  <SlSettings size={"18px"} />
                 </IconNav>
                 {NAVIGATION.NAV_SETINGS}
               </LinkNav>

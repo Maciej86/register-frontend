@@ -27,7 +27,9 @@ export const NAVIGATION = {
   NAV_LINK_DASHBOARD: "pulpit",
   NAV_LINK_USERS: "uzytkownicy",
   NAV_USERS: "Użytkownicy",
+  NAV_USERS_CHILD: "Zarządzaj użytkownikami",
   NAV_LINK_ADD_USERS: "utworz-konto",
+  NAV_ADD_USERS: "Dodaj użytkownika",
   NAV_SETINGS: "Ustawienia",
   NAV_LINK_SETINGS: "ustawienia",
   NAV_ORGANIZATION: "Organizacje",
@@ -76,7 +78,7 @@ export const ORGANIZATION = {
 export const USERSETTINGS = {
   COM_TITLE_TABLE_USERS: "Użytkownicy",
   COM_SUBTITLE_TABLE_USERS: "Zarządzaj użytkownikami",
-  CREATE_ACCOUNT: "Utwórz konto",
+  CREATE_ACCOUNT: "Dodaj użytkownika",
   COM_TITLE_SETTINGS: "Ustawienia",
   COM_SUBTITLE_SETTINGS: "Dane użytkownika",
   COM_TITLE_CHANGED_PASSWORD: "Zmiana hasła",

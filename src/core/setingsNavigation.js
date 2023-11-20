@@ -24,6 +24,10 @@ export const RouterSetings = createBrowserRouter([
         element: <UsersTable />,
       },
       {
+        path: NAVIGATION.NAV_LINK_USERS,
+        element: <UsersTable />,
+      },
+      {
         path: NAVIGATION.NAV_LINK_ADD_USERS,
         element: <AddUser />,
       },
