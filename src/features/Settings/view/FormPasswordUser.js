@@ -11,7 +11,7 @@ import { Button } from "../../../common/Button";
 import { FormArea } from "../styled";
 import { LuSave } from "react-icons/lu";
 
-export const useFromPasswordUser = () => {
+export const FromPasswordUser = () => {
   const userData = useSelector(selectUserState);
   const loadingEditPassword = useSelector(selectStatusEditPassword);
 

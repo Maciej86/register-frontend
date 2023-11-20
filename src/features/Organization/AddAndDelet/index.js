@@ -2,13 +2,13 @@ import { ORGANIZATION } from "../../../core/InfoText";
 import { useErrorConnectServer } from "../../../core/hooks/useErrorConnectServer";
 import { selectServerErrorOrganization } from "../../../store/Organization/sliceOrganization";
 import { Tile } from "../../../common/Tile";
-import { useFormAddOrganization } from "./view/useFormAddOrganization";
-import { useTableOrganizaton } from "./view/useTableOrganization";
+import { FormAddOrganization } from "./view/FormAddOrganization";
+import { TableOrganizaton } from "./view/TableOrganization";
 import { Conteiner } from "./styled";
 
 export const Organization = () => {
-  const { formNewOrganization } = useFormAddOrganization();
-  const { viewOrganization } = useTableOrganizaton();
+  const { formNewOrganization } = FormAddOrganization();
+  const { viewOrganization } = TableOrganizaton();
   useErrorConnectServer(selectServerErrorOrganization, "storeOrganization");
 
   return (

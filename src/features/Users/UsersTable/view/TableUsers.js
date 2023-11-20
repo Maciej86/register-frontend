@@ -23,7 +23,7 @@ import { LackOrganization, Separator } from "../styled";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 
-export const useTableUsers = () => {
+export const TableUsers = () => {
   const { userRole } = useRoleUser();
   const { fetchData, fetchDataLoading } = useFetchData(URL_USERS.ALL_USERS);
   const { compressionUsersData } = CompressionData(fetchData);

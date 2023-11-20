@@ -2,13 +2,13 @@ import { USERSETTINGS } from "../../../../core/InfoText";
 import { Loader } from "../../../../common/Loader";
 import { Button } from "../../../../common/Button";
 import { TableAction } from "../../../../common/styledTable";
-import { useTableOrganization } from "./useTableOrganization";
-import { useFormDataUser } from "./useFormDataUser";
+import { TableOrganization } from "./TableOrganization";
+import { FormDataUser } from "./FormDataUser";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
-export const useFormNewUser = () => {
-  const { formDataUser } = useFormDataUser();
-  const { tableOrganization, fetchDataLoading } = useTableOrganization();
+export const FormNewUser = () => {
+  const { formDataUser } = FormDataUser();
+  const { tableOrganization, fetchDataLoading } = TableOrganization();
 
   const formNewUser = (
     <form>

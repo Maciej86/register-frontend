@@ -2,11 +2,11 @@ import { NAVIGATION, USERSETTINGS } from "../../../core/InfoText";
 import { Tile } from "../../../common/Tile";
 import { LinkButton } from "../../../common/styledLinkButton";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { useTableUsers } from "./view/useTableUsers";
+import { TableUsers } from "./view/TableUsers";
 import { ButtonArea } from "./styled";
 
 export const UsersTable = () => {
-  const { viewAllUsers } = useTableUsers();
+  const { viewAllUsers } = TableUsers();
 
   const ButtonAddUser = (
     <ButtonArea>

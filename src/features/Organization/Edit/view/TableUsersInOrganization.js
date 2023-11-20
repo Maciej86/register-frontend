@@ -34,7 +34,7 @@ import { useDeleteUserInOrganization } from "../hooks/useAddOrDeleteUsersOrganiz
 import { ButtonTab } from "../styled";
 import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";
 
-export const useTableUsersInOrganization = () => {
+export const TableUsersInOrganization = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const loadingAddOrDeleteUsersOrganization = useSelector(

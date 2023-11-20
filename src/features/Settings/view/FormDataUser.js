@@ -17,7 +17,7 @@ import { InputSelect } from "../../../common/InputSelect";
 import { FormArea } from "../styled";
 import { LuSave } from "react-icons/lu";
 
-export const useFormDataUser = () => {
+export const FormDataUser = () => {
   const userData = useSelector(selectUserState);
   const emailExsist = useSelector(selectEmailExsist);
   const loadingEditUser = useSelector(selectStatusUser);

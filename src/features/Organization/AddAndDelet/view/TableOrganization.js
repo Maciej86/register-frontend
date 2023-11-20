@@ -22,7 +22,7 @@ import { TextDelete } from "../styled";
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 
-export const useTableOrganizaton = () => {
+export const TableOrganizaton = () => {
   const {
     fetchData,
     fetchDataLoading,

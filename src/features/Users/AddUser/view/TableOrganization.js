@@ -17,7 +17,7 @@ import {
 } from "../../../../common/styledInputBoxSwitch";
 import { useAddOrganizationIntoUser } from "../hooks/useAddOrganizationIntoUser";
 
-export const useTableOrganization = () => {
+export const TableOrganization = () => {
   const { fetchData, fetchDataLoading, inputCheckbox, changeChecked } =
     useAddOrganizationIntoUser();
 

@@ -8,7 +8,7 @@ import { useAddOrganization } from "../hooks/useAddOrganization";
 import { FormArea } from "../styled";
 import { TbCubePlus } from "react-icons/tb";
 
-export const useFormAddOrganization = () => {
+export const FormAddOrganization = () => {
   const loadingAddOrganization = useSelector(selectLoadingAddOrganization);
   const { addNewOrganization, nameOrganization, emptyNameOrganization } =
     useAddOrganization();

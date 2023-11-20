@@ -11,7 +11,7 @@ import { useEditNameOrganization } from "../hooks/useEditNameOrganization";
 import { ConteinerLoader, FormArea, NotExsist } from "../styled";
 import { LuFileEdit } from "react-icons/lu";
 
-export const useFormEditOrganization = () => {
+export const FormEditOrganization = () => {
   const { id } = useParams();
   const loadingEditNameOrganization = useSelector(
     selectLoadingEditOrganization

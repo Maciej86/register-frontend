@@ -1,8 +1,8 @@
 import { Tile } from "../../../common/Tile";
-import { useFormNewUser } from "./view/useFormNewUser";
+import { FormNewUser } from "./view/FormNewUser";
 
 export const AddUser = () => {
-  const { formNewUser } = useFormNewUser();
+  const { formNewUser } = FormNewUser();
 
   return (
     <Tile
