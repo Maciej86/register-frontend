@@ -15,7 +15,7 @@ export const useEditAccount = (userData, themeValueData) => {
   const dispatch = useDispatch();
   const emailExsist = useSelector(selectEmailExsist);
   const confirmEditUser = useSelector(selectEditAccount);
-  const [detaUserEmpty, setDataUserEmpty] = useState([]);
+  const [dataUserEmpty, setDataUserEmpty] = useState([]);
   const dataUserValue = useRef([]);
   const incorrectEmail = useRef(false);
   const checkEmail = useRef(false);
@@ -112,5 +112,5 @@ export const useEditAccount = (userData, themeValueData) => {
     }
   };
 
-  return { changedDataUser, dataUserValue, detaUserEmpty, incorrectEmail };
+  return { changedDataUser, dataUserValue, dataUserEmpty, incorrectEmail };
 };
