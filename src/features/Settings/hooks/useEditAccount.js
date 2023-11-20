@@ -51,7 +51,9 @@ export const useEditAccount = (userData, themeValueData) => {
     }
   }, [confirmEditUser]);
 
-  const changedDataUser = () => {
+  const changedDataUser = (event) => {
+    event.preventDefault();
+
     setDataUserEmpty([]);
     incorrectEmail.current = false;
 

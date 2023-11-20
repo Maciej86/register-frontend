@@ -37,7 +37,7 @@ export const useFormEditOrganization = () => {
   ) : fetchData.length == 0 ? (
     <NotExsist>Taka organizacja nie istnieje.</NotExsist>
   ) : (
-    <form>
+    <form onSubmit={changeNameOrganization}>
       <FormArea>
         <InputText
           id="organization"
@@ -56,7 +56,7 @@ export const useFormEditOrganization = () => {
           <Button
             text={ORGANIZATION.BUTTON_EDIT_NAME_ORGANIZATION}
             icon={<LuFileEdit size={"15px"} />}
-            action={changeNameOrganization}
+            type="submit"
           />
         )}
       </FormArea>

@@ -24,7 +24,7 @@ export const useFromPasswordUser = () => {
   } = useEditPassword(userData);
 
   const formUserPassword = (
-    <form>
+    <form onSubmit={changedPassword}>
       <FormArea>
         <InputText
           id="oldpassword"
@@ -59,7 +59,7 @@ export const useFromPasswordUser = () => {
         <Button
           text={USERSETTINGS.NEW_PASSWORD_BUTTON}
           icon={<LuSave size={"15px"} />}
-          action={changedPassword}
+          type="submit"
         />
       )}
     </form>

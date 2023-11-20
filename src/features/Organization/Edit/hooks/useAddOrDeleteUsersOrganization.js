@@ -38,7 +38,9 @@ export const useDeleteUserInOrganization = (
     setUserChecked(!isExsistCheckInput.has(!changeTab));
   };
 
-  const addOrDeleteUsersOrganization = () => {
+  const addOrDeleteUsersOrganization = (event) => {
+    event.preventDefault();
+
     const usersToAddOrDelete = [];
     for (let i = 0; i < inputCheckbox.length; i++) {
       if (inputCheckbox[i] === (changeTab ? false : true)) {

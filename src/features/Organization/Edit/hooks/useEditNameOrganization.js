@@ -44,7 +44,9 @@ export const useEditNameOrganization = () => {
     }
   }, [organizationExsist]);
 
-  const changeNameOrganization = () => {
+  const changeNameOrganization = (event) => {
+    event.preventDefault();
+
     setEmptyNameOrganization(false);
     const newNameOrganization =
       editNameOrganization.current !== null

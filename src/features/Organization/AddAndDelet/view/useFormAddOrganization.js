@@ -14,7 +14,7 @@ export const useFormAddOrganization = () => {
     useAddOrganization();
 
   const formNewOrganization = (
-    <form>
+    <form onSubmit={addNewOrganization}>
       <FormArea>
         <InputText
           id="organization"
@@ -31,7 +31,7 @@ export const useFormAddOrganization = () => {
           <Button
             text={ORGANIZATION.BUTTON_ADD_ORGANIZATION}
             icon={<TbCubePlus size={"15px"} />}
-            action={addNewOrganization}
+            type="submit"
           />
         )}
       </FormArea>

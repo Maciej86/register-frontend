@@ -32,7 +32,7 @@ export const useFormDataUser = () => {
   const [themeToggle, setThemeToggle] = useState(false);
 
   const formUserSetings = (
-    <form>
+    <form onSubmit={changedDataUser}>
       <FormArea>
         <InputText
           id="name"
@@ -90,7 +90,7 @@ export const useFormDataUser = () => {
         <Button
           text={USERSETTINGS.BUTTON_EDIT_DATA_USER}
           icon={<LuSave size={"15px"} />}
-          action={changedDataUser}
+          type="submit"
         />
       )}
     </form>

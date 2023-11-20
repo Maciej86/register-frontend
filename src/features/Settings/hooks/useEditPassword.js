@@ -39,7 +39,9 @@ export const useEditPassword = (userData) => {
     dispatch(resetUserState());
   }, [confirmNewPassword]);
 
-  const changedPassword = () => {
+  const changedPassword = (event) => {
+    event.preventDefault();
+
     setOldPassword(false);
     differentPasswords.current = false;
 

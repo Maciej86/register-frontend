@@ -71,7 +71,7 @@ export const useTableUsersInOrganization = () => {
   }, [id]);
 
   const tableUserInOrganization = (
-    <form>
+    <form onSubmit={addOrDeleteUsersOrganization}>
       <ConteinerTable>
         <ButtonTab
           type="button"
@@ -170,7 +170,7 @@ export const useTableUsersInOrganization = () => {
             text={ORGANIZATION.BUTTON_DELETE_USER_ORGANIZATION}
             typeAction="delete"
             icon={<AiOutlineUserDelete size={"15px"} />}
-            action={addOrDeleteUsersOrganization}
+            type="submit"
             disabled={userChecked}
           />
         ) : (
@@ -178,7 +178,7 @@ export const useTableUsersInOrganization = () => {
             text={ORGANIZATION.BUTTON_ADD_USER_ORGANIZATION}
             typeAction="add"
             icon={<AiOutlineUserAdd size={"15px"} />}
-            action={addOrDeleteUsersOrganization}
+            type="submit"
             disabled={userChecked}
           />
         )}

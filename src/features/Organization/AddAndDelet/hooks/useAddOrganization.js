@@ -45,7 +45,9 @@ export const useAddOrganization = () => {
     }
   }, [organizationExsist]);
 
-  const addNewOrganization = () => {
+  const addNewOrganization = (event) => {
+    event.preventDefault();
+
     setEmptyNameOrganization(false);
     const newNameOrganization =
       nameOrganization.current !== null
