@@ -4,7 +4,7 @@ import { InputText } from "../../../../common/InputText";
 import { useAddUser } from "../hooks/useAddDataUser";
 import { FormBasicUser } from "../styled";
 
-export const useFormCreateUser = () => {
+export const useFormDataUser = () => {
   const {
     roleDefinitions,
     userRoleToggle,
@@ -15,8 +15,8 @@ export const useFormCreateUser = () => {
     setRoleUserValueData,
   } = useAddUser();
 
-  const formCreateUser = (
-    <form>
+  const formDataUser = (
+    <>
       <h3>Dane użytkownika</h3>
       <FormBasicUser>
         <InputText
@@ -67,7 +67,7 @@ export const useFormCreateUser = () => {
           maxlength="100"
         />
       </FormBasicUser>
-    </form>
+    </>
   );
-  return { formCreateUser };
+  return { formDataUser };
 };

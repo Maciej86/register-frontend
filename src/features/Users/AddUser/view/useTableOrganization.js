@@ -1,12 +1,9 @@
-import { Loader } from "../../../../common/Loader";
-import { COMMON, USERSETTINGS } from "../../../../core/InfoText";
-import { Button } from "../../../../common/Button";
+import { COMMON } from "../../../../core/InfoText";
 import {
   Column,
   ColumnCenter,
   ConteinerTable,
   Table,
-  TableAction,
   Th,
   Th80,
   ThLp,
@@ -19,15 +16,12 @@ import {
   SpanBoxSwitch,
 } from "../../../../common/styledInputBoxSwitch";
 import { useAddOrganizationIntoUser } from "../hooks/useAddOrganizationIntoUser";
-import { AiOutlineUserAdd } from "react-icons/ai";
 
 export const useTableOrganization = () => {
   const { fetchData, fetchDataLoading, inputCheckbox, changeChecked } =
     useAddOrganizationIntoUser();
 
-  const tableOrganization = fetchDataLoading ? (
-    <Loader margin=" 30px auto" />
-  ) : (
+  const tableOrganization = (
     <>
       <h3>Przypisz organizacje</h3>
       <ConteinerTable>
@@ -74,15 +68,7 @@ export const useTableOrganization = () => {
           </tbody>
         </Table>
       </ConteinerTable>
-      <TableAction>
-        <Button
-          text={USERSETTINGS.BUTTON_CREATE_ACCOUNT}
-          typeAction="add"
-          icon={<AiOutlineUserAdd size={"15px"} />}
-          action={null}
-        />
-      </TableAction>
     </>
   );
-  return { tableOrganization };
+  return { tableOrganization, fetchDataLoading };
 };

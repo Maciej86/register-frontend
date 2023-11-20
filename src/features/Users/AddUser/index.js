@@ -1,23 +1,14 @@
 import { Tile } from "../../../common/Tile";
-import { useFormCreateUser } from "./view/useFormCreateUser";
-import { useTableOrganization } from "./view/useTableOrganization";
+import { useFormNewUser } from "./view/useFormNewUser";
 
 export const AddUser = () => {
-  const { formCreateUser } = useFormCreateUser();
-  const { tableOrganization } = useTableOrganization();
-
-  const contentAddUser = (
-    <>
-      {formCreateUser}
-      {tableOrganization}
-    </>
-  );
+  const { formNewUser } = useFormNewUser();
 
   return (
     <Tile
       title="Utwórz konto użytkownika"
       subTitle="Po utworzeniu konta, użytkownik będzie mógł się zalogować."
-      content={contentAddUser}
+      content={formNewUser}
     />
   );
 };
