@@ -102,13 +102,13 @@ export const Navigation = () => {
             </ItemNav>
             <ItemNav>
               <LinkNav
-                to={NAVIGATION.NAV_LINK_SETINGS}
+                to={NAVIGATION.NAV_LINK_SETTINGS}
                 onClick={() => closeListNavChild()}
               >
                 <IconNav>
                   <SlSettings size={"18px"} />
                 </IconNav>
-                {NAVIGATION.NAV_SETINGS}
+                {NAVIGATION.NAV_SETTINGS}
               </LinkNav>
             </ItemNav>
           </ListNav>

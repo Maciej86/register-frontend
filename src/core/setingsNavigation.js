@@ -44,7 +44,7 @@ export const RouterSetings = createBrowserRouter([
         element: <OrganizationEdit />,
       },
       {
-        path: NAVIGATION.NAV_LINK_SETINGS,
+        path: NAVIGATION.NAV_LINK_SETTINGS,
         element: <Settings />,
       },
     ],

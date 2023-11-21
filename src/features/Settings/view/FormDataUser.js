@@ -26,7 +26,7 @@ export const FormDataUser = () => {
   );
   const [themeValueData, setThemeValueData] = useState(userData?.theme);
   const [organizationValueData] = useState(userData?.main_organization);
-  const { changedDataUser, dataUserValue, detaUserEmpty, incorrectEmail } =
+  const { changedDataUser, dataUserValue, dataUserEmpty, incorrectEmail } =
     useEditAccount(userData, themeValueData, organizationValueData);
   const { userRole } = useRoleUser();
   const [themeToggle, setThemeToggle] = useState(false);
@@ -39,7 +39,7 @@ export const FormDataUser = () => {
           placeholder={USERSETTINGS.NAME_PLACEHOLDER}
           label={USERSETTINGS.NAME_PLACEHOLDER}
           maxlength="20"
-          empty={detaUserEmpty[0] === ""}
+          empty={dataUserEmpty[0] === ""}
           ref={(ref) => (dataUserValue.current[0] = ref)}
           value={userData?.name}
         />
@@ -48,7 +48,7 @@ export const FormDataUser = () => {
           placeholder={USERSETTINGS.LAST_NAME_PLACEHOLDER}
           label={USERSETTINGS.LAST_NAME_LABEL}
           maxlength="45"
-          empty={detaUserEmpty[1] === ""}
+          empty={dataUserEmpty[1] === ""}
           ref={(ref) => (dataUserValue.current[1] = ref)}
           value={userData?.last_name}
         />
@@ -59,7 +59,7 @@ export const FormDataUser = () => {
           label={USERSETTINGS.EMAIL_LABEL}
           maxlength="50"
           empty={
-            detaUserEmpty[2] === "" ||
+            dataUserEmpty[2] === "" ||
             incorrectEmail.current ||
             emailExsist === "exsist"
           }
