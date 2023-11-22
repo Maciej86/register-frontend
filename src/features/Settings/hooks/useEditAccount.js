@@ -59,7 +59,7 @@ export const useEditAccount = (userData, themeValueData) => {
 
     for (const inputValue of dataUserValue.current) {
       let inputValueTrim = inputValue.value.trim();
-      setDataUserEmpty((detaUserEmpty) => [...detaUserEmpty, inputValueTrim]);
+      setDataUserEmpty((dataUserEmpty) => [...dataUserEmpty, inputValueTrim]);
     }
 
     for (const checkEmptyInput of dataUserValue.current) {
