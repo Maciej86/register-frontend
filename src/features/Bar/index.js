@@ -99,9 +99,9 @@ export const Bar = () => {
           </PanelUserHeader>
           <PanelUserList>
             <li onClick={() => setVisible((visible) => !visible)}>
-              <ListLink to={NAVIGATION.NAV_LINK_SETINGS}>
+              <ListLink to={NAVIGATION.NAV_LINK_SETTINGS}>
                 <CiSettings size={"21px"} />
-                <TextLink>{NAVIGATION.NAV_SETINGS}</TextLink>
+                <TextLink>{NAVIGATION.NAV_SETTINGS}</TextLink>
               </ListLink>
             </li>
             <li>
