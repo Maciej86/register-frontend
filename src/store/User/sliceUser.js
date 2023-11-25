@@ -66,11 +66,11 @@ const loginUserSlice = createSlice({
       state.loadingEditPassword = false;
       state.changingPassword = changedPassword;
     },
-    fetchEditEmail: (state) => {
+    fetchEmailExsist: (state) => {
       state.serverError = false;
       state.loading = true;
     },
-    setEditEmail: (state, { payload: emailExsist }) => {
+    setEmailExsist: (state, { payload: emailExsist }) => {
       state.emailExsist = emailExsist;
       if (emailExsist) {
         state.loading = false;
@@ -121,8 +121,8 @@ export const {
   setEditUser,
   fetchEditPassword,
   setEditPassword,
-  fetchEditEmail,
-  setEditEmail,
+  fetchEmailExsist,
+  setEmailExsist,
   serverConnectionError,
   resetUserState,
 } = loginUserSlice.actions;

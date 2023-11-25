@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import {
-  fetchEditEmail,
+  fetchEmailExsist,
   fetchEditUser,
   resetUserState,
   selectEditAccount,
@@ -91,7 +91,7 @@ export const useEditAccount = (userData, themeValueData) => {
     }
 
     if (userData?.email !== dataUserValue.current[2].value) {
-      dispatch(fetchEditEmail(dataUserValue.current[2].value.trim()));
+      dispatch(fetchEmailExsist(dataUserValue.current[2].value.trim()));
       checkEmail.current = true;
       return;
     }

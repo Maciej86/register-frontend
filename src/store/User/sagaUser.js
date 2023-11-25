@@ -1,14 +1,14 @@
 import axios from "axios";
 import { call, delay, put, takeEvery } from "redux-saga/effects";
 import {
-  fetchEditEmail,
+  fetchEmailExsist,
   fetchEditPassword,
   fetchEditUser,
   fetchLoginUser,
   fetchLoginUserOut,
   fetchLoginUserToken,
   serverConnectionError,
-  setEditEmail,
+  setEmailExsist,
   setEditPassword,
   setEditUser,
   setLoginOutUser,
@@ -107,7 +107,7 @@ function* fetchEditEmailHandler({ payload: newEmail }) {
       email: newEmail,
     });
     yield delay(timeDelay);
-    yield put(setEditEmail(checkEmailExsist.data));
+    yield put(setEmailExsist(checkEmailExsist.data));
   } catch (error) {
     yield console.error(error);
     yield put(serverConnectionError());
@@ -120,5 +120,5 @@ export function* loginUserSaga() {
   yield takeEvery(fetchLoginUserOut.type, fetchLoginUserOutTokenHandler);
   yield takeEvery(fetchEditUser.type, fechEditUserHandler);
   yield takeEvery(fetchEditPassword.type, fetchEditPasswordHandler);
-  yield takeEvery(fetchEditEmail.type, fetchEditEmailHandler);
+  yield takeEvery(fetchEmailExsist.type, fetchEditEmailHandler);
 }
