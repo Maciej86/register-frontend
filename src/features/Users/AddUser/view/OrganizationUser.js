@@ -15,11 +15,17 @@ import {
   LabelBoxSwitch,
   SpanBoxSwitch,
 } from "../../../../common/styledInputBoxSwitch";
-import { useAddOrganizationIntoUser } from "../hooks/useAddOrganizationIntoUser";
+import { useAddOrganizationIntoUser } from "../hooks/useAddOrganizationIntonUser";
 
-export const TableOrganization = () => {
-  const { fetchData, fetchDataLoading, inputCheckbox, changeChecked } =
-    useAddOrganizationIntoUser();
+export const OrganizationUser = () => {
+  const {
+    fetchData,
+    fetchDataLoading,
+    inputCheckBox,
+    changeChecked,
+    addUserIntoOrganization,
+    organizationChecked,
+  } = useAddOrganizationIntoUser();
 
   const tableOrganization = (
     <>
@@ -45,7 +51,7 @@ export const TableOrganization = () => {
                   <ColumnCenter>
                     <LabelBoxSwitch
                       id={index}
-                      $isChecked={inputCheckbox[index]}
+                      $isChecked={inputCheckBox[index]}
                     >
                       <InputBoxSwitch
                         htmlFor={index}
@@ -55,10 +61,10 @@ export const TableOrganization = () => {
                         onChange={(event) =>
                           changeChecked(index, event.target.checked)
                         }
-                        checked={inputCheckbox[index] || false}
+                        checked={inputCheckBox[index] || false}
                       />
                       <SpanBoxSwitch
-                        $isChecked={inputCheckbox[index]}
+                        $isChecked={inputCheckBox[index]}
                       ></SpanBoxSwitch>
                     </LabelBoxSwitch>
                   </ColumnCenter>
@@ -70,5 +76,10 @@ export const TableOrganization = () => {
       </ConteinerTable>
     </>
   );
-  return { tableOrganization, fetchDataLoading };
+  return {
+    tableOrganization,
+    fetchDataLoading,
+    addUserIntoOrganization,
+    organizationChecked,
+  };
 };

@@ -2,16 +2,28 @@ import { USERSETTINGS } from "../../../../core/InfoText";
 import { Loader } from "../../../../common/Loader";
 import { Button } from "../../../../common/Button";
 import { TableAction } from "../../../../common/styledTable";
-import { TableOrganization } from "./TableOrganization";
-import { FormDataUser } from "./FormDataUser";
+import { OrganizationUser } from "./OrganizationUser";
+import { DataUser } from "./DataUser";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
-export const FormNewUser = () => {
-  const { formDataUser } = FormDataUser();
-  const { tableOrganization, fetchDataLoading } = TableOrganization();
+export const FormAddUser = () => {
+  const { formDataUser, checkDataUser, dataUser } = DataUser();
+  const {
+    tableOrganization,
+    fetchDataLoading,
+    addUserIntoOrganization,
+    organizationChecked,
+  } = OrganizationUser();
 
-  const formNewUser = (
-    <form>
+  const SubmitDataUser = (event) => {
+    event.preventDefault();
+    checkDataUser();
+    addUserIntoOrganization();
+    console.log(dataUser, organizationChecked);
+  };
+
+  const formAddUser = (
+    <form onSubmit={SubmitDataUser}>
       {formDataUser}
       {fetchDataLoading ? (
         <Loader margin=" 30px auto" />
@@ -23,7 +35,7 @@ export const FormNewUser = () => {
               text={USERSETTINGS.BUTTON_CREATE_ACCOUNT}
               typeAction="add"
               icon={<AiOutlineUserAdd size={"15px"} />}
-              action={null}
+              type="submit"
             />
           </TableAction>
         </>
@@ -31,5 +43,5 @@ export const FormNewUser = () => {
     </form>
   );
 
-  return { formNewUser };
+  return { formAddUser };
 };

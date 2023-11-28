@@ -1,10 +1,10 @@
 import { USERSETTINGS } from "../../../../core/InfoText";
 import { InputSelect } from "../../../../common/InputSelect";
 import { InputText } from "../../../../common/InputText";
-import { useAddUser } from "../hooks/useAddDataUser";
+import { useValidDataUser } from "../hooks/useValidDataUser";
 import { FormBasicUser } from "../styled";
 
-export const FormDataUser = () => {
+export const DataUser = () => {
   const {
     roleDefinitions,
     userRoleToggle,
@@ -13,7 +13,12 @@ export const FormDataUser = () => {
     setRoleUserValue,
     roleUserValueData,
     setRoleUserValueData,
-  } = useAddUser();
+    dataUser,
+    dataUserValue,
+    incorrectEmail,
+    emailExsist,
+    checkDataUser,
+  } = useValidDataUser();
 
   const formDataUser = (
     <>
@@ -24,14 +29,16 @@ export const FormDataUser = () => {
           placeholder={USERSETTINGS.CREATE_USER_NAME}
           label={USERSETTINGS.CREATE_USER_NAME}
           maxlength="20"
-          value=""
+          empty={dataUser[0] === ""}
+          ref={(ref) => (dataUserValue.current[0] = ref)}
         />
         <InputText
           id="lastname"
           placeholder={USERSETTINGS.CREATE_USER_LAST_NAME}
           label={USERSETTINGS.CREATE_USER_LAST_NAME}
           maxlength="45"
-          value=""
+          empty={dataUser[1] === ""}
+          ref={(ref) => (dataUserValue.current[1] = ref)}
         />
         <InputText
           id="email"
@@ -39,7 +46,12 @@ export const FormDataUser = () => {
           placeholder={USERSETTINGS.EMAIL_PLACEHOLDER}
           label={USERSETTINGS.EMAIL_LABEL}
           maxlength="50"
-          value=""
+          empty={
+            dataUser[2] === "" ||
+            incorrectEmail.current ||
+            emailExsist === "exsist"
+          }
+          ref={(ref) => (dataUserValue.current[2] = ref)}
         />
         <InputSelect
           id="role"
@@ -58,6 +70,8 @@ export const FormDataUser = () => {
           label={USERSETTINGS.CREATE_USER_PASSWORD_LABEL}
           type="password"
           maxlength="100"
+          empty={dataUser[3] === ""}
+          ref={(ref) => (dataUserValue.current[3] = ref)}
         />
         <InputText
           id="passwordconform"
@@ -65,9 +79,11 @@ export const FormDataUser = () => {
           label={USERSETTINGS.CREATE_USER_PASSWORD_REPEAT_LABEL}
           type="password"
           maxlength="100"
+          empty={dataUser[4] === ""}
+          ref={(ref) => (dataUserValue.current[4] = ref)}
         />
       </FormBasicUser>
     </>
   );
-  return { formDataUser };
+  return { formDataUser, checkDataUser, dataUser };
 };
