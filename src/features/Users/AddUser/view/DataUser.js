@@ -16,8 +16,9 @@ export const DataUser = () => {
     dataUser,
     dataUserValue,
     incorrectEmail,
-    emailExsist,
     checkDataUser,
+    errorInput,
+    emailExsist,
   } = useValidDataUser();
 
   const formDataUser = (
@@ -85,5 +86,5 @@ export const DataUser = () => {
       </FormBasicUser>
     </>
   );
-  return { formDataUser, checkDataUser, dataUser };
+  return { formDataUser, checkDataUser, dataUser, errorInput, emailExsist };
 };

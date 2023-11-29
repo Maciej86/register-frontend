@@ -10,6 +10,8 @@ const initialUser = {
   loadingTokenUser: false,
   loadingOut: false,
   loadingEditPassword: false,
+  addUser: false,
+  loadingAddUser: false,
   emailExsist: "",
   serverError: false,
 };
@@ -50,7 +52,7 @@ const loginUserSlice = createSlice({
       state.serverError = false;
       state.editAccount = false;
       state.emailExsist = "";
-      state.loading = true;
+      // state.loading = true;
     },
     setEditUser: (state, { payload: user }) => {
       state.loading = false;
@@ -69,12 +71,21 @@ const loginUserSlice = createSlice({
     fetchEmailExsist: (state) => {
       state.serverError = false;
       state.loading = true;
+      state.loadingAddUser = true;
     },
     setEmailExsist: (state, { payload: emailExsist }) => {
       state.emailExsist = emailExsist;
       if (emailExsist) {
         state.loading = false;
+        state.loadingAddUser = false;
       }
+    },
+    fetchAddUser: (state) => {
+      state.loadingAddUser = true;
+    },
+    setAddUser: (state) => {
+      state.loadingAddUser = false;
+      state.addUser = true;
     },
     serverConnectionError: (state) => {
       state.serverError = true;
@@ -86,6 +97,7 @@ const loginUserSlice = createSlice({
       state.editAccount = false;
       state.emailExsist = "";
       state.serverError = false;
+      state.addUser = false;
     },
   },
 });
@@ -105,6 +117,9 @@ export const selectStatusEditPassword = (state) =>
   selectLoginUser(state).loadingEditPassword;
 export const selectStatusTokenUser = (state) =>
   selectLoginUser(state).loadingTokenUser;
+export const selectAddUser = (state) => selectLoginUser(state).addUser;
+export const selectStatusLoadingAddUser = (state) =>
+  selectLoginUser(state).loadingAddUser;
 export const selectUserNotExist = (state) =>
   selectLoginUser(state).userNotExist;
 export const selectEmailExsist = (state) => selectLoginUser(state).emailExsist;
@@ -121,6 +136,8 @@ export const {
   setEditUser,
   fetchEditPassword,
   setEditPassword,
+  fetchAddUser,
+  setAddUser,
   fetchEmailExsist,
   setEmailExsist,
   serverConnectionError,

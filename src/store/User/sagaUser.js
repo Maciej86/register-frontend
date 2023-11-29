@@ -13,6 +13,8 @@ import {
   setEditUser,
   setLoginOutUser,
   setLoginUser,
+  fetchAddUser,
+  setAddUser,
 } from "./sliceUser";
 import {
   fetchUserOrganization,
@@ -114,6 +116,24 @@ function* fetchEditEmailHandler({ payload: newEmail }) {
   }
 }
 
+function* fetchAddUserHandler({ payload: dataUser }) {
+  try {
+    const addUser = yield axios.post(URL_USER.ADD_USER, {
+      name: dataUser.name,
+      lastName: dataUser.lastName,
+      email: dataUser.email,
+      type: dataUser.type,
+      password: dataUser.password,
+      organization: dataUser.organization,
+    });
+    yield delay(timeDelay);
+    yield put(setAddUser(addUser.data));
+  } catch (error) {
+    yield console.error(error);
+    yield put(serverConnectionError());
+  }
+}
+
 export function* loginUserSaga() {
   yield takeEvery(fetchLoginUser.type, fechLoginUserHandler);
   yield takeEvery(fetchLoginUserToken.type, fetchLoginUserTokenHandler);
@@ -121,4 +141,5 @@ export function* loginUserSaga() {
   yield takeEvery(fetchEditUser.type, fechEditUserHandler);
   yield takeEvery(fetchEditPassword.type, fetchEditPasswordHandler);
   yield takeEvery(fetchEmailExsist.type, fetchEditEmailHandler);
+  yield takeEvery(fetchAddUser.type, fetchAddUserHandler);
 }

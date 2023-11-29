@@ -1,4 +1,4 @@
-import { URL_USERS } from "../../../../core/urlBackend";
+import { URL_USER } from "../../../../core/urlBackend";
 import { COMMON, NAVIGATION, USERSETTINGS } from "../../../../core/InfoText";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
 import { useRoleUser } from "../../../../core/hooks/useRoleUser";
@@ -25,7 +25,7 @@ import { GoTrash } from "react-icons/go";
 
 export const TableUsers = () => {
   const { userRole } = useRoleUser();
-  const { fetchData, fetchDataLoading } = useFetchData(URL_USERS.ALL_USERS);
+  const { fetchData, fetchDataLoading } = useFetchData(URL_USER.ALL_USERS);
   const { compressionUsersData } = CompressionData(fetchData);
 
   const viewAllUsers = fetchDataLoading ? (

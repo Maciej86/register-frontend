@@ -18,6 +18,7 @@ export const useValidDataUser = () => {
   const [roleUserValue, setRoleUserValue] = useState(roleDefinitions[3].name);
   const [roleUserValueData, setRoleUserValueData] = useState(3);
   const [dataUser, setDataUser] = useState([]);
+  const [errorInput, setErrorInput] = useState(false);
   const dataUserValue = useRef([]);
   const incorrectEmail = useRef(false);
   const differentPasswords = useRef(false);
@@ -37,6 +38,7 @@ export const useValidDataUser = () => {
             text: USERSETTINGS.CONFIRM_EMAIL_EXSIST,
           })
         );
+        setErrorInput(false);
         return;
       }
       checkEmail.current = false;
@@ -63,6 +65,7 @@ export const useValidDataUser = () => {
             text: USERSETTINGS.CONFIRM_EDIT_EMPTY_INPUT,
           })
         );
+        setErrorInput(false);
         return;
       }
     }
@@ -79,6 +82,7 @@ export const useValidDataUser = () => {
           text: USERSETTINGS.CONFIRM_ERROR_EMAIL,
         })
       );
+      setErrorInput(false);
       return;
     } else {
       dispatch(fetchEmailExsist(dataUserValue.current[2].value.trim()));
@@ -97,6 +101,7 @@ export const useValidDataUser = () => {
           text: USERSETTINGS.CONFIRM_DIFFRENT_PASSWORD,
         })
       );
+      setErrorInput(false);
       return;
     }
 
@@ -109,8 +114,10 @@ export const useValidDataUser = () => {
           text: USERSETTINGS.CONFRIM_LENGTH_PASSWORD,
         })
       );
+      setErrorInput(false);
       return;
     }
+    setErrorInput(true);
   };
 
   return {
@@ -126,5 +133,7 @@ export const useValidDataUser = () => {
     incorrectEmail,
     emailExsist,
     checkDataUser,
+    errorInput,
+    emailExsist,
   };
 };

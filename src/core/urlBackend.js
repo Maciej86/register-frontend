@@ -7,10 +7,8 @@ export const URL_USER = {
   EDIT_USER: `${url}/editaccount`,
   CHANGED_PASSWORD: `${url}/editpassword`,
   EMAIL_EXSIST: `${url}/emailexsist`,
-};
-
-export const URL_USERS = {
   ALL_USERS: `${url}/allusers`,
+  ADD_USER: `${url}/adduser`,
 };
 
 export const URL_ORGANIZATION = {
