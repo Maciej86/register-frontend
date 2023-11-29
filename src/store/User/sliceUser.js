@@ -52,7 +52,7 @@ const loginUserSlice = createSlice({
       state.serverError = false;
       state.editAccount = false;
       state.emailExsist = "";
-      // state.loading = true;
+      state.loading = true;
     },
     setEditUser: (state, { payload: user }) => {
       state.loading = false;
