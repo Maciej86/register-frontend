@@ -40,7 +40,7 @@ export const Navigation = () => {
   return (
     <>
       <MainNav
-        onClick={() => dispatch(setToggleMobileNav())}
+        // onClick={() => dispatch(setToggleMobileNav())}
         $toggleNav={toggleNav}
         $toggleMobileNav={toggleMobileNav}
       >
@@ -53,7 +53,10 @@ export const Navigation = () => {
             <ItemNav>
               <LinkNav
                 to={NAVIGATION.NAV_LINK_DASHBOARD}
-                onClick={() => closeListNavChild()}
+                onClick={() => {
+                  dispatch(setToggleMobileNav());
+                  closeListNavChild();
+                }}
               >
                 <IconNav>
                   <LuLayoutDashboard size={"18px"} />
@@ -76,13 +79,19 @@ export const Navigation = () => {
               </LinkNavHasChild>
               <ListNavChild $open={openUsers} $quantityItemNav={2}>
                 <ItemNav>
-                  <LinkNavChild to={NAVIGATION.NAV_LINK_USERS}>
+                  <LinkNavChild
+                    to={NAVIGATION.NAV_LINK_USERS}
+                    onClick={() => dispatch(setToggleMobileNav())}
+                  >
                     <EmptyIcon />
                     {NAVIGATION.NAV_USERS_CHILD}
                   </LinkNavChild>
                 </ItemNav>
                 <ItemNav>
-                  <LinkNavChild to={NAVIGATION.NAV_LINK_ADD_USERS}>
+                  <LinkNavChild
+                    to={NAVIGATION.NAV_LINK_ADD_USERS}
+                    onClick={() => dispatch(setToggleMobileNav())}
+                  >
                     <EmptyIcon />
                     {NAVIGATION.NAV_ADD_USERS}
                   </LinkNavChild>
@@ -92,7 +101,10 @@ export const Navigation = () => {
             <ItemNav>
               <LinkNav
                 to={NAVIGATION.NAV_LINK_ORGANIZATION}
-                onClick={() => closeListNavChild()}
+                onClick={() => {
+                  dispatch(setToggleMobileNav());
+                  closeListNavChild();
+                }}
               >
                 <IconNav>
                   <LiaCubesSolid size={"22px"} />
@@ -103,7 +115,10 @@ export const Navigation = () => {
             <ItemNav>
               <LinkNav
                 to={NAVIGATION.NAV_LINK_SETTINGS}
-                onClick={() => closeListNavChild()}
+                onClick={() => {
+                  dispatch(setToggleMobileNav());
+                  closeListNavChild();
+                }}
               >
                 <IconNav>
                   <SlSettings size={"18px"} />
