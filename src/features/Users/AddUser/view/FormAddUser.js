@@ -29,10 +29,7 @@ export const FormAddUser = () => {
     organizationChecked,
   } = OrganizationUser();
 
-  console.log();
-
   useEffect(() => {
-    console.log(errorInput, emailExsist);
     if (errorInput && emailExsist === "notexsist") {
       dispatch(
         fetchAddUser({

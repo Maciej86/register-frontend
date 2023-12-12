@@ -83,9 +83,9 @@ const loginUserSlice = createSlice({
     fetchAddUser: (state) => {
       state.loadingAddUser = true;
     },
-    setAddUser: (state) => {
+    setAddUser: (state, { payload: newUser }) => {
       state.loadingAddUser = false;
-      state.addUser = true;
+      state.addUser = newUser;
     },
     serverConnectionError: (state) => {
       state.serverError = true;
