@@ -134,7 +134,7 @@ function* fetchAddUserHandler({ payload: dataUser }) {
   }
 }
 
-export function* loginUserSaga() {
+export function* userSaga() {
   yield takeEvery(fetchLoginUser.type, fechLoginUserHandler);
   yield takeEvery(fetchLoginUserToken.type, fetchLoginUserTokenHandler);
   yield takeEvery(fetchLoginUserOut.type, fetchLoginUserOutTokenHandler);

@@ -16,8 +16,8 @@ const initialUser = {
   serverError: false,
 };
 
-const loginUserSlice = createSlice({
-  name: "loginUser",
+const userSlice = createSlice({
+  name: "user",
   initialState: initialUser,
   reducers: {
     fetchLoginUser: (state) => {
@@ -102,7 +102,7 @@ const loginUserSlice = createSlice({
   },
 });
 
-export const selectLoginUser = (state) => state.loginUserStore;
+export const selectLoginUser = (state) => state.userStore;
 export const selectTokenSessionUserState = (state) =>
   selectLoginUser(state).user[0]?.token_login;
 export const selectUserState = (state) => selectLoginUser(state).user[0];
@@ -142,6 +142,6 @@ export const {
   setEmailExsist,
   serverConnectionError,
   resetUserState,
-} = loginUserSlice.actions;
+} = userSlice.actions;
 
-export default loginUserSlice.reducer;
+export default userSlice.reducer;
