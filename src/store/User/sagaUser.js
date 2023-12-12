@@ -124,7 +124,7 @@ function* fetchAddUserHandler({ payload: dataUser }) {
       email: dataUser.email,
       type: dataUser.type,
       password: dataUser.password,
-      organization: dataUser.organization,
+      organizations: dataUser.organizations,
     });
     yield delay(timeDelay);
     yield put(setAddUser(addUser.data));

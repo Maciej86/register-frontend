@@ -38,7 +38,7 @@ export const FormAddUser = () => {
           email: dataUser[2],
           type: dataUser[5],
           password: dataUser[4],
-          organization: organizationChecked,
+          organizations: organizationChecked,
         })
       );
     }
