@@ -16,32 +16,32 @@ export const useRoleUser = () => {
     let userRoleName = "";
 
     switch (role) {
-      case "0":
+      case 0:
         userRoleName = color ? (
-          <UserDeveloper>{roleDefinitions[parseInt(role)].name}</UserDeveloper>
+          <UserDeveloper>{roleDefinitions[role].name}</UserDeveloper>
         ) : (
-          roleDefinitions[parseInt(role)].name
+          roleDefinitions[role].name
         );
         break;
-      case "1":
+      case 1:
         userRoleName = color ? (
-          <UserAdmin>{roleDefinitions[parseInt(role)].name}</UserAdmin>
+          <UserAdmin>{roleDefinitions[role].name}</UserAdmin>
         ) : (
-          roleDefinitions[parseInt(role)].name
+          roleDefinitions[role].name
         );
         break;
-      case "2":
+      case 2:
         userRoleName = color ? (
-          <UserAdmin>{roleDefinitions[parseInt(role)].name}</UserAdmin>
+          <UserAdmin>{roleDefinitions[role].name}</UserAdmin>
         ) : (
-          roleDefinitions[parseInt(role)].name
+          roleDefinitions[role].name
         );
         break;
-      case "3":
+      case 3:
         userRoleName = color ? (
-          <UserUser>{roleDefinitions[parseInt(role)].name}</UserUser>
+          <UserUser>{roleDefinitions[role].name}</UserUser>
         ) : (
-          roleDefinitions[parseInt(role)].name
+          roleDefinitions[role].name
         );
         break;
       default:
