@@ -36,7 +36,7 @@ export const TableOrganizaton = () => {
     setIdOrganization,
   } = useDeleteOrganization();
 
-  const ContentDelete = (
+  const ContentModal = (
     <TextDelete>{`${ORGANIZATION.CONFIRM_DELETE_ORGANIZATION} ${selectedOrganization}?`}</TextDelete>
   );
 
@@ -48,7 +48,7 @@ export const TableOrganizaton = () => {
         setVisible={setVisibleModal}
         visible={visibleModal}
         textHeader={ORGANIZATION.TITLE_MODAL_DELETE_ORGANIZATION}
-        content={ContentDelete}
+        content={ContentModal}
         type="delete"
         typeButton="delete"
         buttonText={ORGANIZATION.BUTTON_MODAL_DELETE_ORGANIZATION}

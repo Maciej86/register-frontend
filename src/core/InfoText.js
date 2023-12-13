@@ -49,7 +49,7 @@ export const ORGANIZATION = {
   NEW_ORGANIZATION_PLACEHOLDER: "Nazwa organizacji",
   CONFIRM_DELETE_ORGANIZATION: "Czy na pewno chcesz usunąć organizację:",
   CONFIRM_EDIT_NAME_ORGANIZATION: "Nazwa organizacji została zmieniona",
-  TITLE_MODAL_DELETE_ORGANIZATION: "Usuń",
+  TITLE_MODAL_DELETE_ORGANIZATION: "Usuwanie organizacji",
   BUTTON_MODAL_DELETE_ORGANIZATION: "Usuń",
   COM_TITLE_NEW_ORGANIZATIION: "Utwórz nową organizację",
   COM_SUBTITLE_NEW_ORGANIZATION:
