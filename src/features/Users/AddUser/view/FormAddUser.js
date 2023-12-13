@@ -6,7 +6,7 @@ import {
   fetchAddUser,
   resetUserState,
   selectAddUser,
-  selectStatusLoadingAddUser,
+  selectStatusLoadingAddOrDeleteUser,
 } from "../../../../store/User/sliceUser";
 import { Loader } from "../../../../common/Loader";
 import { Button } from "../../../../common/Button";
@@ -18,7 +18,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 
 export const FormAddUser = () => {
   const dispatch = useDispatch();
-  const loadingAddUser = useSelector(selectStatusLoadingAddUser);
+  const loadingAddUser = useSelector(selectStatusLoadingAddOrDeleteUser);
   const confirmAddUser = useSelector(selectAddUser);
   const { formDataUser, checkDataUser, dataUser, errorInput, emailExsist } =
     DataUser();

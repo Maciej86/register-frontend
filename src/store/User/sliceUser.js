@@ -11,7 +11,7 @@ const initialUser = {
   loadingOut: false,
   loadingEditPassword: false,
   addUser: false,
-  loadingAddUser: false,
+  loadingAddOrDeleteUser: false,
   emailExsist: "",
   serverError: false,
 };
@@ -71,20 +71,20 @@ const userSlice = createSlice({
     fetchEmailExsist: (state) => {
       state.serverError = false;
       state.loading = true;
-      state.loadingAddUser = true;
+      state.loadingAddOrDeleteUser = true;
     },
     setEmailExsist: (state, { payload: emailExsist }) => {
       state.emailExsist = emailExsist;
       if (emailExsist) {
         state.loading = false;
-        state.loadingAddUser = false;
+        state.loadingAddOrDeleteUser = false;
       }
     },
     fetchAddUser: (state) => {
-      state.loadingAddUser = true;
+      state.loadingAddOrDeleteUser = true;
     },
     setAddUser: (state, { payload: newUser }) => {
-      state.loadingAddUser = false;
+      state.loadingAddOrDeleteUser = false;
       state.addUser = newUser;
     },
     serverConnectionError: (state) => {
@@ -118,8 +118,8 @@ export const selectStatusEditPassword = (state) =>
 export const selectStatusTokenUser = (state) =>
   selectLoginUser(state).loadingTokenUser;
 export const selectAddUser = (state) => selectLoginUser(state).addUser;
-export const selectStatusLoadingAddUser = (state) =>
-  selectLoginUser(state).loadingAddUser;
+export const selectStatusLoadingAddOrDeleteUser = (state) =>
+  selectLoginUser(state).loadingAddOrDeleteUser;
 export const selectUserNotExist = (state) =>
   selectLoginUser(state).userNotExist;
 export const selectEmailExsist = (state) => selectLoginUser(state).emailExsist;
