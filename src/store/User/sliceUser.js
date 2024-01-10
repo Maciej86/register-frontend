@@ -11,6 +11,7 @@ const initialUser = {
   loadingOut: false,
   loadingEditPassword: false,
   addUser: false,
+  deleteUser: false,
   loadingAddOrDeleteUser: false,
   emailExsist: "",
   serverError: false,
@@ -87,6 +88,13 @@ const userSlice = createSlice({
       state.loadingAddOrDeleteUser = false;
       state.addUser = newUser;
     },
+    fetchDeleteUser: (state) => {
+      state.loadingAddOrDeleteUser = true;
+    },
+    setDeleteUser: (state, { payload: deleteUser }) => {
+      state.loadingAddOrDeleteUser = false;
+      state.deleteUser = deleteUser;
+    },
     serverConnectionError: (state) => {
       state.serverError = true;
       state.loading = false;
@@ -98,6 +106,7 @@ const userSlice = createSlice({
       state.emailExsist = "";
       state.serverError = false;
       state.addUser = false;
+      state.deleteUser = false;
     },
   },
 });
@@ -118,6 +127,7 @@ export const selectStatusEditPassword = (state) =>
 export const selectStatusTokenUser = (state) =>
   selectLoginUser(state).loadingTokenUser;
 export const selectAddUser = (state) => selectLoginUser(state).addUser;
+export const selectDeleteUser = (state) => selectLoginUser(state).deleteUser;
 export const selectStatusLoadingAddOrDeleteUser = (state) =>
   selectLoginUser(state).loadingAddOrDeleteUser;
 export const selectUserNotExist = (state) =>
@@ -138,6 +148,8 @@ export const {
   setEditPassword,
   fetchAddUser,
   setAddUser,
+  setDeleteUser,
+  fetchDeleteUser,
   fetchEmailExsist,
   setEmailExsist,
   serverConnectionError,

@@ -27,3 +27,21 @@ export const LackOrganization = styled.span`
   color: ${({ theme }) => theme.color.dark};
   font-weight: 500;
 `;
+
+export const TextDelete = styled.div`
+  margin: 20px 0 30px 0;
+  font-weight: 500;
+  text-align: center;
+`;
+
+export const TextQuestion = styled.p`
+  font-size: 20px;
+`;
+
+export const TextUser = styled.h3`
+  font-size: 27px;
+`;
+
+export const TextInfo = styled.p`
+  font-size: 15px;
+`;

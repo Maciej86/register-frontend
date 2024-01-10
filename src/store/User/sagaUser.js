@@ -15,6 +15,8 @@ import {
   setLoginUser,
   fetchAddUser,
   setAddUser,
+  setDeleteUser,
+  fetchDeleteUser,
 } from "./sliceUser";
 import {
   fetchUserOrganization,
@@ -134,6 +136,19 @@ function* fetchAddUserHandler({ payload: dataUser }) {
   }
 }
 
+function* fetchDeleteUserHandler({ payload: id }) {
+  try {
+    const deleteUser = yield axios.post(URL_USER.DELETE_USER, {
+      idUser: id,
+    });
+    yield delay(timeDelay);
+    yield put(setDeleteUser(deleteUser.data));
+  } catch (error) {
+    yield console.error(error);
+    yield put(serverConnectionError());
+  }
+}
+
 export function* userSaga() {
   yield takeEvery(fetchLoginUser.type, fechLoginUserHandler);
   yield takeEvery(fetchLoginUserToken.type, fetchLoginUserTokenHandler);
@@ -142,4 +157,5 @@ export function* userSaga() {
   yield takeEvery(fetchEditPassword.type, fetchEditPasswordHandler);
   yield takeEvery(fetchEmailExsist.type, fetchEditEmailHandler);
   yield takeEvery(fetchAddUser.type, fetchAddUserHandler);
+  yield takeEvery(fetchDeleteUser.type, fetchDeleteUserHandler);
 }
