@@ -31,7 +31,7 @@ import {
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 
-export const TableUsers = () => {
+export const AllUsers = () => {
   const { userRole } = useRoleUser();
   const loggedUser = useSelector(selectUserState);
 
