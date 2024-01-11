@@ -129,7 +129,10 @@ export const AllUsers = () => {
                         disabled="disabled"
                       />
                     ) : (
-                      <LinkButton to={`#/${item.id}`} $small="true">
+                      <LinkButton
+                        to={`/${NAVIGATION.NAV_LINK_EDIT_USERS}/${item.id}`}
+                        $small="true"
+                      >
                         <FiEdit size={"15px"} />
                       </LinkButton>
                     )}
