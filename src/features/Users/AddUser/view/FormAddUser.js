@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { USERSETTINGS } from "../../../../core/InfoText";
@@ -11,7 +11,7 @@ import {
 import { Loader } from "../../../../common/Loader";
 import { Button } from "../../../../common/Button";
 import { TableAction } from "../../../../common/styledTable";
-import { OrganizationUser } from "./OrganizationUser";
+import { OrganizationUser } from "./TableOrganization";
 import { addConfirm } from "../../../Confirm/sliceConfirm";
 import { DataUser } from "./DataUser";
 import { AiOutlineUserAdd } from "react-icons/ai";
