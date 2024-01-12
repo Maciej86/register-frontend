@@ -9,7 +9,7 @@ import { LoaderDataId } from "../../../common/LoaderDataId";
 
 export const OrganizationEdit = () => {
   const { formEditname, fetchData, fetchDataLoading } = FormEditOrganization();
-  const { tableUserInOrganization } = TableUsersInOrganization();
+  const { tableUsersInOrganization } = TableUsersInOrganization();
   const { loaderId, loaderMessage } = LoaderDataId(
     ORGANIZATION.NOT_EXSIST_ORGANIZATION
   );
@@ -29,7 +29,7 @@ export const OrganizationEdit = () => {
       <Tile
         title={ORGANIZATION.COM_TITLE_USERS_IN_ORGANIZATION}
         subTitle={ORGANIZATION.COM_SUBTITLE_USERS_IN_ORGANIZATION}
-        content={tableUserInOrganization}
+        content={tableUsersInOrganization}
       />
     </Conteiner>
   );

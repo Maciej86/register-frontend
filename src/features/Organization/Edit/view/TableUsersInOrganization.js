@@ -70,7 +70,7 @@ export const TableUsersInOrganization = () => {
     loadUsersInOrganization();
   }, [id]);
 
-  const tableUserInOrganization = (
+  const tableUsersInOrganization = (
     <form onSubmit={addOrDeleteUsersOrganization}>
       <ConteinerTable>
         <ButtonTab
@@ -186,5 +186,5 @@ export const TableUsersInOrganization = () => {
     </form>
   );
 
-  return { tableUserInOrganization };
+  return { tableUsersInOrganization };
 };
