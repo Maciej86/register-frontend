@@ -3,14 +3,14 @@ import { call, delay, put, takeEvery } from "redux-saga/effects";
 import {
   fetchEmailExsist,
   fetchEditPassword,
-  fetchEditUser,
+  fetchEditAccount,
   fetchLoginUser,
   fetchLoginUserOut,
   fetchLoginUserToken,
   serverConnectionError,
   setEmailExsist,
   setEditPassword,
-  setEditUser,
+  setEditAccount,
   setLoginOutUser,
   setLoginUser,
   fetchAddUser,
@@ -74,7 +74,7 @@ function* fetchLoginUserOutTokenHandler({ payload: id }) {
 
 function* fechEditUserHandler({ payload: dataUser }) {
   try {
-    const user = yield axios.post(URL_USER.EDIT_USER, {
+    const user = yield axios.post(URL_USER.EDIT_ACCOUNT, {
       id: dataUser.id,
       name: dataUser.name,
       lastname: dataUser.lastname,
@@ -83,7 +83,7 @@ function* fechEditUserHandler({ payload: dataUser }) {
       organizationid: dataUser.organization,
     });
     yield delay(timeDelay);
-    yield put(setEditUser(user.data));
+    yield put(setEditAccount(user.data));
   } catch (error) {
     yield console.error(error);
     yield put(serverConnectionError());
@@ -153,7 +153,7 @@ export function* userSaga() {
   yield takeEvery(fetchLoginUser.type, fechLoginUserHandler);
   yield takeEvery(fetchLoginUserToken.type, fetchLoginUserTokenHandler);
   yield takeEvery(fetchLoginUserOut.type, fetchLoginUserOutTokenHandler);
-  yield takeEvery(fetchEditUser.type, fechEditUserHandler);
+  yield takeEvery(fetchEditAccount.type, fechEditUserHandler);
   yield takeEvery(fetchEditPassword.type, fetchEditPasswordHandler);
   yield takeEvery(fetchEmailExsist.type, fetchEditEmailHandler);
   yield takeEvery(fetchAddUser.type, fetchAddUserHandler);

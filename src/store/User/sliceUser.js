@@ -49,13 +49,13 @@ const userSlice = createSlice({
       state.userOut = true;
       state.loadingOut = false;
     },
-    fetchEditUser: (state) => {
+    fetchEditAccount: (state) => {
       state.serverError = false;
       state.editAccount = false;
       state.emailExsist = "";
       state.loading = true;
     },
-    setEditUser: (state, { payload: user }) => {
+    setEditAccount: (state, { payload: user }) => {
       state.loading = false;
       state.user = user;
       state.editAccount = true;
@@ -142,8 +142,8 @@ export const {
   fetchLoginUserOut,
   setLoginUser,
   setLoginOutUser,
-  fetchEditUser,
-  setEditUser,
+  fetchEditAccount,
+  setEditAccount,
   fetchEditPassword,
   setEditPassword,
   fetchAddUser,

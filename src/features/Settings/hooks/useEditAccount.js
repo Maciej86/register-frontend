@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import {
   fetchEmailExsist,
-  fetchEditUser,
+  fetchEditAccount,
   resetUserState,
   selectEditAccount,
   selectEmailExsist,
@@ -101,7 +101,7 @@ export const useEditAccount = (userData, themeValueData) => {
   const changedValueUser = () => {
     if (emailExsist === "notexsist" || emailExsist === "") {
       dispatch(
-        fetchEditUser({
+        fetchEditAccount({
           id: userData?.id,
           name: dataUserValue.current[0].value.trim(),
           lastname: dataUserValue.current[1].value.trim(),
