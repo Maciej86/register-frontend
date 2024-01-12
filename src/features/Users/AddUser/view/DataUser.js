@@ -23,7 +23,7 @@ export const DataUser = () => {
 
   const formDataUser = (
     <>
-      <h3>Dane użytkownika</h3>
+      <h3>{USERSETTINGS.COM_SUBTITLE_SETTINGS}</h3>
       <FormBasicUser>
         <InputText
           id="name"
