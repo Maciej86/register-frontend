@@ -25,14 +25,11 @@ export const useDeleteUser = () => {
   ]);
   const { compressionUsersData } = CompressionData(fetchData);
 
-  console.log(confirmDeleteUser);
-
   useEffect(() => {
     setVisibleModal(loadingDeleteUser);
   }, [loadingDeleteUser]);
 
   useEffect(() => {
-    console.log(confirmDeleteUser);
     if (confirmDeleteUser) {
       dispatch(
         addConfirm({
