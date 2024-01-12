@@ -11,6 +11,7 @@ export const OrganizationEdit = () => {
   const { formEditname, fetchData, fetchDataLoading } = FormEditOrganization();
   const { tableUsersInOrganization } = TableUsersInOrganization();
   const { loaderId, loaderMessage } = LoaderDataId(
+    true,
     ORGANIZATION.NOT_EXSIST_ORGANIZATION
   );
   useErrorConnectServer(selectServerErrorOrganization, "storeOrganization");
