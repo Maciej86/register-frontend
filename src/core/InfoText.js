@@ -12,6 +12,7 @@ export const COMMON = {
   TABLE_HEADER_CHANGE: "Zmień",
   TABLE_HEADER_ADD: "Dodaj",
   TABLE_HEADER_ORGANIZATION: "Przypisane organizacje",
+  LOADING: "Ładowanie...",
 };
 
 export const USER_TEXT = {
@@ -30,6 +31,7 @@ export const NAVIGATION = {
   NAV_USERS_CHILD: "Zarządzaj użytkownikami",
   NAV_LINK_ADD_USERS: "utworz-konto",
   NAV_ADD_USERS: "Dodaj użytkownika",
+  NAV_LINK_EDIT_USERS: "edytuj-uzytkownika",
   NAV_SETTINGS: "Ustawienia",
   NAV_LINK_SETTINGS: "ustawienia",
   NAV_ORGANIZATION: "Organizacje",
@@ -73,6 +75,7 @@ export const ORGANIZATION = {
   EMPTY_TABLE_ALL_USERS_IN_ORGANIZATION:
     "Wszyscy użytkownicy należą do tej organizacji.",
   EMPTY_TABLE_ALL_ORGANIZATION: "Żadna organizacja nie została utworzona.",
+  NOT_EXSIST_ORGANIZATION: "Taka organizacja nie istnieje.",
 };
 
 export const USERSETTINGS = {

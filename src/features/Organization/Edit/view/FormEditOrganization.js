@@ -8,7 +8,7 @@ import { Loader } from "../../../../common/Loader";
 import { InputText } from "../../../../common/InputText";
 import { Button } from "../../../../common/Button";
 import { useEditNameOrganization } from "../hooks/useEditNameOrganization";
-import { ConteinerLoader, FormArea, NotExsist } from "../styled";
+import { FormArea } from "../styled";
 import { LuFileEdit } from "react-icons/lu";
 
 export const FormEditOrganization = () => {
@@ -30,13 +30,7 @@ export const FormEditOrganization = () => {
     { id: parseInt(id) }
   );
 
-  const formEditname = fetchDataLoading ? (
-    <ConteinerLoader>
-      <Loader margin="0" />
-    </ConteinerLoader>
-  ) : fetchData.length == 0 ? (
-    <NotExsist>Taka organizacja nie istnieje.</NotExsist>
-  ) : (
+  const formEditname = (
     <form onSubmit={changeNameOrganization}>
       <FormArea>
         <InputText
@@ -62,5 +56,6 @@ export const FormEditOrganization = () => {
       </FormArea>
     </form>
   );
-  return { formEditname };
+
+  return { formEditname, fetchData, fetchDataLoading };
 };

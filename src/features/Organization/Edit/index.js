@@ -5,13 +5,21 @@ import { Tile } from "../../../common/Tile";
 import { FormEditOrganization } from "./view/FormEditOrganization";
 import { TableUsersInOrganization } from "./view/TableUsersInOrganization";
 import { Conteiner } from "./styled";
+import { LoaderDataId } from "../../../common/LoaderDataId";
 
 export const OrganizationEdit = () => {
-  const { formEditname } = FormEditOrganization();
+  const { formEditname, fetchData, fetchDataLoading } = FormEditOrganization();
   const { tableUserInOrganization } = TableUsersInOrganization();
+  const { loaderId, loaderMessage } = LoaderDataId(
+    ORGANIZATION.NOT_EXSIST_ORGANIZATION
+  );
   useErrorConnectServer(selectServerErrorOrganization, "storeOrganization");
 
-  return (
+  return fetchDataLoading ? (
+    <>{loaderId}</>
+  ) : fetchData.length == 0 ? (
+    <>{loaderMessage}</>
+  ) : (
     <Conteiner>
       <Tile
         title={ORGANIZATION.COM_TITLE_EDIT_ORGANIZATION}
