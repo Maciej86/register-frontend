@@ -73,8 +73,8 @@ function* fetchUsersInOrganizationHandler({ payload: data }) {
   try {
     const organization = yield axios.post(
       data.inOut
-        ? URL_ORGANIZATION.FETCH_USER_IN_ORGANIZATION
-        : URL_ORGANIZATION.FETCH_USER_OUT_ORGANIZATION,
+        ? URL_ORGANIZATION.FETCH_USERS_IN_ORGANIZATION
+        : URL_ORGANIZATION.FETCH_USERS_OUT_ORGANIZATION,
       {
         id: data.id,
       }
