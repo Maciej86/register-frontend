@@ -50,7 +50,7 @@ export const FormAddUser = () => {
         addConfirm({
           id: nanoid(),
           type: true,
-          text: "Konto użytkownika zostało utworzone",
+          text: USERSETTINGS.CREATE_USER_ACCOUNT,
         })
       );
       dispatch(resetUserState());
