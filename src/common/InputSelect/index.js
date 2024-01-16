@@ -13,9 +13,9 @@ export const InputSelect = ({
   data,
   toggle,
   setToggle,
-  value,
+  value = "",
   setValue,
-  valueData,
+  valueData = "",
   setValueData,
 }) => {
   return (
