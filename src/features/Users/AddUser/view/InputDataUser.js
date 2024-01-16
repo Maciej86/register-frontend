@@ -4,7 +4,7 @@ import { InputText } from "../../../../common/InputText";
 import { useValidDataUser } from "../hooks/useValidDataUser";
 import { FormBasicUser } from "../styled";
 
-export const DataUser = () => {
+export const InputDataUser = () => {
   const {
     roleDefinitions,
     userRoleToggle,

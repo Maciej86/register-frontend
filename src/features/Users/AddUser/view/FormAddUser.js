@@ -13,7 +13,7 @@ import { Button } from "../../../../common/Button";
 import { TableAction } from "../../../../common/styledTable";
 import { OrganizationUser } from "./TableOrganization";
 import { addConfirm } from "../../../Confirm/sliceConfirm";
-import { DataUser } from "./DataUser";
+import { InputDataUser } from "./InputDataUser";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
 export const FormAddUser = () => {
@@ -21,7 +21,7 @@ export const FormAddUser = () => {
   const loadingAddUser = useSelector(selectStatusLoadingAddOrDeleteUser);
   const confirmAddUser = useSelector(selectAddUser);
   const { formDataUser, checkDataUser, dataUser, errorInput, emailExsist } =
-    DataUser();
+    InputDataUser();
   const {
     tableOrganization,
     fetchDataLoading,
