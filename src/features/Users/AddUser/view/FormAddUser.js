@@ -20,7 +20,7 @@ export const FormAddUser = () => {
   const dispatch = useDispatch();
   const loadingAddUser = useSelector(selectStatusLoadingAddOrDeleteUser);
   const confirmAddUser = useSelector(selectAddUser);
-  const { formDataUser, checkDataUser, dataUser, errorInput, emailExsist } =
+  const { imputDataUser, checkDataUser, dataUser, errorInput, emailExsist } =
     InputDataUser();
   const {
     tableOrganization,
@@ -65,7 +65,7 @@ export const FormAddUser = () => {
 
   const formAddUser = (
     <form onSubmit={SubmitDataUser}>
-      {formDataUser}
+      {imputDataUser}
       {fetchDataLoading ? (
         <Loader margin=" 30px auto" />
       ) : (

@@ -21,7 +21,7 @@ export const InputDataUser = () => {
     emailExsist,
   } = useValidDataUser();
 
-  const formDataUser = (
+  const imputDataUser = (
     <>
       <h3>{USERSETTINGS.COM_SUBTITLE_SETTINGS}</h3>
       <FormBasicUser>
@@ -86,5 +86,5 @@ export const InputDataUser = () => {
       </FormBasicUser>
     </>
   );
-  return { formDataUser, checkDataUser, dataUser, errorInput, emailExsist };
+  return { imputDataUser, checkDataUser, dataUser, errorInput, emailExsist };
 };
