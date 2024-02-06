@@ -101,6 +101,5 @@ export const useValidDataUser = () => {
     emailExsist,
     checkDataUser,
     errorInput,
-    emailExsist,
   };
 };
