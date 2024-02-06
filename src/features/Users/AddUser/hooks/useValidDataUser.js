@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { useRoleUser } from "../../../../core/hooks/useRoleUser";
+import { useCheckEmail } from "../../../../core/hooks/useCheckEmail";
 import { USERSETTINGS } from "../../../../core/InfoText";
 import {
-  fetchEmailExsist,
   resetUserState,
   selectEmailExsist,
 } from "../../../../store/User/sliceUser";
@@ -14,6 +14,7 @@ export const useValidDataUser = () => {
   const dispatch = useDispatch();
   const emailExsist = useSelector(selectEmailExsist);
   const { roleDefinitions } = useRoleUser();
+  const { checkEmail } = useCheckEmail();
   const [userRoleToggle, setUserRoleToggle] = useState(false);
   const [roleUserValue, setRoleUserValue] = useState(roleDefinitions[3].name);
   const [roleUserValueData, setRoleUserValueData] = useState(3);
@@ -22,33 +23,12 @@ export const useValidDataUser = () => {
   const dataUserValue = useRef([]);
   const incorrectEmail = useRef(false);
   const differentPasswords = useRef(false);
-  const checkEmail = useRef(false);
-
-  useEffect(() => {
-    dispatch(resetUserState());
-  }, []);
-
-  useEffect(() => {
-    if (checkEmail.current) {
-      if (emailExsist === "exsist") {
-        dispatch(
-          addConfirm({
-            id: nanoid(),
-            type: false,
-            text: USERSETTINGS.CONFIRM_EMAIL_EXSIST,
-          })
-        );
-        setErrorInput(false);
-        return;
-      }
-      checkEmail.current = false;
-    }
-  }, [emailExsist]);
 
   const checkDataUser = () => {
     incorrectEmail.current = false;
     differentPasswords.current = false;
     setDataUser([]);
+    dispatch(resetUserState());
 
     for (const inputValue of dataUserValue.current) {
       let inputValueTrim = inputValue.value.trim();
@@ -70,23 +50,10 @@ export const useValidDataUser = () => {
       }
     }
 
-    const regexpEmail =
-      /^[a-z\d-]+\w?\.?([\w\d-]+)?@[\w\d-]{2,}\.[a-z]{2,6}(\.[a-z]{2,6})?$/gi;
-
-    if (!regexpEmail.test(dataUserValue.current[2].value.trim())) {
-      incorrectEmail.current = true;
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: false,
-          text: USERSETTINGS.CONFIRM_ERROR_EMAIL,
-        })
-      );
+    if (checkEmail(dataUserValue.current[2].value.trim())) {
       setErrorInput(false);
+      incorrectEmail.current = true;
       return;
-    } else {
-      dispatch(fetchEmailExsist(dataUserValue.current[2].value.trim()));
-      checkEmail.current = true;
     }
 
     if (
