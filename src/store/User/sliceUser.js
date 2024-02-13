@@ -100,6 +100,7 @@ const userSlice = createSlice({
     serverConnectionError: (state) => {
       state.serverError = true;
       state.loading = false;
+      state.loadingAddOrDeleteUser = false;
       state.loadingEditPassword = false;
     },
     resetUserState: (state) => {
