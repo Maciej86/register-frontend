@@ -6,6 +6,8 @@ import {
   fetchAddUser,
   resetUserState,
   selectAddUser,
+  selectEmailExsist,
+  selectEndChceckEmailExsist,
   selectStatusLoadingAddOrDeleteUser,
 } from "../../../../store/User/sliceUser";
 import { Loader } from "../../../../common/Loader";
@@ -19,8 +21,9 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 export const FormAddUser = () => {
   const dispatch = useDispatch();
   const loadingAddUser = useSelector(selectStatusLoadingAddOrDeleteUser);
+  const endChceckEmailExsist = useSelector(selectEndChceckEmailExsist);
   const confirmAddUser = useSelector(selectAddUser);
-  const { imputDataUser, checkDataUser, dataUser, errorInput, emailExsist } =
+  const { imputDataUser, checkDataUser, dataUser, emailExsist } =
     InputDataUser();
   const {
     tableOrganization,
@@ -30,7 +33,7 @@ export const FormAddUser = () => {
   } = OrganizationUser();
 
   useEffect(() => {
-    if (errorInput && emailExsist === "notexsist") {
+    if (emailExsist === false && endChceckEmailExsist) {
       dispatch(
         fetchAddUser({
           name: dataUser[0],
@@ -41,8 +44,9 @@ export const FormAddUser = () => {
           organizations: organizationChecked,
         })
       );
+      dispatch(resetUserState());
     }
-  }, [errorInput, emailExsist]);
+  }, [endChceckEmailExsist]);
 
   useEffect(() => {
     if (confirmAddUser) {

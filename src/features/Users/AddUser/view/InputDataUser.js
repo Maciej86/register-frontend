@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { selectEmailExsist } from "../../../../store/User/sliceUser";
 import { USERSETTINGS } from "../../../../core/InfoText";
 import { InputSelect } from "../../../../common/InputSelect";
 import { InputText } from "../../../../common/InputText";
@@ -5,6 +7,7 @@ import { useValidDataUser } from "../hooks/useValidDataUser";
 import { FormBasicUser } from "../styled";
 
 export const InputDataUser = () => {
+  const emailExsist = useSelector(selectEmailExsist);
   const {
     roleDefinitions,
     userRoleToggle,
@@ -15,10 +18,8 @@ export const InputDataUser = () => {
     setRoleUserValueData,
     dataUser,
     dataUserValue,
-    incorrectEmail,
     checkDataUser,
-    errorInput,
-    emailExsist,
+    emailErrorRegExp,
   } = useValidDataUser();
 
   const imputDataUser = (
@@ -47,11 +48,7 @@ export const InputDataUser = () => {
           placeholder={USERSETTINGS.EMAIL_PLACEHOLDER}
           label={USERSETTINGS.EMAIL_LABEL}
           maxlength="50"
-          empty={
-            dataUser[2] === "" ||
-            incorrectEmail.current ||
-            emailExsist === "exsist"
-          }
+          empty={dataUser[2] === "" || emailErrorRegExp || emailExsist}
           ref={(ref) => (dataUserValue.current[2] = ref)}
         />
         <InputSelect
@@ -86,5 +83,10 @@ export const InputDataUser = () => {
       </FormBasicUser>
     </>
   );
-  return { imputDataUser, checkDataUser, dataUser, errorInput, emailExsist };
+  return {
+    imputDataUser,
+    checkDataUser,
+    dataUser,
+    emailExsist,
+  };
 };
