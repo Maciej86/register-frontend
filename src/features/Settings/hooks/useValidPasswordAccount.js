@@ -5,12 +5,14 @@ import {
   fetchEditPassword,
   resetUserState,
   selectEditPassword,
+  selectUserState,
 } from "../../../store/User/sliceUser";
 import { addConfirm } from "../../Confirm/sliceConfirm";
 import { USERSETTINGS } from "../../../core/InfoText";
 
-export const useEditPassword = (userData) => {
+export const useValidPasswordAccount = () => {
   const dispatch = useDispatch();
+  const userData = useSelector(selectUserState);
   const confirmNewPassword = useSelector(selectEditPassword);
   const [passwordUserEmpty, setPasswordUserEmpty] = useState([]);
   const [oldPassword, setOldPassword] = useState(false);
@@ -26,6 +28,7 @@ export const useEditPassword = (userData) => {
           text: USERSETTINGS.CONFIRM_EDIT_PASSWORD,
         })
       );
+      dispatch(resetUserState());
     } else if (confirmNewPassword === "error") {
       setOldPassword(true);
       dispatch(
@@ -35,8 +38,8 @@ export const useEditPassword = (userData) => {
           text: USERSETTINGS.CONFIRM_OLD_PASSWORD_ERROR,
         })
       );
+      dispatch(resetUserState());
     }
-    dispatch(resetUserState());
   }, [confirmNewPassword]);
 
   const changedPassword = (event) => {
