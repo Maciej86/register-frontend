@@ -6,7 +6,7 @@ import { InputText } from "../../../../common/InputText";
 import { useValidDataUser } from "../hooks/useValidDataUser";
 import { FormBasicUser } from "../styled";
 
-export const InputDataUser = () => {
+export const InputAddDataUser = () => {
   const emailExsist = useSelector(selectEmailExsist);
   const {
     roleDefinitions,
@@ -22,7 +22,7 @@ export const InputDataUser = () => {
     emailErrorRegExp,
   } = useValidDataUser();
 
-  const imputDataUser = (
+  const inputAddDataUser = (
     <>
       <h3>{USERSETTINGS.COM_SUBTITLE_SETTINGS}</h3>
       <FormBasicUser>
@@ -84,7 +84,7 @@ export const InputDataUser = () => {
     </>
   );
   return {
-    imputDataUser,
+    inputAddDataUser,
     checkDataUser,
     dataUser,
     emailExsist,

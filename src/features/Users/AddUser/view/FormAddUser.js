@@ -15,7 +15,7 @@ import { Button } from "../../../../common/Button";
 import { TableAction } from "../../../../common/styledTable";
 import { OrganizationUser } from "./TableOrganization";
 import { addConfirm } from "../../../Confirm/sliceConfirm";
-import { InputDataUser } from "./InputDataUser";
+import { InputAddDataUser } from "./InputAddDataUser";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
 export const FormAddUser = () => {
@@ -23,8 +23,8 @@ export const FormAddUser = () => {
   const loadingAddUser = useSelector(selectStatusLoadingAddOrDeleteUser);
   const endChceckEmailExsist = useSelector(selectEndChceckEmailExsist);
   const confirmAddUser = useSelector(selectAddUser);
-  const { imputDataUser, checkDataUser, dataUser, emailExsist } =
-    InputDataUser();
+  const { inputAddDataUser, checkDataUser, dataUser, emailExsist } =
+    InputAddDataUser();
   const {
     tableOrganization,
     fetchDataLoading,
@@ -69,7 +69,7 @@ export const FormAddUser = () => {
 
   const formAddUser = (
     <form onSubmit={SubmitDataUser}>
-      {imputDataUser}
+      {inputAddDataUser}
       {fetchDataLoading ? (
         <Loader margin=" 30px auto" />
       ) : (
