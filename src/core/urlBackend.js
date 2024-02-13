@@ -9,6 +9,7 @@ export const URL_USER = {
   EMAIL_EXSIST: `${url}/emailexsist`,
   ALL_USERS: `${url}/allusers`,
   ADD_USER: `${url}/adduser`,
+  FETCH_DATA_USER: `${url}/fetchdatauser`,
   DELETE_USER: `${url}/deleteuser`,
 };
 
