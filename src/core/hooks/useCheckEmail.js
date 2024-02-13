@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { addConfirm } from "../../features/Confirm/sliceConfirm";
 import {
   fetchEmailExsist,
+  resetUserState,
   selectEmailExsist,
 } from "../../store/User/sliceUser";
 import { USERSETTINGS } from "../InfoText";
@@ -11,30 +12,32 @@ import { USERSETTINGS } from "../InfoText";
 export const useCheckEmail = () => {
   const dispatch = useDispatch();
   const emailExsist = useSelector(selectEmailExsist);
-  const emailExsistInDataBase = useRef(false);
-  let errorRegexp = false;
+  const [emailErrorRegExp, setEmailErrorRegExp] = useState(false);
+  const [emailNotCheckInDataBase, setEmailNotCheckInDataBase] = useState(false);
 
   useEffect(() => {
-    if (emailExsistInDataBase.current) {
-      if (emailExsist === "exsist") {
-        dispatch(
-          addConfirm({
-            id: nanoid(),
-            type: false,
-            text: USERSETTINGS.CONFIRM_EMAIL_EXSIST,
-          })
-        );
-      }
-      emailExsistInDataBase.current = false;
+    dispatch(resetUserState());
+  }, []);
+
+  useEffect(() => {
+    if (emailExsist) {
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: false,
+          text: USERSETTINGS.CONFIRM_EMAIL_EXSIST,
+        })
+      );
     }
   }, [emailExsist]);
 
   const checkEmail = (inputEmail, currentEmail = "") => {
+    setEmailNotCheckInDataBase(false);
+
     const regexpEmail =
       /^[a-z\d-]+\w?\.?([\w\d-]+)?@[\w\d-]{2,}\.[a-z]{2,6}(\.[a-z]{2,6})?$/gi;
 
     if (!regexpEmail.test(inputEmail)) {
-      errorRegexp = true;
       dispatch(
         addConfirm({
           id: nanoid(),
@@ -42,17 +45,20 @@ export const useCheckEmail = () => {
           text: USERSETTINGS.CONFIRM_ERROR_EMAIL,
         })
       );
+      setEmailErrorRegExp(true);
+      return;
     }
 
     if (currentEmail !== inputEmail) {
       dispatch(fetchEmailExsist(inputEmail));
-      emailExsistInDataBase.current = true;
-    }
-
-    if (errorRegexp) {
-      return true;
+    } else {
+      setEmailNotCheckInDataBase(true);
     }
   };
-
-  return { checkEmail };
+  return {
+    checkEmail,
+    emailErrorRegExp,
+    emailNotCheckInDataBase,
+    setEmailNotCheckInDataBase,
+  };
 };

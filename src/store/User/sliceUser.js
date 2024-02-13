@@ -9,11 +9,13 @@ const initialUser = {
   loading: false,
   loadingTokenUser: false,
   loadingOut: false,
+  loadingEditAccount: false,
   loadingEditPassword: false,
   addUser: false,
   deleteUser: false,
   loadingAddOrDeleteUser: false,
-  emailExsist: "",
+  emailExsist: false,
+  endChceckEmailExsist: false,
   serverError: false,
 };
 
@@ -52,11 +54,11 @@ const userSlice = createSlice({
     fetchEditAccount: (state) => {
       state.serverError = false;
       state.editAccount = false;
-      state.emailExsist = "";
-      state.loading = true;
+      state.emailExsist = false;
+      state.loadingEditAccount = true;
     },
     setEditAccount: (state, { payload: user }) => {
-      state.loading = false;
+      state.loadingEditAccount = false;
       state.user = user;
       state.editAccount = true;
     },
@@ -71,15 +73,15 @@ const userSlice = createSlice({
     },
     fetchEmailExsist: (state) => {
       state.serverError = false;
-      state.loading = true;
+      state.loadingEditAccount = true;
       state.loadingAddOrDeleteUser = true;
+      state.endChceckEmailExsist = false;
     },
     setEmailExsist: (state, { payload: emailExsist }) => {
       state.emailExsist = emailExsist;
-      if (emailExsist) {
-        state.loading = false;
-        state.loadingAddOrDeleteUser = false;
-      }
+      state.loadingEditAccount = false;
+      state.loadingAddOrDeleteUser = false;
+      state.endChceckEmailExsist = true;
     },
     fetchAddUser: (state) => {
       state.loadingAddOrDeleteUser = true;
@@ -103,7 +105,8 @@ const userSlice = createSlice({
     resetUserState: (state) => {
       state.changingPassword = "";
       state.editAccount = false;
-      state.emailExsist = "";
+      state.emailExsist = false;
+      state.endChceckEmailExsist = false;
       state.serverError = false;
       state.addUser = false;
       state.deleteUser = false;
@@ -122,6 +125,8 @@ export const selectStatusUserOut = (state) => selectLoginUser(state).userOut;
 export const selectStatusUser = (state) => selectLoginUser(state).loading;
 export const selectStatusloadingOut = (state) =>
   selectLoginUser(state).loadingOut;
+export const selectStatusEditAccount = (state) =>
+  selectLoginUser(state).loadingEditAccount;
 export const selectStatusEditPassword = (state) =>
   selectLoginUser(state).loadingEditPassword;
 export const selectStatusTokenUser = (state) =>
@@ -133,6 +138,8 @@ export const selectStatusLoadingAddOrDeleteUser = (state) =>
 export const selectUserNotExist = (state) =>
   selectLoginUser(state).userNotExist;
 export const selectEmailExsist = (state) => selectLoginUser(state).emailExsist;
+export const selectEndChceckEmailExsist = (state) =>
+  selectLoginUser(state).endChceckEmailExsist;
 export const selectErrorServerUser = (state) =>
   selectLoginUser(state).serverError;
 
