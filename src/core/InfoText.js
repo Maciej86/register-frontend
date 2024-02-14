@@ -87,8 +87,10 @@ export const USERSETTINGS = {
   COM_TITLE_CHANGED_PASSWORD: "Zmiana hasła",
   NAME_LABEL: "Imię",
   NAME_PLACEHOLDER: "Twoje imię",
+  NAME_EDIT_PLACEHOLDER: "Imię użytkownika",
   LAST_NAME_LABEL: "Nazwisko",
   LAST_NAME_PLACEHOLDER: "Twoje nazwisko",
+  LAST_NAME_EDIT_PLACEHOLDER: "Nazwisko użytkownika",
   EMAIL_LABEL: "Email",
   EMAIL_PLACEHOLDER: "you@com.pl",
   TYPE_ACCOUNT: "Rodzaj konta",
@@ -116,4 +118,6 @@ export const USERSETTINGS = {
   CREATE_USER_PASSWORD_LABEL: "Hasło (minimum 6 znaków)",
   CREATE_USER_PASSWORD_REPEAT_LABEL: "Powtórz hasło",
   BUTTON_CREATE_ACCOUNT: "Utwórz użytkownika",
+  CREATE_USER_ACCOUNT: "Konto użytkownika zostało utworzone",
+  NOT_EXSIST_USER: "Taki użytkownik nie istnieje.",
 };
