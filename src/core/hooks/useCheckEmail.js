@@ -14,13 +14,15 @@ export const useCheckEmail = () => {
   const emailExsist = useSelector(selectEmailExsist);
   const [emailErrorRegExp, setEmailErrorRegExp] = useState(false);
   const [emailNotCheckInDataBase, setEmailNotCheckInDataBase] = useState(false);
+  const [movingAnotherComponent, setMovingAnotherComponent] = useState(false);
 
   useEffect(() => {
     dispatch(resetUserState());
   }, []);
 
   useEffect(() => {
-    if (emailExsist) {
+    setMovingAnotherComponent(true);
+    if (emailExsist && movingAnotherComponent) {
       dispatch(
         addConfirm({
           id: nanoid(),
@@ -55,6 +57,7 @@ export const useCheckEmail = () => {
       setEmailNotCheckInDataBase(true);
     }
   };
+
   return {
     checkEmail,
     emailErrorRegExp,
