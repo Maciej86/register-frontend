@@ -5,7 +5,6 @@ import { resetUserState } from "../../store/User/sliceUser";
 import { resetOrganizationState } from "../../store/Organization/sliceOrganization";
 import { addConfirm } from "../../features/Confirm/sliceConfirm";
 import { COMMON } from "../InfoText";
-import { LuBrackets } from "react-icons/lu";
 
 export const useErrorConnectServer = (selector, typeStore) => {
   const dispatch = useDispatch();
