@@ -79,6 +79,7 @@ function* fechEditUserHandler({ payload: dataUser }) {
       name: dataUser.name,
       lastname: dataUser.lastname,
       email: dataUser.email,
+      role: dataUser.role,
       theme: dataUser.theme,
       organizationid: dataUser.organization,
     });
