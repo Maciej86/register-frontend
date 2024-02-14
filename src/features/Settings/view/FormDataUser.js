@@ -31,8 +31,6 @@ export const FormDataUser = () => {
     dataUser,
   } = InputDataAccount();
 
-  console.log(userData);
-
   useEffect(() => {
     if (
       emailExsist === false &&
