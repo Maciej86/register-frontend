@@ -28,6 +28,9 @@ export const FormEditDataUser = () => {
     fetchData,
     fetchDataLoading,
     dataUser,
+    roleUserValueData,
+    idUser,
+    theme,
   } = InputEditDataUser();
 
   useEffect(() => {
@@ -37,12 +40,12 @@ export const FormEditDataUser = () => {
     ) {
       dispatch(
         fetchEditAccount({
-          id: fetchData?.dataUser?.id,
-          name: dataUser[0],
-          lastname: dataUser[1],
-          email: dataUser[2],
-          role: dataUser[3],
-          theme: fetchData?.dataUser?.theme,
+          id: idUser,
+          name: dataUser.name,
+          lastname: dataUser.lastname,
+          email: dataUser.email,
+          role: roleUserValueData,
+          theme: theme,
         })
       );
       dispatch(resetUserState());

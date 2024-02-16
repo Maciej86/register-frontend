@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
 import { USERSETTINGS } from "../../../../core/InfoText";
@@ -6,6 +7,7 @@ import { InputText } from "../../../../common/InputText";
 import { useValidDataUserEdit } from "../hooks/useValidDataUserEdit";
 import { FormArea } from "../styled";
 import { URL_USER } from "../../../../core/urlBackend";
+import { useRoleUser } from "../../../../core/hooks/useRoleUser";
 
 export const InputEditDataUser = () => {
   const { id } = useParams();
@@ -14,25 +16,28 @@ export const InputEditDataUser = () => {
     [id],
     { id: parseInt(id) }
   );
+  const { roleDefinitions } = useRoleUser();
+  const [userRoleToggle, setUserRoleToggle] = useState(false);
+  const [roleUserValue, setRoleUserValue] = useState("");
+  const [roleUserValueData, setRoleUserValueData] = useState(
+    fetchData?.dataUser?.role
+  );
+  const idUser = fetchData?.dataUser?.id;
+  const theme = fetchData?.dataUser?.theme;
+
+  useEffect(() => {
+    setRoleUserValue(roleDefinitions[fetchData?.dataUser?.role]?.name);
+    setRoleUserValueData(fetchData?.dataUser?.role);
+  }, [fetchData?.dataUser?.role]);
 
   const {
-    roleDefinitions,
-    userRoleToggle,
-    setUserRoleToggle,
-    roleUserValue,
-    setRoleUserValue,
-    roleUserValueData,
-    setRoleUserValueData,
     dataUserValue,
     dataUser,
     emailErrorRegExp,
     emailNotCheckInDataBase,
     emailExsist,
     checkDataUser,
-  } = useValidDataUserEdit(
-    fetchData?.dataUser?.role,
-    fetchData?.dataUser?.email
-  );
+  } = useValidDataUserEdit(fetchData?.dataUser?.email);
 
   const inputEditDataUser = (
     <FormArea>
@@ -41,7 +46,7 @@ export const InputEditDataUser = () => {
         placeholder={USERSETTINGS.NAME_EDIT_PLACEHOLDER}
         label={USERSETTINGS.NAME_LABEL}
         maxlength="20"
-        empty={dataUser[0] === ""}
+        empty={dataUser.name === ""}
         ref={(ref) => (dataUserValue.current[0] = ref)}
         value={fetchData?.dataUser?.name}
       />
@@ -50,7 +55,7 @@ export const InputEditDataUser = () => {
         placeholder={USERSETTINGS.LAST_NAME_PLACEHOLDER}
         label={USERSETTINGS.LAST_NAME_EDIT_PLACEHOLDER}
         maxlength="45"
-        empty={dataUser[1] === ""}
+        empty={dataUser.lastname === ""}
         ref={(ref) => (dataUserValue.current[1] = ref)}
         value={fetchData?.dataUser?.last_name}
       />
@@ -60,7 +65,7 @@ export const InputEditDataUser = () => {
         placeholder={USERSETTINGS.EMAIL_PLACEHOLDER}
         label={USERSETTINGS.EMAIL_LABEL}
         maxlength="50"
-        empty={dataUser[2] === "" || emailErrorRegExp || emailExsist}
+        empty={dataUser.email === "" || emailErrorRegExp || emailExsist}
         ref={(ref) => (dataUserValue.current[2] = ref)}
         value={fetchData?.dataUser?.email}
       />
@@ -86,5 +91,8 @@ export const InputEditDataUser = () => {
     fetchData,
     fetchDataLoading,
     dataUser,
+    roleUserValueData,
+    idUser,
+    theme,
   };
 };

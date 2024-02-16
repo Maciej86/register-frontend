@@ -38,7 +38,7 @@ export const InputDataAccount = () => {
         placeholder={USERSETTINGS.NAME_PLACEHOLDER}
         label={USERSETTINGS.NAME_PLACEHOLDER}
         maxlength="20"
-        empty={dataUser[0] === ""}
+        empty={dataUser.name === ""}
         ref={(ref) => (dataUserValue.current[0] = ref)}
         value={userCurrentData?.name}
       />
@@ -47,7 +47,7 @@ export const InputDataAccount = () => {
         placeholder={USERSETTINGS.LAST_NAME_PLACEHOLDER}
         label={USERSETTINGS.LAST_NAME_LABEL}
         maxlength="45"
-        empty={dataUser[1] === ""}
+        empty={dataUser.lastname === ""}
         ref={(ref) => (dataUserValue.current[1] = ref)}
         value={userCurrentData?.last_name}
       />
@@ -57,7 +57,7 @@ export const InputDataAccount = () => {
         placeholder={USERSETTINGS.EMAIL_PLACEHOLDER}
         label={USERSETTINGS.EMAIL_LABEL}
         maxlength="50"
-        empty={dataUser[2] === "" || emailErrorRegExp.current || emailExsist}
+        empty={dataUser.email === "" || emailErrorRegExp.current || emailExsist}
         ref={(ref) => (dataUserValue.current[2] = ref)}
         value={userCurrentData?.email}
       />

@@ -39,9 +39,9 @@ export const FormDataUser = () => {
       dispatch(
         fetchEditAccount({
           id: userData?.id,
-          name: dataUser[0],
-          lastname: dataUser[1],
-          email: dataUser[2],
+          name: dataUser.name,
+          lastname: dataUser.lastname,
+          email: dataUser.email,
           role: userData?.role,
           theme: themeValueData,
         })
