@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { useRoleUser } from "../../../../core/hooks/useRoleUser";
+import { useCheckEmptyInput } from "../../../../core/hooks/useCheckEmptyInput";
 import { useCheckEmail } from "../../../../core/hooks/useCheckEmail";
 import { USERSETTINGS } from "../../../../core/InfoText";
 import { resetUserState } from "../../../../store/User/sliceUser";
@@ -10,36 +11,20 @@ import { addConfirm } from "../../../Confirm/sliceConfirm";
 export const useValidDataUser = () => {
   const dispatch = useDispatch();
   const { roleDefinitions } = useRoleUser();
+  const { checkEmptyInput, dataUser } = useCheckEmptyInput();
   const { checkEmail, emailErrorRegExp } = useCheckEmail();
   const [userRoleToggle, setUserRoleToggle] = useState(false);
   const [roleUserValue, setRoleUserValue] = useState(roleDefinitions[3].name);
   const [roleUserValueData, setRoleUserValueData] = useState(3);
-  const [dataUser, setDataUser] = useState([]);
   const dataUserValue = useRef([]);
   const differentPasswords = useRef(false);
 
   const checkDataUser = () => {
     differentPasswords.current = false;
     dispatch(resetUserState());
-    setDataUser([]);
 
-    for (const inputValue of dataUserValue.current) {
-      let inputValueTrim = inputValue.value.trim();
-      setDataUser((dataUser) => [...dataUser, inputValueTrim]);
-    }
-    setDataUser((dataUser) => [...dataUser, roleUserValueData]);
-
-    for (const checkEmptyInput of dataUserValue.current) {
-      if (checkEmptyInput.value === "") {
-        dispatch(
-          addConfirm({
-            id: nanoid(),
-            type: false,
-            text: USERSETTINGS.CONFIRM_EDIT_EMPTY_INPUT,
-          })
-        );
-        return;
-      }
+    if (checkEmptyInput(dataUserValue.current)) {
+      return;
     }
 
     if (
