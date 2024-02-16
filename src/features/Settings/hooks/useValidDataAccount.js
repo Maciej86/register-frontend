@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { resetUserState } from "../../../store/User/sliceUser";
-import { useCheckEmail } from "../../../core/hooks/useCheckEmail";
 import { useCheckEmptyInput } from "../../../core/hooks/useCheckEmptyInput";
+import { useCheckEmail } from "../../../core/hooks/useCheckEmail";
 
 export const useValidDataAccount = (currentEmail) => {
   const dispatch = useDispatch();

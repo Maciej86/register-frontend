@@ -4,8 +4,8 @@ import {
   resetUserState,
   selectEmailExsist,
 } from "../../../../store/User/sliceUser";
-import { useCheckEmail } from "../../../../core/hooks/useCheckEmail";
 import { useCheckEmptyInput } from "../../../../core/hooks/useCheckEmptyInput";
+import { useCheckEmail } from "../../../../core/hooks/useCheckEmail";
 
 export const useValidDataUserEdit = (currentEmail) => {
   const dispatch = useDispatch();
