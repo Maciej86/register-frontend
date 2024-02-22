@@ -31,16 +31,18 @@ export const InputAddDataUser = () => {
           placeholder={USERSETTINGS.CREATE_USER_NAME}
           label={USERSETTINGS.CREATE_USER_NAME}
           maxlength="20"
-          empty={dataUser[0] === ""}
+          empty={dataUser.name === ""}
           ref={(ref) => (dataUserValue.current[0] = ref)}
+          value={dataUser.name}
         />
         <InputText
           id="lastname"
           placeholder={USERSETTINGS.CREATE_USER_LAST_NAME}
           label={USERSETTINGS.CREATE_USER_LAST_NAME}
           maxlength="45"
-          empty={dataUser[1] === ""}
+          empty={dataUser.lastname === ""}
           ref={(ref) => (dataUserValue.current[1] = ref)}
+          value={dataUser.lastname}
         />
         <InputText
           id="email"
@@ -48,8 +50,9 @@ export const InputAddDataUser = () => {
           placeholder={USERSETTINGS.EMAIL_PLACEHOLDER}
           label={USERSETTINGS.EMAIL_LABEL}
           maxlength="50"
-          empty={dataUser[2] === "" || emailErrorRegExp || emailExsist}
+          empty={dataUser.email === "" || emailErrorRegExp || emailExsist}
           ref={(ref) => (dataUserValue.current[2] = ref)}
+          value={dataUser.email}
         />
         <InputSelect
           id="role"
@@ -70,6 +73,7 @@ export const InputAddDataUser = () => {
           maxlength="100"
           empty={dataUser[3] === ""}
           ref={(ref) => (dataUserValue.current[3] = ref)}
+          value={dataUser.password}
         />
         <InputText
           id="passwordconform"
@@ -79,6 +83,7 @@ export const InputAddDataUser = () => {
           maxlength="100"
           empty={dataUser[4] === ""}
           ref={(ref) => (dataUserValue.current[4] = ref)}
+          value={dataUser.passwordconform}
         />
       </FormBasicUser>
     </>
@@ -88,5 +93,6 @@ export const InputAddDataUser = () => {
     checkDataUser,
     dataUser,
     emailExsist,
+    roleUserValueData,
   };
 };

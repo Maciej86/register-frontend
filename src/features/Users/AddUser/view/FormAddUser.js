@@ -23,8 +23,13 @@ export const FormAddUser = () => {
   const loadingAddUser = useSelector(selectStatusLoadingAddOrDeleteUser);
   const endChceckEmailExsist = useSelector(selectEndChceckEmailExsist);
   const confirmAddUser = useSelector(selectAddUser);
-  const { inputAddDataUser, checkDataUser, dataUser, emailExsist } =
-    InputAddDataUser();
+  const {
+    inputAddDataUser,
+    checkDataUser,
+    dataUser,
+    emailExsist,
+    roleUserValueData,
+  } = InputAddDataUser();
   const {
     tableOrganization,
     fetchDataLoading,
@@ -36,11 +41,11 @@ export const FormAddUser = () => {
     if (emailExsist === false && endChceckEmailExsist) {
       dispatch(
         fetchAddUser({
-          name: dataUser[0],
-          lastName: dataUser[1],
-          email: dataUser[2],
-          type: dataUser[5],
-          password: dataUser[4],
+          name: dataUser.name,
+          lastName: dataUser.lastname,
+          email: dataUser.email,
+          type: roleUserValueData,
+          password: dataUser.password,
           organizations: organizationChecked,
         })
       );
