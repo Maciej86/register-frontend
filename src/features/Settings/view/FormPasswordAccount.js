@@ -6,7 +6,7 @@ import { Button } from "../../../common/Button";
 import { InputPasswordAccount } from "./InputPasswordAccount";
 import { LuSave } from "react-icons/lu";
 
-export const FromPasswordUser = () => {
+export const FormPasswordAccount = () => {
   const loadingEditPassword = useSelector(selectStatusEditPassword);
   const { inputPasswordAccount, changedPassword } = InputPasswordAccount();
 

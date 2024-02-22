@@ -15,7 +15,7 @@ import { addConfirm } from "../../Confirm/sliceConfirm";
 import { nanoid } from "@reduxjs/toolkit";
 import { InputDataAccount } from "./InputDataAccount";
 
-export const FormDataUser = () => {
+export const FormDataAccount = () => {
   const dispatch = useDispatch();
   const loadingEditUser = useSelector(selectStatusEditAccount);
   const endChceckEmailExsist = useSelector(selectEndChceckEmailExsist);
@@ -36,6 +36,7 @@ export const FormDataUser = () => {
       emailExsist === false &&
       (endChceckEmailExsist || emailNotCheckInDataBase)
     ) {
+      console.log(dataUser);
       dispatch(
         fetchEditAccount({
           id: userData?.id,
