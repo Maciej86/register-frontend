@@ -71,19 +71,19 @@ export const InputAddDataUser = () => {
           label={USERSETTINGS.CREATE_USER_PASSWORD_LABEL}
           type="password"
           maxlength="100"
-          empty={dataUser[3] === ""}
+          empty={dataUser.password === ""}
           ref={(ref) => (dataUserValue.current[3] = ref)}
           value={dataUser.password}
         />
         <InputText
-          id="passwordconform"
+          id="passwordconfirm"
           placeholder={USERSETTINGS.CREATE_USER_PASSWORD_REPEAT_LABEL}
           label={USERSETTINGS.CREATE_USER_PASSWORD_REPEAT_LABEL}
           type="password"
           maxlength="100"
-          empty={dataUser[4] === ""}
+          empty={dataUser.passwordconfirm === ""}
           ref={(ref) => (dataUserValue.current[4] = ref)}
-          value={dataUser.passwordconform}
+          value={dataUser.passwordconfirm}
         />
       </FormBasicUser>
     </>
