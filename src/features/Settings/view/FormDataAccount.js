@@ -44,6 +44,7 @@ export const FormDataAccount = () => {
           email: dataInput.email,
           role: userData?.role,
           theme: themeValueData,
+          myaccount: true,
         })
       );
       dispatch(resetUserState());

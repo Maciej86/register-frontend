@@ -62,6 +62,10 @@ const userSlice = createSlice({
       state.user = user;
       state.editAccount = true;
     },
+    setEditUser: (state) => {
+      state.loadingEditAccount = false;
+      state.editAccount = true;
+    },
     fetchEditPassword: (state) => {
       state.serverError = false;
       state.passwordExsist = false;
@@ -161,6 +165,7 @@ export const {
   setLoginOutUser,
   fetchEditAccount,
   setEditAccount,
+  setEditUser,
   fetchEditPassword,
   setEditPassword,
   fetchAddUser,

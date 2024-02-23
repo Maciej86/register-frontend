@@ -46,6 +46,7 @@ export const FormEditDataUser = () => {
           email: dataInput.email,
           role: roleUserValueData,
           theme: theme,
+          myaccount: false,
         })
       );
       dispatch(resetUserState());

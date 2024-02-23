@@ -19,6 +19,7 @@ import {
   fetchDeleteUser,
   fetchPasswordExsist,
   setPasswordExsist,
+  setEditUser,
 } from "./sliceUser";
 import {
   fetchUserOrganization,
@@ -83,10 +84,15 @@ function* fechEditUserHandler({ payload: dataUser }) {
       email: dataUser.email,
       role: dataUser.role,
       theme: dataUser.theme,
-      organizationid: dataUser.organization,
     });
     yield delay(timeDelay);
-    yield put(setEditAccount(user.data));
+    switch (dataUser.myaccount) {
+      case true:
+        yield put(setEditAccount(user.data));
+        break;
+      default:
+        yield put(setEditUser(user.data));
+    }
   } catch (error) {
     yield console.error(error);
     yield put(serverConnectionError());
