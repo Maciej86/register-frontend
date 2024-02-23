@@ -8,19 +8,6 @@ export const useValidPasswordAccount = () => {
   const passwordUserValue = useRef([]);
   const { checkPassword, dataInput, differentPasswords } = useCheckPassword();
 
-  // useEffect(() => {
-  //   if (confirmNewPassword === "ok") {
-  //     dispatch(
-  //       addConfirm({
-  //         id: nanoid(),
-  //         type: true,
-  //         text: USERSETTINGS.CONFIRM_EDIT_PASSWORD,
-  //       })
-  //     );
-  //     dispatch(resetUserState());
-  //   }
-  // }, [confirmNewPassword]);
-
   const changedPassword = (event) => {
     event.preventDefault();
     checkPassword(passwordUserValue.current, userData?.id);
