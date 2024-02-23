@@ -33,13 +33,13 @@ export const useCheckEmail = () => {
     }
   }, [emailExsist]);
 
-  const checkEmail = (inputEmail, currentEmail = "") => {
+  const checkEmail = (valueEmail, currentEmail = "") => {
     setEmailNotCheckInDataBase(false);
 
     const regexpEmail =
       /^[a-z\d-]+\w?\.?([\w\d-]+)?@[\w\d-]{2,}\.[a-z]{2,6}(\.[a-z]{2,6})?$/gi;
 
-    if (!regexpEmail.test(inputEmail)) {
+    if (!regexpEmail.test(valueEmail)) {
       dispatch(
         addConfirm({
           id: nanoid(),
@@ -51,8 +51,8 @@ export const useCheckEmail = () => {
       return;
     }
 
-    if (currentEmail !== inputEmail) {
-      dispatch(fetchEmailExsist(inputEmail));
+    if (currentEmail !== valueEmail) {
+      dispatch(fetchEmailExsist(valueEmail));
     } else {
       setEmailNotCheckInDataBase(true);
     }
