@@ -9,6 +9,7 @@ import {
 } from "../../../store/User/sliceUser";
 import { addConfirm } from "../../Confirm/sliceConfirm";
 import { USERSETTINGS } from "../../../core/InfoText";
+import { useCheckPassword } from "../../../core/hooks/useChceckPassword";
 
 export const useValidPasswordAccount = () => {
   const dispatch = useDispatch();

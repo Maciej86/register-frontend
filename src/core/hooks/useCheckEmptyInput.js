@@ -6,17 +6,17 @@ import { useState } from "react";
 
 export const useCheckEmptyInput = () => {
   const dispatch = useDispatch();
-  const [dataUser, setDataUser] = useState({});
+  const [dataInput, setDataInput] = useState({});
 
-  const checkEmptyInput = (dataInput) => {
-    dataInput.forEach((input) => {
-      setDataUser((currentUserData) => ({
-        ...currentUserData,
+  const checkEmptyInput = (valueInput) => {
+    valueInput.forEach((input) => {
+      setDataInput((currentData) => ({
+        ...currentData,
         [input.id]: input.value,
       }));
     });
 
-    for (const emptyInput of dataInput) {
+    for (const emptyInput of valueInput) {
       if (emptyInput.value === "") {
         dispatch(
           addConfirm({
@@ -31,5 +31,5 @@ export const useCheckEmptyInput = () => {
     return false;
   };
 
-  return { checkEmptyInput, dataUser };
+  return { checkEmptyInput, dataInput };
 };

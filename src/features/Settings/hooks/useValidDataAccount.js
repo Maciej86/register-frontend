@@ -6,7 +6,7 @@ import { useCheckEmail } from "../../../core/hooks/useCheckEmail";
 
 export const useValidDataAccount = (currentEmail) => {
   const dispatch = useDispatch();
-  const { checkEmptyInput, dataUser } = useCheckEmptyInput();
+  const { checkEmptyInput, dataInput } = useCheckEmptyInput();
   const {
     checkEmail,
     emailErrorRegExp,
@@ -27,7 +27,7 @@ export const useValidDataAccount = (currentEmail) => {
 
   return {
     changedDataUser,
-    dataUser,
+    dataInput,
     dataUserValue,
     emailErrorRegExp,
     emailNotCheckInDataBase,

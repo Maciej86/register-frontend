@@ -28,7 +28,7 @@ export const FormDataAccount = () => {
     changedDataUser,
     emailNotCheckInDataBase,
     setEmailNotCheckInDataBase,
-    dataUser,
+    dataInput,
   } = InputDataAccount();
 
   useEffect(() => {
@@ -36,13 +36,12 @@ export const FormDataAccount = () => {
       emailExsist === false &&
       (endChceckEmailExsist || emailNotCheckInDataBase)
     ) {
-      console.log(dataUser);
       dispatch(
         fetchEditAccount({
           id: userData?.id,
-          name: dataUser.name,
-          lastname: dataUser.lastname,
-          email: dataUser.email,
+          name: dataInput.name,
+          lastname: dataInput.lastname,
+          email: dataInput.email,
           role: userData?.role,
           theme: themeValueData,
         })

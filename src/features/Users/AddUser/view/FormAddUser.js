@@ -26,7 +26,7 @@ export const FormAddUser = () => {
   const {
     inputAddDataUser,
     checkDataUser,
-    dataUser,
+    dataInput,
     emailExsist,
     roleUserValueData,
   } = InputAddDataUser();
@@ -41,11 +41,11 @@ export const FormAddUser = () => {
     if (emailExsist === false && endChceckEmailExsist) {
       dispatch(
         fetchAddUser({
-          name: dataUser.name,
-          lastName: dataUser.lastname,
-          email: dataUser.email,
+          name: dataInput.name,
+          lastName: dataInput.lastname,
+          email: dataInput.email,
           type: roleUserValueData,
-          password: dataUser.password,
+          password: dataInput.password,
           organizations: organizationChecked,
         })
       );

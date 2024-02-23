@@ -32,7 +32,7 @@ export const InputEditDataUser = () => {
 
   const {
     dataUserValue,
-    dataUser,
+    dataInput,
     emailErrorRegExp,
     emailNotCheckInDataBase,
     emailExsist,
@@ -46,7 +46,7 @@ export const InputEditDataUser = () => {
         placeholder={USERSETTINGS.NAME_EDIT_PLACEHOLDER}
         label={USERSETTINGS.NAME_LABEL}
         maxlength="20"
-        empty={dataUser.name === ""}
+        empty={dataInput.name === ""}
         ref={(ref) => (dataUserValue.current[0] = ref)}
         value={fetchData?.dataUser?.name}
       />
@@ -55,7 +55,7 @@ export const InputEditDataUser = () => {
         placeholder={USERSETTINGS.LAST_NAME_PLACEHOLDER}
         label={USERSETTINGS.LAST_NAME_EDIT_PLACEHOLDER}
         maxlength="45"
-        empty={dataUser.lastname === ""}
+        empty={dataInput.lastname === ""}
         ref={(ref) => (dataUserValue.current[1] = ref)}
         value={fetchData?.dataUser?.last_name}
       />
@@ -65,7 +65,7 @@ export const InputEditDataUser = () => {
         placeholder={USERSETTINGS.EMAIL_PLACEHOLDER}
         label={USERSETTINGS.EMAIL_LABEL}
         maxlength="50"
-        empty={dataUser.email === "" || emailErrorRegExp || emailExsist}
+        empty={dataInput.email === "" || emailErrorRegExp || emailExsist}
         ref={(ref) => (dataUserValue.current[2] = ref)}
         value={fetchData?.dataUser?.email}
       />
@@ -90,7 +90,7 @@ export const InputEditDataUser = () => {
     checkDataUser,
     fetchData,
     fetchDataLoading,
-    dataUser,
+    dataInput,
     roleUserValueData,
     idUser,
     theme,

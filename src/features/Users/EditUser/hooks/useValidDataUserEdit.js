@@ -10,7 +10,7 @@ import { useCheckEmail } from "../../../../core/hooks/useCheckEmail";
 export const useValidDataUserEdit = (currentEmail) => {
   const dispatch = useDispatch();
   const emailExsist = useSelector(selectEmailExsist);
-  const { checkEmptyInput, dataUser } = useCheckEmptyInput();
+  const { checkEmptyInput, dataInput } = useCheckEmptyInput();
   const { checkEmail, emailErrorRegExp, emailNotCheckInDataBase } =
     useCheckEmail();
   const dataUserValue = useRef([]);
@@ -26,7 +26,7 @@ export const useValidDataUserEdit = (currentEmail) => {
 
   return {
     dataUserValue,
-    dataUser,
+    dataInput,
     emailErrorRegExp,
     emailNotCheckInDataBase,
     emailExsist,

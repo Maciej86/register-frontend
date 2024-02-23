@@ -26,7 +26,7 @@ export const InputDataAccount = () => {
     changedDataUser,
     emailNotCheckInDataBase,
     setEmailNotCheckInDataBase,
-    dataUser,
+    dataInput,
     dataUserValue,
     emailErrorRegExp,
   } = useValidDataAccount(userCurrentData?.email);
@@ -38,7 +38,7 @@ export const InputDataAccount = () => {
         placeholder={USERSETTINGS.NAME_PLACEHOLDER}
         label={USERSETTINGS.NAME_PLACEHOLDER}
         maxlength="20"
-        empty={dataUser.name === ""}
+        empty={dataInput.name === ""}
         ref={(ref) => (dataUserValue.current[0] = ref)}
         value={userCurrentData?.name}
       />
@@ -47,7 +47,7 @@ export const InputDataAccount = () => {
         placeholder={USERSETTINGS.LAST_NAME_PLACEHOLDER}
         label={USERSETTINGS.LAST_NAME_LABEL}
         maxlength="45"
-        empty={dataUser.lastname === ""}
+        empty={dataInput.lastname === ""}
         ref={(ref) => (dataUserValue.current[1] = ref)}
         value={userCurrentData?.last_name}
       />
@@ -57,7 +57,9 @@ export const InputDataAccount = () => {
         placeholder={USERSETTINGS.EMAIL_PLACEHOLDER}
         label={USERSETTINGS.EMAIL_LABEL}
         maxlength="50"
-        empty={dataUser.email === "" || emailErrorRegExp.current || emailExsist}
+        empty={
+          dataInput.email === "" || emailErrorRegExp.current || emailExsist
+        }
         ref={(ref) => (dataUserValue.current[2] = ref)}
         value={userCurrentData?.email}
       />
@@ -89,6 +91,6 @@ export const InputDataAccount = () => {
     changedDataUser,
     emailNotCheckInDataBase,
     setEmailNotCheckInDataBase,
-    dataUser,
+    dataInput,
   };
 };

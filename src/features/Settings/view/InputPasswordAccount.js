@@ -32,7 +32,7 @@ export const InputPasswordAccount = () => {
         ref={(ref) => (passwordUserValue.current[1] = ref)}
       />
       <InputText
-        id="newpasswordconform"
+        id="newpasswordconfirm"
         placeholder={USERSETTINGS.NEW_PASSWORD_REPEAT_PLACEHOLDER}
         label={USERSETTINGS.NEW_PASSWORD_REPEAT_LABEL}
         type="password"

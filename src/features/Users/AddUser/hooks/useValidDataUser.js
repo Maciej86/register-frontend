@@ -11,7 +11,7 @@ import { addConfirm } from "../../../Confirm/sliceConfirm";
 export const useValidDataUser = () => {
   const dispatch = useDispatch();
   const { roleDefinitions } = useRoleUser();
-  const { checkEmptyInput, dataUser } = useCheckEmptyInput();
+  const { checkEmptyInput, dataInput } = useCheckEmptyInput();
   const { checkEmail, emailErrorRegExp } = useCheckEmail();
   const [userRoleToggle, setUserRoleToggle] = useState(false);
   const [roleUserValue, setRoleUserValue] = useState(roleDefinitions[3].name);
@@ -65,7 +65,7 @@ export const useValidDataUser = () => {
     setRoleUserValue,
     roleUserValueData,
     setRoleUserValueData,
-    dataUser,
+    dataInput,
     dataUserValue,
     emailErrorRegExp,
     checkDataUser,
