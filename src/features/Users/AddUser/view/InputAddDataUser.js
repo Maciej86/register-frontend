@@ -33,7 +33,6 @@ export const InputAddDataUser = () => {
           maxlength="20"
           empty={dataInput.name === ""}
           ref={(ref) => (dataUserValue.current[0] = ref)}
-          value={dataInput.name}
         />
         <InputText
           id="lastname"
@@ -42,7 +41,6 @@ export const InputAddDataUser = () => {
           maxlength="45"
           empty={dataInput.lastname === ""}
           ref={(ref) => (dataUserValue.current[1] = ref)}
-          value={dataInput.lastname}
         />
         <InputText
           id="email"
@@ -52,7 +50,6 @@ export const InputAddDataUser = () => {
           maxlength="50"
           empty={dataInput.email === "" || emailErrorRegExp || emailExsist}
           ref={(ref) => (dataUserValue.current[2] = ref)}
-          value={dataInput.email}
         />
         <InputSelect
           id="role"
@@ -73,7 +70,6 @@ export const InputAddDataUser = () => {
           maxlength="100"
           empty={dataInput.password === ""}
           ref={(ref) => (dataUserValue.current[3] = ref)}
-          value={dataInput.password}
         />
         <InputText
           id="passwordconfirm"
@@ -83,7 +79,6 @@ export const InputAddDataUser = () => {
           maxlength="100"
           empty={dataInput.passwordconfirm === ""}
           ref={(ref) => (dataUserValue.current[4] = ref)}
-          value={dataInput.passwordconfirm}
         />
       </FormBasicUser>
     </>
