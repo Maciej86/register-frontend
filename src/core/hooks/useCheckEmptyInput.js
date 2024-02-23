@@ -12,7 +12,7 @@ export const useCheckEmptyInput = () => {
     valueInput.forEach((input) => {
       setDataInput((currentData) => ({
         ...currentData,
-        [input.id]: input.value,
+        [input.id]: input.value.trim(),
       }));
     });
 
