@@ -10,8 +10,6 @@ export const InputPasswordAccount = () => {
   const { changedPassword, passwordUserValue, differentPasswords, dataInput } =
     useValidPasswordAccount();
 
-  console.log(currentPasswordExsist);
-
   const inputPasswordAccount = (
     <FormArea>
       <InputText
