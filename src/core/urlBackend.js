@@ -7,6 +7,7 @@ export const URL_USER = {
   EDIT_ACCOUNT: `${url}/editaccount`,
   CHANGED_PASSWORD: `${url}/editpassword`,
   EMAIL_EXSIST: `${url}/emailexsist`,
+  PASSWORD_EXSIST: `${url}/passwordexsist`,
   ALL_USERS: `${url}/allusers`,
   ADD_USER: `${url}/adduser`,
   FETCH_DATA_USER: `${url}/fetchdatauser`,

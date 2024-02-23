@@ -17,6 +17,8 @@ import {
   setAddUser,
   setDeleteUser,
   fetchDeleteUser,
+  fetchPasswordExsist,
+  setPasswordExsist,
 } from "./sliceUser";
 import {
   fetchUserOrganization,
@@ -119,6 +121,20 @@ function* fetchEditEmailHandler({ payload: newEmail }) {
   }
 }
 
+function* fetchPasswordExsistHandler({ payload: password }) {
+  try {
+    const passwordExsist = yield axios.post(URL_USER.PASSWORD_EXSIST, {
+      id: password.idUser,
+      oldpassword: password.currentPassword,
+    });
+    yield delay(timeDelay);
+    yield put(setPasswordExsist(passwordExsist.data));
+  } catch (error) {
+    yield console.error(error);
+    yield put(serverConnectionError());
+  }
+}
+
 function* fetchAddUserHandler({ payload: dataUser }) {
   try {
     const addUser = yield axios.post(URL_USER.ADD_USER, {
@@ -157,6 +173,7 @@ export function* userSaga() {
   yield takeEvery(fetchEditAccount.type, fechEditUserHandler);
   yield takeEvery(fetchEditPassword.type, fetchEditPasswordHandler);
   yield takeEvery(fetchEmailExsist.type, fetchEditEmailHandler);
+  yield takeEvery(fetchPasswordExsist.type, fetchPasswordExsistHandler);
   yield takeEvery(fetchAddUser.type, fetchAddUserHandler);
   yield takeEvery(fetchDeleteUser.type, fetchDeleteUserHandler);
 }

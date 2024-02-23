@@ -1,16 +1,16 @@
+import { useSelector } from "react-redux";
+import { selecPasswordExsist } from "../../../store/User/sliceUser";
 import { USERSETTINGS } from "../../../core/InfoText";
 import { InputText } from "../../../common/InputText";
 import { useValidPasswordAccount } from "../hooks/useValidPasswordAccount";
 import { FormArea } from "../styled";
 
 export const InputPasswordAccount = () => {
-  const {
-    changedPassword,
-    passwordUserValue,
-    differentPasswords,
-    oldPassword,
-    dataInput,
-  } = useValidPasswordAccount();
+  const currentPasswordExsist = useSelector(selecPasswordExsist);
+  const { changedPassword, passwordUserValue, differentPasswords, dataInput } =
+    useValidPasswordAccount();
+
+  console.log(currentPasswordExsist);
 
   const inputPasswordAccount = (
     <FormArea>
@@ -20,7 +20,7 @@ export const InputPasswordAccount = () => {
         label={USERSETTINGS.OLD_PASSWORD_LABEL}
         type="password"
         maxlength="100"
-        empty={dataInput.oldpassword === "" || oldPassword}
+        empty={dataInput.oldpassword === "" || currentPasswordExsist}
         ref={(ref) => (passwordUserValue.current[0] = ref)}
       />
       <InputText
