@@ -7,9 +7,9 @@ export const InputPasswordAccount = () => {
   const {
     changedPassword,
     passwordUserValue,
-    passwordUserEmpty,
     differentPasswords,
     oldPassword,
+    dataInput,
   } = useValidPasswordAccount();
 
   const inputPasswordAccount = (
@@ -19,7 +19,8 @@ export const InputPasswordAccount = () => {
         placeholder={USERSETTINGS.OLD_PASSWORD_PLACEHOLDER}
         label={USERSETTINGS.OLD_PASSWORD_LABEL}
         type="password"
-        empty={passwordUserEmpty[0] === "" || oldPassword}
+        maxlength="100"
+        empty={dataInput.oldpassword === "" || oldPassword}
         ref={(ref) => (passwordUserValue.current[0] = ref)}
       />
       <InputText
@@ -28,7 +29,7 @@ export const InputPasswordAccount = () => {
         label={USERSETTINGS.NEW_PASSWORD_LABEL}
         type="password"
         maxlength="100"
-        empty={passwordUserEmpty[1] === "" || differentPasswords.current}
+        empty={dataInput.newpassword === "" || differentPasswords.current}
         ref={(ref) => (passwordUserValue.current[1] = ref)}
       />
       <InputText
@@ -37,7 +38,9 @@ export const InputPasswordAccount = () => {
         label={USERSETTINGS.NEW_PASSWORD_REPEAT_LABEL}
         type="password"
         maxlength="100"
-        empty={passwordUserEmpty[2] === "" || differentPasswords.current}
+        empty={
+          dataInput.newpasswordconfirm === "" || differentPasswords.current
+        }
         ref={(ref) => (passwordUserValue.current[2] = ref)}
       />
     </FormArea>

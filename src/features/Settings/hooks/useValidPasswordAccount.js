@@ -15,10 +15,10 @@ export const useValidPasswordAccount = () => {
   const dispatch = useDispatch();
   const userData = useSelector(selectUserState);
   const confirmNewPassword = useSelector(selectEditPassword);
-  const [passwordUserEmpty, setPasswordUserEmpty] = useState([]);
   const [oldPassword, setOldPassword] = useState(false);
   const passwordUserValue = useRef([]);
-  const differentPasswords = useRef(false);
+
+  const { checkPassword, dataInput, differentPasswords } = useCheckPassword();
 
   useEffect(() => {
     if (confirmNewPassword === "ok") {
@@ -46,72 +46,51 @@ export const useValidPasswordAccount = () => {
   const changedPassword = (event) => {
     event.preventDefault();
 
-    setOldPassword(false);
-    differentPasswords.current = false;
+    checkPassword(passwordUserValue.current);
 
-    setPasswordUserEmpty(() => []);
-    for (const inputValue of passwordUserValue.current) {
-      let inputValueTrim = inputValue.value.trim();
-      setPasswordUserEmpty((passwordUserEmpty) => [
-        ...passwordUserEmpty,
-        inputValueTrim,
-      ]);
-    }
+    // setOldPassword(false);
 
-    for (const checkEmptyInput of passwordUserValue.current) {
-      if (checkEmptyInput.value === "") {
-        dispatch(
-          addConfirm({
-            id: nanoid(),
-            type: false,
-            text: USERSETTINGS.CONFIRM_EDIT_EMPTY_INPUT,
-          })
-        );
-        return;
-      }
-    }
+    // if (
+    //   passwordUserValue.current[1].value.trim() !==
+    //   passwordUserValue.current[2].value.trim()
+    // ) {
+    //   differentPasswords.current = true;
+    //   dispatch(
+    //     addConfirm({
+    //       id: nanoid(),
+    //       type: false,
+    //       text: USERSETTINGS.CONFIRM_DIFFRENT_PASSWORD,
+    //     })
+    //   );
+    //   return;
+    // }
 
-    if (
-      passwordUserValue.current[1].value.trim() !==
-      passwordUserValue.current[2].value.trim()
-    ) {
-      differentPasswords.current = true;
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: false,
-          text: USERSETTINGS.CONFIRM_DIFFRENT_PASSWORD,
-        })
-      );
-      return;
-    }
+    // if (passwordUserValue.current[1].value.trim().length < 6) {
+    //   differentPasswords.current = true;
+    //   dispatch(
+    //     addConfirm({
+    //       id: nanoid(),
+    //       type: false,
+    //       text: USERSETTINGS.CONFRIM_LENGTH_PASSWORD,
+    //     })
+    //   );
+    //   return;
+    // }
 
-    if (passwordUserValue.current[1].value.trim().length < 6) {
-      differentPasswords.current = true;
-      dispatch(
-        addConfirm({
-          id: nanoid(),
-          type: false,
-          text: USERSETTINGS.CONFRIM_LENGTH_PASSWORD,
-        })
-      );
-      return;
-    }
-
-    dispatch(
-      fetchEditPassword({
-        id: userData?.id,
-        oldpassword: passwordUserValue.current[0].value.trim(),
-        newpassword: passwordUserValue.current[1].value.trim(),
-      })
-    );
+    // dispatch(
+    //   fetchEditPassword({
+    //     id: userData?.id,
+    //     oldpassword: passwordUserValue.current[0].value.trim(),
+    //     newpassword: passwordUserValue.current[1].value.trim(),
+    //   })
+    // );
   };
 
   return {
     changedPassword,
     passwordUserValue,
-    passwordUserEmpty,
     differentPasswords,
     oldPassword,
+    dataInput,
   };
 };

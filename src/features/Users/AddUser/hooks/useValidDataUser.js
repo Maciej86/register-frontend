@@ -54,7 +54,9 @@ export const useValidDataUser = () => {
       return;
     }
 
-    checkEmail(dataUserValue.current[2].value.trim());
+    checkEmail(
+      dataUserValue.current.find((input) => input.id === "email").value.trim()
+    );
   };
 
   return {

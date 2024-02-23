@@ -22,7 +22,10 @@ export const useValidDataAccount = (currentEmail) => {
     if (checkEmptyInput(dataUserValue.current)) {
       return;
     }
-    checkEmail(dataUserValue.current[2].value.trim(), currentEmail);
+    checkEmail(
+      dataUserValue.current.find((input) => input.id === "email").value.trim(),
+      currentEmail
+    );
   };
 
   return {
