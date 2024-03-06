@@ -8,7 +8,7 @@ import {
 } from "../../../../store/User/sliceUser";
 import { resetOrganizationState } from "../../../../store/Organization/sliceOrganization";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
-import { URL_USER } from "../../../../core/urlBackend";
+import { URL_USER } from "../../../../core/urlApi";
 import { CompressionData } from "./CompressionData";
 import { addConfirm } from "../../../Confirm/sliceConfirm";
 

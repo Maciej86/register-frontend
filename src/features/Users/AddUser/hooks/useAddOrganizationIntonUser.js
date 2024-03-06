@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
-import { URL_ORGANIZATION } from "../../../../core/urlBackend";
+import { URL_ORGANIZATION } from "../../../../core/urlApi";
 
 export const useAddOrganizationIntoUser = () => {
   const { fetchData, fetchDataLoading } = useFetchData(

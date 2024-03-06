@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
-import { URL_ORGANIZATION } from "../../../../core/urlBackend";
+import { URL_ORGANIZATION } from "../../../../core/urlApi";
 import { ORGANIZATION } from "../../../../core/InfoText";
 import { selectLoadingEditOrganization } from "../../../../store/Organization/sliceOrganization";
 import { Loader } from "../../../../common/Loader";

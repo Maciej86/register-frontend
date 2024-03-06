@@ -6,7 +6,7 @@ import { InputSelect } from "../../../../common/InputSelect";
 import { InputText } from "../../../../common/InputText";
 import { useValidDataUserEdit } from "../hooks/useValidDataUserEdit";
 import { FormArea } from "../styled";
-import { URL_USER } from "../../../../core/urlBackend";
+import { URL_USER } from "../../../../core/urlApi";
 import { useRoleUser } from "../../../../core/hooks/useRoleUser";
 
 export const InputEditDataUser = () => {

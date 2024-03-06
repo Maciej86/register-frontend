@@ -26,7 +26,7 @@ import {
   fetchTokenOrganization,
 } from "../Organization/sliceOrganization";
 import { saveDataInSessionStorage } from "./saveSessionStorage";
-import { URL_USER } from "../../core/urlBackend";
+import { URL_USER } from "../../core/urlApi";
 const timeDelay = 700;
 
 function* fechLoginUserHandler({ payload: dataUser }) {
