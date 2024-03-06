@@ -13,7 +13,9 @@ const initialUser = {
   editAccount: false,
   addUser: false,
   deleteUser: false,
+  editPassword: false,
   passwordExsist: false,
+  endChceckPasswordExsist: false,
   emailExsist: false,
   endChceckEmailExsist: false,
   serverError: false,
@@ -68,13 +70,13 @@ const userSlice = createSlice({
     },
     fetchEditPassword: (state) => {
       state.serverError = false;
+      state.editPassword = false;
       state.passwordExsist = false;
       state.loadingEditPassword = true;
     },
     setEditPassword: (state, { payload: changedPassword }) => {
-      console.log(changedPassword);
       state.loadingEditPassword = false;
-      state.passwordExsist = changedPassword;
+      state.editPassword = changedPassword;
     },
     fetchEmailExsist: (state) => {
       state.serverError = false;
@@ -91,10 +93,13 @@ const userSlice = createSlice({
     fetchPasswordExsist: (state) => {
       state.serverError = false;
       state.loadingEditPassword = true;
+      state.passwordExsist = false;
+      state.endChceckPasswordExsist = false;
     },
     setPasswordExsist: (state, { payload: passwordExsist }) => {
       state.passwordExsist = passwordExsist;
       state.loadingEditPassword = false;
+      state.endChceckPasswordExsist = true;
     },
     fetchAddUser: (state) => {
       state.loadingAddOrDeleteUser = true;
@@ -120,7 +125,9 @@ const userSlice = createSlice({
       state.passwordExsist = false;
       state.editAccount = false;
       state.emailExsist = false;
+      state.editPassword = false;
       state.endChceckEmailExsist = false;
+      state.endChceckPasswordExsist = false;
       state.serverError = false;
       state.addUser = false;
       state.deleteUser = false;
@@ -133,8 +140,11 @@ export const selectTokenSessionUserState = (state) =>
   selectLoginUser(state).user[0]?.token_login;
 export const selectUserState = (state) => selectLoginUser(state).user[0];
 export const selectEditAccount = (state) => selectLoginUser(state).editAccount;
+export const selecEditPassword = (state) => selectLoginUser(state).editPassword;
 export const selecPasswordExsist = (state) =>
   selectLoginUser(state).passwordExsist;
+export const selecEndChceckPasswordExsist = (state) =>
+  selectLoginUser(state).endChceckPasswordExsist;
 export const selectStatusUserOut = (state) => selectLoginUser(state).userOut;
 export const selectStatusUser = (state) => selectLoginUser(state).loading;
 export const selectStatusloadingOut = (state) =>

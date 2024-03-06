@@ -22,7 +22,7 @@ export const FormDataAccount = () => {
   const confirmEditUser = useSelector(selectEditAccount);
   const {
     inputDataAccount,
-    userData,
+    userCurrentData,
     themeValueData,
     emailExsist,
     changedDataUser,
@@ -38,11 +38,11 @@ export const FormDataAccount = () => {
     ) {
       dispatch(
         fetchEditAccount({
-          id: userData?.id,
+          id: userCurrentData?.id,
           name: dataInput.name,
           lastname: dataInput.lastname,
           email: dataInput.email,
-          role: userData?.role,
+          role: userCurrentData?.role,
           theme: themeValueData,
           myaccount: true,
         })

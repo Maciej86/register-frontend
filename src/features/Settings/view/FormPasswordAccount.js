@@ -1,14 +1,56 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import { USERSETTINGS } from "../../../core/InfoText";
-import { selectStatusEditPassword } from "../../../store/User/sliceUser";
+import {
+  fetchEditPassword,
+  resetUserState,
+  selecEditPassword,
+  selecEndChceckPasswordExsist,
+  selecPasswordExsist,
+  selectStatusEditPassword,
+  selectUserState,
+} from "../../../store/User/sliceUser";
 import { Loader } from "../../../common/Loader";
 import { Button } from "../../../common/Button";
+import { addConfirm } from "../../Confirm/sliceConfirm";
 import { InputPasswordAccount } from "./InputPasswordAccount";
 import { LuSave } from "react-icons/lu";
 
 export const FormPasswordAccount = () => {
+  const dispatch = useDispatch();
+  const idUserAccount = useSelector(selectUserState);
   const loadingEditPassword = useSelector(selectStatusEditPassword);
-  const { inputPasswordAccount, changedPassword } = InputPasswordAccount();
+  const confirmEditPassword = useSelector(selecEditPassword);
+  const passwordExsist = useSelector(selecPasswordExsist);
+  const endChceckPasswordExsist = useSelector(selecEndChceckPasswordExsist);
+  const { inputPasswordAccount, changedPassword, dataInput } =
+    InputPasswordAccount();
+
+  useEffect(() => {
+    if (passwordExsist === false && endChceckPasswordExsist) {
+      dispatch(
+        fetchEditPassword({
+          id: idUserAccount?.id,
+          newpassword: dataInput.newpassword,
+        })
+      );
+      dispatch(resetUserState());
+    }
+  }, [endChceckPasswordExsist]);
+
+  useEffect(() => {
+    if (confirmEditPassword) {
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: true,
+          text: USERSETTINGS.CONFIRM_EDIT_ACCOUNT,
+        })
+      );
+      dispatch(resetUserState());
+    }
+  }, [confirmEditPassword]);
 
   const formUserPassword = (
     <form onSubmit={changedPassword}>

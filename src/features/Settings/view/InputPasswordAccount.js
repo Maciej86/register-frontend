@@ -44,5 +44,5 @@ export const InputPasswordAccount = () => {
     </FormArea>
   );
 
-  return { inputPasswordAccount, changedPassword };
+  return { inputPasswordAccount, changedPassword, dataInput };
 };

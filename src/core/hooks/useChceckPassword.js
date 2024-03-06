@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import {
   fetchPasswordExsist,
+  resetUserState,
   selecPasswordExsist,
 } from "../../store/User/sliceUser";
 import { useCheckEmptyInput } from "./useCheckEmptyInput";
@@ -14,6 +15,10 @@ export const useCheckPassword = () => {
   const currentPasswordExsist = useSelector(selecPasswordExsist);
   const { checkEmptyInput, dataInput } = useCheckEmptyInput();
   const differentPasswords = useRef(false);
+
+  useEffect(() => {
+    dispatch(resetUserState());
+  }, []);
 
   useEffect(() => {
     if (currentPasswordExsist) {

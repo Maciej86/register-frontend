@@ -103,7 +103,6 @@ function* fetchEditPasswordHandler({ payload: passwordUser }) {
   try {
     const changedPassword = yield axios.post(URL_USER.CHANGED_PASSWORD, {
       id: passwordUser.id,
-      oldpassword: passwordUser.oldpassword,
       newpassword: passwordUser.newpassword,
     });
     yield delay(timeDelay);
