@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addConfirm } from "../../../Confirm/sliceConfirm";
-import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
+import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
+import { ORGANIZATION } from "../../../../core/InfoText";
 import {
   fetchAddOrganization,
   resetOrganizationState,

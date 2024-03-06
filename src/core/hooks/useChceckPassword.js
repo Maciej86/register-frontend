@@ -6,8 +6,8 @@ import {
   resetUserState,
   selecPasswordExsist,
 } from "../../store/User/sliceUser";
+import { addConfirm } from "../../store/Confirm/sliceConfirm";
 import { useCheckEmptyInput } from "./useCheckEmptyInput";
-import { addConfirm } from "../../features/Confirm/sliceConfirm";
 import { USERSETTINGS } from "../InfoText";
 
 export const useCheckPassword = () => {

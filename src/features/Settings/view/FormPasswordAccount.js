@@ -11,9 +11,9 @@ import {
   selectStatusEditPassword,
   selectUserState,
 } from "../../../store/User/sliceUser";
+import { addConfirm } from "../../../store/Confirm/sliceConfirm";
 import { Loader } from "../../../common/Loader";
 import { Button } from "../../../common/Button";
-import { addConfirm } from "../../Confirm/sliceConfirm";
 import { InputPasswordAccount } from "./InputPasswordAccount";
 import { LuSave } from "react-icons/lu";
 

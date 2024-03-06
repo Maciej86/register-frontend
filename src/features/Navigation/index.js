@@ -4,7 +4,7 @@ import {
   selectToggleNavMobileState,
   selectToggleNavState,
   setToggleMobileNav,
-} from "../Bar/sliceBar";
+} from "../../store/Bar/sliceBar";
 import {
   Autor,
   EmptyIcon,

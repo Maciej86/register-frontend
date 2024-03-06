@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addConfirm } from "../../features/Confirm/sliceConfirm";
+import { addConfirm } from "../../store/Confirm/sliceConfirm";
 import { USERSETTINGS } from "../InfoText";
-import { useState } from "react";
 
 export const useCheckEmptyInput = () => {
   const dispatch = useDispatch();

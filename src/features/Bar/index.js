@@ -6,12 +6,12 @@ import {
   selectUserState,
   selectStatusloadingOut,
 } from "../../store/User/sliceUser";
-import { Loader } from "../../common/Loader";
 import {
-  selectToggleNavState,
+  selectToggleNavMobileState,
   setToggleMobileNav,
   setToggleNav,
-} from "./sliceBar";
+} from "../../store/Bar/sliceBar";
+import { Loader } from "../../common/Loader";
 import {
   BarLeft,
   BarRight,
@@ -42,7 +42,7 @@ export const Bar = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserState);
   const loadingOut = useSelector(selectStatusloadingOut);
-  const toggleNav = useSelector(selectToggleNavState);
+  const toggleNav = useSelector(selectToggleNavMobileState);
   const [visible, setVisible] = useState(false);
   const { userRole } = useRoleUser();
 

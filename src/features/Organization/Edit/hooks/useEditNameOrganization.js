@@ -8,7 +8,7 @@ import {
   selectEditNameOrganization,
   selectNameOrganizationExsist,
 } from "../../../../store/Organization/sliceOrganization";
-import { addConfirm } from "../../../Confirm/sliceConfirm";
+import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
 
 export const useEditNameOrganization = () => {
   const dispatch = useDispatch();

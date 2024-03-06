@@ -6,7 +6,7 @@ import { useCheckEmptyInput } from "../../../../core/hooks/useCheckEmptyInput";
 import { useCheckEmail } from "../../../../core/hooks/useCheckEmail";
 import { USERSETTINGS } from "../../../../core/InfoText";
 import { resetUserState } from "../../../../store/User/sliceUser";
-import { addConfirm } from "../../../Confirm/sliceConfirm";
+import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
 
 export const useValidDataUser = () => {
   const dispatch = useDispatch();

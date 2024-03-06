@@ -6,11 +6,11 @@ import {
   selectDeleteUser,
   selectStatusLoadingAddOrDeleteUser,
 } from "../../../../store/User/sliceUser";
+import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
 import { resetOrganizationState } from "../../../../store/Organization/sliceOrganization";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
 import { URL_USER } from "../../../../core/urlApi";
 import { CompressionData } from "./CompressionData";
-import { addConfirm } from "../../../Confirm/sliceConfirm";
 
 export const useDeleteUser = () => {
   const dispatch = useDispatch();

@@ -11,7 +11,7 @@ import {
   selectDeleteOrganization,
   selectloadingDeleteOrganization,
 } from "../../../../store/Organization/sliceOrganization";
-import { addConfirm } from "../../../Confirm/sliceConfirm";
+import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
 
 export const useDeleteOrganization = () => {
   const dispatch = useDispatch();

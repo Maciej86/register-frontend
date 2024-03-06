@@ -9,17 +9,17 @@ import {
   selectEndChceckEmailExsist,
   selectStatusEditAccount,
 } from "../../../../store/User/sliceUser";
+import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
 import { Button } from "../../../../common/Button";
 import { Loader } from "../../../../common/Loader";
 import { InputEditDataUser } from "./InputEditDataUser";
 import { LuSave } from "react-icons/lu";
-import { addConfirm } from "../../../Confirm/sliceConfirm";
 
 export const FormEditDataUser = () => {
   const dispatch = useDispatch();
+  const confirmEditUser = useSelector(selectEditAccount);
   const loadingEditUser = useSelector(selectStatusEditAccount);
   const endChceckEmailExsist = useSelector(selectEndChceckEmailExsist);
-  const confirmEditUser = useSelector(selectEditAccount);
   const {
     inputEditDataUser,
     emailExsist,

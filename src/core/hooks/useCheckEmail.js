@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addConfirm } from "../../features/Confirm/sliceConfirm";
+import { addConfirm } from "../../store/Confirm/sliceConfirm";
 import {
   fetchEmailExsist,
   resetUserState,

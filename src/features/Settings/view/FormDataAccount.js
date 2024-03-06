@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import {
   fetchEditAccount,
   resetUserState,
@@ -7,12 +8,11 @@ import {
   selectEndChceckEmailExsist,
   selectStatusEditAccount,
 } from "../../../store/User/sliceUser";
+import { addConfirm } from "../../../store/Confirm/sliceConfirm";
 import { USERSETTINGS } from "../../../core/InfoText";
 import { Loader } from "../../../common/Loader";
 import { Button } from "../../../common/Button";
 import { LuSave } from "react-icons/lu";
-import { addConfirm } from "../../Confirm/sliceConfirm";
-import { nanoid } from "@reduxjs/toolkit";
 import { InputDataAccount } from "./InputDataAccount";
 
 export const FormDataAccount = () => {

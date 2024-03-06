@@ -8,8 +8,8 @@ import {
   selectAddOrDeleteUsersOrganization,
 } from "../../../../store/Organization/sliceOrganization";
 import { selectUserState } from "../../../../store/User/sliceUser";
+import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
 import { ORGANIZATION } from "../../../../core/InfoText";
-import { addConfirm } from "../../../Confirm/sliceConfirm";
 
 export const useDeleteUserInOrganization = (
   data,

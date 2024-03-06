@@ -10,11 +10,11 @@ import {
   selectEndChceckEmailExsist,
   selectStatusLoadingAddOrDeleteUser,
 } from "../../../../store/User/sliceUser";
+import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
 import { Loader } from "../../../../common/Loader";
 import { Button } from "../../../../common/Button";
 import { TableAction } from "../../../../common/styledTable";
 import { OrganizationUser } from "./TableOrganization";
-import { addConfirm } from "../../../Confirm/sliceConfirm";
 import { InputAddDataUser } from "./InputAddDataUser";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
