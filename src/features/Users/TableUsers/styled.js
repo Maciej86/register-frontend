@@ -4,6 +4,11 @@ export const ButtonArea = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
+
+  @media (max-width: 750px) {
+    margin-top: 20px;
+    justify-content: start;
+  }
 `;
 
 export const Separator = styled.span`

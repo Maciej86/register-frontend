@@ -15,9 +15,9 @@ export const Tile = ({ title, subTitle, rightSide = "", content = "" }) => {
           <TileTitle>{title}</TileTitle>
           <TileSubTitle>{subTitle}</TileSubTitle>
         </Half>
-        {rightSide === "" ? "" : <Half $size={true}>{rightSide}</Half>}
+        {rightSide !== "" && <Half $size={true}>{rightSide}</Half>}
       </TileArea>
-      {content === "" ? "" : <Content>{content}</Content>}
+      {content !== "" && <Content>{content}</Content>}
     </TileConteiner>
   );
 };
