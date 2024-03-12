@@ -41,6 +41,8 @@ export const NAVIGATION = {
 };
 
 export const ORGANIZATION = {
+  ORGANIZATION: "Organizacje",
+  ADD_OR_DELETE_USER_ORGANIZATION: "ORGANIZATION",
   BUTTON_ADD_ORGANIZATION: "Dodaj organizację",
   ADD_NEW_ORGANIZATION: "Utworzono nową organizację.",
   NAME_EXSIST_ORGANIZATION: "Podana nazwa organizacji już istnieje.",
@@ -81,9 +83,8 @@ export const ORGANIZATION = {
 export const USERSETTINGS = {
   COM_TITLE_TABLE_USERS: "Użytkownicy",
   COM_SUBTITLE_TABLE_USERS: "Zarządzaj użytkownikami",
-  CREATE_ACCOUNT: "Dodaj użytkownika",
   COM_TITLE_SETTINGS: "Ustawienia",
-  COM_SUBTITLE_SETTINGS: "Dane użytkownika",
+  COM_DATA_USER: "Dane użytkownika",
   COM_TITLE_CHANGED_PASSWORD: "Zmiana hasła",
   NAME_LABEL: "Imię",
   NAME_PLACEHOLDER: "Twoje imię",
@@ -95,6 +96,8 @@ export const USERSETTINGS = {
   EMAIL_PLACEHOLDER: "you@com.pl",
   TYPE_ACCOUNT: "Rodzaj konta",
   TYPE_THEME: "Styl aplikacji",
+  RESET_PASSWORD: "Reset hasło",
+  RESET_PASSWORD_SUBTITLE: "RESET_PASSWORD",
   BUTTON_EDIT_DATA_USER: "Zmień dane",
   OLD_PASSWORD_LABEL: "Obecne hasło",
   OLD_PASSWORD_PLACEHOLDER: "**********",
@@ -113,6 +116,11 @@ export const USERSETTINGS = {
   CONFRIM_LENGTH_PASSWORD: "Hasło powinno zawierać minimum 6 znaków.",
   CONFIRM_EMAIL_EXSIST: "Podany adres e-mail już istnieje.",
   LACK_ORGANIZATION: "brak",
+  CREATE_ACCOUNT: "Dodaj użytkownika",
+  CREATE_ACCOUNT_TITLE: "Utwórz konto użytkownika",
+  CREATE_ACCOUNT_SUBTITLE:
+    "Po utworzeniu konta, użytkownik będzie mógł się zalogować.",
+  CREATE_USER_DATA_SUBTITLE: "Podstawowe dane użytkownika.",
   CREATE_USER_NAME: "Imię",
   CREATE_USER_LAST_NAME: "Nazwisko",
   CREATE_USER_PASSWORD_LABEL: "Hasło (minimum 6 znaków)",

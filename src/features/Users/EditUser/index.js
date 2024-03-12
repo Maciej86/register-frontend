@@ -1,4 +1,4 @@
-import { NAVIGATION, USERSETTINGS } from "../../../core/InfoText";
+import { NAVIGATION, ORGANIZATION, USERSETTINGS } from "../../../core/InfoText";
 import { Tile } from "../../../common/Tile";
 import { LinkButton } from "../../../common/styledLinkButton";
 import { LoaderDataId } from "../../../common/LoaderDataId";
@@ -31,20 +31,20 @@ export const EditUser = () => {
   ) : (
     <Conteiner>
       <Tile
-        title="Dane użytkownika"
-        subTitle="Podstawowe dane użytkownika."
+        title={USERSETTINGS.COM_DATA_USER}
+        subTitle={USERSETTINGS.CREATE_USER_DATA_SUBTITLE}
         rightSide={ButtonAllUsers}
         content={formEditDataUser}
       />
       <Tile
-        title="Organizacje"
+        title={ORGANIZATION.ORGANIZATION}
         rightSide={<button>Zarządzaj organizacjami</button>}
-        subTitle="Usuń lub dodaj uzytkownika do organizacji."
+        subTitle={ORGANIZATION.ADD_OR_DELETE_USER_ORGANIZATION}
         content="Tutaj organizacje"
       />
       <Tile
-        title="Reset hasła"
-        subTitle="Nadaj użytkownikowi nowe hasło."
+        title={USERSETTINGS.RESET_PASSWORD}
+        subTitle={USERSETTINGS.RESET_PASSWORD_SUBTITLE}
         content={formEditPasswordUser}
       />
     </Conteiner>

@@ -15,7 +15,7 @@ export const Settings = () => {
     <Conteiner>
       <Tile
         title={USERSETTINGS.COM_TITLE_SETTINGS}
-        subTitle={USERSETTINGS.COM_SUBTITLE_SETTINGS}
+        subTitle={USERSETTINGS.COM_DATA_USER}
         content={formUserSetings}
       />
       <Tile

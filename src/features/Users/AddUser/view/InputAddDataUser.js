@@ -28,7 +28,7 @@ export const InputAddDataUser = () => {
 
   const inputAddDataUser = (
     <>
-      <h3>{USERSETTINGS.COM_SUBTITLE_SETTINGS}</h3>
+      <h3>{USERSETTINGS.COM_DATA_USER}</h3>
       <FormBasicUser>
         <InputText
           id="name"
