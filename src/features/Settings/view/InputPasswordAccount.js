@@ -8,8 +8,8 @@ import { FormArea } from "../styled";
 
 export const InputPasswordAccount = () => {
   const currentPasswordExsist = useSelector(selecPasswordExsist);
-  const passwordUserValue = useRef([]);
   const { checkPassword, dataInput, errorPasswords } = useCheckPassword();
+  const passwordUserValue = useRef([]);
 
   const inputPasswordAccount = (
     <FormArea>
