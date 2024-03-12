@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
+import { useRoleUser } from "../../../../core/hooks/useRoleUser";
+import { useCheckEmail } from "../../../../core/hooks/useCheckEmail";
+import { useCheckEmptyInput } from "../../../../core/hooks/useCheckEmptyInput";
 import { USERSETTINGS } from "../../../../core/InfoText";
+import { URL_USER } from "../../../../core/urlApi";
+import { selectEmailExsist } from "../../../../store/User/sliceUser";
 import { InputSelect } from "../../../../common/InputSelect";
 import { InputText } from "../../../../common/InputText";
-import { useValidDataUserEdit } from "../hooks/useValidDataUserEdit";
 import { FormArea } from "../styled";
-import { URL_USER } from "../../../../core/urlApi";
-import { useRoleUser } from "../../../../core/hooks/useRoleUser";
 
 export const InputEditDataUser = () => {
   const { id } = useParams();
@@ -16,28 +19,22 @@ export const InputEditDataUser = () => {
     [id],
     { id: parseInt(id) }
   );
+  const emailExsist = useSelector(selectEmailExsist);
   const { roleDefinitions } = useRoleUser();
+  const { checkEmptyInput, dataInput } = useCheckEmptyInput();
+  const { checkEmail, emailErrorRegExp, emailNotCheckInDataBase } =
+    useCheckEmail();
   const [userRoleToggle, setUserRoleToggle] = useState(false);
   const [roleUserValue, setRoleUserValue] = useState("");
   const [roleUserValueData, setRoleUserValueData] = useState(
     fetchData?.dataUser?.role
   );
-  const idUser = fetchData?.dataUser?.id;
-  const theme = fetchData?.dataUser?.theme;
+  const dataUserValue = useRef([]);
 
   useEffect(() => {
     setRoleUserValue(roleDefinitions[fetchData?.dataUser?.role]?.name);
     setRoleUserValueData(fetchData?.dataUser?.role);
   }, [fetchData?.dataUser?.role]);
-
-  const {
-    dataUserValue,
-    dataInput,
-    emailErrorRegExp,
-    emailNotCheckInDataBase,
-    emailExsist,
-    checkDataUser,
-  } = useValidDataUserEdit(fetchData?.dataUser?.email);
 
   const inputEditDataUser = (
     <FormArea>
@@ -84,15 +81,15 @@ export const InputEditDataUser = () => {
   );
 
   return {
+    checkEmptyInput,
+    checkEmail,
     inputEditDataUser,
     emailExsist,
     emailNotCheckInDataBase,
-    checkDataUser,
     fetchData,
     fetchDataLoading,
     dataInput,
+    dataUserValue,
     roleUserValueData,
-    idUser,
-    theme,
   };
 };

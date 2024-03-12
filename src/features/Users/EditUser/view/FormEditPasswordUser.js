@@ -4,11 +4,12 @@ import { USERSETTINGS } from "../../../../core/InfoText";
 import { InputEditPasswordUser } from "./InputEditPasswordUser";
 
 export const FormEditPasswordUser = () => {
-  const { inputEditPasswordUser, checkPasswordUser } = InputEditPasswordUser();
+  const { checkPassword, inputEditPasswordUser, passwordUserValue } =
+    InputEditPasswordUser();
 
   const SubmitPasswordUser = (event) => {
     event.preventDefault();
-    checkPasswordUser();
+    checkPassword(passwordUserValue.current);
   };
 
   const formEditPasswordUser = (

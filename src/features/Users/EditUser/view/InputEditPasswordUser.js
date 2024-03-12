@@ -1,11 +1,12 @@
+import { useRef } from "react";
 import { InputText } from "../../../../common/InputText";
 import { USERSETTINGS } from "../../../../core/InfoText";
-import { useValidPasswordEdit } from "../hooks/useValidPasswordEdit";
+import { useCheckPassword } from "../../../../core/hooks/useChceckPassword";
 import { FormArea } from "../styled";
 
 export const InputEditPasswordUser = () => {
-  const { checkPasswordUser, passwordUserValue, errorPasswords, dataInput } =
-    useValidPasswordEdit();
+  const { checkPassword, dataInput, errorPasswords } = useCheckPassword();
+  const passwordUserValue = useRef([]);
 
   const inputEditPasswordUser = (
     <FormArea>
@@ -30,5 +31,5 @@ export const InputEditPasswordUser = () => {
     </FormArea>
   );
 
-  return { inputEditPasswordUser, checkPasswordUser };
+  return { checkPassword, inputEditPasswordUser, passwordUserValue };
 };

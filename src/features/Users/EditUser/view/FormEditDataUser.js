@@ -21,13 +21,15 @@ export const FormEditDataUser = () => {
   const loadingEditUser = useSelector(selectStatusEditAccount);
   const endChceckEmailExsist = useSelector(selectEndChceckEmailExsist);
   const {
+    checkEmptyInput,
+    checkEmail,
     inputEditDataUser,
     emailExsist,
     emailNotCheckInDataBase,
-    checkDataUser,
     fetchData,
     fetchDataLoading,
     dataInput,
+    dataUserValue,
     roleUserValueData,
     idUser,
     theme,
@@ -40,12 +42,12 @@ export const FormEditDataUser = () => {
     ) {
       dispatch(
         fetchEditAccount({
-          id: idUser,
+          id: fetchData.dataUser?.id,
           name: dataInput.name,
           lastname: dataInput.lastname,
           email: dataInput.email,
           role: roleUserValueData,
-          theme: theme,
+          theme: fetchData.dataUser?.theme,
           myaccount: false,
         })
       );
@@ -68,7 +70,14 @@ export const FormEditDataUser = () => {
 
   const SubmitDataUser = (event) => {
     event.preventDefault();
-    checkDataUser();
+
+    if (checkEmptyInput(dataUserValue.current)) {
+      return;
+    }
+    checkEmail(
+      dataUserValue.current.find((input) => input.id === "email").value.trim(),
+      fetchData.dataUser?.email
+    );
   };
 
   const formEditDataUser = (
