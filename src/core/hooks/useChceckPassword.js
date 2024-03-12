@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import {
@@ -14,6 +14,7 @@ export const useCheckPassword = () => {
   const dispatch = useDispatch();
   const currentPasswordExsist = useSelector(selecPasswordExsist);
   const { checkEmptyInput, dataInput } = useCheckEmptyInput();
+  const [startCheckPassword, setStartCheckPassword] = useState(false);
   const errorPasswords = useRef(false);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export const useCheckPassword = () => {
   }, []);
 
   useEffect(() => {
-    if (currentPasswordExsist) {
+    if (currentPasswordExsist && startCheckPassword) {
       dispatch(
         addConfirm({
           id: nanoid(),
@@ -33,6 +34,7 @@ export const useCheckPassword = () => {
   }, [currentPasswordExsist]);
 
   const checkPassword = (valueInput, idUser = "") => {
+    setStartCheckPassword(false);
     errorPasswords.current = false;
     let oldPassword = "";
 
@@ -78,6 +80,7 @@ export const useCheckPassword = () => {
     }
 
     if (idUser !== "") {
+      setStartCheckPassword(true);
       dispatch(
         fetchPasswordExsist({
           idUser: idUser,
