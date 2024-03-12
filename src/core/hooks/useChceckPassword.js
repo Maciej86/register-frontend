@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import {
   fetchPasswordExsist,
-  resetUserState,
   selecPasswordExsist,
 } from "../../store/User/sliceUser";
 import { addConfirm } from "../../store/Confirm/sliceConfirm";
@@ -15,11 +14,8 @@ export const useCheckPassword = () => {
   const currentPasswordExsist = useSelector(selecPasswordExsist);
   const { checkEmptyInput, dataInput } = useCheckEmptyInput();
   const [startCheckPassword, setStartCheckPassword] = useState(false);
+  const [correctPassword, setCorrectPassword] = useState(false);
   const errorPasswords = useRef(false);
-
-  useEffect(() => {
-    dispatch(resetUserState());
-  }, []);
 
   useEffect(() => {
     if (currentPasswordExsist && startCheckPassword) {
@@ -35,6 +31,7 @@ export const useCheckPassword = () => {
 
   const checkPassword = (valueInput, idUser = "") => {
     setStartCheckPassword(false);
+    setCorrectPassword(false);
     errorPasswords.current = false;
     let oldPassword = "";
 
@@ -87,8 +84,11 @@ export const useCheckPassword = () => {
           currentPassword: oldPassword,
         })
       );
+      return;
     }
+
+    setCorrectPassword(true);
   };
 
-  return { checkPassword, dataInput, errorPasswords };
+  return { checkPassword, dataInput, errorPasswords, correctPassword };
 };
