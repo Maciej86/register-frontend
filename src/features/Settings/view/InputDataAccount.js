@@ -1,35 +1,36 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   selectEmailExsist,
   selectUserState,
 } from "../../../store/User/sliceUser";
+import { useRoleUser } from "../../../core/hooks/useRoleUser";
 import { USERSETTINGS } from "../../../core/InfoText";
+import { useCheckEmptyInput } from "../../../core/hooks/useCheckEmptyInput";
+import { useCheckEmail } from "../../../core/hooks/useCheckEmail";
+import { themesStyles } from "../../../core/styles/theme";
 import { InputSelect } from "../../../common/InputSelect";
 import { InputText } from "../../../common/InputText";
-import { FormArea } from "../styled";
-import { useValidDataAccount } from "../hooks/useValidDataAccount";
 import { SelectDefaultValue } from "../../../common/InputSelect/SelectDefaultValue";
-import { useRoleUser } from "../../../core/hooks/useRoleUser";
-import { themesStyles } from "../../../core/styles/theme";
+import { FormArea } from "../styled";
 
 export const InputDataAccount = () => {
   const userCurrentData = useSelector(selectUserState);
   const emailExsist = useSelector(selectEmailExsist);
+  const { userRole } = useRoleUser();
+  const { checkEmptyInput, dataInput } = useCheckEmptyInput();
+  const {
+    checkEmail,
+    emailErrorRegExp,
+    emailNotCheckInDataBase,
+    setEmailNotCheckInDataBase,
+  } = useCheckEmail();
   const [themeValue, setThemeValue] = useState(() =>
     SelectDefaultValue(themesStyles, userCurrentData?.theme)
   );
   const [themeValueData, setThemeValueData] = useState(userCurrentData?.theme);
   const [themeToggle, setThemeToggle] = useState(false);
-  const { userRole } = useRoleUser();
-  const {
-    changedDataUser,
-    emailNotCheckInDataBase,
-    setEmailNotCheckInDataBase,
-    dataInput,
-    dataUserValue,
-    emailErrorRegExp,
-  } = useValidDataAccount(userCurrentData?.email);
+  const dataUserValue = useRef([]);
 
   const inputDataAccount = (
     <FormArea>
@@ -84,13 +85,15 @@ export const InputDataAccount = () => {
   );
 
   return {
+    checkEmptyInput,
+    checkEmail,
     inputDataAccount,
     userCurrentData,
     themeValueData,
     emailExsist,
-    changedDataUser,
     emailNotCheckInDataBase,
     setEmailNotCheckInDataBase,
     dataInput,
+    dataUserValue,
   };
 };

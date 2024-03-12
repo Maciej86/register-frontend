@@ -21,14 +21,16 @@ export const FormDataAccount = () => {
   const endChceckEmailExsist = useSelector(selectEndChceckEmailExsist);
   const confirmEditUser = useSelector(selectEditAccount);
   const {
+    checkEmptyInput,
+    checkEmail,
     inputDataAccount,
     userCurrentData,
     themeValueData,
     emailExsist,
-    changedDataUser,
     emailNotCheckInDataBase,
     setEmailNotCheckInDataBase,
     dataInput,
+    dataUserValue,
   } = InputDataAccount();
 
   useEffect(() => {
@@ -65,8 +67,21 @@ export const FormDataAccount = () => {
     }
   }, [confirmEditUser]);
 
+  const SubmitChangedDataUser = (event) => {
+    event.preventDefault();
+    dispatch(resetUserState());
+
+    if (checkEmptyInput(dataUserValue.current)) {
+      return;
+    }
+    checkEmail(
+      dataUserValue.current.find((input) => input.id === "email").value.trim(),
+      userCurrentData.email
+    );
+  };
+
   const formUserSetings = (
-    <form onSubmit={changedDataUser}>
+    <form onSubmit={SubmitChangedDataUser}>
       {inputDataAccount}
       {loadingEditUser ? (
         <Loader margin="0" />

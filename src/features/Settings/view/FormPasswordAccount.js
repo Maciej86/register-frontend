@@ -19,19 +19,19 @@ import { LuSave } from "react-icons/lu";
 
 export const FormPasswordAccount = () => {
   const dispatch = useDispatch();
-  const idUserAccount = useSelector(selectUserState);
+  const userData = useSelector(selectUserState);
   const loadingEditPassword = useSelector(selectStatusEditPassword);
   const confirmEditPassword = useSelector(selecEditPassword);
   const passwordExsist = useSelector(selecPasswordExsist);
   const endChceckPasswordExsist = useSelector(selecEndChceckPasswordExsist);
-  const { inputPasswordAccount, changedPassword, dataInput } =
+  const { checkPassword, passwordUserValue, inputPasswordAccount, dataInput } =
     InputPasswordAccount();
 
   useEffect(() => {
     if (passwordExsist === false && endChceckPasswordExsist) {
       dispatch(
         fetchEditPassword({
-          id: idUserAccount?.id,
+          id: userData?.id,
           newpassword: dataInput.newpassword,
         })
       );
@@ -52,8 +52,13 @@ export const FormPasswordAccount = () => {
     }
   }, [confirmEditPassword]);
 
+  const SubmitChangedPassword = (event) => {
+    event.preventDefault();
+    checkPassword(passwordUserValue.current, userData?.id);
+  };
+
   const formUserPassword = (
-    <form onSubmit={changedPassword}>
+    <form onSubmit={SubmitChangedPassword}>
       {inputPasswordAccount}
       {loadingEditPassword ? (
         <Loader margin="0" />

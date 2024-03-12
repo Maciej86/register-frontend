@@ -1,14 +1,15 @@
+import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { selecPasswordExsist } from "../../../store/User/sliceUser";
+import { useCheckPassword } from "../../../core/hooks/useChceckPassword";
 import { USERSETTINGS } from "../../../core/InfoText";
 import { InputText } from "../../../common/InputText";
-import { useValidPasswordAccount } from "../hooks/useValidPasswordAccount";
 import { FormArea } from "../styled";
 
 export const InputPasswordAccount = () => {
   const currentPasswordExsist = useSelector(selecPasswordExsist);
-  const { changedPassword, passwordUserValue, errorPasswords, dataInput } =
-    useValidPasswordAccount();
+  const passwordUserValue = useRef([]);
+  const { checkPassword, dataInput, errorPasswords } = useCheckPassword();
 
   const inputPasswordAccount = (
     <FormArea>
@@ -42,5 +43,5 @@ export const InputPasswordAccount = () => {
     </FormArea>
   );
 
-  return { inputPasswordAccount, changedPassword, dataInput };
+  return { checkPassword, passwordUserValue, inputPasswordAccount, dataInput };
 };
