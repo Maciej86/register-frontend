@@ -26,13 +26,6 @@ export const InputAddDataUser = () => {
   const [roleUserValueData, setRoleUserValueData] = useState(3);
   const dataUserValue = useRef([]);
 
-  console.log(
-    dataInputEmpty,
-    dataInputPassword,
-    errorPasswords,
-    correctPassword
-  );
-
   const inputAddDataUser = (
     <>
       <h3>{USERSETTINGS.COM_SUBTITLE_SETTINGS}</h3>
