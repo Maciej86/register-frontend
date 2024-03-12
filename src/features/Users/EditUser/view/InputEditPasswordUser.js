@@ -5,7 +5,8 @@ import { useCheckPassword } from "../../../../core/hooks/useChceckPassword";
 import { FormArea } from "../styled";
 
 export const InputEditPasswordUser = () => {
-  const { checkPassword, dataInput, errorPasswords } = useCheckPassword();
+  const { checkPassword, dataInput, errorPasswords, correctPassword } =
+    useCheckPassword();
   const passwordUserValue = useRef([]);
 
   const inputEditPasswordUser = (
@@ -15,7 +16,7 @@ export const InputEditPasswordUser = () => {
         placeholder={USERSETTINGS.NEW_PASSWORD_PLACEHOLDER}
         label={USERSETTINGS.CREATE_USER_PASSWORD_LABEL}
         type="password"
-        maxlength="100"
+        maxLength="100"
         empty={dataInput.newpassword === "" || errorPasswords.current}
         ref={(ref) => (passwordUserValue.current[0] = ref)}
       />
@@ -24,12 +25,18 @@ export const InputEditPasswordUser = () => {
         placeholder={USERSETTINGS.CREATE_USER_PASSWORD_REPEAT_LABEL}
         label={USERSETTINGS.CREATE_USER_PASSWORD_REPEAT_LABEL}
         type="password"
-        maxlength="100"
+        maxLength="100"
         empty={dataInput.newpasswordconfirm === "" || errorPasswords.current}
         ref={(ref) => (passwordUserValue.current[1] = ref)}
       />
     </FormArea>
   );
 
-  return { checkPassword, inputEditPasswordUser, passwordUserValue };
+  return {
+    checkPassword,
+    correctPassword,
+    dataInput,
+    inputEditPasswordUser,
+    passwordUserValue,
+  };
 };

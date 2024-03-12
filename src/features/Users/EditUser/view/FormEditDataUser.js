@@ -31,8 +31,6 @@ export const FormEditDataUser = () => {
     dataInput,
     dataUserValue,
     roleUserValueData,
-    idUser,
-    theme,
   } = InputEditDataUser();
 
   useEffect(() => {
