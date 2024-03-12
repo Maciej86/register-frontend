@@ -42,7 +42,7 @@ export const NAVIGATION = {
 
 export const ORGANIZATION = {
   ORGANIZATION: "Organizacje",
-  ADD_OR_DELETE_USER_ORGANIZATION: "ORGANIZATION",
+  ADD_OR_DELETE_USER_ORGANIZATION: "Dodaj lub usuń użytkownika z organizacji.",
   BUTTON_ADD_ORGANIZATION: "Dodaj organizację",
   ADD_NEW_ORGANIZATION: "Utworzono nową organizację.",
   NAME_EXSIST_ORGANIZATION: "Podana nazwa organizacji już istnieje.",
@@ -97,7 +97,7 @@ export const USERSETTINGS = {
   TYPE_ACCOUNT: "Rodzaj konta",
   TYPE_THEME: "Styl aplikacji",
   RESET_PASSWORD: "Reset hasło",
-  RESET_PASSWORD_SUBTITLE: "RESET_PASSWORD",
+  RESET_PASSWORD_SUBTITLE: "Resetuj hasło użytkownika",
   BUTTON_EDIT_DATA_USER: "Zmień dane",
   OLD_PASSWORD_LABEL: "Obecne hasło",
   OLD_PASSWORD_PLACEHOLDER: "**********",
