@@ -6,7 +6,6 @@ import {
   fetchAddUser,
   resetUserState,
   selectAddUser,
-  selectEmailExsist,
   selectEndChceckEmailExsist,
   selectStatusLoadingAddOrDeleteUser,
 } from "../../../../store/User/sliceUser";
@@ -24,11 +23,16 @@ export const FormAddUser = () => {
   const endChceckEmailExsist = useSelector(selectEndChceckEmailExsist);
   const confirmAddUser = useSelector(selectAddUser);
   const {
+    checkEmptyInput,
+    checkEmail,
+    checkPassword,
+    dataInputEmpty,
+    dataInputPassword,
+    dataUserValue,
     inputAddDataUser,
-    checkDataUser,
-    dataInput,
     emailExsist,
     roleUserValueData,
+    correctPassword,
   } = InputAddDataUser();
   const {
     tableOrganization,
@@ -38,14 +42,14 @@ export const FormAddUser = () => {
   } = OrganizationUser();
 
   useEffect(() => {
-    if (emailExsist === false && endChceckEmailExsist) {
+    if (emailExsist === false && correctPassword && endChceckEmailExsist) {
       dispatch(
         fetchAddUser({
-          name: dataInput.name,
-          lastName: dataInput.lastname,
-          email: dataInput.email,
+          name: dataInputEmpty.name,
+          lastName: dataInputEmpty.lastname,
+          email: dataInputEmpty.email,
           type: roleUserValueData,
-          password: dataInput.password,
+          password: dataInputPassword.password,
           organizations: organizationChecked,
         })
       );
@@ -68,7 +72,15 @@ export const FormAddUser = () => {
 
   const SubmitDataUser = (event) => {
     event.preventDefault();
-    checkDataUser();
+
+    if (checkEmptyInput(dataUserValue.current)) {
+      return;
+    }
+    checkPassword(dataUserValue.current);
+    checkEmail(
+      dataUserValue.current.find((input) => input.id === "email").value.trim()
+    );
+
     addUserIntoOrganization();
   };
 

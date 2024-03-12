@@ -1,26 +1,37 @@
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectEmailExsist } from "../../../../store/User/sliceUser";
 import { USERSETTINGS } from "../../../../core/InfoText";
+import { useRoleUser } from "../../../../core/hooks/useRoleUser";
+import { useCheckEmail } from "../../../../core/hooks/useCheckEmail";
+import { useCheckEmptyInput } from "../../../../core/hooks/useCheckEmptyInput";
+import { useCheckPassword } from "../../../../core/hooks/useChceckPassword";
+import { selectEmailExsist } from "../../../../store/User/sliceUser";
 import { InputSelect } from "../../../../common/InputSelect";
 import { InputText } from "../../../../common/InputText";
-import { useValidDataUser } from "../hooks/useValidDataUser";
 import { FormBasicUser } from "../styled";
 
 export const InputAddDataUser = () => {
   const emailExsist = useSelector(selectEmailExsist);
+  const { roleDefinitions } = useRoleUser();
+  const { checkEmptyInput, dataInput: dataInputEmpty } = useCheckEmptyInput();
+  const { checkEmail, emailErrorRegExp } = useCheckEmail();
   const {
-    roleDefinitions,
-    userRoleToggle,
-    setUserRoleToggle,
-    roleUserValue,
-    setRoleUserValue,
-    roleUserValueData,
-    setRoleUserValueData,
-    dataInput,
-    dataUserValue,
-    checkDataUser,
-    emailErrorRegExp,
-  } = useValidDataUser();
+    checkPassword,
+    dataInput: dataInputPassword,
+    errorPasswords,
+    correctPassword,
+  } = useCheckPassword();
+  const [userRoleToggle, setUserRoleToggle] = useState(false);
+  const [roleUserValue, setRoleUserValue] = useState(roleDefinitions[3].name);
+  const [roleUserValueData, setRoleUserValueData] = useState(3);
+  const dataUserValue = useRef([]);
+
+  console.log(
+    dataInputEmpty,
+    dataInputPassword,
+    errorPasswords,
+    correctPassword
+  );
 
   const inputAddDataUser = (
     <>
@@ -31,7 +42,7 @@ export const InputAddDataUser = () => {
           placeholder={USERSETTINGS.CREATE_USER_NAME}
           label={USERSETTINGS.CREATE_USER_NAME}
           maxlength="20"
-          empty={dataInput.name === ""}
+          empty={dataInputEmpty.name === ""}
           ref={(ref) => (dataUserValue.current[0] = ref)}
         />
         <InputText
@@ -39,7 +50,7 @@ export const InputAddDataUser = () => {
           placeholder={USERSETTINGS.CREATE_USER_LAST_NAME}
           label={USERSETTINGS.CREATE_USER_LAST_NAME}
           maxlength="45"
-          empty={dataInput.lastname === ""}
+          empty={dataInputEmpty.lastname === ""}
           ref={(ref) => (dataUserValue.current[1] = ref)}
         />
         <InputText
@@ -48,7 +59,7 @@ export const InputAddDataUser = () => {
           placeholder={USERSETTINGS.EMAIL_PLACEHOLDER}
           label={USERSETTINGS.EMAIL_LABEL}
           maxlength="50"
-          empty={dataInput.email === "" || emailErrorRegExp || emailExsist}
+          empty={dataInputEmpty.email === "" || emailErrorRegExp || emailExsist}
           ref={(ref) => (dataUserValue.current[2] = ref)}
         />
         <InputSelect
@@ -63,31 +74,44 @@ export const InputAddDataUser = () => {
           setValueData={setRoleUserValueData}
         />
         <InputText
-          id="password"
+          id="newpassword"
           placeholder={USERSETTINGS.NEW_PASSWORD_PLACEHOLDER}
           label={USERSETTINGS.CREATE_USER_PASSWORD_LABEL}
           type="password"
           maxlength="100"
-          empty={dataInput.password === ""}
+          empty={
+            dataInputEmpty.newpassword === "" ||
+            dataInputPassword.newpassword === "" ||
+            errorPasswords.current
+          }
           ref={(ref) => (dataUserValue.current[3] = ref)}
         />
         <InputText
-          id="passwordconfirm"
+          id="newpasswordconfirm"
           placeholder={USERSETTINGS.CREATE_USER_PASSWORD_REPEAT_LABEL}
           label={USERSETTINGS.CREATE_USER_PASSWORD_REPEAT_LABEL}
           type="password"
           maxlength="100"
-          empty={dataInput.passwordconfirm === ""}
+          empty={
+            dataInputEmpty.newpasswordconfirm === "" ||
+            dataInputPassword.newpasswordconfirm === "" ||
+            errorPasswords.current
+          }
           ref={(ref) => (dataUserValue.current[4] = ref)}
         />
       </FormBasicUser>
     </>
   );
   return {
+    checkEmptyInput,
+    checkEmail,
+    checkPassword,
+    dataInputEmpty,
+    dataInputPassword,
+    dataUserValue,
     inputAddDataUser,
-    checkDataUser,
-    dataInput,
     emailExsist,
     roleUserValueData,
+    correctPassword,
   };
 };
