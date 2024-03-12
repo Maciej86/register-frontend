@@ -7,7 +7,7 @@ import { FormArea } from "../styled";
 
 export const InputPasswordAccount = () => {
   const currentPasswordExsist = useSelector(selecPasswordExsist);
-  const { changedPassword, passwordUserValue, differentPasswords, dataInput } =
+  const { changedPassword, passwordUserValue, errorPasswords, dataInput } =
     useValidPasswordAccount();
 
   const inputPasswordAccount = (
@@ -27,7 +27,7 @@ export const InputPasswordAccount = () => {
         label={USERSETTINGS.NEW_PASSWORD_LABEL}
         type="password"
         maxlength="100"
-        empty={dataInput.newpassword === "" || differentPasswords.current}
+        empty={dataInput.newpassword === "" || errorPasswords.current}
         ref={(ref) => (passwordUserValue.current[1] = ref)}
       />
       <InputText
@@ -36,9 +36,7 @@ export const InputPasswordAccount = () => {
         label={USERSETTINGS.NEW_PASSWORD_REPEAT_LABEL}
         type="password"
         maxlength="100"
-        empty={
-          dataInput.newpasswordconfirm === "" || differentPasswords.current
-        }
+        empty={dataInput.newpasswordconfirm === "" || errorPasswords.current}
         ref={(ref) => (passwordUserValue.current[2] = ref)}
       />
     </FormArea>

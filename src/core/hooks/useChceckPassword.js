@@ -14,7 +14,7 @@ export const useCheckPassword = () => {
   const dispatch = useDispatch();
   const currentPasswordExsist = useSelector(selecPasswordExsist);
   const { checkEmptyInput, dataInput } = useCheckEmptyInput();
-  const differentPasswords = useRef(false);
+  const errorPasswords = useRef(false);
 
   useEffect(() => {
     dispatch(resetUserState());
@@ -33,6 +33,7 @@ export const useCheckPassword = () => {
   }, [currentPasswordExsist]);
 
   const checkPassword = (valueInput, idUser = "") => {
+    errorPasswords.current = false;
     let oldPassword = "";
 
     if (idUser !== "") {
@@ -48,14 +49,12 @@ export const useCheckPassword = () => {
       .find((input) => input.id === "newpasswordconfirm")
       .value.trim();
 
-    differentPasswords.current = false;
-
     if (checkEmptyInput(valueInput)) {
       return;
     }
 
     if (newPassword.length < 6) {
-      differentPasswords.current = true;
+      errorPasswords.current = true;
       dispatch(
         addConfirm({
           id: nanoid(),
@@ -67,7 +66,7 @@ export const useCheckPassword = () => {
     }
 
     if (newPassword !== confirmPassword) {
-      differentPasswords.current = true;
+      errorPasswords.current = true;
       dispatch(
         addConfirm({
           id: nanoid(),
@@ -88,5 +87,5 @@ export const useCheckPassword = () => {
     }
   };
 
-  return { checkPassword, dataInput, differentPasswords };
+  return { checkPassword, dataInput, errorPasswords };
 };

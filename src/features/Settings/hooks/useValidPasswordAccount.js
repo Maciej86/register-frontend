@@ -6,7 +6,7 @@ import { useCheckPassword } from "../../../core/hooks/useChceckPassword";
 export const useValidPasswordAccount = () => {
   const userData = useSelector(selectUserState);
   const passwordUserValue = useRef([]);
-  const { checkPassword, dataInput, differentPasswords } = useCheckPassword();
+  const { checkPassword, dataInput, errorPasswords } = useCheckPassword();
 
   const changedPassword = (event) => {
     event.preventDefault();
@@ -16,7 +16,7 @@ export const useValidPasswordAccount = () => {
   return {
     changedPassword,
     passwordUserValue,
-    differentPasswords,
+    errorPasswords,
     dataInput,
   };
 };
