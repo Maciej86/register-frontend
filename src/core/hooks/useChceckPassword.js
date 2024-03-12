@@ -33,9 +33,14 @@ export const useCheckPassword = () => {
   }, [currentPasswordExsist]);
 
   const checkPassword = (valueInput, idUser = "") => {
-    const oldPassword = valueInput
-      .find((input) => input.id === "oldpassword")
-      .value.trim();
+    let oldPassword = "";
+
+    if (idUser !== "") {
+      oldPassword = valueInput
+        .find((input) => input.id === "oldpassword")
+        .value.trim();
+    }
+
     const newPassword = valueInput
       .find((input) => input.id === "newpassword")
       .value.trim();
