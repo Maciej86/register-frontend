@@ -1,16 +1,32 @@
+import { useParams } from "react-router-dom";
 import { NAVIGATION, ORGANIZATION, USERSETTINGS } from "../../../core/InfoText";
+import { useFetchData } from "../../../core/hooks/useFetchData";
+import { URL_USER } from "../../../core/urlApi";
 import { Tile } from "../../../common/Tile";
 import { LinkButton } from "../../../common/styledLinkButton";
 import { LoaderDataId } from "../../../common/LoaderDataId";
 import { FormEditDataUser } from "./view/FormEditDataUser";
-import { ButtonArea } from "../TableUsers/styled";
-import { PiUsers } from "react-icons/pi";
-import { Conteiner } from "./styled";
 import { FormEditPasswordUser } from "./view/FormEditPasswordUser";
+import { FormEditOrganizationUser } from "./view/FormEditOrganizationUser";
+import { ButtonArea } from "../TableUsers/styled";
+import { Conteiner } from "./styled";
+import { PiUsers } from "react-icons/pi";
+import { LiaCubesSolid } from "react-icons/lia";
 
 export const EditUser = () => {
-  const { fetchData, fetchDataLoading, formEditDataUser } = FormEditDataUser();
+  const { id } = useParams();
+  const { fetchData, fetchDataLoading } = useFetchData(
+    URL_USER.FETCH_DATA_USER,
+    [id],
+    { id: parseInt(id) }
+  );
+
+  const { formEditDataUser } = FormEditDataUser(fetchData);
+  const { formEditOrganizationUser } = FormEditOrganizationUser(
+    fetchData.organizationId
+  );
   const { formEditPasswordUser } = FormEditPasswordUser();
+
   const { loaderId, loaderMessage } = LoaderDataId(
     true,
     USERSETTINGS.NOT_EXSIST_USER
@@ -20,6 +36,14 @@ export const EditUser = () => {
     <ButtonArea>
       <LinkButton to={`/${NAVIGATION.NAV_LINK_USERS}`}>
         <PiUsers /> {USERSETTINGS.COM_SUBTITLE_TABLE_USERS}
+      </LinkButton>
+    </ButtonArea>
+  );
+
+  const ButtonOrganization = (
+    <ButtonArea>
+      <LinkButton to={`/${NAVIGATION.NAV_LINK_ORGANIZATION}`}>
+        <LiaCubesSolid /> {ORGANIZATION.COM_SUBTITLE_ALL_ORGANIZATION}
       </LinkButton>
     </ButtonArea>
   );
@@ -38,9 +62,9 @@ export const EditUser = () => {
       />
       <Tile
         title={ORGANIZATION.ORGANIZATION}
-        rightSide={<button>Zarządzaj organizacjami</button>}
+        rightSide={ButtonOrganization}
         subTitle={ORGANIZATION.ADD_OR_DELETE_USER_ORGANIZATION}
-        content="Tutaj organizacje"
+        content={formEditOrganizationUser}
       />
       <Tile
         title={USERSETTINGS.RESET_PASSWORD}

@@ -15,7 +15,7 @@ import { Loader } from "../../../../common/Loader";
 import { InputEditDataUser } from "./InputEditDataUser";
 import { LuSave } from "react-icons/lu";
 
-export const FormEditDataUser = () => {
+export const FormEditDataUser = (fetchDataUser) => {
   const dispatch = useDispatch();
   const confirmEditUser = useSelector(selectEditAccount);
   const loadingEditUser = useSelector(selectStatusEditAccount);
@@ -26,12 +26,10 @@ export const FormEditDataUser = () => {
     inputEditDataUser,
     emailExsist,
     emailNotCheckInDataBase,
-    fetchData,
-    fetchDataLoading,
     dataInput,
     dataUserValue,
     roleUserValueData,
-  } = InputEditDataUser();
+  } = InputEditDataUser(fetchDataUser);
 
   useEffect(() => {
     if (
@@ -40,18 +38,18 @@ export const FormEditDataUser = () => {
     ) {
       dispatch(
         fetchEditAccount({
-          id: fetchData.dataUser?.id,
+          id: fetchDataUser.dataUser?.id,
           name: dataInput.name,
           lastname: dataInput.lastname,
           email: dataInput.email,
           role: roleUserValueData,
-          theme: fetchData.dataUser?.theme,
+          theme: fetchDataUser.dataUser?.theme,
           myaccount: false,
         })
       );
       dispatch(resetUserState());
     }
-  }, [endChceckEmailExsist, emailNotCheckInDataBase]);
+  }, [endChceckEmailExsist, emailNotCheckInDataBase, dataInput]);
 
   useEffect(() => {
     if (confirmEditUser) {
@@ -74,7 +72,7 @@ export const FormEditDataUser = () => {
     }
     checkEmail(
       dataUserValue.current.find((input) => input.id === "email").value.trim(),
-      fetchData.dataUser?.email
+      fetchDataUser.dataUser?.email
     );
   };
 
@@ -94,8 +92,6 @@ export const FormEditDataUser = () => {
   );
 
   return {
-    fetchData,
-    fetchDataLoading,
     formEditDataUser,
   };
 };

@@ -13,7 +13,7 @@ import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
 import { Loader } from "../../../../common/Loader";
 import { Button } from "../../../../common/Button";
 import { TableAction } from "../../../../common/styledTable";
-import { OrganizationUser } from "./TableOrganization";
+import { useTableOrganization } from "../../../../core/hooks/AddOrganizationIntoUser/useTableOrganization";
 import { InputAddDataUser } from "./InputAddDataUser";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
@@ -39,7 +39,7 @@ export const FormAddUser = () => {
     fetchDataLoading,
     addUserIntoOrganization,
     organizationChecked,
-  } = OrganizationUser();
+  } = useTableOrganization();
 
   useEffect(() => {
     if (emailExsist === false && correctPassword && endChceckEmailExsist) {
@@ -92,7 +92,7 @@ export const FormAddUser = () => {
       ) : (
         <>
           {tableOrganization}
-          <TableAction>
+          <TableAction justify={"end"}>
             {loadingAddUser ? (
               <Loader margin="0" />
             ) : (

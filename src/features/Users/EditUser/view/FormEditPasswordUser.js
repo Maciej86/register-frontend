@@ -65,7 +65,7 @@ export const FormEditPasswordUser = () => {
         <Loader margin="0" />
       ) : (
         <Button
-          text={USERSETTINGS.BUTTON_EDIT_DATA_USER}
+          text={USERSETTINGS.NEW_PASSWORD_BUTTON}
           icon={<LuSave size={"15px"} />}
           type="submit"
         />

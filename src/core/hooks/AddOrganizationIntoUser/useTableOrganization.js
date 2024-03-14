@@ -1,4 +1,4 @@
-import { COMMON } from "../../../../core/InfoText";
+import { COMMON } from "../../InfoText";
 import {
   Column,
   ColumnCenter,
@@ -9,15 +9,15 @@ import {
   ThLp,
   TrBody,
   TrHead,
-} from "../../../../common/styledTable";
+} from "../../../common/styledTable";
 import {
   InputBoxSwitch,
   LabelBoxSwitch,
   SpanBoxSwitch,
-} from "../../../../common/styledInputBoxSwitch";
-import { useAddOrganizationIntoUser } from "../hooks/useAddOrganizationIntonUser";
+} from "../../../common/styledInputBoxSwitch";
+import { useAddOrganizationIntoUser } from "./useAddOrganizationIntonUser";
 
-export const OrganizationUser = () => {
+export const useTableOrganization = (fetchDataOrganizationUser = []) => {
   const {
     fetchData,
     fetchDataLoading,
@@ -51,7 +51,10 @@ export const OrganizationUser = () => {
                   <ColumnCenter>
                     <LabelBoxSwitch
                       id={index}
-                      $isChecked={inputCheckBox[index]}
+                      $isChecked={
+                        inputCheckBox[index] ||
+                        fetchDataOrganizationUser.includes(item.id)
+                      }
                     >
                       <InputBoxSwitch
                         htmlFor={index}
@@ -61,10 +64,16 @@ export const OrganizationUser = () => {
                         onChange={(event) =>
                           changeChecked(index, event.target.checked)
                         }
-                        checked={inputCheckBox[index] || false}
+                        checked={
+                          inputCheckBox[index] ||
+                          fetchDataOrganizationUser.includes(item.id)
+                        }
                       />
                       <SpanBoxSwitch
-                        $isChecked={inputCheckBox[index]}
+                        $isChecked={
+                          inputCheckBox[index] ||
+                          fetchDataOrganizationUser.includes(item.id)
+                        }
                       ></SpanBoxSwitch>
                     </LabelBoxSwitch>
                   </ColumnCenter>

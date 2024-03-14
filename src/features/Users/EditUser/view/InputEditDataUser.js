@@ -1,24 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useFetchData } from "../../../../core/hooks/useFetchData";
 import { useRoleUser } from "../../../../core/hooks/useRoleUser";
 import { useCheckEmail } from "../../../../core/hooks/useCheckEmail";
 import { useCheckEmptyInput } from "../../../../core/hooks/useCheckEmptyInput";
 import { USERSETTINGS } from "../../../../core/InfoText";
-import { URL_USER } from "../../../../core/urlApi";
 import { selectEmailExsist } from "../../../../store/User/sliceUser";
 import { InputSelect } from "../../../../common/InputSelect";
 import { InputText } from "../../../../common/InputText";
 import { FormArea } from "../styled";
 
-export const InputEditDataUser = () => {
-  const { id } = useParams();
-  const { fetchData, fetchDataLoading } = useFetchData(
-    URL_USER.FETCH_DATA_USER,
-    [id],
-    { id: parseInt(id) }
-  );
+export const InputEditDataUser = (fetchDataUser) => {
   const emailExsist = useSelector(selectEmailExsist);
   const { roleDefinitions } = useRoleUser();
   const { checkEmptyInput, dataInput } = useCheckEmptyInput();
@@ -27,14 +18,14 @@ export const InputEditDataUser = () => {
   const [userRoleToggle, setUserRoleToggle] = useState(false);
   const [roleUserValue, setRoleUserValue] = useState("");
   const [roleUserValueData, setRoleUserValueData] = useState(
-    fetchData?.dataUser?.role
+    fetchDataUser?.dataUser?.role
   );
   const dataUserValue = useRef([]);
 
   useEffect(() => {
-    setRoleUserValue(roleDefinitions[fetchData?.dataUser?.role]?.name);
-    setRoleUserValueData(fetchData?.dataUser?.role);
-  }, [fetchData?.dataUser?.role]);
+    setRoleUserValue(roleDefinitions[fetchDataUser?.dataUser?.role]?.name);
+    setRoleUserValueData(fetchDataUser?.dataUser?.role);
+  }, [fetchDataUser?.dataUser?.role]);
 
   const inputEditDataUser = (
     <FormArea>
@@ -45,7 +36,7 @@ export const InputEditDataUser = () => {
         maxlength="20"
         empty={dataInput.name === ""}
         ref={(ref) => (dataUserValue.current[0] = ref)}
-        value={fetchData?.dataUser?.name}
+        value={fetchDataUser?.dataUser?.name}
       />
       <InputText
         id="lastname"
@@ -54,7 +45,7 @@ export const InputEditDataUser = () => {
         maxlength="45"
         empty={dataInput.lastname === ""}
         ref={(ref) => (dataUserValue.current[1] = ref)}
-        value={fetchData?.dataUser?.last_name}
+        value={fetchDataUser?.dataUser?.last_name}
       />
       <InputText
         id="email"
@@ -64,7 +55,7 @@ export const InputEditDataUser = () => {
         maxlength="50"
         empty={dataInput.email === "" || emailErrorRegExp || emailExsist}
         ref={(ref) => (dataUserValue.current[2] = ref)}
-        value={fetchData?.dataUser?.email}
+        value={fetchDataUser?.dataUser?.email}
       />
       <InputSelect
         id="role"
@@ -86,8 +77,6 @@ export const InputEditDataUser = () => {
     inputEditDataUser,
     emailExsist,
     emailNotCheckInDataBase,
-    fetchData,
-    fetchDataLoading,
     dataInput,
     dataUserValue,
     roleUserValueData,

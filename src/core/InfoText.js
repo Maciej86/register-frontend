@@ -42,6 +42,7 @@ export const NAVIGATION = {
 
 export const ORGANIZATION = {
   ORGANIZATION: "Organizacje",
+  CHANGED_ORGANIZATION: "Zmień organizacje",
   ADD_OR_DELETE_USER_ORGANIZATION: "Dodaj lub usuń użytkownika z organizacji.",
   BUTTON_ADD_ORGANIZATION: "Dodaj organizację",
   ADD_NEW_ORGANIZATION: "Utworzono nową organizację.",

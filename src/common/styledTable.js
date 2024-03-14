@@ -72,6 +72,6 @@ export const SmallInfoTable = styled.div`
 
 export const TableAction = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: ${({ justify }) => justify};
   margin-top: 20px;
 `;
