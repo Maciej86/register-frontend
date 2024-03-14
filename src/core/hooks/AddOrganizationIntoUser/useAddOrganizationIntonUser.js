@@ -14,7 +14,6 @@ export const useAddOrganizationIntoUser = (fetchDataOrganizationUser) => {
     setInputCheckBox(
       fetchData.map((item) => fetchDataOrganizationUser.includes(item.id))
     );
-    console.log(fetchDataLoading);
   }, [fetchDataLoading]);
 
   const changeChecked = (index, value) => {
