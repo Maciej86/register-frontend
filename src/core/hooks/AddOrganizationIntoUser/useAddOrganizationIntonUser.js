@@ -2,13 +2,20 @@ import { useEffect, useState } from "react";
 import { useFetchData } from "../useFetchData";
 import { URL_ORGANIZATION } from "../../urlApi";
 
-export const useAddOrganizationIntoUser = () => {
+export const useAddOrganizationIntoUser = (fetchDataOrganizationUser) => {
   const { fetchData, fetchDataLoading } = useFetchData(
     URL_ORGANIZATION.FETCH_ALL_ORGANIZATION,
     []
   );
   const [inputCheckBox, setInputCheckBox] = useState([]);
   const [organizationChecked, setOrganizationChecked] = useState([]);
+
+  useEffect(() => {
+    setInputCheckBox(
+      fetchData.map((item) => fetchDataOrganizationUser.includes(item.id))
+    );
+    console.log(fetchDataLoading);
+  }, [fetchDataLoading]);
 
   const changeChecked = (index, value) => {
     const changedCheckbox = [...inputCheckBox];

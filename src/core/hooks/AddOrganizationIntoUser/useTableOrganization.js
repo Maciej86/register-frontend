@@ -25,7 +25,7 @@ export const useTableOrganization = (fetchDataOrganizationUser = []) => {
     changeChecked,
     addUserIntoOrganization,
     organizationChecked,
-  } = useAddOrganizationIntoUser();
+  } = useAddOrganizationIntoUser(fetchDataOrganizationUser);
 
   const tableOrganization = (
     <>
@@ -51,10 +51,7 @@ export const useTableOrganization = (fetchDataOrganizationUser = []) => {
                   <ColumnCenter>
                     <LabelBoxSwitch
                       id={index}
-                      $isChecked={
-                        inputCheckBox[index] ||
-                        fetchDataOrganizationUser.includes(item.id)
-                      }
+                      $isChecked={inputCheckBox[index]}
                     >
                       <InputBoxSwitch
                         htmlFor={index}
@@ -64,16 +61,10 @@ export const useTableOrganization = (fetchDataOrganizationUser = []) => {
                         onChange={(event) =>
                           changeChecked(index, event.target.checked)
                         }
-                        checked={
-                          inputCheckBox[index] ||
-                          fetchDataOrganizationUser.includes(item.id)
-                        }
+                        checked={inputCheckBox[index] || false}
                       />
                       <SpanBoxSwitch
-                        $isChecked={
-                          inputCheckBox[index] ||
-                          fetchDataOrganizationUser.includes(item.id)
-                        }
+                        $isChecked={inputCheckBox[index]}
                       ></SpanBoxSwitch>
                     </LabelBoxSwitch>
                   </ColumnCenter>
