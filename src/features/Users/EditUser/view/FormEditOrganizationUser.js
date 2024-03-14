@@ -16,7 +16,6 @@ export const FormEditOrganizationUser = (fetchDataOrganizationUser) => {
   const SubmitOrganizationUser = (event) => {
     event.preventDefault();
     addUserIntoOrganization();
-    console.log(organizationChecked);
   };
 
   const formEditOrganizationUser = (
