@@ -16,11 +16,9 @@ export const useAddOrganizationIntoUser = (fetchDataOrganizationUser) => {
     );
   }, [fetchDataLoading]);
 
-  const changeChecked = (index, value) => {
-    const changedCheckbox = [...inputCheckBox];
-    changedCheckbox[index] = value;
-    setInputCheckBox(changedCheckbox);
-  };
+  useEffect(() => {
+    addUserIntoOrganization();
+  }, [inputCheckBox]);
 
   const addUserIntoOrganization = () => {
     setOrganizationChecked([]);
@@ -34,12 +32,18 @@ export const useAddOrganizationIntoUser = (fetchDataOrganizationUser) => {
     });
   };
 
+  const changeChecked = (index, value) => {
+    const changedCheckbox = [...inputCheckBox];
+    changedCheckbox[index] = value;
+    setInputCheckBox(changedCheckbox);
+    addUserIntoOrganization();
+  };
+
   return {
     fetchData,
     fetchDataLoading,
     inputCheckBox,
     changeChecked,
-    addUserIntoOrganization,
     organizationChecked,
   };
 };
