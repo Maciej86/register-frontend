@@ -34,12 +34,8 @@ export const FormAddUser = () => {
     roleUserValueData,
     correctPassword,
   } = InputAddDataUser();
-  const {
-    tableOrganization,
-    fetchDataLoading,
-    addUserIntoOrganization,
-    organizationChecked,
-  } = useTableOrganization();
+  const { tableOrganization, fetchDataLoading, organizationChecked } =
+    useTableOrganization();
 
   useEffect(() => {
     if (emailExsist === false && correctPassword && endChceckEmailExsist) {
@@ -80,8 +76,6 @@ export const FormAddUser = () => {
     checkEmail(
       dataUserValue.current.find((input) => input.id === "email").value.trim()
     );
-
-    addUserIntoOrganization();
   };
 
   const formAddUser = (

@@ -1,37 +1,63 @@
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchEditUserOrganization,
+  selectEditUsersOrganization,
+  selectLoadingEditUsersOrganization,
+} from "../../../../store/Organization/sliceOrganization";
+import { useTableOrganization } from "../../../../core/hooks/AddOrganizationIntoUser/useTableOrganization";
+import { ORGANIZATION } from "../../../../core/InfoText";
 import { Button } from "../../../../common/Button";
 import { Loader } from "../../../../common/Loader";
 import { TableAction } from "../../../../common/styledTable";
-import { ORGANIZATION } from "../../../../core/InfoText";
-import { useTableOrganization } from "../../../../core/hooks/AddOrganizationIntoUser/useTableOrganization";
 import { LuSave } from "react-icons/lu";
+import { useEffect } from "react";
+import { resetUserState } from "../../../../store/User/sliceUser";
 
-export const FormEditOrganizationUser = (fetchDataOrganizationUser) => {
-  const {
-    tableOrganization,
-    fetchDataLoading,
-    addUserIntoOrganization,
-    organizationChecked, // dla dispach dane do wysłania
-  } = useTableOrganization(fetchDataOrganizationUser);
+export const FormEditOrganizationUser = (fetchDataOrganizationUser, idUser) => {
+  const dispatch = useDispatch();
+  const { tableOrganization, fetchDataLoading, organizationChecked } =
+    useTableOrganization(fetchDataOrganizationUser);
+  const loadingEditUserOrganization = useSelector(
+    selectLoadingEditUsersOrganization
+  );
+  const confirmEditUserOrganization = useSelector(selectEditUsersOrganization);
+
+  useEffect(() => {
+    if (confirmEditUserOrganization) {
+      console.log("Koniec");
+      dispatch(resetUserState());
+    }
+  }, [confirmEditUserOrganization]);
 
   const SubmitOrganizationUser = (event) => {
     event.preventDefault();
-    addUserIntoOrganization();
+
+    dispatch(
+      fetchEditUserOrganization({
+        idUser: parseInt(idUser),
+        idOrganization: organizationChecked, // Ta tablica zawsze jest pusta. Trzeba to inaczej wymyśleć. W przypadku tworzenia nowego usera to nie jest puste, gdyż trwa oczekiwanie na sprawdzenie adresu e-mail, co jednak też nie jest dobrym rozwiązaniem.
+      })
+    );
   };
 
   const formEditOrganizationUser = (
     <form onSubmit={SubmitOrganizationUser}>
       {fetchDataLoading ? (
-        <Loader margin=" 30px auto" />
+        <Loader margin="30px auto" />
       ) : (
         <>
           {tableOrganization}
           <TableAction justify={"start"}>
-            <Button
-              text={ORGANIZATION.CHANGED_ORGANIZATION}
-              typeAction="add"
-              icon={<LuSave size={"15px"} />}
-              type="submit"
-            />
+            {loadingEditUserOrganization ? (
+              <Loader margin="0 0 3px 0" />
+            ) : (
+              <Button
+                text={ORGANIZATION.CHANGED_ORGANIZATION}
+                typeAction="add"
+                icon={<LuSave size={"15px"} />}
+                type="submit"
+              />
+            )}
           </TableAction>
         </>
       )}

@@ -9,9 +9,11 @@ const initialOrganization = {
   loadingEditOrganization: false,
   loadingAddOrDeleteUsersOrganization: false,
   loadingDeleteOrganization: false,
+  loadingEditUserOrganization: false,
   addNewOrganization: false,
   nameOrganizationExsist: false,
   editNameOrganization: false,
+  editUserOrganization: false,
   deleteOrganization: false,
   addOrDeleteUsersOrganization: false,
   serverError: false,
@@ -80,6 +82,13 @@ const organizationSlice = createSlice({
       state.loadingAddOrDeleteUsersOrganization = false;
       state.addOrDeleteUsersOrganization = true;
     },
+    fetchEditUserOrganization: (state) => {
+      state.loadingEditUserOrganization = true;
+    },
+    setEditUserOrganization: (state, { payload: edit }) => {
+      state.loadingEditUserOrganization = false;
+      state.editUserOrganization = edit;
+    },
     fetchDeleteOrganization: (state) => {
       state.loadingDeleteOrganization = true;
     },
@@ -100,6 +109,7 @@ const organizationSlice = createSlice({
       state.nameOrganizationExsist = false;
       state.editNameOrganization = false;
       state.addOrDeleteUsersOrganization = false;
+      state.editUserOrganization = false;
       state.deleteOrganization = false;
       state.serverError = false;
     },
@@ -121,6 +131,10 @@ export const selectLoadingEditOrganization = (state) =>
   selectOrganization(state).loadingEditOrganization;
 export const selectLoadingAddOrDeleteUsersOrganization = (state) =>
   selectOrganization(state).loadingAddOrDeleteUsersOrganization;
+export const selectLoadingEditUsersOrganization = (state) =>
+  selectOrganization(state).loadingEditUserOrganization;
+export const selectEditUsersOrganization = (state) =>
+  selectOrganization(state).editUserOrganization;
 export const selectAddNewOrganization = (state) =>
   selectOrganization(state).addNewOrganization;
 export const selectNameOrganizationExsist = (state) =>
@@ -150,6 +164,8 @@ export const {
   setUserInOutOrganization,
   fetchAddOrDeleteUsersOrganization,
   setAddOrDeleteUserInOrganization,
+  fetchEditUserOrganization,
+  setEditUserOrganization,
   fetchDeleteOrganization,
   setDeleteOrganization,
   serverConnectionError,

@@ -23,7 +23,8 @@ export const EditUser = () => {
 
   const { formEditDataUser } = FormEditDataUser(fetchData);
   const { formEditOrganizationUser } = FormEditOrganizationUser(
-    fetchData.organizationId
+    fetchData.organizationId,
+    id
   );
   const { formEditPasswordUser } = FormEditPasswordUser();
 
