@@ -35,7 +35,7 @@ export const FormEditOrganizationUser = (fetchDataOrganizationUser, idUser) => {
     dispatch(
       fetchEditUserOrganization({
         idUser: parseInt(idUser),
-        idOrganization: organizationChecked, // Ta tablica zawsze jest pusta. Trzeba to inaczej wymyśleć. W przypadku tworzenia nowego usera to nie jest puste, gdyż trwa oczekiwanie na sprawdzenie adresu e-mail, co jednak też nie jest dobrym rozwiązaniem.
+        idOrganization: organizationChecked,
       })
     );
   };
