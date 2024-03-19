@@ -120,6 +120,7 @@ const userSlice = createSlice({
       state.loading = false;
       state.loadingAddOrDeleteUser = false;
       state.loadingEditPassword = false;
+      state.loadingEditAccount = false;
     },
     resetUserState: (state) => {
       state.passwordExsist = false;

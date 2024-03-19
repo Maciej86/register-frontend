@@ -103,6 +103,7 @@ const organizationSlice = createSlice({
       state.loadingEditOrganization = false;
       state.loadingAddOrDeleteUsersOrganization = false;
       state.loadingDeleteOrganization = false;
+      state.loadingEditUserOrganization = false;
     },
     resetOrganizationState: (state) => {
       state.addNewOrganization = false;
