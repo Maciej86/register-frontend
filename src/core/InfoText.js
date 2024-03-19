@@ -116,6 +116,10 @@ export const USERSETTINGS = {
   CONFIRM_DIFFRENT_PASSWORD: "Nowe hasło różnią się od siebie.",
   CONFRIM_LENGTH_PASSWORD: "Hasło powinno zawierać minimum 6 znaków.",
   CONFIRM_EMAIL_EXSIST: "Podany adres e-mail już istnieje.",
+  CONFIRM_DELETE_USER: "Użytkownik został usunięty",
+  TITLE_DELETE_USER: "Czy napewno chcesz usunać konto użytkownika?",
+  DESCRIPTION_DELETE_USER:
+    "Mimo usunięcia konta uzytkownika, jego imię i nazwisko będzie widniało przy rejestrach, w któych dokonał zmian oraz przy utworzonych notatkach. Jednak będzie onaznaczony jako użytkownik usunięty.",
   LACK_ORGANIZATION: "brak",
   CREATE_ACCOUNT: "Dodaj użytkownika",
   CREATE_ACCOUNT_TITLE: "Utwórz konto użytkownika",

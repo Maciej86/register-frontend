@@ -9,6 +9,7 @@ import {
 import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
 import { resetOrganizationState } from "../../../../store/Organization/sliceOrganization";
 import { useFetchData } from "../../../../core/hooks/useFetchData";
+import { USERSETTINGS } from "../../../../core/InfoText";
 import { URL_USER } from "../../../../core/urlApi";
 import { CompressionData } from "./CompressionData";
 
@@ -35,7 +36,7 @@ export const useDeleteUser = () => {
         addConfirm({
           id: nanoid(),
           type: true,
-          text: "Uzytkownik został usunięty",
+          text: USERSETTINGS.CONFIRM_DELETE_USER,
         })
       );
       dispatch(resetOrganizationState());

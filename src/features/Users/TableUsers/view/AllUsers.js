@@ -50,13 +50,9 @@ export const AllUsers = () => {
 
   const ContentModal = (
     <TextDelete>
-      <TextQuestion>Czy napewno chcesz usunać konto użytkownika?</TextQuestion>
+      <TextQuestion>{USERSETTINGS.TITLE_DELETE_USER}</TextQuestion>
       <TextUser>{selectNameUser}</TextUser>
-      <TextInfo>
-        Mimo usunięcia konta uzytkownika, jego imię i nazwisko będzie widniało
-        przy rejestrach, w któych dokonał zmian oraz przy utworzonych notatkach.
-        Jednak będzie onaznaczony jako użytkownik usunięty.
-      </TextInfo>
+      <TextInfo>{USERSETTINGS.DESCRIPTION_DELETE_USER}</TextInfo>
     </TextDelete>
   );
 
