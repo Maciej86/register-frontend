@@ -23,7 +23,7 @@ import {
 } from "./styled";
 import { AiFillDatabase } from "react-icons/ai";
 import { LuLayoutDashboard } from "react-icons/lu";
-import { PiUsers } from "react-icons/pi";
+import { PiFileLight, PiUsers } from "react-icons/pi";
 import { SlSettings } from "react-icons/sl";
 import { LiaCubesSolid } from "react-icons/lia";
 
@@ -62,6 +62,20 @@ export const Navigation = () => {
                   <LuLayoutDashboard size={"18px"} />
                 </IconNav>
                 {NAVIGATION.NAV_DASHBOARD}
+              </LinkNav>
+            </ItemNav>
+            <ItemNav>
+              <LinkNav
+                to={NAVIGATION.NAV_LINK_NOTES}
+                onClick={() => {
+                  dispatch(setToggleMobileNav());
+                  closeListNavChild();
+                }}
+              >
+                <IconNav>
+                  <PiFileLight size={"21px"} />
+                </IconNav>
+                {NAVIGATION.NAV_NOTES}
               </LinkNav>
             </ItemNav>
             <ItemNav>

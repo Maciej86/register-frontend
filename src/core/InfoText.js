@@ -26,6 +26,8 @@ export const USER_TEXT = {
 export const NAVIGATION = {
   NAV_DASHBOARD: "Pulpit",
   NAV_LINK_DASHBOARD: "pulpit",
+  NAV_NOTES: "Notatki",
+  NAV_LINK_NOTES: "notatki",
   NAV_LINK_USERS: "uzytkownicy",
   NAV_USERS: "Użytkownicy",
   NAV_USERS_CHILD: "Zarządzaj użytkownikami",
