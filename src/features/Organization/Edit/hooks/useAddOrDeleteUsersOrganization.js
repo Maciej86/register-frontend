@@ -11,7 +11,7 @@ import { selectUserState } from "@storeUser/sliceUser";
 import { addConfirm } from "@storeConfirm/sliceConfirm";
 import { ORGANIZATION } from "@core/InfoText";
 
-export const useDeleteUserInOrganization = (
+export const useAddOrDeleteUserInOrganization = (
   data,
   idOrganization,
   changeTab

@@ -30,7 +30,7 @@ import {
   LabelBoxSwitch,
   SpanBoxSwitch,
 } from "@common/styledInputBoxSwitch";
-import { useDeleteUserInOrganization } from "../hooks/useAddOrDeleteUsersOrganization";
+import { useAddOrDeleteUserInOrganization } from "../hooks/useAddOrDeleteUsersOrganization";
 import { ButtonTab } from "../styled";
 import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";
 
@@ -50,7 +50,7 @@ export const TableUsersInOrganization = () => {
     changeChecked,
     inputCheckbox,
     userChecked,
-  } = useDeleteUserInOrganization(
+  } = useAddOrDeleteUserInOrganization(
     usersOrganization,
     id,
     toggleTabUsersOrganization
