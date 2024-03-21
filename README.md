@@ -29,5 +29,6 @@
 - React Router Dom 6.15.0
 - Styled-Components 6.0.3
 - React Icons 4.10.1
+- Craco (tylko developers) 7.1.0
 
 Aplikacja działa w oparciu o [backend](https://github.com/Maciej86/register-backend)
