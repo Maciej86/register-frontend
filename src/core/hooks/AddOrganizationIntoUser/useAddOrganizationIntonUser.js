@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useFetchData } from "../useFetchData";
-import { URL_ORGANIZATION } from "../../urlApi";
+import { URL_ORGANIZATION } from "@core/urlApi";
 
 export const useAddOrganizationIntoUser = (fetchDataOrganizationUser) => {
   const { fetchData, fetchDataLoading } = useFetchData(

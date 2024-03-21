@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { USERSETTINGS } from "../../../../core/InfoText";
 import {
   fetchEditAccount,
   resetUserState,
   selectEditAccount,
   selectEndChceckEmailExsist,
   selectStatusEditAccount,
-} from "../../../../store/User/sliceUser";
-import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
-import { Button } from "../../../../common/Button";
-import { Loader } from "../../../../common/Loader";
+} from "@storeUser/sliceUser";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
+import { USERSETTINGS } from "@core/InfoText";
+import { Button } from "@common/Button";
+import { Loader } from "@common/Loader";
 import { InputEditDataUser } from "./InputEditDataUser";
 import { LuSave } from "react-icons/lu";
 

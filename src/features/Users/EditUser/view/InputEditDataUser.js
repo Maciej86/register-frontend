@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useRoleUser } from "../../../../core/hooks/useRoleUser";
-import { useCheckEmail } from "../../../../core/hooks/useCheckEmail";
-import { useCheckEmptyInput } from "../../../../core/hooks/useCheckEmptyInput";
-import { USERSETTINGS } from "../../../../core/InfoText";
-import { selectEmailExsist } from "../../../../store/User/sliceUser";
-import { InputSelect } from "../../../../common/InputSelect";
-import { InputText } from "../../../../common/InputText";
+import { selectEmailExsist } from "@storeUser/sliceUser";
+import { useRoleUser } from "@coreHooks/useRoleUser";
+import { useCheckEmail } from "@coreHooks/useCheckEmail";
+import { useCheckEmptyInput } from "@coreHooks/useCheckEmptyInput";
+import { USERSETTINGS } from "@core/InfoText";
+import { InputSelect } from "@common/InputSelect";
+import { InputText } from "@common/InputText";
 import { FormArea } from "../styled";
 
 export const InputEditDataUser = (fetchDataUser) => {

@@ -1,19 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { USERSETTINGS } from "../../../../core/InfoText";
 import {
   fetchAddUser,
   resetUserState,
   selectAddUser,
   selectEndChceckEmailExsist,
   selectStatusLoadingAddOrDeleteUser,
-} from "../../../../store/User/sliceUser";
-import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
-import { Loader } from "../../../../common/Loader";
-import { Button } from "../../../../common/Button";
-import { TableAction } from "../../../../common/styledTable";
-import { useTableOrganization } from "../../../../core/hooks/AddOrganizationIntoUser/useTableOrganization";
+} from "@storeUser/sliceUser";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
+import { USERSETTINGS } from "@core/InfoText";
+import { useTableOrganization } from "@coreHooks/AddOrganizationIntoUser/useTableOrganization";
+import { Loader } from "@common/Loader";
+import { Button } from "@common/Button";
+import { TableAction } from "@common/styledTable";
 import { InputAddDataUser } from "./InputAddDataUser";
 import { AiOutlineUserAdd } from "react-icons/ai";
 

@@ -1,4 +1,4 @@
-import { COMMON } from "../../InfoText";
+import { COMMON } from "@core/InfoText";
 import {
   Column,
   ColumnCenter,

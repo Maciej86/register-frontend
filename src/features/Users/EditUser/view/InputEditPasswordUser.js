@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import { InputText } from "../../../../common/InputText";
-import { USERSETTINGS } from "../../../../core/InfoText";
-import { useCheckPassword } from "../../../../core/hooks/useChceckPassword";
+import { useCheckPassword } from "@coreHooks/useChceckPassword";
+import { USERSETTINGS } from "@core/InfoText";
+import { InputText } from "@common/InputText";
 import { FormArea } from "../styled";
 
 export const InputEditPasswordUser = () => {

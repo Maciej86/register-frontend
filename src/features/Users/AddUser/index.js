@@ -1,7 +1,7 @@
 import { PiUsers } from "react-icons/pi";
-import { Tile } from "../../../common/Tile";
-import { LinkButton } from "../../../common/styledLinkButton";
-import { NAVIGATION, USERSETTINGS } from "../../../core/InfoText";
+import { NAVIGATION, USERSETTINGS } from "@core/InfoText";
+import { Tile } from "@common/Tile";
+import { LinkButton } from "@common/styledLinkButton";
 import { ButtonArea } from "../TableUsers/styled";
 import { FormAddUser } from "./view/FormAddUser";
 

@@ -1,11 +1,11 @@
-import { ORGANIZATION } from "../../../core/InfoText";
-import { useErrorConnectServer } from "../../../core/hooks/useErrorConnectServer";
-import { selectServerErrorOrganization } from "../../../store/Organization/sliceOrganization";
-import { Tile } from "../../../common/Tile";
+import { selectServerErrorOrganization } from "@storeOrganization/sliceOrganization";
+import { ORGANIZATION } from "@core/InfoText";
+import { useErrorConnectServer } from "@coreHooks/useErrorConnectServer";
+import { Tile } from "@common/Tile";
+import { LoaderDataId } from "@common/LoaderDataId";
 import { FormEditOrganization } from "./view/FormEditOrganization";
 import { TableUsersInOrganization } from "./view/TableUsersInOrganization";
 import { Conteiner } from "./styled";
-import { LoaderDataId } from "../../../common/LoaderDataId";
 
 export const OrganizationEdit = () => {
   const { formEditname, fetchData, fetchDataLoading } = FormEditOrganization();

@@ -4,7 +4,8 @@ import {
   selectToggleNavMobileState,
   selectToggleNavState,
   setToggleMobileNav,
-} from "../../store/Bar/sliceBar";
+} from "@storeBar/sliceBar";
+import { NAVIGATION } from "@core/InfoText";
 import {
   Autor,
   EmptyIcon,
@@ -20,7 +21,6 @@ import {
   MainNav,
   MobileMask,
 } from "./styled";
-import { NAVIGATION } from "../../core/InfoText";
 import { AiFillDatabase } from "react-icons/ai";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { PiUsers } from "react-icons/pi";

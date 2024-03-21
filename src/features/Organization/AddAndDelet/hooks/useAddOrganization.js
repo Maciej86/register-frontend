@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
-import { ORGANIZATION } from "../../../../core/InfoText";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
 import {
   fetchAddOrganization,
   resetOrganizationState,
   selectAddNewOrganization,
   selectNameOrganizationExsist,
-} from "../../../../store/Organization/sliceOrganization";
-import { selectUserState } from "../../../../store/User/sliceUser";
+} from "@storeOrganization/sliceOrganization";
+import { selectUserState } from "@storeUser/sliceUser";
+import { ORGANIZATION } from "@core/InfoText";
 
 export const useAddOrganization = () => {
   const dispatch = useDispatch();

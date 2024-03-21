@@ -1,8 +1,8 @@
-import { COMMON, NAVIGATION, ORGANIZATION } from "../../../../core/InfoText";
-import { Loader } from "../../../../common/Loader";
-import { Modal } from "../../../../common/Modal";
-import { LinkButton } from "../../../../common/styledLinkButton";
-import { Button } from "../../../../common/Button";
+import { COMMON, NAVIGATION, ORGANIZATION } from "@core/InfoText";
+import { Loader } from "@common/Loader";
+import { Modal } from "@common/Modal";
+import { LinkButton } from "@common/styledLinkButton";
+import { Button } from "@common/Button";
 import {
   Column,
   ColumnCenter,
@@ -15,8 +15,8 @@ import {
   ThLp,
   TrBody,
   TrHead,
-} from "../../../../common/styledTable";
-import { FontWeight600, Separator } from "../../../../common/styledCommon";
+} from "@common/styledTable";
+import { FontWeight600, Separator } from "@common/styledCommon";
 import { useDeleteOrganization } from "../hooks/useDeleteOrganization";
 import { TextDelete } from "../styled";
 import { FiEdit } from "react-icons/fi";

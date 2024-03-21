@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
-import { useRoleUser } from "../../../../core/hooks/useRoleUser";
 import {
   fetchUsersInOutOrganization,
   selectLoadingAddOrDeleteUsersOrganization,
   selectLoadingOrganization,
   selectUsersInOutOrganization,
-} from "../../../../store/Organization/sliceOrganization";
-import { Loader } from "../../../../common/Loader";
-import { Button } from "../../../../common/Button";
+} from "@storeOrganization/sliceOrganization";
+import { COMMON, ORGANIZATION } from "@core/InfoText";
+import { useRoleUser } from "@coreHooks/useRoleUser";
+import { Loader } from "@common/Loader";
+import { Button } from "@common/Button";
 import {
   Column,
   ColumnCenter,
@@ -24,12 +24,12 @@ import {
   ThLp,
   TrBody,
   TrHead,
-} from "../../../../common/styledTable";
+} from "@common/styledTable";
 import {
   InputBoxSwitch,
   LabelBoxSwitch,
   SpanBoxSwitch,
-} from "../../../../common/styledInputBoxSwitch";
+} from "@common/styledInputBoxSwitch";
 import { useDeleteUserInOrganization } from "../hooks/useAddOrDeleteUsersOrganization";
 import { ButtonTab } from "../styled";
 import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";

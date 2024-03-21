@@ -5,13 +5,13 @@ import {
   resetOrganizationState,
   selectEditUsersOrganization,
   selectLoadingEditUsersOrganization,
-} from "../../../../store/Organization/sliceOrganization";
-import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
-import { useTableOrganization } from "../../../../core/hooks/AddOrganizationIntoUser/useTableOrganization";
-import { ORGANIZATION } from "../../../../core/InfoText";
-import { Button } from "../../../../common/Button";
-import { Loader } from "../../../../common/Loader";
-import { TableAction } from "../../../../common/styledTable";
+} from "@storeOrganization/sliceOrganization";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
+import { useTableOrganization } from "@coreHooks/AddOrganizationIntoUser/useTableOrganization";
+import { ORGANIZATION } from "@core/InfoText";
+import { Button } from "@common/Button";
+import { Loader } from "@common/Loader";
+import { TableAction } from "@common/styledTable";
 import { LuSave } from "react-icons/lu";
 import { useEffect } from "react";
 

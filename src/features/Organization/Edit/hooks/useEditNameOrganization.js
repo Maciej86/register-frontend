@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { COMMON, ORGANIZATION } from "../../../../core/InfoText";
 import {
   fetchEditNameOrganization,
   resetOrganizationState,
   selectEditNameOrganization,
   selectNameOrganizationExsist,
-} from "../../../../store/Organization/sliceOrganization";
-import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
+} from "@storeOrganization/sliceOrganization";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
+import { ORGANIZATION } from "@core/InfoText";
 
 export const useEditNameOrganization = () => {
   const dispatch = useDispatch();

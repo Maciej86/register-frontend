@@ -3,11 +3,11 @@ import {
   selectStatusUser,
   selectStatusUserOut,
   selectUserNotExist,
-} from "../../store/User//sliceUser";
+} from "@storeUser/sliceUser";
+import { selectLoadingOrganization } from "@storeOrganization/sliceOrganization";
+import { USER_TEXT } from "@core/InfoText";
+import { Loader } from "@common/Loader";
 import { useLoginUser } from "./useLoginUser";
-import { USER_TEXT } from "../../core/InfoText";
-import { Loader } from "../../common/Loader";
-import { selectLoadingOrganization } from "../../store/Organization/sliceOrganization";
 import { ErrorLogin } from "./ErrorLogin";
 import {
   Conteiner,

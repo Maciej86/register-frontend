@@ -5,12 +5,12 @@ import {
   fetchDeleteUser,
   selectDeleteUser,
   selectStatusLoadingAddOrDeleteUser,
-} from "../../../../store/User/sliceUser";
-import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
-import { resetOrganizationState } from "../../../../store/Organization/sliceOrganization";
-import { useFetchData } from "../../../../core/hooks/useFetchData";
-import { USERSETTINGS } from "../../../../core/InfoText";
-import { URL_USER } from "../../../../core/urlApi";
+} from "@storeUser/sliceUser";
+import { resetOrganizationState } from "@storeOrganization/sliceOrganization";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
+import { useFetchData } from "@coreHooks/useFetchData";
+import { USERSETTINGS } from "@core/InfoText";
+import { URL_USER } from "@core/urlApi";
 import { CompressionData } from "./CompressionData";
 
 export const useDeleteUser = () => {

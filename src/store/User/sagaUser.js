@@ -1,5 +1,6 @@
 import axios from "axios";
 import { call, delay, put, takeEvery } from "redux-saga/effects";
+import { URL_USER } from "@core/urlApi";
 import {
   fetchEmailExsist,
   fetchEditPassword,
@@ -26,7 +27,6 @@ import {
   fetchTokenOrganization,
 } from "../Organization/sliceOrganization";
 import { saveDataInSessionStorage } from "./saveSessionStorage";
-import { URL_USER } from "../../core/urlApi";
 const timeDelay = 700;
 
 function* fechLoginUserHandler({ payload: dataUser }) {

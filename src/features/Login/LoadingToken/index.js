@@ -1,5 +1,5 @@
-import { Loader } from "../../../common/Loader";
-import { USER_TEXT } from "../../../core/InfoText";
+import { Loader } from "@common/Loader";
+import { USER_TEXT } from "@core/InfoText";
 import { Conteiner, Wrapper } from "../styled";
 
 export const LoadingToken = () => {

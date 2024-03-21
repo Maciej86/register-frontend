@@ -2,16 +2,16 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { nanoid } from "@reduxjs/toolkit";
-import { USERSETTINGS } from "../../../../core/InfoText";
 import {
   fetchEditPassword,
   resetUserState,
   selecEditPassword,
   selectStatusEditPassword,
-} from "../../../../store/User/sliceUser";
-import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
-import { Button } from "../../../../common/Button";
-import { Loader } from "../../../../common/Loader";
+} from "@storeUser/sliceUser";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
+import { USERSETTINGS } from "@core/InfoText";
+import { Button } from "@common/Button";
+import { Loader } from "@common/Loader";
 import { InputEditPasswordUser } from "./InputEditPasswordUser";
 import { LuSave } from "react-icons/lu";
 

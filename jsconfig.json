@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@common/*": ["common/*"],
+      "@core/*": ["core/*"],
+      "@core/hooks/*": ["core/hooks/*"],
+      "@features/*": ["features/*"],
+      "@store/*": ["store/*"],
+      "@store/Bar/*": ["store/Bar/*"],
+      "@store/Confirm/*": ["store/Confirm/*"],
+      "@store/Organization/*": ["store/Organization/*"],
+      "@store/User/*": ["store/User/*"]
+    }
+  }
+}

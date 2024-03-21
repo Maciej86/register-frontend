@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import {
-  fetchPasswordExsist,
-  selecPasswordExsist,
-} from "../../store/User/sliceUser";
-import { addConfirm } from "../../store/Confirm/sliceConfirm";
+import { fetchPasswordExsist, selecPasswordExsist } from "@storeUser/sliceUser";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
 import { useCheckEmptyInput } from "./useCheckEmptyInput";
 import { USERSETTINGS } from "../InfoText";
 

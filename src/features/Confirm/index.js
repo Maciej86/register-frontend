@@ -5,7 +5,7 @@ import {
   removeAutoConfirm,
   removeConfirm,
   selectConfirmState,
-} from "../../store/Confirm/sliceConfirm";
+} from "@storeConfirm/sliceConfirm";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { Conteiner, Content, Modal, Title } from "./styled";
 
@@ -31,7 +31,7 @@ export const Confirm = () => {
         <Modal
           key={item.id}
           $type={item.type}
-          onClick={() => dispatch(removeAutoConfirm(item.id))}
+          onClick={() => dispatch(removeConfirm(item.id))}
         >
           <Content>
             <Title $type={item.type}>

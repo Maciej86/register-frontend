@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { selectUserState } from "../../../../store/User/sliceUser";
-import { COMMON, NAVIGATION, USERSETTINGS } from "../../../../core/InfoText";
-import { useRoleUser } from "../../../../core/hooks/useRoleUser";
-import { Loader } from "../../../../common/Loader";
-import { LinkButton } from "../../../../common/styledLinkButton";
-import { Button } from "../../../../common/Button";
+import { selectUserState } from "@storeUser/sliceUser";
+import { useRoleUser } from "@coreHooks/useRoleUser";
+import { COMMON, NAVIGATION, USERSETTINGS } from "@core/InfoText";
+import { Loader } from "@common/Loader";
+import { LinkButton } from "@common/styledLinkButton";
+import { Button } from "@common/Button";
 import {
   Column,
   ColumnCenter,
@@ -16,9 +16,9 @@ import {
   ThLp,
   TrBody,
   TrHead,
-} from "../../../../common/styledTable";
-import { LinkText } from "../../../../common/styledLink";
-import { Modal } from "../../../../common/Modal";
+} from "@common/styledTable";
+import { LinkText } from "@common/styledLink";
+import { Modal } from "@common/Modal";
 import { useDeleteUser } from "../hooks/useDeleteUser";
 import {
   LackOrganization,
