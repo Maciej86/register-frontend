@@ -2,10 +2,11 @@
 
 ## W przygotowaniu
 
-- Zarządzanie użytkownikami przez administratora
+- zmiana importów
 
 ## Ostatnie zmiany
 
+- Zarządzanie użytkownikami przez administratora
 - Utworzenie organizacji
 - Obsługa błędów serwera
 - Wyświetlanie informacji po działaniach użytkownika

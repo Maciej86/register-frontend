@@ -1,25 +1,32 @@
 import axios from "axios";
 import { call, delay, put, takeEvery } from "redux-saga/effects";
 import {
-  fetchEditEmail,
+  fetchEmailExsist,
   fetchEditPassword,
-  fetchEditUser,
+  fetchEditAccount,
   fetchLoginUser,
   fetchLoginUserOut,
   fetchLoginUserToken,
   serverConnectionError,
-  setEditEmail,
+  setEmailExsist,
   setEditPassword,
-  setEditUser,
+  setEditAccount,
   setLoginOutUser,
   setLoginUser,
+  fetchAddUser,
+  setAddUser,
+  setDeleteUser,
+  fetchDeleteUser,
+  fetchPasswordExsist,
+  setPasswordExsist,
+  setEditUser,
 } from "./sliceUser";
 import {
   fetchUserOrganization,
   fetchTokenOrganization,
 } from "../Organization/sliceOrganization";
 import { saveDataInSessionStorage } from "./saveSessionStorage";
-import { URL_USER } from "../../core/urlBackend";
+import { URL_USER } from "../../core/urlApi";
 const timeDelay = 700;
 
 function* fechLoginUserHandler({ payload: dataUser }) {
@@ -70,16 +77,22 @@ function* fetchLoginUserOutTokenHandler({ payload: id }) {
 
 function* fechEditUserHandler({ payload: dataUser }) {
   try {
-    const user = yield axios.post(URL_USER.EDIT_USER, {
+    const user = yield axios.post(URL_USER.EDIT_ACCOUNT, {
       id: dataUser.id,
       name: dataUser.name,
       lastname: dataUser.lastname,
       email: dataUser.email,
+      role: dataUser.role,
       theme: dataUser.theme,
-      organizationid: dataUser.organization,
     });
     yield delay(timeDelay);
-    yield put(setEditUser(user.data));
+    switch (dataUser.myaccount) {
+      case true:
+        yield put(setEditAccount(user.data));
+        break;
+      default:
+        yield put(setEditUser(user.data));
+    }
   } catch (error) {
     yield console.error(error);
     yield put(serverConnectionError());
@@ -90,7 +103,6 @@ function* fetchEditPasswordHandler({ payload: passwordUser }) {
   try {
     const changedPassword = yield axios.post(URL_USER.CHANGED_PASSWORD, {
       id: passwordUser.id,
-      oldpassword: passwordUser.oldpassword,
       newpassword: passwordUser.newpassword,
     });
     yield delay(timeDelay);
@@ -107,18 +119,66 @@ function* fetchEditEmailHandler({ payload: newEmail }) {
       email: newEmail,
     });
     yield delay(timeDelay);
-    yield put(setEditEmail(checkEmailExsist.data));
+    yield put(setEmailExsist(checkEmailExsist.data));
   } catch (error) {
     yield console.error(error);
     yield put(serverConnectionError());
   }
 }
 
-export function* loginUserSaga() {
+function* fetchPasswordExsistHandler({ payload: password }) {
+  try {
+    const passwordExsist = yield axios.post(URL_USER.PASSWORD_EXSIST, {
+      id: password.idUser,
+      oldpassword: password.currentPassword,
+    });
+    yield delay(timeDelay);
+    yield put(setPasswordExsist(passwordExsist.data));
+  } catch (error) {
+    yield console.error(error);
+    yield put(serverConnectionError());
+  }
+}
+
+function* fetchAddUserHandler({ payload: dataUser }) {
+  try {
+    const addUser = yield axios.post(URL_USER.ADD_USER, {
+      name: dataUser.name,
+      lastName: dataUser.lastName,
+      email: dataUser.email,
+      type: dataUser.type,
+      password: dataUser.password,
+      organizations: dataUser.organizations,
+    });
+    yield delay(timeDelay);
+    yield put(setAddUser(addUser.data));
+  } catch (error) {
+    yield console.error(error);
+    yield put(serverConnectionError());
+  }
+}
+
+function* fetchDeleteUserHandler({ payload: id }) {
+  try {
+    const deleteUser = yield axios.post(URL_USER.DELETE_USER, {
+      idUser: id,
+    });
+    yield delay(timeDelay);
+    yield put(setDeleteUser(deleteUser.data));
+  } catch (error) {
+    yield console.error(error);
+    yield put(serverConnectionError());
+  }
+}
+
+export function* userSaga() {
   yield takeEvery(fetchLoginUser.type, fechLoginUserHandler);
   yield takeEvery(fetchLoginUserToken.type, fetchLoginUserTokenHandler);
   yield takeEvery(fetchLoginUserOut.type, fetchLoginUserOutTokenHandler);
-  yield takeEvery(fetchEditUser.type, fechEditUserHandler);
+  yield takeEvery(fetchEditAccount.type, fechEditUserHandler);
   yield takeEvery(fetchEditPassword.type, fetchEditPasswordHandler);
-  yield takeEvery(fetchEditEmail.type, fetchEditEmailHandler);
+  yield takeEvery(fetchEmailExsist.type, fetchEditEmailHandler);
+  yield takeEvery(fetchPasswordExsist.type, fetchPasswordExsistHandler);
+  yield takeEvery(fetchAddUser.type, fetchAddUserHandler);
+  yield takeEvery(fetchDeleteUser.type, fetchDeleteUserHandler);
 }

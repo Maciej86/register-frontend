@@ -9,7 +9,7 @@ import {
   selectTokenSessionUserState,
   selectUserNotExist,
 } from "../store/User/sliceUser";
-import { selectToggleNavState } from "../features/Bar/sliceBar";
+import { selectToggleNavState } from "../store/Bar/sliceBar";
 import { Bar } from "../features/Bar";
 import { LoadingToken } from "../features/Login/LoadingToken";
 import { Navigation } from "../features/Navigation";

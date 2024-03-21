@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BiErrorCircle } from "react-icons/bi";
 import {
   removeAutoConfirm,
   removeConfirm,
   selectConfirmState,
-} from "./sliceConfirm";
-import { BiErrorCircle } from "react-icons/bi";
+} from "../../store/Confirm/sliceConfirm";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { Conteiner, Content, Modal, Title } from "./styled";
 
@@ -31,7 +31,7 @@ export const Confirm = () => {
         <Modal
           key={item.id}
           $type={item.type}
-          onClick={() => dispatch(removeConfirm(item.id))}
+          onClick={() => dispatch(removeAutoConfirm(item.id))}
         >
           <Content>
             <Title $type={item.type}>

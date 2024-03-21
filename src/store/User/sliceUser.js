@@ -4,18 +4,25 @@ const initialUser = {
   user: [],
   userOut: false,
   userNotExist: false,
-  editAccount: false,
-  changingPassword: "",
   loading: false,
   loadingTokenUser: false,
   loadingOut: false,
+  loadingEditAccount: false,
   loadingEditPassword: false,
-  emailExsist: "",
+  loadingAddOrDeleteUser: false,
+  editAccount: false,
+  addUser: false,
+  deleteUser: false,
+  editPassword: false,
+  passwordExsist: false,
+  endChceckPasswordExsist: false,
+  emailExsist: false,
+  endChceckEmailExsist: false,
   serverError: false,
 };
 
-const loginUserSlice = createSlice({
-  name: "loginUser",
+const userSlice = createSlice({
+  name: "user",
   initialState: initialUser,
   reducers: {
     fetchLoginUser: (state) => {
@@ -46,68 +53,118 @@ const loginUserSlice = createSlice({
       state.userOut = true;
       state.loadingOut = false;
     },
-    fetchEditUser: (state) => {
+    fetchEditAccount: (state) => {
       state.serverError = false;
       state.editAccount = false;
-      state.emailExsist = "";
-      state.loading = true;
+      state.emailExsist = false;
+      state.loadingEditAccount = true;
     },
-    setEditUser: (state, { payload: user }) => {
-      state.loading = false;
+    setEditAccount: (state, { payload: user }) => {
+      state.loadingEditAccount = false;
       state.user = user;
+      state.editAccount = true;
+    },
+    setEditUser: (state) => {
+      state.loadingEditAccount = false;
       state.editAccount = true;
     },
     fetchEditPassword: (state) => {
       state.serverError = false;
-      state.changingPassword = false;
+      state.editPassword = false;
+      state.passwordExsist = false;
       state.loadingEditPassword = true;
     },
     setEditPassword: (state, { payload: changedPassword }) => {
       state.loadingEditPassword = false;
-      state.changingPassword = changedPassword;
+      state.editPassword = changedPassword;
     },
-    fetchEditEmail: (state) => {
+    fetchEmailExsist: (state) => {
       state.serverError = false;
-      state.loading = true;
+      state.loadingEditAccount = true;
+      state.loadingAddOrDeleteUser = true;
+      state.endChceckEmailExsist = false;
     },
-    setEditEmail: (state, { payload: emailExsist }) => {
+    setEmailExsist: (state, { payload: emailExsist }) => {
       state.emailExsist = emailExsist;
-      if (emailExsist) {
-        state.loading = false;
-      }
+      state.loadingEditAccount = false;
+      state.loadingAddOrDeleteUser = false;
+      state.endChceckEmailExsist = true;
+    },
+    fetchPasswordExsist: (state) => {
+      state.serverError = false;
+      state.loadingEditPassword = true;
+      state.passwordExsist = false;
+      state.endChceckPasswordExsist = false;
+    },
+    setPasswordExsist: (state, { payload: passwordExsist }) => {
+      state.passwordExsist = passwordExsist;
+      state.loadingEditPassword = false;
+      state.endChceckPasswordExsist = true;
+    },
+    fetchAddUser: (state) => {
+      state.loadingAddOrDeleteUser = true;
+    },
+    setAddUser: (state, { payload: newUser }) => {
+      state.loadingAddOrDeleteUser = false;
+      state.addUser = newUser;
+    },
+    fetchDeleteUser: (state) => {
+      state.loadingAddOrDeleteUser = true;
+    },
+    setDeleteUser: (state, { payload: deleteUser }) => {
+      state.loadingAddOrDeleteUser = false;
+      state.deleteUser = deleteUser;
     },
     serverConnectionError: (state) => {
       state.serverError = true;
       state.loading = false;
+      state.loadingAddOrDeleteUser = false;
       state.loadingEditPassword = false;
+      state.loadingEditAccount = false;
     },
     resetUserState: (state) => {
-      state.changingPassword = "";
+      state.passwordExsist = false;
       state.editAccount = false;
-      state.emailExsist = "";
+      state.emailExsist = false;
+      state.editPassword = false;
+      state.endChceckEmailExsist = false;
+      state.endChceckPasswordExsist = false;
       state.serverError = false;
+      state.addUser = false;
+      state.deleteUser = false;
     },
   },
 });
 
-export const selectLoginUser = (state) => state.loginUserStore;
+export const selectLoginUser = (state) => state.userStore;
 export const selectTokenSessionUserState = (state) =>
   selectLoginUser(state).user[0]?.token_login;
 export const selectUserState = (state) => selectLoginUser(state).user[0];
 export const selectEditAccount = (state) => selectLoginUser(state).editAccount;
-export const selectEditPassword = (state) =>
-  selectLoginUser(state).changingPassword;
+export const selecEditPassword = (state) => selectLoginUser(state).editPassword;
+export const selecPasswordExsist = (state) =>
+  selectLoginUser(state).passwordExsist;
+export const selecEndChceckPasswordExsist = (state) =>
+  selectLoginUser(state).endChceckPasswordExsist;
 export const selectStatusUserOut = (state) => selectLoginUser(state).userOut;
 export const selectStatusUser = (state) => selectLoginUser(state).loading;
 export const selectStatusloadingOut = (state) =>
   selectLoginUser(state).loadingOut;
+export const selectStatusEditAccount = (state) =>
+  selectLoginUser(state).loadingEditAccount;
 export const selectStatusEditPassword = (state) =>
   selectLoginUser(state).loadingEditPassword;
 export const selectStatusTokenUser = (state) =>
   selectLoginUser(state).loadingTokenUser;
+export const selectAddUser = (state) => selectLoginUser(state).addUser;
+export const selectDeleteUser = (state) => selectLoginUser(state).deleteUser;
+export const selectStatusLoadingAddOrDeleteUser = (state) =>
+  selectLoginUser(state).loadingAddOrDeleteUser;
 export const selectUserNotExist = (state) =>
   selectLoginUser(state).userNotExist;
 export const selectEmailExsist = (state) => selectLoginUser(state).emailExsist;
+export const selectEndChceckEmailExsist = (state) =>
+  selectLoginUser(state).endChceckEmailExsist;
 export const selectErrorServerUser = (state) =>
   selectLoginUser(state).serverError;
 
@@ -117,14 +174,21 @@ export const {
   fetchLoginUserOut,
   setLoginUser,
   setLoginOutUser,
-  fetchEditUser,
+  fetchEditAccount,
+  setEditAccount,
   setEditUser,
   fetchEditPassword,
   setEditPassword,
-  fetchEditEmail,
-  setEditEmail,
+  fetchAddUser,
+  setAddUser,
+  setDeleteUser,
+  fetchDeleteUser,
+  fetchEmailExsist,
+  fetchPasswordExsist,
+  setEmailExsist,
+  setPasswordExsist,
   serverConnectionError,
   resetUserState,
-} = loginUserSlice.actions;
+} = userSlice.actions;
 
-export default loginUserSlice.reducer;
+export default userSlice.reducer;

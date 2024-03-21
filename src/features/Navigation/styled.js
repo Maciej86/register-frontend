@@ -69,6 +69,14 @@ export const ListNav = styled.ul`
   list-style: none;
 `;
 
+export const ListNavChild = styled(ListNav)`
+  overflow: hidden;
+  max-height: ${({ $open, $quantityItemNav }) =>
+    $open ? $quantityItemNav * 51 + 7 + "px" : "0"};
+  background: ${({ theme }) => theme.color.primary_color};
+  transition: all 0.5s ease;
+`;
+
 export const ItemNav = styled.li`
   margin-bottom: 7px;
 `;
@@ -76,9 +84,9 @@ export const ItemNav = styled.li`
 export const LinkNav = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 15px 10px 15px 20px;
-  font-size: 18px;
+  gap: 10px;
+  padding: 15px 10px 15px 15px;
+  font-size: 16px;
   font-weight: 500;
   color: ${({ theme }) => theme.color.light};
   text-decoration: none;
@@ -90,8 +98,33 @@ export const LinkNav = styled(Link)`
   }
 `;
 
+export const LinkNavHasChild = styled(LinkNav)`
+  width: 100%;
+  border: none;
+  background: inherit;
+  cursor: pointer;
+`;
+
+export const LinkNavChild = styled(LinkNav)`
+  &:hover {
+    background: ${({ theme }) => theme.color.primary_dark_color};
+  }
+`;
+
+export const EmptyIcon = styled.span`
+  display: inline-block;
+  width: 27px;
+`;
+
 export const Autor = styled.p`
   text-align: center;
   color: ${({ theme }) => theme.color.primary_light_color};
   font-size: 14px;
+`;
+
+export const IconNav = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27px;
 `;

@@ -6,11 +6,6 @@ export const Conteiner = styled.div`
   gap: 25px;
 `;
 
-export const ConteinerLoader = styled.div`
-  display: flex;
-  justify-content: end;
-`;
-
 export const FormArea = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -22,16 +17,6 @@ export const FormArea = styled.div`
     justify-content: start;
     margin-top: 20px;
   }
-`;
-
-export const NotExsist = styled.p`
-  margin: 0;
-  padding: 7px;
-  background: ${({ theme }) => theme.color.danger};
-  border-radius: ${({ theme }) => theme.size.border_radius_small};
-  color: ${({ theme }) => theme.color.danger_dark};
-  font-weight: 600;
-  text-align: center;
 `;
 
 export const ButtonTab = styled.button`

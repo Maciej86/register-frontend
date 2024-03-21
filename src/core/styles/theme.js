@@ -14,6 +14,7 @@ export const ThemeDefault = {
     danger_dark: "rgb(107, 44, 44)",
     white: "rgb(255,255,255)",
     light: "rgb(182, 193, 222)",
+    light_dark: "rgb(125, 133, 153)",
     dark: "rgb(22, 26, 48)",
   },
 
@@ -56,7 +57,8 @@ export const ThemeEbonyClay = {
     danger: "rgb(223, 103, 91)",
     danger_dark: "rgb(111, 52, 47)",
     white: "rgb(255,255,255)",
-    light: "rgb(144, 144, 240)",
+    light: "rgb(153, 153, 255)",
+    light_dark: "rgb(113, 113, 189)",
     dark: "rgb(20, 20, 33)",
   },
 

@@ -6,6 +6,9 @@ import { Dashboard } from "../features/Dashboard";
 import { ErrorPage } from "../features/ErrorPage";
 import { Organization } from "../features/Organization/AddAndDelet";
 import { OrganizationEdit } from "../features/Organization/Edit";
+import { TableUsers } from "../features/Users/TableUsers";
+import { AddUser } from "../features/Users/AddUser";
+import { EditUser } from "../features/Users/EditUser";
 
 export const RouterSetings = createBrowserRouter([
   {
@@ -18,6 +21,18 @@ export const RouterSetings = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+        path: NAVIGATION.NAV_LINK_USERS,
+        element: <TableUsers />,
+      },
+      {
+        path: NAVIGATION.NAV_LINK_ADD_USERS,
+        element: <AddUser />,
+      },
+      {
+        path: `${NAVIGATION.NAV_LINK_EDIT_USERS}/:id`,
+        element: <EditUser />,
+      },
+      {
         path: NAVIGATION.NAV_LINK_DASHBOARD,
         element: <Dashboard />,
       },
@@ -26,11 +41,11 @@ export const RouterSetings = createBrowserRouter([
         element: <Organization />,
       },
       {
-        path: "organizacja-edytuj/:id",
+        path: `${NAVIGATION.NAV_ID_ORGANIZATION}/:id`,
         element: <OrganizationEdit />,
       },
       {
-        path: NAVIGATION.NAV_LINK_SETINGS,
+        path: NAVIGATION.NAV_LINK_SETTINGS,
         element: <Settings />,
       },
     ],

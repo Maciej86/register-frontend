@@ -1,5 +1,5 @@
+import { Button } from "../Button";
 import { Loader } from "../Loader";
-import { Button } from "../elements/Button";
 import {
   Body,
   ButtonAction,

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { delay, put, takeEvery } from "redux-saga/effects";
-import { URL_ORGANIZATION } from "../../core/urlBackend";
+import { URL_ORGANIZATION } from "../../core/urlApi";
 import {
-  fetchAddNewOrganization,
+  fetchAddOrganization,
   fetchTokenOrganization,
   setAddNewOrganization,
   setUserOrganization,
@@ -16,6 +16,8 @@ import {
   fetchDeleteOrganization,
   setDeleteOrganization,
   serverConnectionError,
+  fetchEditUserOrganization,
+  setEditUserOrganization,
 } from "./sliceOrganization";
 
 const timeDelay = 700;
@@ -36,11 +38,12 @@ function* fetchUserOrganizationHandler({ payload: id }) {
   }
 }
 
-function* fetchAddNewOrganizationHandler({ payload: data }) {
+function* fetchAddOrganizationHandler({ payload: data }) {
   try {
     const organization = yield axios.post(URL_ORGANIZATION.ADD_ORGANIZATION, {
       idUser: data.idUser,
       name: data.name,
+      createdDate: data.createdDate,
     });
     yield delay(timeDelay);
     yield put(setAddNewOrganization(organization.data));
@@ -72,8 +75,8 @@ function* fetchUsersInOrganizationHandler({ payload: data }) {
   try {
     const organization = yield axios.post(
       data.inOut
-        ? URL_ORGANIZATION.FETCH_USER_IN_ORGANIZATION
-        : URL_ORGANIZATION.FETCH_USER_OUT_ORGANIZATION,
+        ? URL_ORGANIZATION.FETCH_USERS_IN_ORGANIZATION
+        : URL_ORGANIZATION.FETCH_USERS_OUT_ORGANIZATION,
       {
         id: data.id,
       }
@@ -105,6 +108,24 @@ function* fetchAddOrDeleteUsersOrganizationHandler({ payload: data }) {
   }
 }
 
+function* fetchEditUserOrganizationHandler({ payload: data }) {
+  console.log("Dane do saga => ", data);
+  try {
+    const organization = yield axios.post(
+      URL_ORGANIZATION.FETCH_EDIT_USER_ORGANIZATION,
+      {
+        idUser: data.idUser,
+        idOrganization: data.idOrganization,
+      }
+    );
+    yield delay(timeDelay);
+    yield put(setEditUserOrganization(organization.data));
+  } catch (error) {
+    yield console.error(error);
+    yield put(serverConnectionError());
+  }
+}
+
 function* fetchDeleteOrganizationnHandler({ payload: id }) {
   try {
     yield axios.post(URL_ORGANIZATION.DELETE_ORGANIZATION, { id: id });
@@ -118,14 +139,10 @@ function* fetchDeleteOrganizationnHandler({ payload: id }) {
 
 export function* organizationSaga() {
   yield takeEvery(
-    [
-      fetchUserOrganization.type,
-      fetchTokenOrganization.type,
-      fetchAddNewOrganization.type,
-    ],
+    [fetchUserOrganization.type, fetchTokenOrganization.type],
     fetchUserOrganizationHandler
   );
-  yield takeEvery(fetchAddNewOrganization.type, fetchAddNewOrganizationHandler);
+  yield takeEvery(fetchAddOrganization.type, fetchAddOrganizationHandler);
   yield takeEvery(
     fetchEditNameOrganization.type,
     fetchEditNameOrganizationHandler
@@ -137,6 +154,10 @@ export function* organizationSaga() {
   yield takeEvery(
     fetchAddOrDeleteUsersOrganization.type,
     fetchAddOrDeleteUsersOrganizationHandler
+  );
+  yield takeEvery(
+    fetchEditUserOrganization.type,
+    fetchEditUserOrganizationHandler
   );
   yield takeEvery(
     fetchDeleteOrganization.type,
