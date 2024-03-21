@@ -1,6 +1,6 @@
 import axios from "axios";
 import { delay, put, takeEvery } from "redux-saga/effects";
-import { URL_ORGANIZATION } from "../../core/urlApi";
+import { URL_ORGANIZATION } from "@core/urlApi";
 import {
   fetchAddOrganization,
   fetchTokenOrganization,

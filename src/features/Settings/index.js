@@ -1,7 +1,7 @@
-import { USERSETTINGS } from "../../core/InfoText";
-import { useErrorConnectServer } from "../../core/hooks/useErrorConnectServer";
-import { selectErrorServerUser } from "../../store/User/sliceUser";
-import { Tile } from "../../common/Tile";
+import { selectErrorServerUser } from "@storeUser/sliceUser";
+import { USERSETTINGS } from "@core/InfoText";
+import { useErrorConnectServer } from "@coreHooks/useErrorConnectServer";
+import { Tile } from "@common/Tile";
 import { FormDataAccount } from "./view/FormDataAccount";
 import { FormPasswordAccount } from "./view/FormPasswordAccount";
 import { Conteiner } from "./styled";

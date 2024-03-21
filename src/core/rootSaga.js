@@ -1,6 +1,6 @@
 import { all } from "redux-saga/effects";
-import { userSaga } from "../store/User/sagaUser";
-import { organizationSaga } from "../store/Organization/sagaOrganization";
+import { userSaga } from "@storeUser/sagaUser";
+import { organizationSaga } from "@storeOrganization/sagaOrganization";
 
 function* rootSaga() {
   yield all([userSaga(), organizationSaga()]);

@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { useFetchData } from "../../../../core/hooks/useFetchData";
-import { URL_ORGANIZATION } from "../../../../core/urlApi";
-import { ORGANIZATION } from "../../../../core/InfoText";
 import {
   fetchDeleteOrganization,
   resetOrganizationState,
   selectAddNewOrganization,
   selectDeleteOrganization,
   selectloadingDeleteOrganization,
-} from "../../../../store/Organization/sliceOrganization";
-import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
+} from "@storeOrganization/sliceOrganization";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
+import { useFetchData } from "@coreHooks/useFetchData";
+import { URL_ORGANIZATION } from "@core/urlApi";
+import { ORGANIZATION } from "@core/InfoText";
 
 export const useDeleteOrganization = () => {
   const dispatch = useDispatch();

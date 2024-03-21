@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addConfirm } from "../../store/Confirm/sliceConfirm";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
 import {
   fetchEmailExsist,
   resetUserState,
   selectEmailExsist,
-} from "../../store/User/sliceUser";
-import { USERSETTINGS } from "../InfoText";
+} from "@storeUser/sliceUser";
+import { USERSETTINGS } from "@core/InfoText";
 
 export const useCheckEmail = () => {
   const dispatch = useDispatch();

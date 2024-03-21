@@ -1,7 +1,7 @@
-import { ORGANIZATION } from "../../../core/InfoText";
-import { useErrorConnectServer } from "../../../core/hooks/useErrorConnectServer";
-import { selectServerErrorOrganization } from "../../../store/Organization/sliceOrganization";
-import { Tile } from "../../../common/Tile";
+import { selectServerErrorOrganization } from "@storeOrganization/sliceOrganization";
+import { ORGANIZATION } from "@core/InfoText";
+import { useErrorConnectServer } from "@coreHooks/useErrorConnectServer";
+import { Tile } from "@common/Tile";
 import { FormAddOrganization } from "./view/FormAddOrganization";
 import { TableOrganizaton } from "./view/TableOrganization";
 import { Conteiner } from "./styled";

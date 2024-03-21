@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { selectLoadingAddOrganization } from "../../../../store/Organization/sliceOrganization";
-import { ORGANIZATION } from "../../../../core/InfoText";
-import { Loader } from "../../../../common/Loader";
-import { InputText } from "../../../../common/InputText";
-import { Button } from "../../../../common/Button";
+import { selectLoadingAddOrganization } from "@storeOrganization/sliceOrganization";
+import { ORGANIZATION } from "@core/InfoText";
+import { Loader } from "@common/Loader";
+import { InputText } from "@common/InputText";
+import { Button } from "@common/Button";
 import { useAddOrganization } from "../hooks/useAddOrganization";
 import { FormArea } from "../styled";
 import { TbCubePlus } from "react-icons/tb";

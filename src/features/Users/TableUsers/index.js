@@ -1,6 +1,6 @@
-import { NAVIGATION, USERSETTINGS } from "../../../core/InfoText";
-import { Tile } from "../../../common/Tile";
-import { LinkButton } from "../../../common/styledLinkButton";
+import { NAVIGATION, USERSETTINGS } from "@core/InfoText";
+import { Tile } from "@common/Tile";
+import { LinkButton } from "@common/styledLinkButton";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { AllUsers } from "./view/AllUsers";
 import { ButtonArea } from "./styled";

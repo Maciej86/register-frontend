@@ -7,11 +7,11 @@ import {
   selectEditAccount,
   selectEndChceckEmailExsist,
   selectStatusEditAccount,
-} from "../../../store/User/sliceUser";
-import { addConfirm } from "../../../store/Confirm/sliceConfirm";
-import { USERSETTINGS } from "../../../core/InfoText";
-import { Loader } from "../../../common/Loader";
-import { Button } from "../../../common/Button";
+} from "@storeUser/sliceUser";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
+import { USERSETTINGS } from "@core/InfoText";
+import { Loader } from "@common/Loader";
+import { Button } from "@common/Button";
 import { LuSave } from "react-icons/lu";
 import { InputDataAccount } from "./InputDataAccount";
 

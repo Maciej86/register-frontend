@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { resetUserState } from "../../store/User/sliceUser";
-import { addConfirm } from "../../store/Confirm/sliceConfirm";
-import { resetOrganizationState } from "../../store/Organization/sliceOrganization";
-import { COMMON } from "../InfoText";
+import { resetUserState } from "@storeUser/sliceUser";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
+import { resetOrganizationState } from "@storeOrganization/sliceOrganization";
+import { COMMON } from "@core/InfoText";
 
 export const useErrorConnectServer = (selector, typeStore) => {
   const dispatch = useDispatch();

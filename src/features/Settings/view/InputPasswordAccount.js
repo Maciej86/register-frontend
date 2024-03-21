@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { useSelector } from "react-redux";
-import { selecPasswordExsist } from "../../../store/User/sliceUser";
-import { useCheckPassword } from "../../../core/hooks/useChceckPassword";
-import { USERSETTINGS } from "../../../core/InfoText";
-import { InputText } from "../../../common/InputText";
+import { selecPasswordExsist } from "@storeUser/sliceUser";
+import { useCheckPassword } from "@coreHooks/useChceckPassword";
+import { USERSETTINGS } from "@core/InfoText";
+import { InputText } from "@common/InputText";
 import { FormArea } from "../styled";
 
 export const InputPasswordAccount = () => {

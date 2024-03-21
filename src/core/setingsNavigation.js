@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import { NAVIGATION } from "./InfoText";
 import { App } from "./App";
-import { Settings } from "../features/Settings";
-import { Dashboard } from "../features/Dashboard";
-import { ErrorPage } from "../features/ErrorPage";
-import { Organization } from "../features/Organization/AddAndDelet";
-import { OrganizationEdit } from "../features/Organization/Edit";
-import { TableUsers } from "../features/Users/TableUsers";
-import { AddUser } from "../features/Users/AddUser";
-import { EditUser } from "../features/Users/EditUser";
+import { Settings } from "@features/Settings";
+import { Dashboard } from "@features/Dashboard";
+import { ErrorPage } from "@features/ErrorPage";
+import { Organization } from "@features/Organization/AddAndDelet";
+import { OrganizationEdit } from "@features/Organization/Edit";
+import { TableUsers } from "@features/Users/TableUsers";
+import { AddUser } from "@features/Users/AddUser";
+import { EditUser } from "@features/Users/EditUser";
 
 export const RouterSetings = createBrowserRouter([
   {

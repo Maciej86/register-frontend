@@ -6,10 +6,10 @@ import {
   fetchUserOrganization,
   resetOrganizationState,
   selectAddOrDeleteUsersOrganization,
-} from "../../../../store/Organization/sliceOrganization";
-import { selectUserState } from "../../../../store/User/sliceUser";
-import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
-import { ORGANIZATION } from "../../../../core/InfoText";
+} from "@storeOrganization/sliceOrganization";
+import { selectUserState } from "@storeUser/sliceUser";
+import { addConfirm } from "@storeConfirm/sliceConfirm";
+import { ORGANIZATION } from "@core/InfoText";
 
 export const useDeleteUserInOrganization = (
   data,

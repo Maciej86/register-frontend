@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRoleUser } from "../../core/hooks/useRoleUser";
+import { useRoleUser } from "@coreHooks/useRoleUser";
 import {
   fetchLoginUserOut,
   selectUserState,
