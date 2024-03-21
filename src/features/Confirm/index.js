@@ -31,7 +31,7 @@ export const Confirm = () => {
         <Modal
           key={item.id}
           $type={item.type}
-          onClick={() => dispatch(removeAutoConfirm(item.id))}
+          onClick={() => dispatch(removeConfirm(item.id))}
         >
           <Content>
             <Title $type={item.type}>
