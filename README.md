@@ -2,10 +2,11 @@
 
 ## W przygotowaniu
 
-- zmiana importów
+- notatki
 
 ## Ostatnie zmiany
 
+- zmiana importów
 - Zarządzanie użytkownikami przez administratora
 - Utworzenie organizacji
 - Obsługa błędów serwera
