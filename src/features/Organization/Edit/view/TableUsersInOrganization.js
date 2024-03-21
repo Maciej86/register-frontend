@@ -56,18 +56,13 @@ export const TableUsersInOrganization = () => {
     toggleTabUsersOrganization
   );
 
-  const loadUsersInOrganization = () => {
-    dispatch(fetchUsersInOutOrganization({ id: id, inOut: true }));
-    setToggleTabUsersOrganization(true);
-  };
-
-  const loadUsersOutOrganization = () => {
-    dispatch(fetchUsersInOutOrganization({ id: id, inOut: false }));
-    setToggleTabUsersOrganization(false);
+  const loadUsersInOrOutOrganization = (type) => {
+    dispatch(fetchUsersInOutOrganization({ id: id, inOut: type }));
+    setToggleTabUsersOrganization(type);
   };
 
   useEffect(() => {
-    loadUsersInOrganization();
+    loadUsersInOrOutOrganization(true);
   }, [id]);
 
   const tableUsersInOrganization = (
@@ -76,7 +71,7 @@ export const TableUsersInOrganization = () => {
         <ButtonTab
           type="button"
           $active={toggleTabUsersOrganization}
-          onClick={() => loadUsersInOrganization()}
+          onClick={() => loadUsersInOrOutOrganization(true)}
           disabled={loadingUsersOrganization}
         >
           {ORGANIZATION.TAB_USER_IN_ORGANIZATION}
@@ -84,7 +79,7 @@ export const TableUsersInOrganization = () => {
         <ButtonTab
           type="button"
           $active={toggleTabUsersOrganization ? false : true}
-          onClick={() => loadUsersOutOrganization()}
+          onClick={() => loadUsersInOrOutOrganization(false)}
           disabled={loadingUsersOrganization}
         >
           {ORGANIZATION.TAB_ADD_USER_FOR_ORGANIZATION}
