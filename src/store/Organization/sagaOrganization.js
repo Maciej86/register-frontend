@@ -109,7 +109,6 @@ function* fetchAddOrDeleteUsersOrganizationHandler({ payload: data }) {
 }
 
 function* fetchEditUserOrganizationHandler({ payload: data }) {
-  console.log("Dane do saga => ", data);
   try {
     const organization = yield axios.post(
       URL_ORGANIZATION.FETCH_EDIT_USER_ORGANIZATION,

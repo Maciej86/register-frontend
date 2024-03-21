@@ -1,9 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import {
   fetchEditUserOrganization,
+  resetOrganizationState,
   selectEditUsersOrganization,
   selectLoadingEditUsersOrganization,
 } from "../../../../store/Organization/sliceOrganization";
+import { addConfirm } from "../../../../store/Confirm/sliceConfirm";
 import { useTableOrganization } from "../../../../core/hooks/AddOrganizationIntoUser/useTableOrganization";
 import { ORGANIZATION } from "../../../../core/InfoText";
 import { Button } from "../../../../common/Button";
@@ -11,7 +14,6 @@ import { Loader } from "../../../../common/Loader";
 import { TableAction } from "../../../../common/styledTable";
 import { LuSave } from "react-icons/lu";
 import { useEffect } from "react";
-import { resetUserState } from "../../../../store/User/sliceUser";
 
 export const FormEditOrganizationUser = (fetchDataOrganizationUser, idUser) => {
   const dispatch = useDispatch();
@@ -24,8 +26,14 @@ export const FormEditOrganizationUser = (fetchDataOrganizationUser, idUser) => {
 
   useEffect(() => {
     if (confirmEditUserOrganization) {
-      console.log("Koniec");
-      dispatch(resetUserState());
+      dispatch(
+        addConfirm({
+          id: nanoid(),
+          type: true,
+          text: ORGANIZATION.CONFIRM_EDIT_USER_ORGANIZATION,
+        })
+      );
+      dispatch(resetOrganizationState());
     }
   }, [confirmEditUserOrganization]);
 
