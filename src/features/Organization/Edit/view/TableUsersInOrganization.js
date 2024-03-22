@@ -31,8 +31,9 @@ import {
   SpanBoxSwitch,
 } from "@common/styledInputBoxSwitch";
 import { useAddOrDeleteUserInOrganization } from "../hooks/useAddOrDeleteUsersOrganization";
-import { ButtonTab } from "../styled";
+// import { ButtonTab } from "../styled";
 import { AiOutlineUserDelete, AiOutlineUserAdd } from "react-icons/ai";
+import { useTab } from "@core/hooks/useTab";
 
 export const TableUsersInOrganization = () => {
   const { id } = useParams();
@@ -65,25 +66,25 @@ export const TableUsersInOrganization = () => {
     loadUsersInOrOutOrganization(true);
   }, [id]);
 
+  const tabButton = [
+    {
+      action: () => loadUsersInOrOutOrganization(true),
+      disabled: loadingUsersOrganization,
+      text: ORGANIZATION.TAB_USER_IN_ORGANIZATION,
+    },
+    {
+      action: () => loadUsersInOrOutOrganization(false),
+      disabled: loadingUsersOrganization,
+      text: ORGANIZATION.TAB_ADD_USER_FOR_ORGANIZATION,
+    },
+  ];
+
+  const { renderTab } = useTab(tabButton);
+
   const tableUsersInOrganization = (
     <form onSubmit={addOrDeleteUsersOrganization}>
       <ConteinerTable>
-        <ButtonTab
-          type="button"
-          $active={toggleTabUsersOrganization}
-          onClick={() => loadUsersInOrOutOrganization(true)}
-          disabled={loadingUsersOrganization}
-        >
-          {ORGANIZATION.TAB_USER_IN_ORGANIZATION}
-        </ButtonTab>
-        <ButtonTab
-          type="button"
-          $active={toggleTabUsersOrganization ? false : true}
-          onClick={() => loadUsersInOrOutOrganization(false)}
-          disabled={loadingUsersOrganization}
-        >
-          {ORGANIZATION.TAB_ADD_USER_FOR_ORGANIZATION}
-        </ButtonTab>
+        {renderTab()}
         <Table>
           <thead>
             <TrHead>
